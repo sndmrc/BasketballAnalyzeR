@@ -49,9 +49,6 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     dplyr::slice(ord_df2) %>%
     dplyr::mutate(x=1:n())
 
-
-  print(df2)
-
   ggplot(data=df1, aes(x=ID, y=Value, fill=Variables)) +
     geom_bar(stat="identity") +
     scale_fill_brewer(labels=labels.bars, palette="Paired") +
