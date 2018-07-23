@@ -12,6 +12,8 @@ barline(data, id, bars, line, order.by = id, labels.bars = NULL,
 
 \item{id}{The name of the ID variable}
 
+\item{bars}{Vector of names of the bar variables}
+
 \item{line}{The name of the line variable}
 
 \item{order.by}{The name of the variable used to order name players (on the x axis)}
@@ -21,8 +23,6 @@ barline(data, id, bars, line, order.by = id, labels.bars = NULL,
 \item{label.line}{The label for the line variable on the second axis (on the right)}
 
 \item{title}{Title for the plot}
-
-\item{bar}{Vector of names of the bar variables}
 }
 \value{
 A ggplot2 object

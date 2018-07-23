@@ -15,5 +15,6 @@ Depends:
 Imports: 
     dplyr (>= 0.7.6),
     tidyr (>= 0.8.1),
-    rlang (>= 0.2.1)
+    rlang (>= 0.2.1),
+    magrittr (>= 1.5)
 RoxygenNote: 6.0.1
