@@ -5,12 +5,14 @@ Version: 0.1.0
 Author: Marco Sandri, Paola Zuccolotto, Marica Manisera
 Maintainer: Marco Sandri <sandri.marco@gmail.com>
 Description: R package accompanying the book "P.Zuccolotto and M.Manisera (2018) Basketball Data Science. Applications with R"
-License: GPL-2 | GPL-3
-Depends: R (>= 3.5.1)
+License: GPL (>= 2.0)
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/sndmrc/BasketAnalyzeR 
+Depends:
+    R (>= 3.5),
+    ggplot2 (>= 3.0.0)
 Imports: 
-    dplyr,
-    tidyr,
-    ggplot2,
-    rlang
+    dplyr (>= 0.7.6),
+    tidyr (>= 0.8.1),
+    rlang (>= 0.2.1)

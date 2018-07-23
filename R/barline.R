@@ -1,7 +1,3 @@
-# You can learn more about package authoring with RStudio at:
-#
-#   devtools::use_package("dplyr")
-#
 # Some useful keyboard shortcuts for package authoring:
 #
 #   Build and Reload Package:  'Ctrl + Shift + B'
@@ -37,7 +33,7 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
 
   df2 <- data %>%
     dplyr::select(id, bars, line) %>%
-    dplyr::mutate(Line = !!sym(line)) %>%
+    dplyr::mutate(Line = !!rlang::sym(line)) %>%
     dplyr::rename(ID=!!id) %>%
     dplyr::mutate(rsum=rowSums(dplyr::select(., bars))) %>%
     dplyr::mutate(y=Line*max(rsum)/max(Line)) %>%
