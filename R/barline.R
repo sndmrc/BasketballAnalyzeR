@@ -9,13 +9,13 @@
 #' @param label.line The label for the line variable on the second axis (on the right)
 #' @param title Title for the plot
 #' @return A ggplot2 object
+#' @export
 #' @examples
 #' data("NBA1718Players")
 #' dts <- subset(NBA1718Players, Team=="Houston Rockets" & MIN>=500)
 #' barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
 #'         line="MIN", order.by="Player",
 #'         labels.bars=c("2P","3P","FT"), title="Graph title")
-
 barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.line=NULL, title="") {
 
   if (is.null(labels.bars)) {
