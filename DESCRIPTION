@@ -10,9 +10,10 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/sndmrc/BasketAnalyzeR 
 Depends:
-    R (>= 3.5),
-    ggplot2 (>= 3.0.0)
+    R (>= 3.4),
+    ggplot2 (>= 2.2.0)
 Imports: 
     dplyr (>= 0.7.6),
     tidyr (>= 0.8.1),
     rlang (>= 0.2.1)
+RoxygenNote: 6.0.1

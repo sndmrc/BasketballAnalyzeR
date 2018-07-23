@@ -1,12 +1,14 @@
-#' Scores of Group A and Group B.
+#' Data set of NBA 2017-2018
 #'
-#' @description A data set with the scores of two groups, Group A and Group B.
-#'     The data were simulated to illustrate how to create R data packages.
+#' @description A data set of NBA 2017-2018 (Players)
 #'
-#' @format A data.frame with 60 rows and 2 variables:
+#' @format A data.frame with 605 rows and 22 variables:
 #' \describe{
-#'   \item{group}{Participant's group, A or B.}
-#'   \item{score}{Participant's score in hypothetical task Z.}
+#'   \item{Team}{Teams}
+#'   \item{Player}{Players}
+#'   \item{GP}{GP}
+#'   \item{MIN}{MIN}
+#'   \item{PTS}{PTS}
 #' }
-#' @source \url{https://www.github.com/mvuorre/exampleRPackage}
+#' @source \url{https://github.com/sndmrc/BasketAnalyzeR}
 "NBA1718Players"
