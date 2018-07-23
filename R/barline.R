@@ -35,11 +35,6 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
   df1 <- df1 %>%
     dplyr::mutate(ID=factor(ID,levels=levels(ID)[ord_df1]))
 
-  print(df1)
-  print(ord_df1)
-  print(ord_df2)
-  print(cbind(levels(df1$ID), as.character(data[,order.by]), ord_df2))
-
   df2 <- data %>%
     dplyr::select(id, bars, line) %>%
     dplyr::mutate(Line = !!sym(line)) %>%
@@ -58,5 +53,4 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     geom_line(data=df2, mapping=aes(x=x, y=y), lwd=1.5, col='grey', inherit.aes=F) +
     scale_y_continuous(name="Variables", limits=c(0,NA),
                        sec.axis=sec_axis(~.*max(df2$Line)/max(df2$rsum), name=label.line))
-
 }
