@@ -17,9 +17,21 @@
 #'         labels.bars=c("2P","3P","FT"), title="Houston Rockets")
 #' @export
 #' @importFrom magrittr "%>%"
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 geom_bar
+#' @importFrom ggplot2 scale_fill_brewer
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 ggtitle
+#' @importFrom ggplot2 element_text
+#' @importFrom ggplot2 geom_line
+#' @importFrom ggplot2 scale_y_continuous
+#' @importFrom ggplot2 sec_axis
+#' @importFrom plyr "."
 
 barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.line=NULL, title="") {
 
+  Line <- Value <- Variables <- rsum <- x <- y <- ID <- NULL
   if (is.null(labels.bars)) {
     labels.bars=bars
   }
@@ -33,13 +45,13 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     dplyr::rename(ID=!!id) %>%
     dplyr::mutate(Variables=factor(Variables, levels=bars))
 
-  var_ord <- data[,order.by]
+  var_ord <- data[[order.by]]
   if (class(var_ord)=="factor") {
     ord_df1 <- order(levels(var_ord))
-    ord_df2 <- match(levels(df1$ID)[ord_df1], data[,id])
+    ord_df2 <- match(levels(df1$ID)[ord_df1], data[[id]])
   } else {
     ord_df2 <- order(var_ord, decreasing=T)
-    ord_df1 <- match(data[ord_df2,id], levels(df1$ID))
+    ord_df1 <- match(data[ord_df2, id], levels(df1$ID))
   }
 
   df1 <- df1 %>%
@@ -52,7 +64,7 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     dplyr::mutate(rsum=rowSums(dplyr::select(., bars))) %>%
     dplyr::mutate(y=Line*max(rsum)/max(Line)) %>%
     dplyr::slice(ord_df2) %>%
-    dplyr::mutate(x=1:n())
+    dplyr::mutate(x=1:dplyr::n())
 
   ggplot(data=df1, aes(x=ID, y=Value, fill=Variables)) +
     geom_bar(stat="identity") +
