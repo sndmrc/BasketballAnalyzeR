@@ -27,7 +27,7 @@ fourfactorsPlot <- function(dtset, title=NULL) {
     ttl <- paste(ttl, "-", title)
   }
   PACEplot <- ggplot(dtset, aes(x=PACE_T, y=PACE_O, label=Team,
-                                text=paste("Team:",Team,"<br>PACE Team:",PACE_T,"<br>PACE Opp:",PACE_0))) +
+                                text=paste("Team:",Team,"<br>PACE Team:",PACE_T,"<br>PACE Opp:",PACE_O))) +
     geom_point() +
     geom_text_repel(aes(label=Team))+
     labs(title=ttl)+
