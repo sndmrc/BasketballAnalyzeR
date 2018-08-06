@@ -2,7 +2,7 @@
 % Please edit documentation in R/fourfactors.R
 \name{fourfactors}
 \alias{fourfactors}
-\title{Calculates Possession, pace, ratings, and Four Factors}
+\title{Calculates possession, pace, ratings, and Four Factors}
 \usage{
 fourfactors(TEAM, OPP, sel = 1:nrow(TEAM))
 }
@@ -17,7 +17,7 @@ fourfactors(TEAM, OPP, sel = 1:nrow(TEAM))
 A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
 }
 \description{
-Calculates Possession, pace, ratings, and Four Factors
+Calculates possession, pace, ratings, and Four Factors
 }
 \examples{
 data("Tbox")

@@ -18,5 +18,7 @@ Imports:
     rlang (>= 0.2.1),
     magrittr (>= 1.5),
     plyr (>= 1.8.4),
+    ggrepel (>= 0.8),
+    gridExtra (>= 2.3),
     stats
 RoxygenNote: 6.0.1

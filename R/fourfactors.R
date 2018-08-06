@@ -1,4 +1,4 @@
-#' Calculates Possession, pace, ratings, and Four Factors
+#' Calculates possession, pace, ratings, and Four Factors
 #'
 #' @param TEAM A dataframe
 #' @param OPP A dataframe
