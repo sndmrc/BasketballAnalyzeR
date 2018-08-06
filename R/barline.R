@@ -10,8 +10,8 @@
 #' @param title Title for the plot
 #' @return A ggplot2 object
 #' @examples
-#' data("NBA1718Players")
-#' dts <- subset(NBA1718Players, Team=="Houston Rockets" & MIN>=500)
+#' data("Pbox")
+#' dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
 #' barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
 #'         line="MIN", order.by="Player",
 #'         labels.bars=c("2P","3P","FT"), title="Houston Rockets")

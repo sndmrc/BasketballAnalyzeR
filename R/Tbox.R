@@ -1,0 +1,32 @@
+#' Teams box scores dataset - NBA 2017-2018
+#'
+#' @description In this data frame, called Tbox, cases (rows) are teams and variables (columns) are referred to team achievements in the different games
+#'
+#' @format A data frame with 30 rows and 23 variables:
+#' \describe{
+#'   \item{Team}{Teams}
+#'   \item{GP}{GP}
+#'   \item{MIN}{MIN}
+#'   \item{PTS}{PTS}
+#'   \item{W}{W}
+#'   \item{L}{L}
+#'   \item{P2M}{P2M}
+#'   \item{P2A}{P2A}
+#'   \item{P2p}{P2p}
+#'   \item{P3M}{P3M}
+#'   \item{P3A}{P3A}
+#'   \item{P3p}{P3p}
+#'   \item{FTM}{FTM}
+#'   \item{FTA}{FTA}
+#'   \item{FTp}{FTp}
+#'   \item{OREB}{OREB}
+#'   \item{DREB}{DREB}
+#'   \item{AST}{AST}
+#'   \item{TOV}{TOV}
+#'   \item{STL}{STL}
+#'   \item{BLK}{BLK}
+#'   \item{PF}{PF}
+#'   \item{PM}{PM}
+#' }
+#' @source \url{https://github.com/sndmrc/BasketAnalyzeR}
+"Tbox"
