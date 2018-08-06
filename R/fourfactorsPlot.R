@@ -97,5 +97,5 @@ fourfactorsPlot <- function(dtset, title=NULL) {
     geom_bar(stat="identity", color="black", position=position_dodge()) +
     theme_minimal() +	labs(title = ttl)
 
-  list(PACEplot, RTgplot, FFOplot, FFDplot)
+  list(PACEplot=PACEplot, RTgplot=RTgplot, FFOplot=FFOplot, FFDplot=FFDplot)
 }
