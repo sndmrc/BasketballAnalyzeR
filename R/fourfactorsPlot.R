@@ -26,7 +26,8 @@ fourfactorsPlot <- function(dtset, title=NULL) {
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  PACEplot <- ggplot(dtset, aes(x=PACE_T, y=PACE_O, label=Team))+
+  PACEplot <- ggplot(dtset, aes(x=PACE_T, y=PACE_O, label=Team,
+                                text=paste("Team:",Team,"<br>PACE Team:",PACE_T,"<br>PACE Opp:",PACE_0))) +
     geom_point() +
     geom_text_repel(aes(label=Team))+
     labs(title=ttl)+
@@ -38,7 +39,8 @@ fourfactorsPlot <- function(dtset, title=NULL) {
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  RTgplot <- ggplot(dtset, aes(x=ORT, y=DRT, label=Team))+
+  RTgplot <- ggplot(dtset, aes(x=ORT, y=DRT, label=Team,
+                               text=paste("Team:",Team,"<br>Offensive rating:",ORT,"<br>Defensive rating:",DRT))) +
     geom_point() +
     geom_text_repel(aes(label = Team))+
     labs(title = ttl)+
