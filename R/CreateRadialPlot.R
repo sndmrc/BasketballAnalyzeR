@@ -1,6 +1,35 @@
 #' R function CreateRadialPlot by William D. Vickers, freely downloadable from the web
-#'
-#' @param plot.data A dataframe
+#' @param plot.data plot.data
+#' @param axis.labels axis.labels
+#' @param grid.min grid.min
+#' @param grid.mid grid.mid
+#' @param grid.max grid.max
+#' @param centre.y centre.y
+#' @param plot.extent.x.sf plot.extent.x.sf
+#' @param plot.extent.y.sf plot.extent.y.sf
+#' @param x.centre.range x.centre.range
+#' @param label.centre.y label.centre.y
+#' @param grid.line.width grid.line.width
+#' @param gridline.min.linetype gridline.min.linetype
+#' @param gridline.mid.linetype gridline.mid.linetype
+#' @param gridline.max.linetype gridline.max.linetype
+#' @param gridline.min.colour gridline.min.colour
+#' @param gridline.mid.colour gridline.mid.colour
+#' @param gridline.max.colour gridline.max.colour
+#' @param grid.label.size grid.label.size
+#' @param gridline.label.offset gridline.label.offset
+#' @param label.gridline.min label.gridline.min
+#' @param axis.label.offset axis.label.offset
+#' @param axis.label.size axis.label.size
+#' @param axis.line.colour axis.line.colour
+#' @param group.line.width group.line.width
+#' @param group.point.size group.point.size
+#' @param background.circle.colour background.circle.colour
+#' @param background.circle.transparency background.circle.transparency
+#' @param plot.legend plot.legend
+#' @param legend.title legend.title
+#' @param legend.text.size legend.text.size
+#' @param titolo titolo
 #' @importFrom ggplot2 theme_bw
 #' @importFrom ggplot2 element_blank
 #' @importFrom ggplot2 theme_bw

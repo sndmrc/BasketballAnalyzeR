@@ -1,4 +1,27 @@
-radialprofile <- function(data, group, perc = F, std = T, title = NULL, arrange = FALSE,
+#' Plot radial plot for player profiles
+#'
+#' @param data A dataframe
+#' @param group A string containing the name of the variable with players' names
+#' @param perc perc
+#' @param std std
+#' @param title Plot title
+#' @param arrange A logical value. If TRUE radial plots are arranged in a single plot
+#' @param ncol.arrange  The number of columns in the grid of arranged plots
+#' @return A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
+#' @examples
+#' data("Pbox")
+#' Pbox.PG <- Pbox[1:15,]
+#' X <- data.frame(Pbox.PG$P2M, Pbox.PG$P3M, Pbox.PG$OREB+Pbox.PG$DREB,
+#'                 Pbox.PG$AST, Pbox.PG$TO)/Pbox.PG$MIN
+#' X <- cbind(Pbox.PG$Player,X)
+#' names(X) <- c("ID","P2M","P3M","REB","AST","TO")
+#' p <- radialprofile(data=X, group="ID", arrange=TRUE, ncol.arrange=5)
+#' library(grid)
+#' grid.draw(p)
+#' @export
+#' @importFrom gridExtra grid.arrange
+
+radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL, arrange = FALSE,
                           ncol.arrange = NULL) {
 
   # Reorder columns
@@ -58,9 +81,9 @@ radialprofile <- function(data, group, perc = F, std = T, title = NULL, arrange 
   # Arrange radial plots
   if (arrange) {
     if (is.null(ncol.arrange)) {
-      out <- grid.arrange(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
+      out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
     } else {
-      out <- grid.arrange(grobs = listPlots, ncol = ncol.arrange)
+      out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
     }
   } else {
     out <- listPlots
