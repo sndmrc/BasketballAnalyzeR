@@ -66,7 +66,8 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     dplyr::slice(ord_df2) %>%
     dplyr::mutate(x=1:dplyr::n())
 
-  ggplot(data=df1, aes(x=ID, y=Value, fill=Variables)) +
+  ggplot(data=df1, aes(x=ID, y=Value, fill=Variables,
+                       text=paste("Team:", ID,"<br>Variable:",Variables))) +
     geom_bar(stat="identity") +
     scale_fill_brewer(labels=labels.bars, palette="Paired") +
     theme(legend.position="top") + ggtitle(title) +
