@@ -102,6 +102,7 @@ MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
     }
     p <- p + ggtitle(title) + xlab("") + ylab("") +
       annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
+      coord_cartesian(clip = 'off') +
       theme_bw()
     listPlots <- p
   } else {  # If 'var' is not NULL
