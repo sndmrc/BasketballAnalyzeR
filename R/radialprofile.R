@@ -21,8 +21,8 @@
 #' @export
 #' @importFrom gridExtra grid.arrange
 
-radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL, arrange = FALSE,
-                          ncol.arrange = NULL) {
+radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
+                          arrange = FALSE, ncol.arrange = NULL) {
 
   # Reorder columns
   pos_group <- which(names(data) == group)
@@ -81,9 +81,9 @@ radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL, a
   # Arrange radial plots
   if (arrange) {
     if (is.null(ncol.arrange)) {
-      out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
+      out <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
     } else {
-      out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
+      out <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
     }
   } else {
     out <- listPlots

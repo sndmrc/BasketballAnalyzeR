@@ -9,6 +9,8 @@
 #' @param colors colors
 #' @param contour contour
 #' @param col.palette Colour palette
+#' @param arrange A logical value. If TRUE radial plots are arranged in a single plot
+#' @param ncol.arrange  The number of columns in the grid of arranged plots
 #' @return A list with two objects: a list of plots (named 'listPlots') and a dataframe with MDS coordinates
 #' @examples
 #' data("Pbox")
@@ -33,7 +35,9 @@
 #' @importFrom stats sd
 #' @importFrom grDevices rainbow
 
-MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL, title = NULL, colors = NULL, contour = FALSE, col.palette = NULL) {
+MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
+                   title = NULL, colors = NULL, contour = FALSE, col.palette = NULL,
+                   arrange = FALSE, ncol.arrange = NULL) {
 
   X1 <- X2 <- x <- y <- z <- '..level..' <- NULL
   if (is.null(labels[1])) {
@@ -99,7 +103,7 @@ MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL, 
     p <- p + ggtitle(title) + xlab("") + ylab("") +
       annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
       theme_bw()
-    listPlots <- list(scatterplot = p)
+    listPlots <- p
   } else {  # If 'var' is not NULL
     if (is.null(col.palette)) {
       col.palette <- grDevices::rainbow(300, alpha = 1, start = 0.2, end = 1)
@@ -120,9 +124,7 @@ MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL, 
       names(dts) <- c("D1", "D2")
       z <- stats::predict(xyz.fit, newdata = dts)
 
-      mtx_melt <- data.frame(x = rep(xnew, nrow(z)),
-                             y = rep(ynew, each = ncol(z)),
-                             z = as.vector(z))
+      mtx_melt <- data.frame(x = rep(xnew, nrow(z)), y = rep(ynew, each = ncol(z)), z = as.vector(z))
 
       p <- ggplot(data = mtx_melt, aes(x = x, y = y, z = z)) + geom_tile(aes(fill = z)) +
         scale_fill_gradientn(name = varnames[k], colours = col.palette) +
@@ -135,6 +137,15 @@ MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL, 
       listPlots[[k]] <- p
     }
   }
-  list(listPlots = listPlots, Coord = config)
 
+  # Arrange radial plots
+  if (arrange) {
+    if (is.null(ncol.arrange)) {
+      listPlots <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
+    } else {
+      listPlots <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
+    }
+  }
+
+  list(listPlots = listPlots, Coord = config)
 }

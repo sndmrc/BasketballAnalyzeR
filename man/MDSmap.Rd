@@ -5,7 +5,8 @@
 \title{Create some two-dimensional plots for multidimensional scaling (MDS)}
 \usage{
 MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-  title = NULL, colors = NULL, contour = FALSE, col.palette = NULL)
+  title = NULL, colors = NULL, contour = FALSE, col.palette = NULL,
+  arrange = FALSE, ncol.arrange = NULL)
 }
 \arguments{
 \item{data}{A dataframe to use for plot}
@@ -25,6 +26,10 @@ MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
 \item{contour}{contour}
 
 \item{col.palette}{Colour palette}
+
+\item{arrange}{A logical value. If TRUE radial plots are arranged in a single plot}
+
+\item{ncol.arrange}{The number of columns in the grid of arranged plots}
 }
 \value{
 A list with two objects: a list of plots (named 'listPlots') and a dataframe with MDS coordinates
