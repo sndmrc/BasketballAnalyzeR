@@ -21,5 +21,8 @@ Imports:
     ggrepel (>= 0.8),
     gridExtra (>= 2.3),
     scales (>= 1.0),
-    stats
+    MASS (>= 7.3),
+    directlabels (>= 2018.05),
+    stats,
+    grDevices 
 RoxygenNote: 6.0.1
