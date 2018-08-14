@@ -5,8 +5,8 @@
 \title{Create some two-dimensional plots for multidimensional scaling (MDS)}
 \usage{
 MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-  title = NULL, colors = NULL, contour = FALSE, col.palette = NULL,
-  arrange = FALSE, ncol.arrange = NULL)
+  title = NULL, col.palette = NULL, contour = FALSE, arrange = FALSE,
+  ncol.arrange = NULL)
 }
 \arguments{
 \item{data}{A dataframe to use for plot}
@@ -21,11 +21,9 @@ MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
 
 \item{title}{title}
 
-\item{colors}{colors}
+\item{col.palette}{Colour palette}
 
 \item{contour}{contour}
-
-\item{col.palette}{Colour palette}
 
 \item{arrange}{A logical value. If TRUE radial plots are arranged in a single plot}
 
@@ -38,9 +36,19 @@ A list with two objects: a list of plots (named 'listPlots') and a dataframe wit
 Create some two-dimensional plots for multidimensional scaling (MDS)
 }
 \examples{
-data("Pbox")
-dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
-barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
-        line="MIN", order.by="Player",
-        labels.bars=c("2P","3P","FT"), title="Houston Rockets")
+data('Pbox')
+data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M,
+                   Pbox$OREB + Pbox$DREB, Pbox$AST,
+                   Pbox$TOV,Pbox$STL, Pbox$BLK)
+names(data) <- c('PTS','P3M','P2M','REB','AST','TOV','STL','BLK')
+selp <- which(Pbox$MIN >= 1500)
+data <- data[selp,]
+id <- Pbox$Player[selp]
+# MDS scatter plot
+mds <- MDSmap(data, labels=id)
+print(mds[[1]])
+
+# Single level plot
+mds <- MDSmap(data, labels=id, var="P2M")
+mds[['listPlots']][[1]]
 }

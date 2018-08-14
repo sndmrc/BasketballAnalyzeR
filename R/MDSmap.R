@@ -6,18 +6,27 @@
 #' @param zoom zoom
 #' @param var var
 #' @param title title
-#' @param colors colors
-#' @param contour contour
 #' @param col.palette Colour palette
+#' @param contour contour
 #' @param arrange A logical value. If TRUE radial plots are arranged in a single plot
 #' @param ncol.arrange  The number of columns in the grid of arranged plots
 #' @return A list with two objects: a list of plots (named 'listPlots') and a dataframe with MDS coordinates
 #' @examples
-#' data("Pbox")
-#' dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
-#' barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
-#'         line="MIN", order.by="Player",
-#'         labels.bars=c("2P","3P","FT"), title="Houston Rockets")
+#' data('Pbox')
+#' data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M,
+#'                    Pbox$OREB + Pbox$DREB, Pbox$AST,
+#'                    Pbox$TOV,Pbox$STL, Pbox$BLK)
+#' names(data) <- c('PTS','P3M','P2M','REB','AST','TOV','STL','BLK')
+#' selp <- which(Pbox$MIN >= 1500)
+#' data <- data[selp,]
+#' id <- Pbox$Player[selp]
+#' # MDS scatter plot
+#' mds <- MDSmap(data, labels=id)
+#' print(mds[[1]])
+#'
+#' # Single level plot
+#' mds <- MDSmap(data, labels=id, var="P2M")
+#' mds[['listPlots']][[1]]
 #' @export
 #' @importFrom directlabels geom_dl
 #' @importFrom ggplot2 geom_contour
@@ -25,6 +34,7 @@
 #' @importFrom ggplot2 geom_tile
 #' @importFrom ggplot2 scale_fill_gradientn
 #' @importFrom ggplot2 annotate
+#' @importFrom ggplot2 coord_cartesian
 #' @importFrom ggplot2 xlim
 #' @importFrom ggplot2 ylim
 #' @importFrom stats loess
@@ -36,7 +46,7 @@
 #' @importFrom grDevices rainbow
 
 MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-                   title = NULL, colors = NULL, contour = FALSE, col.palette = NULL,
+                   title = NULL, col.palette = NULL, contour = FALSE,
                    arrange = FALSE, ncol.arrange = NULL) {
 
   X1 <- X2 <- x <- y <- z <- '..level..' <- NULL
