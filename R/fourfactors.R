@@ -69,10 +69,12 @@ fourfactors <- function(TEAM, OPP, sel = 1:nrow(TEAM)) {
   F4_T <- round(100 * FTM_T/(P2A_T + P3A_T), 2)
   F4_O <- round(100 * FTM_O/(P2A_O + P3A_O), 2)
 
-  data.frame(Team,
+  FF <- data.frame(Team,
              POSS_T, POSS_O,
              PACE_T, PACE_O,
              ORT, DRT,
              F1_T, F2_T, F3_T, F4_T,
              F1_O, F2_O, F3_O, F4_O)
+  class(FF) <- append("fourfactors", class(FF))
+  return(FF)
 }

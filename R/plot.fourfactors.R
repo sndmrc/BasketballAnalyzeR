@@ -1,32 +1,35 @@
 #' Plot possession, pace, ratings, and Four Factors
 #'
-#' @param dtset A dataframe with calculated possession, pace, ratings, and Four Factors
+#' @param x A data.frame with calculated possession, pace, ratings, and Four Factors
 #' @param title Plot title
+#' @param ... other graphical parameters
 #' @return A list of four ggplot2 plots
 #' @examples
 #' data("Tbox")
 #' data("Pbox")
 #' selectedTeams <- c(2,6,10,11)
 #' FF <- fourfactors(Tbox, Obox, sel=selectedTeams)
-#' listPlots <- fourfactorsPlot(FF)
-#' library(gridExtra)
-#' grid.arrange(grobs=listPlots, ncol=2)
-#' @export
+#' plot(FF)
 #' @importFrom ggrepel geom_text_repel
 #' @importFrom ggplot2 geom_point
 #' @importFrom ggplot2 labs
 #' @importFrom ggplot2 position_dodge
 #' @importFrom ggplot2 theme_minimal
+#' @method plot fourfactors
+#' @export
 
-fourfactorsPlot <- function(dtset, title=NULL) {
+plot.fourfactors <- function(x, title=NULL, ...) {
 
+  if (!is.fourfactors(x)) {
+    stop("Not a 'fourfactors' object")
+  }
   PACE_T <- PACE_O <- ORT <- DRT <- Factor <- CentValue <- Value <- NULL
   ################################
   ttl <- "PACE"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  PACEplot <- ggplot(dtset, aes(x=PACE_T, y=PACE_O, label=Team,
+  PACEplot <- ggplot(data=x, aes(x=PACE_T, y=PACE_O, label=Team,
                                 text=paste("Team:",Team,"<br>PACE Team:",PACE_T,"<br>PACE Opp:",PACE_O))) +
     geom_point() +
     geom_text_repel(aes(label=Team))+
@@ -39,7 +42,7 @@ fourfactorsPlot <- function(dtset, title=NULL) {
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  RTgplot <- ggplot(dtset, aes(x=ORT, y=DRT, label=Team,
+  RTgplot <- ggplot(data=x, aes(x=ORT, y=DRT, label=Team,
                                text=paste("Team:",Team,"<br>Offensive rating:",ORT,"<br>Defensive rating:",DRT))) +
     geom_point() +
     geom_text_repel(aes(label = Team))+
@@ -50,18 +53,18 @@ fourfactorsPlot <- function(dtset, title=NULL) {
 
   ###
   x_lbls <- c("1:eFG% (Off)","2:TO_T Ratio (Off)","3:REB% (Off)","4:FT Rate (Off)")
-  nr <- nrow(dtset)
-  Team <- dtset[["Team"]]
+  nr <- nrow(x)
+  Team <- x[["Team"]]
 
   ################################
   ttl <- "Offensive Four Factors"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  F1_T <- dtset[["F1_T"]]
-  F2_T <- dtset[["F2_T"]]
-  F3_T <- dtset[["F3_T"]]
-  F4_T <- dtset[["F4_T"]]
+  F1_T <- x[["F1_T"]]
+  F2_T <- x[["F2_T"]]
+  F3_T <- x[["F3_T"]]
+  F4_T <- x[["F4_T"]]
   F1S_T <- F1_T - mean(F1_T)
   F2S_T <- F2_T - mean(F2_T)
   F3S_T <- F3_T - mean(F3_T)
@@ -80,10 +83,10 @@ fourfactorsPlot <- function(dtset, title=NULL) {
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  F1_O <- dtset[["F1_O"]]
-  F2_O <- dtset[["F2_O"]]
-  F3_O <- dtset[["F3_O"]]
-  F4_O <- dtset[["F4_O"]]
+  F1_O <- x[["F1_O"]]
+  F2_O <- x[["F2_O"]]
+  F3_O <- x[["F3_O"]]
+  F4_O <- x[["F4_O"]]
   F1S_O <- F1_O - mean(F1_O)
   F2S_O <- F2_O - mean(F2_O)
   F3S_O <- F3_O - mean(F3_O)
@@ -97,5 +100,7 @@ fourfactorsPlot <- function(dtset, title=NULL) {
     geom_bar(stat="identity", color="black", position=position_dodge()) +
     theme_minimal() +	labs(title = ttl)
 
-  list(PACEplot=PACEplot, RTgplot=RTgplot, FFOplot=FFOplot, FFDplot=FFDplot)
+  listPlots <- list(PACEplot=PACEplot, RTgplot=RTgplot, FFOplot=FFOplot, FFDplot=FFDplot)
+  gridExtra::grid.arrange(grobs=listPlots, ncol=2)
+  invisible(listPlots)
 }
