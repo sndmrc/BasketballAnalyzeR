@@ -5,8 +5,8 @@
 \title{Create some two-dimensional plots for multidimensional scaling (MDS)}
 \usage{
 MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-  title = NULL, col.palette = NULL, contour = FALSE, arrange = FALSE,
-  ncol.arrange = NULL)
+  title = NULL, col.palette = NULL, contour = FALSE,
+  arrange = FALSE, ncol.arrange = NULL)
 }
 \arguments{
 \item{data}{A dataframe to use for plot}

@@ -10,19 +10,17 @@
 #' @return A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
 #' @examples
 #' data("Pbox")
-#' Pbox.PG <- Pbox[1:15,]
+#' Pbox.PG <- Pbox[1:6,]
 #' X <- data.frame(Pbox.PG$P2M, Pbox.PG$P3M, Pbox.PG$OREB+Pbox.PG$DREB,
 #'                 Pbox.PG$AST, Pbox.PG$TO)/Pbox.PG$MIN
 #' X <- cbind(Pbox.PG$Player,X)
 #' names(X) <- c("ID","P2M","P3M","REB","AST","TO")
-#' p <- radialprofile(data=X, group="ID", arrange=TRUE, ncol.arrange=5)
-#' library(grid)
-#' grid.draw(p)
+#' radialprofile(data=X, group="ID", ncol.arrange=3)
 #' @export
 #' @importFrom gridExtra grid.arrange
 
 radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
-                          arrange = FALSE, ncol.arrange = NULL) {
+                          ncol.arrange = NULL) {
 
   # Reorder columns
   pos_group <- which(names(data) == group)
@@ -79,15 +77,11 @@ radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
   names(listPlots) <- profile[, 1]
 
   # Arrange radial plots
-  if (arrange) {
-    if (is.null(ncol.arrange)) {
-      out <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
-    } else {
-      out <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
-    }
+  if (is.null(ncol.arrange)) {
+    out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
   } else {
-    out <- listPlots
+    out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
   }
-  return(out)
+  invisible(listPlots)
 
 }

@@ -5,7 +5,7 @@
 \title{Plot radial plot for player profiles}
 \usage{
 radialprofile(data, group, perc = FALSE, std = TRUE, title = NULL,
-  arrange = FALSE, ncol.arrange = NULL)
+  ncol.arrange = NULL)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -18,9 +18,9 @@ radialprofile(data, group, perc = FALSE, std = TRUE, title = NULL,
 
 \item{title}{Plot title}
 
-\item{arrange}{A logical value. If TRUE radial plots are arranged in a single plot}
-
 \item{ncol.arrange}{The number of columns in the grid of arranged plots}
+
+\item{arrange}{A logical value. If TRUE radial plots are arranged in a single plot}
 }
 \value{
 A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
@@ -30,12 +30,10 @@ Plot radial plot for player profiles
 }
 \examples{
 data("Pbox")
-Pbox.PG <- Pbox[1:15,]
+Pbox.PG <- Pbox[1:6,]
 X <- data.frame(Pbox.PG$P2M, Pbox.PG$P3M, Pbox.PG$OREB+Pbox.PG$DREB,
                 Pbox.PG$AST, Pbox.PG$TO)/Pbox.PG$MIN
 X <- cbind(Pbox.PG$Player,X)
 names(X) <- c("ID","P2M","P3M","REB","AST","TO")
-p <- radialprofile(data=X, group="ID", arrange=TRUE, ncol.arrange=5)
-library(grid)
-grid.draw(p)
+radialprofile(data=X, group="ID", ncol.arrange=3)
 }

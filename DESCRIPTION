@@ -25,4 +25,4 @@ Imports:
     directlabels (>= 2018.05),
     stats,
     grDevices 
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
