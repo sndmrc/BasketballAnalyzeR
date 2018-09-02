@@ -41,8 +41,8 @@ radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
   npl <- nrow(profile)
 
   # Add title
-  if (!is.null(title)) {
-    profile[, 1] <- paste(profile[, 1], " - ", title, sep = "")
+  if (!is.null(title) & length(title)==nrow(profile)) {
+    profile[, 1] <- title
   }
 
   # Set defaults
