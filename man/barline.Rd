@@ -5,7 +5,7 @@
 \title{Create a graph with a barplot and a line plot}
 \usage{
 barline(data, id, bars, line, order.by = id, labels.bars = NULL,
-  label.line = NULL, title = "")
+  label.line = NULL, title = NULL)
 }
 \arguments{
 \item{data}{A dataframe}
