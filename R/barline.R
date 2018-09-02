@@ -29,7 +29,7 @@
 #' @importFrom ggplot2 sec_axis
 #' @importFrom plyr "."
 
-barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.line=NULL, title="") {
+barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.line=NULL, title=NULL) {
 
   Line <- Value <- Variables <- rsum <- x <- y <- ID <- NULL
   if (is.null(labels.bars)) {
