@@ -28,6 +28,13 @@ radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
   profile <- data[, ord_cols]
   names(profile)[1] <- "group"
 
+  # Add title
+  if (!is.null(title) & length(title)==nrow(profile)) {
+    profile[, 1] <- title
+  } else if (!is.null(title) & length(title)!=nrow(profile))  {
+    warning("The length of 'title' is not equal to the number of rows of 'data'")
+  }
+
   # Remove missing rows with values
   if (any(is.na(profile[, -1]))) {
     rowsNA <- apply(profile[, -1], 1, function(x) any(is.na(x)))
@@ -39,11 +46,6 @@ radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
     profile <- profile[!rowsNA, ]
   }
   npl <- nrow(profile)
-
-  # Add title
-  if (!is.null(title) & length(title)==nrow(profile)) {
-    profile[, 1] <- title
-  }
 
   # Set defaults
   if (npl == 1 & std == TRUE) {
