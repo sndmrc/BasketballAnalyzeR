@@ -43,6 +43,10 @@ variability <- function(data, size, weight = FALSE) {
 
   nc1 <- ncol(df1)
   nc2 <- ncol(df2)
+  if (nc1!=nc2 & nc2!=1) {
+    stop("'size' must have 1 column or the same number of columns of 'data'")
+  }
+
   if (weight) {
     if (nc1 == nc2) {
       mtx <- mapply(wcvfun, df1, df2)
