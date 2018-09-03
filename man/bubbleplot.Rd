@@ -2,7 +2,7 @@
 % Please edit documentation in R/bubbleplot.R
 \name{bubbleplot}
 \alias{bubbleplot}
-\title{Create a graph with a barplot and a line plot}
+\title{Create a bubble plot}
 \usage{
 bubbleplot(data, id, x, y, col, size, labels = NULL, mx = NULL,
   my = NULL, mcol = NULL, title = NULL, repel = FALSE)
@@ -36,5 +36,5 @@ bubbleplot(data, id, x, y, col, size, labels = NULL, mx = NULL,
 A ggplot2 object
 }
 \description{
-Create a graph with a barplot and a line plot
+Create a bubble plot
 }
