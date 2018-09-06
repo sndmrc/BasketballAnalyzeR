@@ -23,6 +23,12 @@ Imports:
     scales (>= 1.0),
     MASS (>= 7.3),
     directlabels (>= 2018.05),
+    corrplot (>= 0.80), 
+    ggplotify (>= 0.0.3),
+    network (>= 1.13.0),
+    sna (>= 2.4), 
+    GGally (>= 1.4.0),
     stats,
-    grDevices 
+    grDevices,
+    graphics
 RoxygenNote: 6.1.0
