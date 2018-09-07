@@ -38,16 +38,20 @@
 
 plot.corr.analysis <- function(x, title = NULL, ...) {
 
-  cor_mtx <- x[["cor.mtx"]]
-  cor_mtx_trunc <- x[["cor.mtx.trunc"]]
-  cor_mtest <- x[["cor.mtest"]]
-  sig.level <- x[["siglevel"]]
+  if (!is.corr.analysis(x)) {
+    stop("Not a 'corr.analysis' object")
+  }
 
-  cormtx <- cormtest <- siglev <- NULL
-  cormtx <<- cor_mtx
-  cormtest <<- cor_mtest
-  siglev <<- sig.level
-  p1 <- ggplotify::as.ggplot(~corr_plot_mixed(cormtx, cormtest, siglev))
+  cormtx <- x[["cor.mtx"]]
+  cormtest <- x[["cor.mtest"]]
+  siglevel <- x[["siglevel"]]
+  cor_mtx_trunc <- x[["cor.mtx.trunc"]]
+
+  cor_mtx <- cor_mtest <- sig_lev <- NULL
+  cor_mtx <<- cormtx
+  cor_mtest <<- cormtest
+  sig_lev <<- siglevel
+  p1 <- ggplotify::as.ggplot(~corr_plot_mixed(cor_mtx, cor_mtest, sig_lev))
 
   net <- network::network(cor_mtx_trunc, matrix.type = "adjacency", ignore.eval = FALSE, names.eval = "weights")
   network::set.edge.attribute(net, "edge.color", ifelse(net %e% "weights" > 0, "lightsteelblue", "tomato"))
