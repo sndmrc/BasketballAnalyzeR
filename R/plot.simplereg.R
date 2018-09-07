@@ -50,7 +50,7 @@ plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99
   df1 <- data.frame(x = xx, y = yy, label = labels)
 
   if (!is.null(subset)) {
-    if (length(subset) == 1 & subset == "quant") {
+    if (subset[1] == "quant") {
       subset <- which(xx < stats::quantile(xx, Lx) | xx > stats::quantile(xx, Ux) | yy <
                         stats::quantile(yy, Ly) | yy > stats::quantile(yy, Uy))
     }
