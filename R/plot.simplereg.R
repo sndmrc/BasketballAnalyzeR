@@ -12,7 +12,7 @@
 #' @param ytitle label of y-axis
 #' @param repel text labels repel away from each other
 #' @param ... other graphical parameters
-#' @example
+#' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
 #' Y <- Pbox.sel$TOV/Pbox.sel$MIN

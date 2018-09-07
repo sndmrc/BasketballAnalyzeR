@@ -1,14 +1,13 @@
-#' Functions to check if an object is of class 'simplereg'.
+#' Reports whether x is a simplereg object
 #'
-#' @param x any R object
-#' @return returns TRUE if its argument is of class 'fourfactors' and FALSE otherwise
+#' @param x An object to test
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
 #' Y <- Pbox.sel$TOV/Pbox.sel$MIN
 #' Pl <- Pbox.sel$Player
-#' mod <- simplereg(x=X, y=Y, type="lin")
-#' is.simplereg(mod)
+#' out <- simplereg(x=X, y=Y, type="lin")
+#' is.simplereg(out)
 #' @export
 
 is.simplereg <- function(x) {

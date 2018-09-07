@@ -4,7 +4,7 @@
 #' @param y data for y-axis
 #' @param type type of regression: linear ('lin'), polynomial local fitting ('pol'), kernel smoothing ('ks')
 #' @param sp parameter to control the degree of smoothing: span for loess and bandwidth for ksmooth (optional)
-#' @example
+#' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
 #' Y <- Pbox.sel$TOV/Pbox.sel$MIN

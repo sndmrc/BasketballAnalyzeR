@@ -2,22 +2,23 @@
 % Please edit documentation in R/is.fourfactors.R
 \name{is.fourfactors}
 \alias{is.fourfactors}
-\title{Functions to check if an object is of class 'fourfactors'.}
+\title{Reports whether x is a fourfactors object}
 \usage{
 is.fourfactors(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{An object to test}
 }
 \value{
 returns TRUE if its argument is of class 'fourfactors' and FALSE otherwise
 }
 \description{
-Functions to check if an object is of class 'fourfactors'.
+Reports whether x is a fourfactors object
 }
 \examples{
-Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
-                    select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
-out <- variability(data=Pbox.BC, size=c("P2A","P3A","FTA"), weight=TRUE)
-is.variability(out)
+data("Tbox")
+data("Pbox")
+selectedTeams <- c(2,6,10,11)
+out <- fourfactors(Tbox, Obox, sel=selectedTeams)
+is.fourfactors(out)
 }

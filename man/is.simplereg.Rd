@@ -2,24 +2,21 @@
 % Please edit documentation in R/is.simplereg.R
 \name{is.simplereg}
 \alias{is.simplereg}
-\title{Functions to check if an object is of class 'simplereg'.}
+\title{Reports whether x is a simplereg object}
 \usage{
 is.simplereg(x)
 }
 \arguments{
-\item{x}{any R object}
-}
-\value{
-returns TRUE if its argument is of class 'fourfactors' and FALSE otherwise
+\item{x}{An object to test}
 }
 \description{
-Functions to check if an object is of class 'simplereg'.
+Reports whether x is a simplereg object
 }
 \examples{
 Pbox.sel <- subset(Pbox, MIN >= 500)
 X <- Pbox.sel$AST/Pbox.sel$MIN
 Y <- Pbox.sel$TOV/Pbox.sel$MIN
 Pl <- Pbox.sel$Player
-mod <- simplereg(x=X, y=Y, type="lin")
-is.simplereg(mod)
+out <- simplereg(x=X, y=Y, type="lin")
+is.simplereg(out)
 }
