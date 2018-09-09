@@ -7,7 +7,7 @@
 \method{plot}{kclust}(x, title = NULL, ncol.arrange = NULL, ...)
 }
 \arguments{
-\item{x}{A data.frame with calculated possession, pace, ratings, and Four Factors}
+\item{x}{An object of class 'kclust'}
 
 \item{title}{Plot title}
 

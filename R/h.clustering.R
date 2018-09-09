@@ -5,7 +5,7 @@
 #' @param nclumax Max number of clusters (when k=NULL)
 #' @param labels labels
 #' @param linkage linkage
-#' @return A 'hlust' object, i.e. a list of ...(specificare)
+#' @return A 'hclustering' object, i.e. a list of ...(specificare)
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,
 #'                    Pbox$OREB + Pbox$DREB, Pbox$AST,
@@ -69,6 +69,6 @@ h.clustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='w
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles, Hclust=hcl)
   }
-  class(out) <- append("hclust", class(out))
+  class(out) <- append("hclustering", class(out))
   return(out)
 }

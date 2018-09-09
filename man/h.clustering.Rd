@@ -19,7 +19,7 @@ h.clustering(data, k = NULL, nclumax = 10, labels = NULL,
 \item{linkage}{linkage}
 }
 \value{
-A 'hlust' object, i.e. a list of ...(specificare)
+A 'hclustering' object, i.e. a list of ...(specificare)
 }
 \description{
 Hierarchical clustering of NBA teams

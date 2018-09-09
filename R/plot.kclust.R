@@ -1,6 +1,6 @@
 #' Plot k-means clustering of NBA teams
 #'
-#' @param x A data.frame with calculated possession, pace, ratings, and Four Factors
+#' @param x An object of class 'kclust'
 #' @param title Plot title
 #' @param ncol.arrange Number of columns when arranging multiple grobs on a page
 #' @param ... other graphical parameters

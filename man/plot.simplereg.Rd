@@ -9,29 +9,29 @@
   ytitle = NULL, repel = TRUE, ...)
 }
 \arguments{
-\item{x}{an object of class 'simplereg'}
+\item{x}{An object of class 'simplereg'}
 
-\item{labels}{labels for the subjects (optional)}
+\item{labels}{Labels for the subjects (optional)}
 
-\item{subset}{subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles}
+\item{subset}{Subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles}
 
-\item{Lx}{active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01}
+\item{Lx}{Active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01}
 
-\item{Ux}{active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99}
+\item{Ux}{Active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99}
 
-\item{Ly}{active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01}
+\item{Ly}{Active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01}
 
-\item{Uy}{active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99}
+\item{Uy}{Active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99}
 
-\item{title}{title}
+\item{title}{Plot title}
 
-\item{xtitle}{label of x-axis}
+\item{xtitle}{Label of x-axis}
 
-\item{ytitle}{label of y-axis}
+\item{ytitle}{Label of y-axis}
 
-\item{repel}{text labels repel away from each other}
+\item{repel}{Text labels repel away from each other}
 
-\item{...}{other graphical parameters}
+\item{...}{Other graphical parameters}
 }
 \description{
 Plot simple regression

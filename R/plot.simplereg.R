@@ -1,17 +1,17 @@
 #' Plot simple regression
 #'
-#' @param x an object of class 'simplereg'
-#' @param labels labels for the subjects (optional)
-#' @param subset subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles
-#' @param Lx active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01
-#' @param Ux active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99
-#' @param Ly active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01
-#' @param Uy active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99
-#' @param title title
-#' @param xtitle label of x-axis
-#' @param ytitle label of y-axis
-#' @param repel text labels repel away from each other
-#' @param ... other graphical parameters
+#' @param x An object of class 'simplereg'
+#' @param labels Labels for the subjects (optional)
+#' @param subset Subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles
+#' @param Lx Active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01
+#' @param Ux Active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99
+#' @param Ly Active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01
+#' @param Uy Active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99
+#' @param title Plot title
+#' @param xtitle Label of x-axis
+#' @param ytitle Label of y-axis
+#' @param repel Text labels repel away from each other
+#' @param ... Other graphical parameters
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
