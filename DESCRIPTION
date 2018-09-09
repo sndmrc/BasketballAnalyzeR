@@ -27,7 +27,9 @@ Imports:
     ggplotify (>= 0.0.3),
     network (>= 1.13.0),
     sna (>= 2.4), 
-    GGally (>= 1.4.0),
+    GGally (>= 1.4),
+    dendextend (>= 1.8),
+    circlize (>= 0.4),
     stats,
     grDevices,
     graphics
