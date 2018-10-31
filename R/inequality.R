@@ -1,7 +1,7 @@
 #' Inequality analysis
 #'
-#' @param data A dataframe
-#' @param nplayers Number of players to consider in the analysis
+#' @param data A numerical vector
+#' @param nplayers Number of players to include in the analysis
 #' @return A list with the following elements:  Lorenz curve ("Lorenz") and Gini coefficient ("Gini") for a given number of players
 #' @examples
 #' Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")

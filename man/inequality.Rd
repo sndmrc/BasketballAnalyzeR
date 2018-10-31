@@ -7,9 +7,9 @@
 inequality(data, nplayers)
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{A numerical vector}
 
-\item{nplayers}{Number of players to consider in the analysis}
+\item{nplayers}{Number of players to include in the analysis}
 }
 \value{
 A list with the following elements:  Lorenz curve ("Lorenz") and Gini coefficient ("Gini") for a given number of players

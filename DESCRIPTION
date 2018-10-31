@@ -1,4 +1,4 @@
-Package: BasketAnalyzeR
+Package: BasketballAnalyzeR
 Type: Package
 Title: Tools for the analysis of basketball data
 Version: 0.1.0
@@ -8,7 +8,7 @@ Description: R package accompanying the book "P.Zuccolotto and M.Manisera (2018)
 License: GPL (>= 2.0)
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/sndmrc/BasketAnalyzeR 
+URL: https://github.com/sndmrc/BasketballAnalyzeR 
 Depends:
     R (>= 3.4),
     ggplot2 (>= 2.2.0)
