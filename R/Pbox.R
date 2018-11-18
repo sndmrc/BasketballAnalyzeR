@@ -10,5 +10,5 @@
 #'   \item{MIN}{MIN}
 #'   \item{PTS}{PTS}
 #' }
-#' @source \url{https://github.com/sndmrc/BasketAnalyzeR}
+#' @source \url{https://github.com/sndmrc/BasketballAnalyzeR}
 "Pbox"

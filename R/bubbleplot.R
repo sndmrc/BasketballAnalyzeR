@@ -25,7 +25,7 @@ bubbleplot <- function(data, id, x, y, col, size, labels = NULL, mx = NULL, my =
 
   ID <- NULL
   dts <- data %>% dplyr::select(id, x, y, col, size) %>% dplyr::rename(ID = !!id,
-                                                                       x = !!x, y = !!y, col = !!col, size = !!size) %>% stats::na.omit()
+                  x = !!x, y = !!y, col = !!col, size = !!size) %>% stats::na.omit()
   # names(dts) <- c('id','x','y','col','size')
 
   if (is.null(labels)) {

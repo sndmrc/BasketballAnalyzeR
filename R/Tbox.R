@@ -28,5 +28,5 @@
 #'   \item{PF}{PF}
 #'   \item{PM}{PM}
 #' }
-#' @source \url{https://github.com/sndmrc/BasketAnalyzeR}
+#' @source \url{https://github.com/sndmrc/BasketballAnalyzeR}
 "Tbox"

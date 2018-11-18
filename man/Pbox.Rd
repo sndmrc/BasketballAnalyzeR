@@ -13,7 +13,7 @@
   \item{PTS}{PTS}
 }}
 \source{
-\url{https://github.com/sndmrc/BasketAnalyzeR}
+\url{https://github.com/sndmrc/BasketballAnalyzeR}
 }
 \usage{
 Pbox

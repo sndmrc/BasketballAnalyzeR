@@ -20,7 +20,7 @@ drawNBAcourt <- function(p, size=1.5, col="black", full=FALSE) {
     data.frame(x=x, ylo=ylo, yup=yup)
   }
 
-  x <- y <- ylo <- yup <- NULL
+  x <- y <- ylo <- yup  <- NULL
   outbox <- data.frame(x=c(-25,-25,25,25,-25),
                        y=c(-47,0,0,-47,-47))
   FT <- crcl(0,-28,6)

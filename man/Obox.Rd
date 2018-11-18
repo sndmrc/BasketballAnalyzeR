@@ -31,7 +31,7 @@
   \item{PM}{PM}
 }}
 \source{
-\url{https://github.com/sndmrc/BasketAnalyzeR}
+\url{https://github.com/sndmrc/BasketballAnalyzeR}
 }
 \usage{
 Obox
