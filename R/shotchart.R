@@ -7,7 +7,7 @@
 #' @param result Name of 'data' variable containing the type of shot (made/missed)
 #' @param type A string with the plot type: 'sectors', 'density-polygon', 'density-raster', 'density-hexbin'
 #' @param scatter Logical. If TRUE a scatter plot was added to the plot
-#' @param num.sectors Number of sectors in shotchart plot split by sectors
+#' @param num.sect Number of sectors in shotchart plot split by sectors
 #' @param n Number of point used when drawing arcs in shotchart plot split by sectors
 #' @param pt.col Color of points in the scatter plot
 #' @param palette Palette color for the scatter plot: 'main', 'cool', 'hot', 'mixed', 'grey'
@@ -22,7 +22,7 @@
 #' subdata$yy <- subdata$original_y/10-42
 #' # Shotchart with colored sectors and statistics for a 3rd variable
 #' shotchart(data=subdata, x="xx", y="yy", z="playlength", result="result",
-#'           type="sectors",  num.sectors=7)
+#'           type="sectors",  num.sect=7)
 #' # Shotchart with scatter plot and a stratification variable
 #' shotchart(data=subdata, x="xx", y="yy", z="result",
 #'           type=NULL, scatter=TRUE, palette="main")
@@ -41,10 +41,17 @@
 #' @importFrom stats median
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
-     type="sectors", scatter=FALSE, num.sectors=7, n=1000,
+     type="sectors", scatter=FALSE, num.sect=7, n=1000,
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
-  fancy_scientific <- function(l) {
+    if (num.sect<4) {
+      stop("The number of sectors 'num.sect' must be >=4")
+    }
+    if (n<500) {
+      stop("The number of points 'n' must be >=500")
+    }
+
+    fancy_scientific <- function(l) {
     l <- format(l, digits=3, scientific = TRUE)
     l <- gsub("^(.*)e", "'\\1'e", l)
     l <- gsub("e", "%*%10^", l)
@@ -58,7 +65,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
   filt.na <- !apply(df1, 1, function(x) any(is.na(x)))
   df1 <- subset(df1, filt.na & y<=0)
 
-  list_sects <- generateSectors(num.sectors, npts=n)
+  list_sects <- generateSectors(num.sect, npts=n)
   sects <- list_sects[[1]]
 
   if (is.null(type) & !scatter) { ##################

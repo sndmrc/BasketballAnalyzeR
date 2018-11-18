@@ -5,7 +5,7 @@
 \title{Plot shortcharts}
 \usage{
 shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
-  type = "sectors", scatter = FALSE, num.sectors = 7, n = 1000,
+  type = "sectors", scatter = FALSE, num.sect = 7, n = 1000,
   pt.col = "black", pt.alpha = 0.5, nbins = 25, palette = "mixed")
 }
 \arguments{
@@ -23,7 +23,7 @@ shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
 
 \item{scatter}{Logical. If TRUE a scatter plot was added to the plot}
 
-\item{num.sectors}{Number of sectors in shotchart plot split by sectors}
+\item{num.sect}{Number of sectors in shotchart plot split by sectors}
 
 \item{n}{Number of point used when drawing arcs in shotchart plot split by sectors}
 
@@ -48,7 +48,7 @@ subdata$xx <- -subdata$original_x/10
 subdata$yy <- subdata$original_y/10-42
 # Shotchart with colored sectors and statistics for a 3rd variable
 shotchart(data=subdata, x="xx", y="yy", z="playlength", result="result",
-          type="sectors",  num.sectors=7)
+          type="sectors",  num.sect=7)
 # Shotchart with scatter plot and a stratification variable
 shotchart(data=subdata, x="xx", y="yy", z="result",
           type=NULL, scatter=TRUE, palette="main")
