@@ -23,7 +23,11 @@ BbA_pal <- function(palette = "main", reverse = FALSE, ...) {
     `mixed` = BbA_cols("blue", "green", "yellow", "orange", "red"),
     `grey`  = BbA_cols("light grey", "dark grey")
   )
-  pal <- BbApal[[palette]]
+  if (length(palette)==1 & is.character(palette)) {
+    pal <- BbApal[[palette]]
+  } else {
+    pal <- palette
+  }
   if (reverse) pal <- rev(pal)
   colorRampPalette(pal, ...)
 }
