@@ -7,8 +7,8 @@
 #' @examples
 #' data("Tbox")
 #' data("Pbox")
-#' selectedTeams <- c(2,6,10,11)
-#' FF <- fourfactors(Tbox, Obox, sel=selectedTeams)
+#' selTeams <- c(2,6,10,11)
+#' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 #' plot(FF)
 #' @importFrom ggrepel geom_text_repel
 #' @importFrom ggplot2 geom_point

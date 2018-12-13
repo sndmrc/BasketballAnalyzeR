@@ -4,14 +4,12 @@
 \alias{fourfactors}
 \title{Calculates possession, pace, ratings, and Four Factors}
 \usage{
-fourfactors(TEAM, OPP, sel = 1:nrow(TEAM))
+fourfactors(TEAM, OPP)
 }
 \arguments{
 \item{TEAM}{A dataframe}
 
 \item{OPP}{A dataframe}
-
-\item{sel}{Vector of selected elements}
 }
 \value{
 A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
@@ -20,8 +18,7 @@ A data frame with possession, pace, ratings and Four Factors for the analyzed te
 Calculates possession, pace, ratings, and Four Factors
 }
 \examples{
-data("Tbox")
-data("Pbox")
-selectedTeams <- c(2,6,10,11)
-fourfactors(Tbox, Obox, sel=selectedTeams)
+selTeams <- c(2,6,10,11)
+FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
+plot(FF)
 }

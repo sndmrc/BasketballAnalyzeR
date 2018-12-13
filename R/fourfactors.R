@@ -2,25 +2,19 @@
 #'
 #' @param TEAM A dataframe
 #' @param OPP A dataframe
-#' @param sel Vector of selected elements
 #' @return A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
 #' @examples
-#' data("Tbox")
-#' data("Pbox")
-#' selectedTeams <- c(2,6,10,11)
-#' fourfactors(Tbox, Obox, sel=selectedTeams)
+#' selTeams <- c(2,6,10,11)
+#' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
+#' plot(FF)
 #' @export
 
-fourfactors <- function(TEAM, OPP, sel = 1:nrow(TEAM)) {
+fourfactors <- function(TEAM, OPP) {
 
   # Checking errors
   if (nrow(TEAM) != nrow(OPP)) {
     stop("Error: TEAM and OPP dataframe must have the same number of rows.")
   }
-
-  # Subsets
-  TEAM <- TEAM[sel, ]
-  OPP <- OPP[sel, ]
 
   # Variables used in the calculation of Pace, Ratings, Four Factors
   Team <- TEAM[["Team"]]

@@ -71,7 +71,9 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     geom_bar(stat="identity") +
     scale_fill_brewer(labels=labels.bars, palette="Paired") +
     theme(legend.position="top") + ggtitle(title) +
-    theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.25)) +
+    labs(x="", caption=paste("Bars ordered by",order.by)) +
+    theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.25),
+          panel.background = element_blank()) +
     geom_line(data=df2, mapping=aes(x=x, y=y), lwd=1.5, col='grey', inherit.aes=F) +
     scale_y_continuous(name="Variables", limits=c(0,NA),
                        sec.axis=sec_axis(~.*max(df2$Line)/max(df2$rsum), name=label.line))
