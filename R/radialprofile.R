@@ -1,11 +1,9 @@
 #' Plot radial plot for player profiles
 #'
 #' @param data A dataframe
-#' @param group A string containing the name of the variable with players' names
 #' @param perc perc
 #' @param std std
-#' @param title Plot title
-#' @param arrange A logical value. If TRUE radial plots are arranged in a single plot
+#' @param title Title(s) for radial plots(s)
 #' @param ncol.arrange  The number of columns in the grid of arranged plots
 #' @return A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
 #' @examples
@@ -13,27 +11,25 @@
 #' Pbox.PG <- Pbox[1:6,]
 #' X <- data.frame(Pbox.PG$P2M, Pbox.PG$P3M, Pbox.PG$OREB+Pbox.PG$DREB,
 #'                 Pbox.PG$AST, Pbox.PG$TO)/Pbox.PG$MIN
-#' X <- cbind(Pbox.PG$Player,X)
-#' names(X) <- c("ID","P2M","P3M","REB","AST","TO")
-#' radialprofile(data=X, group="ID", ncol.arrange=3)
+#' names(X) <- c("P2M","P3M","REB","AST","TO")
+#' radialprofile(data=X, ncol.arrange=3, title=Pbox.PG$Player)
 #' @export
 #' @importFrom gridExtra grid.arrange
 
-radialprofile <- function(data, group, perc = FALSE, std = TRUE, title = NULL,
+radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
                           ncol.arrange = NULL) {
 
-  # Reorder columns
-  pos_group <- which(names(data) == group)
-  ord_cols <- c(pos_group, (1:ncol(data))[-pos_group])
-  profile <- data[, ord_cols]
-  names(profile)[1] <- "group"
-
-  # Add title
-  if (!is.null(title) & length(title)==nrow(profile)) {
-    profile[, 1] <- title
-  } else if (!is.null(title) & length(title)!=nrow(profile))  {
-    warning("The length of 'title' is not equal to the number of rows of 'data'")
+  # Set plot titles
+  if (is.null(title)) {
+    group <- 1:nrow(data)
+  } else {
+    if (length(title)==nrow(data)) {
+      group <- factor(title)
+    } else {
+      stop("The length of 'title' is not equal to the number of rows of 'data'")
+    }
   }
+  profile <- cbind(group, data)
 
   # Remove missing rows with values
   if (any(is.na(profile[, -1]))) {

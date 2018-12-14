@@ -99,7 +99,13 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
       if (is.null(ncol.arrange)) {
         ncol.arrange <- ceiling(sqrt(nrow(prfls)))
       }
-      p <- radialprofile(data = prfls, group = "clustnames", title = title, ncol.arrange = ncol.arrange)
+      if (is.null(title)) {
+        title <- prfls$clustnames
+      } else if (length(title)!=nrow(prfls)) {
+        stop("The length of 'title' is not equal to the number of clusters")
+      }
+      pos.clst.nm <- which(names(prfls)=="clustnames")
+      p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange)
     } else {
       dend <- x[["Hclust"]] %>%
         stats::as.dendrogram() %>%

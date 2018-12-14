@@ -56,7 +56,13 @@ plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, ...) {
     if (is.null(ncol.arrange)) {
       ncol.arrange <- ceiling(sqrt(nrow(profiles)))
     }
-    p <- radialprofile(data = profiles, group = "clustnames", title = title, ncol.arrange = ncol.arrange)
+    if (is.null(title)) {
+      title <- profiles$clustnames
+    } else if (length(title)!=nrow(profiles)) {
+      stop("The length of 'title' is not equal to the number of clusters")
+    }
+    pos.clst.nm <- which(names(profiles)=="clustnames")
+    p <- radialprofile(data = profiles[,-pos.clst.nm], title = title, ncol.arrange = ncol.arrange)
   }
   invisible(p)
 }
