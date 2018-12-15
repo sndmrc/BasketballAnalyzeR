@@ -139,7 +139,7 @@ MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
 
       p <- ggplot(data = mtx_melt, aes(x = x, y = y, z = z)) + geom_tile(aes(fill = z)) +
         scale_fill_gradientn(name = varnames[k], colours = col.palette) +
-        xlab("") + ylab("")
+        xlab("") + ylab("") + theme(panel.background = element_blank())
       if (contour) {
         p <- p + geom_contour(color = "black", alpha = 0.5, show.legend = T) +
           directlabels::geom_dl(aes(label = ..level..),
