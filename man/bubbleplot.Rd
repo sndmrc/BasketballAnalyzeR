@@ -5,7 +5,7 @@
 \title{Create a bubble plot}
 \usage{
 bubbleplot(data, id, x, y, col, size, labels = NULL, mx = NULL,
-  my = NULL, mcol = NULL, title = NULL, repel = FALSE)
+  my = NULL, mcol = NULL, title = NULL, repel = TRUE)
 }
 \arguments{
 \item{data}{A dataframe}
