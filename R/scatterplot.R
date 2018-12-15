@@ -36,6 +36,9 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
   } else if (is.data.frame(data) & ncol(data)==1) {
     stop("The number of columns in 'data' must be 2 or more")
   }
+  if (is.null(labels)) {
+    labels <- 1:nrow(data)
+  }
   nm.vars <- names(data)
 
   if (ncol(data)==2) {
