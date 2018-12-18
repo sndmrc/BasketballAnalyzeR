@@ -23,7 +23,6 @@
 #' @export
 #' @importFrom GGally ggpairs
 
-
 scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL,
                         subset = NULL, col.subset='tomato', zoom = NULL, title = NULL,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),

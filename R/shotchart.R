@@ -16,7 +16,8 @@
 #' @return A ggplot2 object
 #'
 #' @examples
-#' data(PbP?shotcharts)
+#' data(PbP)
+#' PbP <- PbPmanipulation(PbP)
 #' subdata <- subset(PbP, player=="Kevin Durant")
 #' subdata$xx <- -subdata$original_x/10
 #' subdata$yy <- subdata$original_y/10-42

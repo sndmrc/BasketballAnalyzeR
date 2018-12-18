@@ -32,6 +32,8 @@ Imports:
     circlize (>= 0.4),
     PBSmapping (>= 2.70),
     sp (>= 1.3),
+    operators (>= 0.1), 
+    stringr (>= 1.3),
     stats,
     grDevices,
     graphics
