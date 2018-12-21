@@ -43,7 +43,7 @@ Plot shortcharts
 }
 \examples{
 data(PbP)
-PbP <- PbPmanipulation(PbP)
+PbP <- PbPmanipulation(PbP.BDB)
 subdata <- subset(PbP, player=="Kevin Durant")
 subdata$xx <- -subdata$original_x/10
 subdata$yy <- subdata$original_y/10-42
