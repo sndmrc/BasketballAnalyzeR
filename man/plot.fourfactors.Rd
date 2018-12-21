@@ -20,8 +20,6 @@ A list of four ggplot2 plots
 Plot possession, pace, ratings, and Four Factors
 }
 \examples{
-data("Tbox")
-data("Pbox")
 selTeams <- c(2,6,10,11)
 FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 plot(FF)

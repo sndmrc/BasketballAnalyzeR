@@ -5,8 +5,6 @@
 #' @param ... other graphical parameters
 #' @return A list of four ggplot2 plots
 #' @examples
-#' data("Tbox")
-#' data("Pbox")
 #' selTeams <- c(2,6,10,11)
 #' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 #' plot(FF)
@@ -52,11 +50,11 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   RTgplot
 
   ###
-  x_lbls <- c("1:eFG% (Off)","2:TO_T Ratio (Off)","3:REB% (Off)","4:FT Rate (Off)")
   nr <- nrow(x)
   Team <- x[["Team"]]
 
   ################################
+  x_lbls <- c("1:eFG% (Off)","2:TO_T Ratio (Off)","3:REB% (Off)","4:FT Rate (Off)")
   ttl <- "Offensive Four Factors"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
@@ -79,6 +77,7 @@ plot.fourfactors <- function(x, title=NULL, ...) {
     theme_minimal() +	labs(title = ttl)
 
   ################################
+  x_lbls <- c("1:eFG% (Def)","2:TO_T Ratio (Def)","3:REB% (Def)","4:FT Rate (Def)")
   ttl <- "Defensive Four Factors"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
