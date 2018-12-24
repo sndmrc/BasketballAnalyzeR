@@ -5,12 +5,12 @@
 \title{Scatter plot and matrix of scatter plot}
 \usage{
 scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
-  labels = NULL, subset = NULL, col.subset = "tomato", zoom = NULL,
-  title = NULL, upper = list(continuous = "cor", combo =
-  "box_no_facet", discrete = "facetbar", na = "na"),
-  lower = list(continuous = "points", combo = "facethist", discrete =
-  "facetbar", na = "na"), diag = list(continuous = "densityDiag",
-  discrete = "barDiag", na = "naDiag"))
+  labels = NULL, text_label = TRUE, subset = NULL,
+  col.subset = "gray50", zoom = NULL, title = NULL,
+  upper = list(continuous = "cor", combo = "box_no_facet", discrete =
+  "facetbar", na = "na"), lower = list(continuous = "points", combo =
+  "facethist", discrete = "facetbar", na = "na"), diag = list(continuous
+  = "densityDiag", discrete = "barDiag", na = "naDiag"))
 }
 \arguments{
 \item{data}{A dataframe}
@@ -22,6 +22,8 @@ scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
 \item{palette}{Color palette}
 
 \item{labels}{Text labels for (x, y) points; only for single scatter plot}
+
+\item{text_label}{If TRUE, draw a rectangle behind the evidenced text}
 
 \item{subset}{Subset of points to be evidenced; only for single scatter plot}
 

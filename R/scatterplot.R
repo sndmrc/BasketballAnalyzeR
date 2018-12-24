@@ -6,6 +6,7 @@
 #' @param palette Color palette
 #' @param labels Text labels for (x, y) points; only for single scatter plot
 #' @param subset Subset of points to be evidenced; only for single scatter plot
+#' @param text_label If TRUE, draw a rectangle behind the evidenced text
 #' @param col.subset Color for the subset of points; only for single scatter plot
 #' @param zoom X and Y axis range; only for single scatter plot
 #' @param title Plot title
@@ -23,8 +24,8 @@
 #' @export
 #' @importFrom GGally ggpairs
 
-scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL,
-                        subset = NULL, col.subset='tomato', zoom = NULL, title = NULL,
+scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL, text_label=TRUE,
+                        subset = NULL, col.subset='gray50', zoom = NULL, title = NULL,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
                         diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag")) {
@@ -45,6 +46,9 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
       names(data) <- c("x","y")
       p <- ggplot(data=data, aes(x=x, y=y))
     } else {
+      if (!is.numeric(z)) {
+        z <- factor(z)
+      }
       data <- cbind(data, z)
       names(data) <- c("x","y","z")
       p <- ggplot(data=data, aes(x=x, y=y, color=z))
@@ -67,15 +71,20 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
         p <- p + geom_point(data = subset1, size = 3) +
           geom_point(data = subset2, size = 4, col = col.subset)
       } else {
-        p <- p + geom_text(data = subset1, aes(label = subset1.labels), size = 3) +
-          ggrepel::geom_text_repel(data = subset2, aes(label = subset2.labels),
-                                   size = 4, col = col.subset, fontface = 2)
-        if (!is.null(palette) & is.factor(z)) {
-          p <- p + scale_color_manual(palette=palette)
-        } else if (!is.null(palette) & !is.factor(z)) {
-          p <- p + scale_color_gradientn(colors=palette(length(unique(z))))
+        p <- p + geom_text(data = subset1, aes(label = subset1.labels), size = 3)
+        if (text_label) {
+          p <- p + ggrepel::geom_label_repel(data = subset2, aes(label = subset2.labels),
+                                             size = 4, col = col.subset, fontface = 2)
+        } else {
+          p <- p + ggrepel::geom_text_repel(data = subset2, aes(label = subset2.labels),
+                                              size = 4, col = col.subset, fontface = 2)
         }
       }
+    }
+    if (!is.null(palette) & is.factor(z)) {
+      p <- p + scale_color_manual(palette=palette)
+    } else if (!is.null(palette) & !is.factor(z)) {
+      p <- p + scale_color_gradientn(colors=palette(length(unique(z))))
     }
     p <- p + labs(title=title, x=nm.vars[1], y=nm.vars[2]) +
       ggplot2::guides(color=guide_legend(title=z.name)) +
@@ -91,6 +100,9 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
     }
   }
   p <- p + theme_bw()
+  if (!is.null(palette) & is.factor(z)) {
+    p <- p + theme(legend.position="none")
+  }
   print(p)
   invisible(p)
 }
