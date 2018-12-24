@@ -45,6 +45,10 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     dplyr::rename(ID=!!id) %>%
     dplyr::mutate(Variables=factor(Variables, levels=bars))
 
+  if (!is.factor(df1$ID)) {
+    df1$ID <- factor(df1$ID)
+  }
+
   var_ord <- data[[order.by]]
   if (class(var_ord)=="factor") {
     ord_df1 <- order(levels(var_ord))
