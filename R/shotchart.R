@@ -141,7 +141,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                 color="white", alpha=0.75, inherit.aes=FALSE)+
       geom_line(data=list_sects[[3]], aes(x=x, y=y), size=0.8,
                 color="white", alpha=0.75, inherit.aes=FALSE) +
-      coord_fixed() + themeBbA()
+      coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
 
   } else if (type=="density-polygons") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -152,7 +152,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           color=pt.col, alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
-    p <- p + coord_fixed() + theme_void() + theme(legend.position = 'none')
+    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
+             theme(legend.position = 'none')
 
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -162,8 +163,9 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
-    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col) +
-      coord_fixed() + theme_void() + theme(legend.position = 'none')
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
+    p <- p +  coord_fixed()+ themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
+              theme(legend.position = 'none')
 
   } else if (type=="density-hexbin") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -173,8 +175,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
-    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col) +
-      coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
+    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
       theme(legend.position = 'none')
 
   } else { ##############
