@@ -21,7 +21,8 @@ BbA_pal <- function(palette = "main", reverse = FALSE, ...) {
     `cool`  = BbA_cols("blue", "green"),
     `hot`   = BbA_cols("yellow", "orange", "red"),
     `mixed` = BbA_cols("blue", "green", "yellow", "orange", "red"),
-    `grey`  = BbA_cols("light grey", "dark grey")
+    `grey`  = BbA_cols("light grey", "dark grey"),
+    `bwr`   = c("blue", "white", "red")
   )
   if (length(palette)==1 & is.character(palette)) {
     pal <- BbApal[[palette]]

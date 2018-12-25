@@ -4,12 +4,14 @@
 #' @param x Variable name for the x coordinate
 #' @param y Variable name for the y coordinate
 #' @param z Name of 'data' variable to be used as a third variable
-#' @param result Name of 'data' variable containing the type of shot (made/missed)
+#' @param result Name of 'data' variable containing the type of shot; this variable is used to generate shot statistics; allowed categories: 'made' and 'missed'
 #' @param type A string with the plot type: 'sectors', 'density-polygon', 'density-raster', 'density-hexbin'
 #' @param scatter Logical. If TRUE a scatter plot was added to the plot
 #' @param num.sect Number of sectors in shotchart plot split by sectors
 #' @param n Number of point used when drawing arcs in shotchart plot split by sectors
+#' @param courtline.col Color of court lines
 #' @param pt.col Color of points in the scatter plot
+#' @param bg.col Background color
 #' @param palette Palette color for the scatter plot: 'main', 'cool', 'hot', 'mixed', 'grey'
 #' @param pt.alpha Transparency of points in the scatter plot
 #' @param nbins Number of bins in the 'density-hexbin' plot
@@ -43,16 +45,17 @@
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
      type="sectors", scatter=FALSE, num.sect=7, n=1000,
+     courtline.col = "black", bg.col="white",
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
-    if (num.sect<4) {
-      stop("The number of sectors 'num.sect' must be >=4")
-    }
-    if (n<500) {
-      stop("The number of points 'n' must be >=500")
-    }
+  if (num.sect<4) {
+    stop("The number of sectors 'num.sect' must be >=4")
+  }
+  if (n<500) {
+    stop("The number of points 'n' must be >=500")
+  }
 
-    fancy_scientific <- function(l) {
+  fancy_scientific <- function(l) {
     l <- format(l, digits=3, scientific = TRUE)
     l <- gsub("^(.*)e", "'\\1'e", l)
     l <- gsub("e", "%*%10^", l)
@@ -71,12 +74,12 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
 
   if (is.null(type) & !scatter) { ##################
     p <- ggplot(data=data.frame(x=0,y=0), aes(x,y))
-    p <- drawNBAcourt(p, full=FALSE, size=0.75, col="white") +
-      coord_fixed() + themeBbA(plot.bgcolor="black", legend.bgcolor="black")
+    p <- drawNBAcourt(p, full=FALSE, size=0.75, col=courtline.col) +
+      coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
 
   } else if (is.null(type) & scatter) { ##################
     p <- ggplot(data=data.frame(x=0,y=0), aes(x,y))
-    p <- drawNBAcourt(p, full=FALSE, size=0.75, col="white")
+    p <- drawNBAcourt(p, full=FALSE, size=0.75, col=courtline.col)
     if (is.null(z)) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col, alpha=pt.alpha,
                           shape=21, size=3, inherit.aes=FALSE)
@@ -96,7 +99,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
           scale_color_gradientn(name=z, colours = pal(256))
       }
     }
-    p <- p + coord_fixed() + themeBbA(plot.bgcolor="black", legend.bgcolor="black")
+    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
 
   } else if (type=="sectors") { ##################
     stats_by_sect <- sapply(sort(unique(sects$sector)), function(k) {
@@ -125,7 +128,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
     p <- ggplot(data=data.frame(x=0,y=0), aes(x,y))
     p <- p + geom_polygon(data=sects, aes(x=x, y=y, group=sector, fill=z)) +
       scale_fill_gradientn(name=z, colours = pal(256))
-    p <- drawNBAcourt(p, full=FALSE, size=1)
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
 
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), color=pt.col, alpha=pt.alpha,
@@ -148,8 +151,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col,
                           color=pt.col, alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
-    p <- drawNBAcourt(p, full=FALSE, size=1, col="black") +
-      coord_fixed() + theme_void()
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
+    p <- p + coord_fixed() + theme_void() + theme(legend.position = 'none')
 
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -159,8 +162,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
-    p <- drawNBAcourt(p, full=FALSE, size=1, col="black") +
-      coord_fixed() + theme_void()
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col) +
+      coord_fixed() + theme_void() + theme(legend.position = 'none')
 
   } else if (type=="density-hexbin") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -170,8 +173,9 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
-    p <- drawNBAcourt(p, full=FALSE, size=1, col="white") +
-      coord_fixed() + themeBbA(plot.bgcolor="black", legend.bgcolor="black")
+    p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col) +
+      coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
+      theme(legend.position = 'none')
 
   } else { ##############
     stop("Please, select a valid plot type and/or a scatter plot")

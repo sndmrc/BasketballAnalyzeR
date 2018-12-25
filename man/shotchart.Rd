@@ -6,7 +6,8 @@
 \usage{
 shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
   type = "sectors", scatter = FALSE, num.sect = 7, n = 1000,
-  pt.col = "black", pt.alpha = 0.5, nbins = 25, palette = "mixed")
+  courtline.col = "black", bg.col = "white", pt.col = "black",
+  pt.alpha = 0.5, nbins = 25, palette = "mixed")
 }
 \arguments{
 \item{data}{A data frame}
@@ -17,7 +18,7 @@ shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
 
 \item{z}{Name of 'data' variable to be used as a third variable}
 
-\item{result}{Name of 'data' variable containing the type of shot (made/missed)}
+\item{result}{Name of 'data' variable containing the type of shot; this variable is used to generate shot statistics; allowed categories: 'made' and 'missed'}
 
 \item{type}{A string with the plot type: 'sectors', 'density-polygon', 'density-raster', 'density-hexbin'}
 
@@ -26,6 +27,10 @@ shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
 \item{num.sect}{Number of sectors in shotchart plot split by sectors}
 
 \item{n}{Number of point used when drawing arcs in shotchart plot split by sectors}
+
+\item{courtline.col}{Color of court lines}
+
+\item{bg.col}{Background color}
 
 \item{pt.col}{Color of points in the scatter plot}
 
