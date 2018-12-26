@@ -4,12 +4,14 @@
 \alias{variability}
 \title{Variability analysis}
 \usage{
-variability(data, size, weight = FALSE)
+variability(data, data.var, size.var, weight = FALSE)
 }
 \arguments{
 \item{data}{A dataframe}
 
-\item{size}{A vector of variable names or of column numbers defining variables used for bubble sizes}
+\item{data.var}{A vector of variable names or of column numbers defining variables whose variability will be analyzed by 'variability'}
+
+\item{size.var}{A vector of variable names or of column numbers defining variables used for bubble sizes}
 
 \item{weight}{If TRUE, calculates weighted variation coefficients}
 }
@@ -22,7 +24,8 @@ Variability analysis
 \examples{
 Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
-list_variability <- variability(data=Pbox.BC, size=c("P2A","P3A","FTA"), weight=TRUE)
+list_variability <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
+                                size.var=c("P2A","P3A","FTA"), weight=TRUE)
 print(list_variability)
 plot(list_variability)
 }

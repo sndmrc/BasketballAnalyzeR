@@ -38,6 +38,7 @@
 #' @importFrom ggplot2 geom_hex
 #' @importFrom ggplot2 theme_void
 #' @importFrom ggplot2 coord_fixed
+#' @importFrom ggplot2 guides
 #' @importFrom PBSmapping as.PolySet
 #' @importFrom PBSmapping calcCentroid
 #' @importFrom sp point.in.polygon
