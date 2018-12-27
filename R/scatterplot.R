@@ -25,7 +25,7 @@
 #' @export
 #' @importFrom GGally ggpairs
 
-scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL, text_label=TRUE, repel_labels=FALSE,
+scatterplot <- function(data, z=NULL, z.name=NULL, palette=NULL, labels=NULL, repel_labels=FALSE, text_label=TRUE,
                         subset = NULL, col.subset='gray50', zoom = NULL, title = NULL,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
