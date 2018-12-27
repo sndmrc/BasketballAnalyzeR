@@ -6,6 +6,7 @@
 #' @param palette Color palette
 #' @param labels Text labels for (x, y) points; only for single scatter plot
 #' @param subset Subset of points to be evidenced; only for single scatter plot
+#' @param repel_labels If TRUE, draw text labels of not evidenced points using repelling
 #' @param text_label If TRUE, draw a rectangle behind the evidenced text
 #' @param col.subset Color for the subset of points; only for single scatter plot
 #' @param zoom X and Y axis range; only for single scatter plot
@@ -24,7 +25,7 @@
 #' @export
 #' @importFrom GGally ggpairs
 
-scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL, text_label=TRUE,
+scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL, text_label=TRUE, repel_labels=FALSE,
                         subset = NULL, col.subset='gray50', zoom = NULL, title = NULL,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
@@ -61,7 +62,11 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
       p <- p + xlim(c(xmin, xmax)) + ylim(c(ymin, ymax))
     }
     if (is.null(subset)) {
-      p <- p + geom_text(aes(label = labels), size = 3)
+      if (repel_labels) {
+        p <- p + ggrepel::geom_text_repel(aes(label = labels), size = 3)
+      } else {
+        p <- p + geom_text(aes(label = labels), size = 3)
+      }
     } else {
       subset1 <- data[-subset, ]
       subset2 <- data[subset, ]
@@ -71,7 +76,12 @@ scatterplot <- function(data, z=NULL, z.name=NULL, palette = NULL, labels = NULL
         p <- p + geom_point(data = subset1, size = 3) +
           geom_point(data = subset2, size = 4, col = col.subset)
       } else {
-        p <- p + geom_text(data = subset1, aes(label = subset1.labels), size = 3)
+        if (repel_labels) {
+          p <- p + ggrepel::geom_text_repel(data=subset1, aes(label = subset1.labels), size = 3)
+        } else {
+          p <- p + geom_text(data=subset1, aes(label = subset1.labels), size = 3)
+        }
+
         if (text_label) {
           p <- p + ggrepel::geom_label_repel(data = subset2, aes(label = subset2.labels),
                                              size = 4, col = col.subset, fontface = 2)

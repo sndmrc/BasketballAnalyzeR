@@ -5,8 +5,8 @@
 \title{Scatter plot and matrix of scatter plot}
 \usage{
 scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
-  labels = NULL, text_label = TRUE, subset = NULL,
-  col.subset = "gray50", zoom = NULL, title = NULL,
+  labels = NULL, text_label = TRUE, repel_labels = FALSE,
+  subset = NULL, col.subset = "gray50", zoom = NULL, title = NULL,
   upper = list(continuous = "cor", combo = "box_no_facet", discrete =
   "facetbar", na = "na"), lower = list(continuous = "points", combo =
   "facethist", discrete = "facetbar", na = "na"), diag = list(continuous
@@ -24,6 +24,8 @@ scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
 \item{labels}{Text labels for (x, y) points; only for single scatter plot}
 
 \item{text_label}{If TRUE, draw a rectangle behind the evidenced text}
+
+\item{repel_labels}{If TRUE, draw text labels of not evidenced points using repelling}
 
 \item{subset}{Subset of points to be evidenced; only for single scatter plot}
 

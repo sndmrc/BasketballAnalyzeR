@@ -23,8 +23,8 @@ inequality <- function(data, nplayers) {
 
   gini <- round(100 * sum(xcum[, 1] - xcum[, 2])/sum(xcum[1:nplayers, 1]), 2)
 
-  lor <- data.frame(xcum, xcummax[, 2])
-  names(lor) <- c("F", "Q", "Qmax")
+  lor <- data.frame(xcum)
+  names(lor) <- c("F", "Q")
 
   lst <- list(Gini = gini, Lorenz = lor)
   class(lst) <- append("inequality", class(lst))

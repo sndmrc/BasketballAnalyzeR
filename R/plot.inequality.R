@@ -26,6 +26,7 @@ plot.inequality <- function(x, title = NULL, ...) {
   lor <- x[["Lorenz"]]
   gini <- x[["Gini"]]
 
+  lor$Qmax <- c(rep(0,nrow(lor)-1), max(lor$Q))
   p <- ggplot(data = lor, aes(F, Q)) +
        theme(panel.background = element_rect(fill = "transparent"), plot.title = element_text(size = 12)) +
        geom_ribbon(aes(x = F, ymax = F, ymin = Q), fill = "dodgerblue4", alpha = 1) +
