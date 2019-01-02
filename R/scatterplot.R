@@ -71,7 +71,8 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     } else {
       z <- data[, z.var]
       if (is.character(z)) {
-        df$z <- factor(z)
+        z <- factor(z)
+        df$z <- z
       } else if (is.factor(z) | is.numeric(z)) {
         df$z <- z
       }
