@@ -25,6 +25,7 @@ plot.inequality <- function(x, title = NULL, ...) {
   }
   lor <- x[["Lorenz"]]
   gini <- x[["Gini"]]
+  lor <- 100*lor
 
   lor$Qmax <- c(rep(0,nrow(lor)-1), max(lor$Q))
   p <- ggplot(data = lor, aes(F, Q)) +
@@ -33,7 +34,7 @@ plot.inequality <- function(x, title = NULL, ...) {
        geom_line(aes(y = Q), col = "dodgerblue", lwd = 1.2) +
        geom_line(aes(y = Qmax), col = "dodgerblue", lwd = 1.2) +
        geom_line(aes(y = F), col = "dodgerblue", lwd = 1.2) +
-       annotate("text", x = 0.25, y = 0.8, label = paste("Gini index = ", gini, "%", sep = ""), size = 6) +
+       annotate("text", x = 25, y = 80, label = paste("Gini index = ", gini, "%", sep = ""), size = 6) +
        labs(title=title, x="", y="")
 
   print(p)
