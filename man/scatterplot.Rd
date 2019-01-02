@@ -4,20 +4,21 @@
 \alias{scatterplot}
 \title{Scatter plot and matrix of scatter plot}
 \usage{
-scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
+scatterplot(data, data.var, z.var = NULL, palette = NULL,
   labels = NULL, repel_labels = FALSE, text_label = TRUE,
   subset = NULL, col.subset = "gray50", zoom = NULL, title = NULL,
-  upper = list(continuous = "cor", combo = "box_no_facet", discrete =
-  "facetbar", na = "na"), lower = list(continuous = "points", combo =
-  "facethist", discrete = "facetbar", na = "na"), diag = list(continuous
-  = "densityDiag", discrete = "barDiag", na = "naDiag"))
+  legend = "yes", upper = list(continuous = "cor", combo =
+  "box_no_facet", discrete = "facetbar", na = "na"),
+  lower = list(continuous = "points", combo = "facethist", discrete =
+  "facetbar", na = "na"), diag = list(continuous = "densityDiag",
+  discrete = "barDiag", na = "naDiag"))
 }
 \arguments{
 \item{data}{A dataframe}
 
-\item{z}{Stratification variable}
+\item{data.var}{A vector of characaters with name of variables used on the axes of scatter plot(s)}
 
-\item{z.name}{Name of stratification variable}
+\item{z.var}{The stratification variable (color)}
 
 \item{palette}{Color palette}
 
@@ -35,6 +36,8 @@ scatterplot(data, z = NULL, z.name = NULL, palette = NULL,
 
 \item{title}{Plot title}
 
+\item{legend}{Set legend='no' to remove legend}
+
 \item{upper}{See help for GGally::ggpairs}
 
 \item{lower}{See help for GGally::ggpairs}
@@ -49,9 +52,12 @@ Scatter plot and matrix of scatter plot
 }
 \examples{
 # Single scatter plot
-data <- Pbox[, c("PTS","P3M")]
-scatterplot(data, labels=as.character(Pbox$Player), subset=1:3)
+Pbox.sel <- subset(Pbox, MIN>= 500)
+X <- data.frame(AST=Pbox.sel$AST/Pbox.sel$MIN,TOV=Pbox.sel$TOV/Pbox.sel$MIN)
+X$PTSpm <- Pbox.sel$PTS/Pbox.sel$MIN
+mypal <- colorRampPalette(c("blue","yellow","red"))
+scatterplot(X, data.var=c("AST","TOV"), z.var="PTSpm", labels=1:nrow(X), palette=mypal)
 # Matrix of scatter plots
-data <- Pbox[, c("PTS","P3M","P2M","OREB")]
-scatterplot(data, z=Pbox$Team)
+data <- Pbox[1:50, c("PTS","P3M","P2M","OREB","Team")]
+scatterplot(data, data.var=1:4, z.var="Team")
 }
