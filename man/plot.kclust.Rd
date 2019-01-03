@@ -23,11 +23,11 @@ Plot k-means clustering of NBA teams
 }
 \examples{
 FF <- fourfactors(Tbox,Obox)
-OD_Rtg <- FF$ORT/FF$DRT
-F1_r <- FF$F1_O/FF$F1_T
-F2_r <- FF$F2_T/FF$F2_O
-F3_O <- FF$F3_O
-F3_D <- FF$F3_T
+OD_Rtg <- FF$ORtg/FF$DRtg
+F1_r <- FF$F1.D/FF$F1.O
+F2_r <- FF$F2.O/FF$F2.D
+F3_O <- FF$F3.D
+F3_D <- FF$F3.O
 P3M <- Tbox$P3M
 STL_r <- Tbox$STL/Obox$STL
 X <- data.frame(OD_Rtg,F1_r,F2_r,F3_O,F3_D,P3M,STL_r)

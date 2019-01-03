@@ -7,11 +7,11 @@
 #' @return A list of ggplot2 radial plots
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
-#' OD_Rtg <- FF$ORT/FF$DRT
-#' F1_r <- FF$F1_O/FF$F1_T
-#' F2_r <- FF$F2_T/FF$F2_O
-#' F3_O <- FF$F3_O
-#' F3_D <- FF$F3_T
+#' OD_Rtg <- FF$ORtg/FF$DRtg
+#' F1_r <- FF$F1.D/FF$F1.O
+#' F2_r <- FF$F2.O/FF$F2.D
+#' F3_O <- FF$F3.D
+#' F3_D <- FF$F3.O
 #' P3M <- Tbox$P3M
 #' STL_r <- Tbox$STL/Obox$STL
 #' X <- data.frame(OD_Rtg,F1_r,F2_r,F3_O,F3_D,P3M,STL_r)
@@ -42,11 +42,11 @@ plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, ...) {
       geom_line() +
       geom_point(size = 5, colour = "white") +
       geom_point(size = 2) +
-      geom_text(data = df2, aes(x = x, y = y, label = label), vjust = +2) +
       geom_line(data = df2, aes(x = x, y = y), linetype = 2) +
       geom_point(data = df2, aes(x = x, y = y), size = 6, colour = "white") +
       geom_point(data = df2, aes(x = x, y = y), shape = 0, size = 2) +
-      geom_text(data = df3, aes(x = x, y = y, label = label), vjust = +2) +
+      ggrepel::geom_text_repel(data = df2, aes(x = x, y = y, label = label), vjust = +2) +
+      ggrepel::geom_text_repel(data = df3, aes(x = x, y = y, label = label), vjust = +2) +
       scale_x_continuous(breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
       xlab("Number of clusters") + ylab("BD/TD - Increments") +
       theme_bw()

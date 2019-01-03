@@ -21,14 +21,14 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   if (!is.fourfactors(x)) {
     stop("Not a 'fourfactors' object")
   }
-  PACE_T <- PACE_O <- ORT <- DRT <- Factor <- CentValue <- Value <- NULL
+  PACE.O <- PACE.D <- ORtg <- DRtg <- Factor <- CentValue <- Value <- NULL
   ################################
   ttl <- "PACE"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  PACEplot <- ggplot(data=x, aes(x=PACE_T, y=PACE_O, label=Team,
-                                text=paste("Team:",Team,"<br>PACE Team:",PACE_T,"<br>PACE Opp:",PACE_O))) +
+  PACEplot <- ggplot(data=x, aes(x=PACE.O, y=PACE.D, label=Team,
+                                text=paste("Team:",Team,"<br>PACE Team:",PACE.O,"<br>PACE Opp:",PACE.D))) +
     geom_point() +
     geom_text_repel(aes(label=Team))+
     labs(title=ttl)+
@@ -40,8 +40,8 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  RTgplot <- ggplot(data=x, aes(x=ORT, y=DRT, label=Team,
-                               text=paste("Team:",Team,"<br>Offensive rating:",ORT,"<br>Defensive rating:",DRT))) +
+  RTgplot <- ggplot(data=x, aes(x=ORtg, y=DRtg, label=Team,
+                               text=paste("Team:",Team,"<br>Offensive rating:",ORtg,"<br>Defensive rating:",DRtg))) +
     geom_point() +
     geom_text_repel(aes(label = Team))+
     labs(title = ttl)+
@@ -54,47 +54,47 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   Team <- x[["Team"]]
 
   ################################
-  x_lbls <- c("1:eFG% (Off)","2:TO_T Ratio (Off)","3:REB% (Off)","4:FT Rate (Off)")
+  x_lbls <- c("1:eFG% (Off)","2:TO.O Ratio (Off)","3:REB% (Off)","4:FT Rate (Off)")
   ttl <- "Offensive Four Factors"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  F1_T <- x[["F1_T"]]
-  F2_T <- x[["F2_T"]]
-  F3_T <- x[["F3_T"]]
-  F4_T <- x[["F4_T"]]
-  F1S_T <- F1_T - mean(F1_T)
-  F2S_T <- F2_T - mean(F2_T)
-  F3S_T <- F3_T - mean(F3_T)
-  F4S_T <- F4_T - mean(F4_T)
-  FFS_T <- data.frame(Team = rep(Team, 4),
+  F1.O <- x[["F1.O"]]
+  F2.O <- x[["F2.O"]]
+  F3.O <- x[["F3.O"]]
+  F4.O <- x[["F4.O"]]
+  F1S.O <- F1.O - mean(F1.O)
+  F2S.O <- F2.O - mean(F2.O)
+  F3S.O <- F3.O - mean(F3.O)
+  F4S.O <- F4.O - mean(F4.O)
+  FFS.O <- data.frame(Team = rep(Team, 4),
                       Factor = rep(x_lbls, each=nr),
-                      CentValue = c(F1S_T,F2S_T,F3S_T,F4S_T),
-                      Value = c(F1_T,F2_T,F3_T,F4_T))
-  FFOplot <- ggplot(data=FFS_T, aes(x=Factor, y=CentValue, fill=Team,
+                      CentValue = c(F1S.O,F2S.O,F3S.O,F4S.O),
+                      Value = c(F1.O,F2.O,F3.O,F4.O))
+  FFOplot <- ggplot(data=FFS.O, aes(x=Factor, y=CentValue, fill=Team,
                                     text=paste("Team:",Team,"<br>Factor:",Factor,"<br>Value:",Value))) +
     geom_bar(stat="identity", color="black", position=position_dodge()) +
     theme_minimal() +	labs(title = ttl)
 
   ################################
-  x_lbls <- c("1:eFG% (Def)","2:TO_T Ratio (Def)","3:REB% (Def)","4:FT Rate (Def)")
+  x_lbls <- c("1:eFG% (Def)","2:TO.O Ratio (Def)","3:REB% (Def)","4:FT Rate (Def)")
   ttl <- "Defensive Four Factors"
   if(!is.null(title)) {
     ttl <- paste(ttl, "-", title)
   }
-  F1_O <- x[["F1_O"]]
-  F2_O <- x[["F2_O"]]
-  F3_O <- x[["F3_O"]]
-  F4_O <- x[["F4_O"]]
-  F1S_O <- F1_O - mean(F1_O)
-  F2S_O <- F2_O - mean(F2_O)
-  F3S_O <- F3_O - mean(F3_O)
-  F4S_O <- F4_O - mean(F4_O)
-  FFS_O <- data.frame(Team = rep(Team, 4),
+  F1.D <- x[["F1.D"]]
+  F2.D <- x[["F2.D"]]
+  F3.D <- x[["F3.D"]]
+  F4.D <- x[["F4.D"]]
+  F1S.D <- F1.D - mean(F1.D)
+  F2S.D <- F2.D - mean(F2.D)
+  F3S.D <- F3.D - mean(F3.D)
+  F4S.D <- F4.D - mean(F4.D)
+  FFS.D <- data.frame(Team = rep(Team, 4),
                       Factor = rep(x_lbls, each=nr),
-                      CentValue = c(F1S_O,F2S_O,F3S_O,F4S_O),
-                      Value = c(F1_O,F2_O,F3_O,F4_O))
-  FFDplot <- ggplot(data=FFS_O, aes(x=Factor, y=CentValue, fill=Team,
+                      CentValue = c(F1S.D,F2S.D,F3S.D,F4S.D),
+                      Value = c(F1.D,F2.D,F3.D,F4.D))
+  FFDplot <- ggplot(data=FFS.D, aes(x=Factor, y=CentValue, fill=Team,
                                     text=paste("Team:",Team,"<br>Factor:",Factor,"<br>Value:",Value))) +
     geom_bar(stat="identity", color="black", position=position_dodge()) +
     theme_minimal() +	labs(title = ttl)
