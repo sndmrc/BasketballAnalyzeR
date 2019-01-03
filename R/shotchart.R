@@ -45,7 +45,7 @@
 #' @importFrom stats median
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
-     type="sectors", scatter=FALSE, num.sect=7, n=1000,
+     type=NULL, scatter=FALSE, num.sect=7, n=1000,
      courtline.col = "black", bg.col="white",
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
