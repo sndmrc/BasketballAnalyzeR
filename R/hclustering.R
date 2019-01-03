@@ -13,12 +13,12 @@
 #' names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- h.clustering(data, labels=ID, k=7)
+#' out <- hclustering(data, labels=ID, k=7)
 #' plot(out)
 #' @export
 #' @importFrom stats cutree
 
-h.clustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='ward.D') {
+hclustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='ward.D') {
 
   varb <- function(x) {
     x <- stats::na.omit(x)
@@ -69,6 +69,6 @@ h.clustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='w
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles, Hclust=hcl)
   }
-  class(out) <- append("hclustering", class(out))
+  class(out) <- append("hclust", class(out))
   return(out)
 }

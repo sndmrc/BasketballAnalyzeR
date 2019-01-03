@@ -9,10 +9,10 @@
 #' names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- h.clustering(data, labels=ID, k=7)
-#' is.hclustering(out)
+#' out <- hclustering(data, labels=ID, k=7)
+#' is.hclust(out)
 #' @export
 
-is.hclustering <- function(x) {
-  inherits(x, "hclustering")
+is.hclust <- function(x) {
+  inherits(x, "hclust")
 }

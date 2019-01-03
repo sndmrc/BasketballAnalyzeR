@@ -52,7 +52,6 @@ A ggplot2 object
 Plot shortcharts
 }
 \examples{
-data(PbP)
 PbP <- PbPmanipulation(PbP.BDB)
 subdata <- subset(PbP, player=="Kevin Durant")
 subdata$xx <- subdata$original_x/10

@@ -20,9 +20,9 @@
 #' names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- h.clustering(data, labels=ID, k=7)
+#' out <- hclustering(data, labels=ID, k=7)
 #' plot(out)
-#' @method plot hclustering
+#' @method plot hclust
 #' @export
 #' @importFrom dendextend circlize_dendrogram
 #' @importFrom dendextend plot_horiz.dendrogram
@@ -30,10 +30,10 @@
 #' @importFrom dendextend set
 #' @importFrom stats as.dendrogram
 
-plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, circlize=FALSE, horiz=TRUE, cex.labels=0.7, colored.labels=TRUE, colored.branches=FALSE, rect=FALSE, lower.rect=NULL,...) {
+plot.hclust <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, circlize=FALSE, horiz=TRUE, cex.labels=0.7, colored.labels=TRUE, colored.branches=FALSE, rect=FALSE, lower.rect=NULL,...) {
 
-  if (!is.hclustering(x)) {
-    stop("Not a 'hclustering' object")
+  if (!is.hclust(x)) {
+    stop("Not a 'hclust' object")
   }
 
   circ_dend <- function(dend) {
