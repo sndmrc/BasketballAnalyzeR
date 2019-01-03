@@ -21,7 +21,7 @@
 #' data(PbP)
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' subdata <- subset(PbP, player=="Kevin Durant")
-#' subdata$xx <- -subdata$original_x/10
+#' subdata$xx <- subdata$original_x/10
 #' subdata$yy <- subdata$original_y/10-42
 #' # Shotchart with colored sectors and statistics for a 3rd variable
 #' shotchart(data=subdata, x="xx", y="yy", z="playlength", result="result",
