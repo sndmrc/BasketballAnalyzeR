@@ -5,9 +5,10 @@
 \title{Plot shortcharts}
 \usage{
 shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
-  type = "sectors", scatter = FALSE, num.sect = 7, n = 1000,
-  courtline.col = "black", bg.col = "white", pt.col = "black",
-  pt.alpha = 0.5, nbins = 25, palette = "mixed")
+  type = NULL, scatter = FALSE, num.sect = 7, n = 1000,
+  col.limits = c(NA, NA), courtline.col = "black", bg.col = "white",
+  legend = TRUE, pt.col = "black", pt.alpha = 0.5, nbins = 25,
+  palette = "mixed")
 }
 \arguments{
 \item{data}{A data frame}
@@ -28,9 +29,13 @@ shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
 
 \item{n}{Number of point used when drawing arcs in shotchart plot split by sectors}
 
+\item{col.limits}{Vector of limits c(min, max) for the gratient color scale}
+
 \item{courtline.col}{Color of court lines}
 
 \item{bg.col}{Background color}
+
+\item{legend}{If TRUE a legend is plotted}
 
 \item{pt.col}{Color of points in the scatter plot}
 

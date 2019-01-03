@@ -9,16 +9,17 @@
 #' @param scatter Logical. If TRUE a scatter plot was added to the plot
 #' @param num.sect Number of sectors in shotchart plot split by sectors
 #' @param n Number of point used when drawing arcs in shotchart plot split by sectors
+#' @param col.limits Vector of limits c(min, max) for the gratient color scale
 #' @param courtline.col Color of court lines
 #' @param pt.col Color of points in the scatter plot
 #' @param bg.col Background color
 #' @param palette Palette color for the scatter plot: 'main', 'cool', 'hot', 'mixed', 'grey'
 #' @param pt.alpha Transparency of points in the scatter plot
 #' @param nbins Number of bins in the 'density-hexbin' plot
+#' @param legend If TRUE a legend is plotted
 #' @return A ggplot2 object
 #'
 #' @examples
-#' data(PbP)
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' subdata <- subset(PbP, player=="Kevin Durant")
 #' subdata$xx <- subdata$original_x/10
@@ -45,8 +46,8 @@
 #' @importFrom stats median
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
-     type=NULL, scatter=FALSE, num.sect=7, n=1000,
-     courtline.col = "black", bg.col="white",
+     type=NULL, scatter=FALSE, num.sect=7, n=1000, col.limits=c(NA,NA),
+     courtline.col = "black", bg.col="white", legend=TRUE,
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
   if (num.sect<4) {
@@ -96,8 +97,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
           scale_color_manual(name=z, values=cols)
       } else {
         p <- p +
-          scale_fill_gradientn(name=z, colours = pal(256)) +
-          scale_color_gradientn(name=z, colours = pal(256))
+          scale_fill_gradientn(name=z, colours = pal(256), limits=col.limits) +
+          scale_color_gradientn(name=z, colours = pal(256), limits=col.limits)
       }
     }
     p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
@@ -128,7 +129,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
 
     p <- ggplot(data=data.frame(x=0,y=0), aes(x,y))
     p <- p + geom_polygon(data=sects, aes(x=x, y=y, group=sector, fill=z)) +
-      scale_fill_gradientn(name=z, colours = pal(256))
+      scale_fill_gradientn(name=z, colours = pal(256), limits=col.limits)
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
 
     if (scatter) {
@@ -177,8 +178,10 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
-    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
-      theme(legend.position = 'none')
+    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
+    if (!legend) {
+      p <- p + theme(legend.position = 'none')
+    }
 
   } else { ##############
     stop("Please, select a valid plot type and/or a scatter plot")
