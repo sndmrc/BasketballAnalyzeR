@@ -13,15 +13,17 @@
 #' @param courtline.col Color of court lines
 #' @param pt.col Color of points in the scatter plot
 #' @param bg.col Background color
+#' @param legend If TRUE a legend is plotted
+#' @param drop.levels If TRUE, drop unused levels of the 'z' variable.
 #' @param palette Palette color for the scatter plot: 'main', 'cool', 'hot', 'mixed', 'grey'
 #' @param pt.alpha Transparency of points in the scatter plot
 #' @param nbins Number of bins in the 'density-hexbin' plot
-#' @param legend If TRUE a legend is plotted
 #' @return A ggplot2 object
 #'
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
-#' subdata <- subset(PbP, player=="Kevin Durant")
+#' subdata <- subset(PbP, player=="Kevin Durant" & result!="")
+#' subdata$result <- droplevels(subdata$result)
 #' subdata$xx <- subdata$original_x/10
 #' subdata$yy <- subdata$original_y/10-42
 #' # Shotchart with colored sectors and statistics for a 3rd variable
@@ -29,7 +31,7 @@
 #'           type="sectors",  num.sect=7)
 #' # Shotchart with scatter plot and a stratification variable
 #' shotchart(data=subdata, x="xx", y="yy", z="result",
-#'           type=NULL, scatter=TRUE, palette="main")
+#'           type=NULL, scatter=TRUE, palette="mixed")
 #' @export
 #' @importFrom ggplot2 scale_color_manual
 #' @importFrom ggplot2 scale_fill_manual
@@ -47,7 +49,7 @@
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
      type=NULL, scatter=FALSE, num.sect=7, n=1000, col.limits=c(NA,NA),
-     courtline.col = "black", bg.col="white", legend=TRUE,
+     courtline.col = "black", bg.col="white", legend=TRUE, drop.levels=TRUE,
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
   if (num.sect<4) {
@@ -90,11 +92,15 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           shape=21, size=3, inherit.aes=FALSE)
       zvar <- df1$z
       if (is.factor(zvar)) {
-        ncols <- length(unique(droplevels(zvar)))
+        if (drop.levels) {
+          ncols <- length(unique(droplevels(zvar)))
+        } else {
+          ncols <- length(table(zvar))
+        }
         cols <- rev(pal(ncols))
         p <- p +
-          scale_fill_manual(name=z, values=cols) +
-          scale_color_manual(name=z, values=cols)
+          scale_fill_manual(name=z, values=cols, drop=FALSE) +
+          scale_color_manual(name=z, values=cols, drop=FALSE)
       } else {
         p <- p +
           scale_fill_gradientn(name=z, colours = pal(256), limits=col.limits) +

@@ -31,7 +31,7 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
   }
   profile <- cbind(group, data)
 
-  # Remove missing rows with values
+  # Remove rows with missing values
   if (any(is.na(profile[, -1]))) {
     rowsNA <- apply(profile[, -1], 1, function(x) any(is.na(x)))
     warning(paste("Removed", sum(rowsNA), "rows containing missing values"),

@@ -7,8 +7,8 @@
 shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
   type = NULL, scatter = FALSE, num.sect = 7, n = 1000,
   col.limits = c(NA, NA), courtline.col = "black", bg.col = "white",
-  legend = TRUE, pt.col = "black", pt.alpha = 0.5, nbins = 25,
-  palette = "mixed")
+  legend = TRUE, drop.levels = TRUE, pt.col = "black",
+  pt.alpha = 0.5, nbins = 25, palette = "mixed")
 }
 \arguments{
 \item{data}{A data frame}
@@ -37,6 +37,8 @@ shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
 
 \item{legend}{If TRUE a legend is plotted}
 
+\item{drop.levels}{If TRUE, drop unused levels of the 'z' variable.}
+
 \item{pt.col}{Color of points in the scatter plot}
 
 \item{pt.alpha}{Transparency of points in the scatter plot}
@@ -53,7 +55,8 @@ Plot shortcharts
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
-subdata <- subset(PbP, player=="Kevin Durant")
+subdata <- subset(PbP, player=="Kevin Durant" & result!="")
+subdata$result <- droplevels(subdata$result)
 subdata$xx <- subdata$original_x/10
 subdata$yy <- subdata$original_y/10-42
 # Shotchart with colored sectors and statistics for a 3rd variable
