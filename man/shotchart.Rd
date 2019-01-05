@@ -64,5 +64,5 @@ shotchart(data=subdata, x="xx", y="yy", z="playlength", result="result",
           type="sectors",  num.sect=7)
 # Shotchart with scatter plot and a stratification variable
 shotchart(data=subdata, x="xx", y="yy", z="result",
-          type=NULL, scatter=TRUE, palette="main")
+          type=NULL, scatter=TRUE, palette="mixed")
 }
