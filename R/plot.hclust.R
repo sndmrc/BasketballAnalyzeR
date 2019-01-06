@@ -107,11 +107,19 @@ plot.hclust <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, ci
       pos.clst.nm <- which(names(prfls)=="clustnames")
       p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange)
     } else {
-      dend <- x[["Hclust"]] %>%
+      hcl <- x[["Hclust"]]
+      dend <- hcl %>%
         stats::as.dendrogram() %>%
         dendextend::set("labels_cex", cex.labels)
-      if (colored.labels) dend <- dend %>% dendextend::set("labels_col", k=k)
-      if (colored.branches) dend <- dend %>% dendextend::set("branches_k_color", k=k)
+      if (colored.labels) dend <- dend %>% dendextend::set("labels_colors", k=k)
+      if (colored.branches) {
+        lbl_clu1 <- x[["Subjects"]]
+        lbl_clu2 <- dendextend::cutree(hcl, k=k, order_clusters_as_data=FALSE)
+        lbl_clu1 <- lbl_clu1[match(names(lbl_clu2), row.names(lbl_clu1)),]
+        tbl <- table(lbl_clu1$Cluster,lbl_clu2)
+        lbls <- apply(tbl,2,which.max)
+        dend <- dend %>% dendextend::color_branches(k=k, groupLabels=lbls)
+      }
       if (circlize) {
         xpr <- substitute(circ_dend(dend))
         p <- ggplotify::as.ggplot(as.expression(xpr))
