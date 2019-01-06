@@ -94,13 +94,17 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
       if (is.factor(zvar)) {
         if (drop.levels) {
           ncols <- length(unique(droplevels(zvar)))
+          cols <- rev(pal(ncols))
+          p <- p +
+            scale_fill_manual(name=z, values=cols, drop=TRUE) +
+            scale_color_manual(name=z, values=cols, drop=TRUE)
         } else {
           ncols <- length(table(zvar))
+          cols <- rev(pal(ncols))
+          p <- p +
+            scale_fill_manual(name=z, values=cols, drop=FALSE) +
+            scale_color_manual(name=z, values=cols, drop=FALSE)
         }
-        cols <- rev(pal(ncols))
-        p <- p +
-          scale_fill_manual(name=z, values=cols, drop=FALSE) +
-          scale_color_manual(name=z, values=cols, drop=FALSE)
       } else {
         p <- p +
           scale_fill_gradientn(name=z, colours = pal(256), limits=col.limits) +
