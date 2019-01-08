@@ -20,14 +20,14 @@
 #' plot(kclu1)
 #' kclu2 <- kclustering(X, k=9)
 #' plot(kclu2)
-#' @method plot kclust
+#' @method plot kclustering
 #' @export
 
 
-plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max=NULL, ...) {
+plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max=NULL, ...) {
 
-  if (!is.kclust(x)) {
-    stop("Not a 'kclust' object")
+  if (!is.kclustering(x)) {
+    stop("Not a 'kclustering' object")
   }
   y <- label <- NULL
   k <- x[["k"]]

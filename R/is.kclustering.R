@@ -13,9 +13,9 @@
 #' STL.r <- Tbox$STL/Obox$STL
 #' X <- data.frame(OD.Rtg,F1.r,F2.r,F3.O,F3.D,P3M,STL.r)
 #' kclu1 <- kclustering(X)
-#' is.kclust(kclu1)
+#' is.kclustering(kclu1)
 #' @export
 
-is.kclust <- function(x) {
-  inherits(x, "kclust")
+is.kclustering <- function(x) {
+  inherits(x, "kclustering")
 }

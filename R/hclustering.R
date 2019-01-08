@@ -69,6 +69,6 @@ hclustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='wa
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles, Hclust=hcl)
   }
-  class(out) <- append("hclust", class(out))
+  class(out) <- append("hclustering", class(out))
   return(out)
 }

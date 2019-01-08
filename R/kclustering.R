@@ -90,6 +90,6 @@ kclustering <- function(data, k = NULL, labels = NULL, nclumax = 10, nruns = 10)
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles)
   }
-  class(out) <- append("kclust", class(out))
+  class(out) <- append("kclustering", class(out))
   return(out)
 }
