@@ -5,7 +5,7 @@
 \title{Plot radial plot for player profiles}
 \usage{
 radialprofile(data, perc = FALSE, std = TRUE, title = NULL,
-  ncol.arrange = NULL)
+  ncol.arrange = NULL, min.mid.max = NULL)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -17,6 +17,8 @@ radialprofile(data, perc = FALSE, std = TRUE, title = NULL,
 \item{title}{Title(s) for radial plots(s)}
 
 \item{ncol.arrange}{The number of columns in the grid of arranged plots}
+
+\item{min.mid.max}{A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
 }
 \value{
 A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots

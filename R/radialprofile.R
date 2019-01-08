@@ -5,6 +5,7 @@
 #' @param std std
 #' @param title Title(s) for radial plots(s)
 #' @param ncol.arrange  The number of columns in the grid of arranged plots
+#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @return A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
 #' @examples
 #' data("Pbox")
@@ -17,7 +18,7 @@
 #' @importFrom gridExtra grid.arrange
 
 radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
-                          ncol.arrange = NULL) {
+                          ncol.arrange = NULL, min.mid.max=NULL) {
 
   # Set plot titles
   if (is.null(title)) {
@@ -53,14 +54,26 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
     profile[, -1] <- scale(profile[, -1])
   }
 
-  if (perc == TRUE & std == FALSE) {
-    ming <- 0
-    maxg <- 100
-    midg <- 50
+  if (is.null(min.mid.max)) {
+    if (perc & !std) {
+      ming <- 0
+      midg <- 50
+      maxg <- 100
+    } else if (!perc & std) {
+      mn <- min(profile[, -1])
+      mx <- max(profile[, -1])
+      ming <- -max(mn,mx)
+      midg <- 0
+      maxg <- max(mn,mx)
+    } else {
+      ming <- min(profile[, -1])
+      midg <- (min(profile[, -1]) + max(profile[, -1]))/2
+      maxg <- max(profile[, -1])
+    }
   } else {
-    ming <- min(profile[, -1])
-    maxg <- max(profile[, -1])
-    midg <- (min(profile[, -1]) + max(profile[, -1]))/2
+    ming <- min.mid.max[1]
+    midg <- min.mid.max[2]
+    maxg <- min.mid.max[3]
   }
 
   # List of radial plots

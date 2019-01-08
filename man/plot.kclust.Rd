@@ -4,7 +4,8 @@
 \alias{plot.kclust}
 \title{Plot k-means clustering of NBA teams}
 \usage{
-\method{plot}{kclust}(x, title = NULL, ncol.arrange = NULL, ...)
+\method{plot}{kclust}(x, title = NULL, ncol.arrange = NULL,
+  min.mid.max = NULL, ...)
 }
 \arguments{
 \item{x}{An object of class 'kclust'}
@@ -12,6 +13,8 @@
 \item{title}{Plot title}
 
 \item{ncol.arrange}{Number of columns when arranging multiple grobs on a page}
+
+\item{min.mid.max}{A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
 
 \item{...}{other graphical parameters}
 }

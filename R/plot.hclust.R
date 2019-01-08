@@ -11,6 +11,7 @@
 #' @param colored.branches Assign different colors to dendrogram branches of different clusters
 #' @param rect Draw rectangles around the branches of a dendrogram in order to highlight the corresponding clusters
 #' @param lower.rect A (scalar) value of how low should the lower part of the rect be
+#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
 #' @return A single ggplot2 plot or (when \code{profile=FALSE}) a list of (radial) plots (when \code{profile=TRUE}))
 #' @examples
@@ -30,7 +31,7 @@
 #' @importFrom dendextend set
 #' @importFrom stats as.dendrogram
 
-plot.hclust <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, circlize=FALSE, horiz=TRUE, cex.labels=0.7, colored.labels=TRUE, colored.branches=FALSE, rect=FALSE, lower.rect=NULL,...) {
+plot.hclust <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, circlize=FALSE, horiz=TRUE, cex.labels=0.7, colored.labels=TRUE, colored.branches=FALSE, rect=FALSE, lower.rect=NULL, min.mid.max=NULL, ...) {
 
   if (!is.hclust(x)) {
     stop("Not a 'hclust' object")
@@ -105,7 +106,15 @@ plot.hclust <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, ci
         stop("The length of 'title' is not equal to the number of clusters")
       }
       pos.clst.nm <- which(names(prfls)=="clustnames")
-      p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange)
+      if (is.null(min.mid.max)) {
+        mn <- min(prfls[, -pos.clst.nm])
+        mx <- max(prfls[, -pos.clst.nm])
+        ming <- -max(mn,mx)
+        midg <- 0
+        maxg <- max(mn,mx)
+        min.mid.max <- c(ming,midg,maxg)
+      }
+      p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange, std=FALSE, min.mid.max=min.mid.max)
     } else {
       hcl <- x[["Hclust"]]
       dend <- hcl %>%

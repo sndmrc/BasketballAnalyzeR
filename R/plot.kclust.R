@@ -3,6 +3,7 @@
 #' @param x An object of class 'kclust'
 #' @param title Plot title
 #' @param ncol.arrange Number of columns when arranging multiple grobs on a page
+#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
 #' @return A list of ggplot2 radial plots
 #' @examples
@@ -23,7 +24,7 @@
 #' @export
 
 
-plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, ...) {
+plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max=NULL, ...) {
 
   if (!is.kclust(x)) {
     stop("Not a 'kclust' object")
@@ -62,7 +63,15 @@ plot.kclust <- function(x, title = NULL, ncol.arrange = NULL, ...) {
       stop("The length of 'title' is not equal to the number of clusters")
     }
     pos.clst.nm <- which(names(profiles)=="clustnames")
-    p <- radialprofile(data = profiles[,-pos.clst.nm], title = title, ncol.arrange = ncol.arrange)
+    if (is.null(min.mid.max)) {
+      mn <- min(profiles[, -pos.clst.nm])
+      mx <- max(profiles[, -pos.clst.nm])
+      ming <- -max(mn,mx)
+      midg <- 0
+      maxg <- max(mn,mx)
+      min.mid.max <- c(ming,midg,maxg)
+    }
+    p <- radialprofile(data=profiles[,-pos.clst.nm], title=title, ncol.arrange=ncol.arrange, std=FALSE, min.mid.max=min.mid.max)
   }
   invisible(p)
 }

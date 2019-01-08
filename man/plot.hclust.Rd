@@ -7,7 +7,7 @@
 \method{plot}{hclust}(x, title = NULL, profiles = FALSE,
   ncol.arrange = NULL, circlize = FALSE, horiz = TRUE,
   cex.labels = 0.7, colored.labels = TRUE, colored.branches = FALSE,
-  rect = FALSE, lower.rect = NULL, ...)
+  rect = FALSE, lower.rect = NULL, min.mid.max = NULL, ...)
 }
 \arguments{
 \item{x}{An object of class 'hclustering'}
@@ -31,6 +31,8 @@
 \item{rect}{Draw rectangles around the branches of a dendrogram in order to highlight the corresponding clusters}
 
 \item{lower.rect}{A (scalar) value of how low should the lower part of the rect be}
+
+\item{min.mid.max}{A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
 
 \item{...}{other graphical parameters}
 }
