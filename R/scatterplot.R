@@ -15,6 +15,7 @@
 #' @param upper  See help for GGally::ggpairs
 #' @param lower  See help for GGally::ggpairs
 #' @param diag  See help for GGally::ggpairs
+#' @param draw.plot If FALSE, do not draw the plot
 #' @return A ggplot2 plot
 #' @examples
 #' # Single scatter plot
@@ -28,12 +29,13 @@
 #' scatterplot(data, data.var=1:4, z.var="Team")
 #' @export
 #' @importFrom GGally ggpairs
+#' @importFrom ggplot2 empty
 
 scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, repel_labels=FALSE, text_label=TRUE,
                         subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend='yes',
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
-                        diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag")) {
+                        diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag"), draw.plot=TRUE) {
 
   x <- y <- z <- NULL
   if (!is.data.frame(data)) {
@@ -143,7 +145,7 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
   if (!is.null(z.var) & legend=="no") {
     p <- p + theme(legend.position="none")
   }
-  print(p)
+  if (draw.plot) print(p)
   invisible(p)
 }
 

@@ -4,51 +4,26 @@
 \alias{MDSmap}
 \title{Create some two-dimensional plots for multidimensional scaling (MDS)}
 \usage{
-MDSmap(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-  title = NULL, col.palette = NULL, contour = FALSE,
-  arrange = FALSE, ncol.arrange = NULL)
+MDSmap(data, std = TRUE)
 }
 \arguments{
 \item{data}{A dataframe to use for plot}
 
-\item{labels}{labels}
-
-\item{subset}{subset}
-
-\item{zoom}{zoom}
-
-\item{var}{var}
-
-\item{title}{title}
-
-\item{col.palette}{Colour palette}
-
-\item{contour}{contour}
-
-\item{arrange}{A logical value. If TRUE radial plots are arranged in a single plot}
-
-\item{ncol.arrange}{The number of columns in the grid of arranged plots}
+\item{std}{If TRUE, columns of 'data' are standardized}
 }
 \value{
-A list with two objects: a list of plots (named 'listPlots') and a dataframe with MDS coordinates
+An object of class 'MDSmap': a list with 4 objects: points, stress, data, std
 }
 \description{
 Create some two-dimensional plots for multidimensional scaling (MDS)
 }
 \examples{
-data('Pbox')
-data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M,
-                   Pbox$OREB + Pbox$DREB, Pbox$AST,
-                   Pbox$TOV,Pbox$STL, Pbox$BLK)
+data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,
+Pbox$TOV,Pbox$STL, Pbox$BLK)
 names(data) <- c('PTS','P3M','P2M','REB','AST','TOV','STL','BLK')
 selp <- which(Pbox$MIN >= 1500)
 data <- data[selp,]
 id <- Pbox$Player[selp]
-# MDS scatter plot
-mds <- MDSmap(data, labels=id)
-print(mds[[1]])
-
-# Single level plot
-mds <- MDSmap(data, labels=id, var="P2M")
-mds[['listPlots']][[1]]
+mds <- MDSmap(data)
+plot(mds, labels=id, z.var="P2M", level.plot=FALSE, palette=rainbow)
 }

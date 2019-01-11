@@ -24,7 +24,7 @@
 #' @export
 
 
-plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max=NULL, ...) {
+plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...) {
 
   if (!is.kclustering(x)) {
     stop("Not a 'kclustering' object")

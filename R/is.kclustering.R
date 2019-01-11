@@ -1,7 +1,7 @@
-#' Functions to check if an object is of class 'kclust'.
+#' Functions to check if an object is of class 'kclustering'.
 #'
 #' @param x any R object
-#' @return returns TRUE if its argument is of class 'kclust' and FALSE otherwise
+#' @return returns TRUE if its argument is of class 'kclustering' and FALSE otherwise
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' OD.Rtg <- FF$ORtg/FF$DRtg

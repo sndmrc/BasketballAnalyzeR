@@ -2,7 +2,7 @@
 % Please edit documentation in R/is.kclustering.R
 \name{is.kclustering}
 \alias{is.kclustering}
-\title{Functions to check if an object is of class 'kclust'.}
+\title{Functions to check if an object is of class 'kclustering'.}
 \usage{
 is.kclustering(x)
 }
@@ -10,10 +10,10 @@ is.kclustering(x)
 \item{x}{any R object}
 }
 \value{
-returns TRUE if its argument is of class 'kclust' and FALSE otherwise
+returns TRUE if its argument is of class 'kclustering' and FALSE otherwise
 }
 \description{
-Functions to check if an object is of class 'kclust'.
+Functions to check if an object is of class 'kclustering'.
 }
 \examples{
 FF <- fourfactors(Tbox,Obox)

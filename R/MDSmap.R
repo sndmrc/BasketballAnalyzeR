@@ -1,32 +1,17 @@
 #' Create some two-dimensional plots for multidimensional scaling (MDS)
 #'
 #' @param data A dataframe to use for plot
-#' @param labels labels
-#' @param subset subset
-#' @param zoom zoom
-#' @param var var
-#' @param title title
-#' @param col.palette Colour palette
-#' @param contour contour
-#' @param arrange A logical value. If TRUE radial plots are arranged in a single plot
-#' @param ncol.arrange  The number of columns in the grid of arranged plots
-#' @return A list with two objects: a list of plots (named 'listPlots') and a dataframe with MDS coordinates
+#' @param std If TRUE, columns of 'data' are standardized
+#' @return An object of class 'MDSmap': a list with 4 objects: points, stress, data, std
 #' @examples
-#' data('Pbox')
-#' data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M,
-#'                    Pbox$OREB + Pbox$DREB, Pbox$AST,
-#'                    Pbox$TOV,Pbox$STL, Pbox$BLK)
+#' data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,
+#' Pbox$TOV,Pbox$STL, Pbox$BLK)
 #' names(data) <- c('PTS','P3M','P2M','REB','AST','TOV','STL','BLK')
 #' selp <- which(Pbox$MIN >= 1500)
 #' data <- data[selp,]
 #' id <- Pbox$Player[selp]
-#' # MDS scatter plot
-#' mds <- MDSmap(data, labels=id)
-#' print(mds[[1]])
-#'
-#' # Single level plot
-#' mds <- MDSmap(data, labels=id, var="P2M")
-#' mds[['listPlots']][[1]]
+#' mds <- MDSmap(data)
+#' plot(mds, labels=id, z.var="P2M", level.plot=FALSE, palette=rainbow)
 #' @export
 #' @importFrom directlabels geom_dl
 #' @importFrom ggplot2 geom_contour
@@ -45,118 +30,27 @@
 #' @importFrom stats sd
 #' @importFrom grDevices rainbow
 
-MDSmap <- function(data, labels = NULL, subset = NULL, zoom = NULL, var = NULL,
-                   title = NULL, col.palette = NULL, contour = FALSE,
-                   arrange = FALSE, ncol.arrange = NULL) {
+MDSmap <- function(data, std=TRUE) {
 
-  X1 <- X2 <- x <- y <- z <- '..level..' <- NULL
-  if (is.null(labels[1])) {
-    labels <- as.character(1:nrow(data))
-  }
-  rownames(data) <- labels
-
-  if (is.null(title)) {
-    title <- "MDS Map"
+  if (!is.matrix(data) & !is.data.frame(data) & (!inherits(data, "dist"))) {
+    stop("'data' must be a matrix, a data frame, or a distance matrix")
   }
 
-  if (!is.null(var)) {
-    if (is.numeric(var)) {
-      varnames <- names(data)[var]
-    } else if (is.character(var)) {
-      varnames <- var
+  if (!inherits(data, "dist")) {
+    if (std) {
+      data_for_dist <- scale(data)
     } else {
-      stop("'var' must be a string or a number")
+      data_for_dist <- data
     }
+    dist.mat <- dist(data_for_dist)
+  } else {
+    dist.mat <- data
   }
-
-  data <- scale(data)
-  dist.mat <- dist(data)
 
   # MDS - 2 dimensions
-  mds <- MASS::isoMDS(dist.mat, k = 2, y = cmdscale(dist.mat, 2), maxit = 100)
-  config <- data.frame(mds$points)
-  stress <- mds$stress
-
-  warn <- "BE CAREFUL: BAD FIT!!"
-  if (stress <= 5) {
-    warn <- "EXCELLENT FIT!!"
-  } else if (stress > 5 & stress <= 10) {
-    warn <- "GOOD FIT"
-  } else {
-    warn <- "FAIR FIT"
-  }
-  subtitle <- paste("Stress Index = ", round(stress, 2), "% - ", warn, sep = "")
-
-
-  if (is.null(var)) { # If 'var' is NULL
-    p <- ggplot(data = config, aes(x = X1, y = X2))
-    if (is.null(zoom)) {
-      xmin <- min(config[, 1]) - sd(config[, 1])
-      xmax <- max(config[, 1]) + sd(config[, 1])
-      p <- p + xlim(c(xmin, xmax))
-    } else {
-      xmin <- zoom[1]
-      xmax <- zoom[2]
-      ymin <- zoom[3]
-      ymax <- zoom[4]
-      p <- p + xlim(c(xmin, xmax)) + ylim(c(ymin, ymax))
-    }
-    if (is.null(subset)) {
-      p <- p + geom_text(aes(label = row.names(config)), size = 3)
-    } else {
-      subset1 <- config[-subset, ]
-      subset2 <- config[subset, ]
-      p <- p + geom_text(data = subset1, aes(label = row.names(subset1)), size = 3) +
-        geom_text(data = subset2, aes(label = row.names(subset2)),
-                  size = 4, col = "tomato", fontface = 2)
-    }
-    p <- p + ggtitle(title) + xlab("") + ylab("") +
-      annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
-      coord_cartesian(clip = 'off') +
-      theme_bw()
-    listPlots <- p
-  } else {  # If 'var' is not NULL
-    if (is.null(col.palette)) {
-      col.palette <- grDevices::rainbow(300, alpha = 1, start = 0.2, end = 1)
-    }
-
-    # List of level plots
-    nv <- length(var)
-    listPlots <- vector(nv, mode = "list")
-    names(listPlots) <- varnames
-    for (k in 1:nv) {
-      dts <- data.frame(config[, 1:2], subset(data, select = var[k]))
-      names(dts) <- c("D1", "D2", "Z")
-      xyz.fit <- stats::loess(Z ~ D1 + D2, dts, control = loess.control(surface = "direct"), degree = 2)
-
-      xnew <- seq(min(dts$D1), max(dts$D1), len = 60)
-      ynew <- seq(min(dts$D2), max(dts$D2), len = 60)
-      dts <- expand.grid(x = xnew, y = ynew)
-      names(dts) <- c("D1", "D2")
-      z <- stats::predict(xyz.fit, newdata = dts)
-
-      mtx_melt <- data.frame(x = rep(xnew, nrow(z)), y = rep(ynew, each = ncol(z)), z = as.vector(z))
-
-      p <- ggplot(data = mtx_melt, aes(x = x, y = y, z = z)) + geom_tile(aes(fill = z)) +
-        scale_fill_gradientn(name = varnames[k], colours = col.palette) +
-        xlab("") + ylab("") + theme(panel.background = element_blank())
-      if (contour) {
-        p <- p + geom_contour(color = "black", alpha = 0.5, show.legend = T) +
-          directlabels::geom_dl(aes(label = ..level..),
-                                method = "far.from.others.borders", stat = "contour")
-      }
-      listPlots[[k]] <- p
-    }
-  }
-
-  # Arrange radial plots
-  if (arrange) {
-    if (is.null(ncol.arrange)) {
-      listPlots <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
-    } else {
-      listPlots <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
-    }
-  }
-
-  list(listPlots = listPlots, Coord = config)
+  out <- MASS::isoMDS(dist.mat, k=2, y=cmdscale(dist.mat, 2), maxit=100)
+  out[["data"]] <- data
+  out[["std"]] <- std
+  class(out) <- append("MDSmap", class(out))
+  return(out)
 }

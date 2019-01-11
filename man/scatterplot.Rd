@@ -11,7 +11,7 @@ scatterplot(data, data.var, z.var = NULL, palette = NULL,
   "box_no_facet", discrete = "facetbar", na = "na"),
   lower = list(continuous = "points", combo = "facethist", discrete =
   "facetbar", na = "na"), diag = list(continuous = "densityDiag",
-  discrete = "barDiag", na = "naDiag"))
+  discrete = "barDiag", na = "naDiag"), draw.plot = TRUE)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -43,6 +43,8 @@ scatterplot(data, data.var, z.var = NULL, palette = NULL,
 \item{lower}{See help for GGally::ggpairs}
 
 \item{diag}{See help for GGally::ggpairs}
+
+\item{draw.plot}{If FALSE, do not draw the plot}
 }
 \value{
 A ggplot2 plot
