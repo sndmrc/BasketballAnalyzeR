@@ -129,15 +129,15 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     p <- p + labs(title=title, x=nm.data.vars[1], y=nm.data.vars[2]) +
       theme_bw()
 
-  }  else if (length(data.var)>2) { ### Matrix of scatter plots
+  }  else if (length(data.var)>2) { ### Matrix of scatter plots ###
     if (is.null(z.var)) {
       df <- data[, data.var]
-      p <- GGally::ggpairs(data, title=title,
+      p <- GGally::ggpairs(df, title=title,
                            lower=lower, upper=upper, diag=diag)
     } else {
       df <- data[, data.var]
-      z <- data[, z.var]
-      p <- GGally::ggpairs(data, mapping=aes(color=z), title=title,
+      df$z <- data[, z.var]
+      p <- GGally::ggpairs(df, mapping=aes(color=z), title=title,
                            lower=lower, upper=upper, diag=diag)
     }
   }
