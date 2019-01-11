@@ -13,11 +13,11 @@ Depends:
     R (>= 3.4),
     ggplot2 (>= 2.2.0)
 Imports: 
+    plyr (>= 1.8.4),
     dplyr (>= 0.7.6),
     tidyr (>= 0.8.1),
     rlang (>= 0.2.1),
     magrittr (>= 1.5),
-    plyr (>= 1.8.4),
     ggrepel (>= 0.8),
     gridExtra (>= 2.3),
     scales (>= 1.0),
@@ -27,13 +27,13 @@ Imports:
     ggplotify (>= 0.0.3),
     network (>= 1.13.0),
     sna (>= 2.4), 
-    GGally (>= 1.4),
     dendextend (>= 1.8),
     circlize (>= 0.4),
     PBSmapping (>= 2.70),
     sp (>= 1.3),
     operators (>= 0.1), 
     stringr (>= 1.3),
+    GGally (>= 1.4), 
     stats,
     grDevices,
     graphics
