@@ -21,15 +21,9 @@
 shotdensity <- function(data, var, shot.type="field", thresholds=NULL, best.scorer=FALSE,
                         period.length=12, bw=NULL, title=NULL) {
 
-  droplev_by_col <- function(data) {
-    idx <- sapply(data, class)=="factor"
-    data[, idx] <- lapply(data[, idx], droplevels)
-    return(data)
-  }
-
   ShotType <- NULL
   if (shot.type=="FT" & (var=="playlength" | var=="shot_distance")) {
-    print("FT & var: invalid selection")
+    warning("'shot.type' and 'var': invalid selection")
   }
 
   if (is.null(title)) {
@@ -70,39 +64,39 @@ shotdensity <- function(data, var, shot.type="field", thresholds=NULL, best.scor
 
     ####
     if (var=="playlength") {
-      ####
+    ####
       if (is.null(thresholds)) {
         thr <- c(5, 20)
       } else {
         thr <- thresholds
       }
       p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=25,
-                            xadj=c(0,0,24), yadj=c(2,2,2,0.1), best.scorer=best.scorer, title=title, xtitle="Play length")
-
+                            xadj=c(0,0,24), yadj=c(2,2,2,0.1), best.scorer=best.scorer, title=title, xlab="Play length")
+    ####
     } else if (var=="totalTime") {
-
+    ####
       if (is.null(thresholds)) {
         thr <- period.length*60*c(2, 3)
       } else {
         thr <- thresholds
       }
       p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=10, title=title,
-                            xadj=c(0,0,period.length*60*4), yadj=c(2,2,2,10), best.scorer=best.scorer, xtitle="Total time")
+                            xadj=c(0,0,period.length*60*4), yadj=c(2,2,2,10), best.scorer=best.scorer, xlab="Total time")
 
-      ####
+    ####
     } else if (var=="periodTime") {
-      ####
+    ####
       if (is.null(thresholds)) {
         thr <- period.length*60*c(1/2,3/4)
       } else {
         thr <- thresholds
       }
       p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=10, title=title,
-                            xadj=c(0,0,period.length*60), yadj=c(2,2,2,10), best.scorer=best.scorer, xtitle="Period time")
+                            xadj=c(0,0,period.length*60), yadj=c(2,2,2,10), best.scorer=best.scorer, xlab="Period time")
 
-      ####
+    ####
     } else if (var=="shot_distance") {
-      ####
+    ####
       if (is.null(thresholds)) {
         if (shot.type=="field") {
           thr <- c(4, 22)
@@ -126,7 +120,7 @@ shotdensity <- function(data, var, shot.type="field", thresholds=NULL, best.scor
         yadj <- c(6,2,2,0.5)
       }
       p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=c(0,60), ntks=21,
-                            xadj=xadj, yadj=yadj, best.scorer=best.scorer, title=title, xtitle="Shot distance")
+                            xadj=xadj, yadj=yadj, best.scorer=best.scorer, title=title, xlab="Shot distance")
 
     }
     p <- p + theme_bw()
@@ -136,7 +130,7 @@ shotdensity <- function(data, var, shot.type="field", thresholds=NULL, best.scor
 }
 
 #' @noRd
-plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=NULL, best.scorer=FALSE, xtitle=NULL) {
+plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=NULL, best.scorer=FALSE, xlab=NULL) {
 
   droplev_by_col <- function(data) {
     idx <- sapply(data, class)=="factor"
@@ -183,7 +177,7 @@ plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=N
     annotate("text", label = as.character(n3), x = x3, y = y3, size = 4, colour = "red",vjust = 2) +
     annotate("text", label = paste("(",as.character(m3p),"% made)",sep=""), x = x3, y = y3, size = 4, colour = "red",vjust = 4) +
     labs(title = title) +
-    scale_x_continuous(name=xtitle, limits=c(xrng[1], xrng[2]), breaks=seq(xrng[1],xrng[2],length.out=ntks),
+    scale_x_continuous(name=xlab, limits=c(xrng[1], xrng[2]), breaks=seq(xrng[1],xrng[2],length.out=ntks),
                        labels=seq(xrng[1],xrng[2],length.out=ntks)) +
     scale_y_continuous(name="Frequency of shots", limits=c(0, NA),labels=NULL)
 
@@ -231,4 +225,9 @@ plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=N
   return(p)
 }
 
-
+#' @noRd
+droplev_by_col <- function(data) {
+  idx <- sapply(data, class)=="factor"
+  data[, idx] <- lapply(data[, idx], droplevels)
+  return(data)
+}
