@@ -20,7 +20,7 @@ shotdensity(data, var, shot.type = "field", thresholds = NULL,
 
 \item{period.length}{period.length}
 
-\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{bw.nrd})}
+\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})}
 
 \item{title}{Plot title}
 }

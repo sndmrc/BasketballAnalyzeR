@@ -6,7 +6,7 @@
 #' @param thresholds A numerical vector with two thresholds defining the range boundaries of the three regions
 #' @param best.scorer If TRUE, display the player who scored the higher number of points in the corresponding interval
 #' @param period.length period.length
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{bw.nrd})
+#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})
 #' @param title Plot title
 #' @return A ggplot2 plot
 #' @examples
