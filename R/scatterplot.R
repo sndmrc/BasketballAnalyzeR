@@ -29,7 +29,6 @@
 #' scatterplot(data, data.var=1:4, z.var="Team")
 #' @export
 #' @importFrom GGally ggpairs
-#' @importFrom ggplot2 empty
 
 scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, repel_labels=FALSE, text_label=TRUE,
                         subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend='yes',

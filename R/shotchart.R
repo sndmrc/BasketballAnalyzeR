@@ -19,7 +19,6 @@
 #' @param pt.alpha Transparency of points in the scatter plot
 #' @param nbins Number of bins in the 'density-hexbin' plot
 #' @return A ggplot2 object
-#'
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' subdata <- subset(PbP, player=="Kevin Durant" & result!="")
