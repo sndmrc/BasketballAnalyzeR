@@ -12,13 +12,13 @@
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' data.team  <- subset(PbP, team=="GSW" & result!="")
-#' shotdensity(data=data.team, shot.type="2P", var="playlength", best.scorer=TRUE)
+#' densityplot(data=data.team, shot.type="2P", var="playlength", best.scorer=TRUE)
 #' data.opp <- subset(PbP, team!="GSW" & result!="")
-#' shotdensity(data=data.opp, shot.type="2P", var="shot_distance", best.scorer=TRUE)
+#' densityplot(data=data.opp, shot.type="2P", var="shot_distance", best.scorer=TRUE)
 #' @export
 #' @importFrom stats density
 
-shotdensity <- function(data, var, shot.type="field", thresholds=NULL, best.scorer=FALSE,
+densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scorer=FALSE,
                         period.length=12, bw=NULL, title=NULL) {
 
   ShotType <- NULL

@@ -15,11 +15,11 @@
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & !is.na(shot_distance))
 #' plrys <- c("Stephen Curry","Kevin Durant")
-#' Epoints(data=PbP.GSW, bw=10, players=plrys, col.team='dodgerblue',
+#' expectedpts(data=PbP.GSW, bw=10, players=plrys, col.team='dodgerblue',
 #'         palette=colorRampPalette(c("gray","black")), col.hline="red")
 #' @export
 
-Epoints <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.team="gray",
+expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.team="gray",
           col.hline="black", xlab="Shot distance", title=NULL, legend=TRUE, var="shot_distance") {
 
   player <- Player <- NULL
