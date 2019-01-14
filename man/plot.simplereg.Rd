@@ -5,8 +5,8 @@
 \title{Plot simple regression}
 \usage{
 \method{plot}{simplereg}(x, labels = NULL, subset = NULL, Lx = 0.01,
-  Ux = 0.99, Ly = 0.01, Uy = 0.99, title = NULL, xtitle = NULL,
-  ytitle = NULL, repel = TRUE, ...)
+  Ux = 0.99, Ly = 0.01, Uy = 0.99, title = "Simple regression",
+  xtitle = NULL, ytitle = NULL, repel = TRUE, ...)
 }
 \arguments{
 \item{x}{An object of class 'simplereg'}

@@ -26,7 +26,7 @@
 #' @importFrom ggplot2 geom_abline
 
 plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99, Ly = 0.01,
-                      Uy = 0.99, title = NULL, xtitle = NULL, ytitle = NULL, repel = TRUE, ...) {
+    Uy = 0.99, title = "Simple regression", xtitle = NULL, ytitle = NULL, repel = TRUE, ...) {
 
   if (!is.simplereg(x)) {
     stop("Not a 'simplereg' object")
@@ -39,22 +39,18 @@ plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99
   R2 <- x[["R2"]]
   R2text <- paste(round(R2, 4) * 100, "*'%'", sep = "")
 
-  if (is.null(title)) {
-    title <- "Simple regression"
-  }
-
-  if (is.null(labels)) {
-    labels <- as.character(1:length(xx))
-  }
-
-  df1 <- data.frame(x = xx, y = yy, label = labels)
-
   if (!is.null(subset)) {
     if (subset[1] == "quant") {
       subset <- which(xx < stats::quantile(xx, Lx) | xx > stats::quantile(xx, Ux) | yy <
                         stats::quantile(yy, Ly) | yy > stats::quantile(yy, Uy))
     }
+  } else if (is.null(subset) & !is.null(labels)) {
+    subset <- 1:length(xx)
   }
+  if (is.null(labels)) {
+    labels <- as.character(1:length(xx))
+  }
+  df1 <- data.frame(x = xx, y = yy, label = labels)
   df2 <- df1[subset, ]
 
   p <- ggplot(data = df1, aes(x = x, y = y)) + geom_point()
@@ -76,29 +72,21 @@ plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99
       lbl <- paste("'Y =", round(b[1], 2), "-", round(abs(b[2]), 2), "X'*~~~~~~~~ R^2 ==",
                    R2text)
     }
-    if (cor(df1$x, df1$y) > 0) {
-      p <- p + geom_text(aes(x = min(x), y = max(y), label = lbl), hjust = 0,
-                         color = "lightsteelblue4", parse = T)
-    } else {
-      p <- p + geom_text(aes(x = max(x), y = max(y), label = lbl), hjust = 1,
-                         color = "lightsteelblue4", parse = T)
-    }
   } else if (type == "pol") {
     idx <- order(xx)
     df3 <- data.frame(x = xx[idx], y = mod$fitted[idx])
-    print(paste("R^2 = ", R2text, sep = ""))
-    p <- p + geom_line(data = df3, aes(x = x, y = y), color = "olivedrab3", lwd = 1) +
-      geom_text(aes(x = min(x), y = max(y), label = paste("R^2 ==", R2text)),
-                hjust = 0, color = "olivedrab3", parse = T)
+    lbl <- paste0("R^2 == ", R2text)
+    p <- p + geom_line(data = df3, aes(x = x, y = y), color = "olivedrab3", lwd = 1)
   } else if (type == "ks") {
-    p <- p + geom_line(aes(x = mod$x, y = mod$y), color = "olivedrab3", lwd = 1) +
-      geom_text(aes(x = min(x), y = max(y), label = paste("R^2 ==", R2text)),
-                hjust = 0, color = "olivedrab3")
+    lbl <- paste0("R^2 == ", R2text)
+    p <- p + geom_line(aes(x = mod$x, y = mod$y), color = "olivedrab3", lwd = 1)
   }
 
-  p <- p + labs(title = title, x = xtitle, y = ytitle)
+  p <- p + annotate(geom = "text", label = lbl, x = Inf, y = Inf, hjust = 1, vjust = -0.5, parse = TRUE) +
+    coord_cartesian(clip = 'off') +
+    labs(title = title, x = xtitle, y = ytitle) +
+    theme_bw()
 
   print(p)
   invisible(p)
-
 }

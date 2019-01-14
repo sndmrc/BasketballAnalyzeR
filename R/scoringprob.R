@@ -22,7 +22,7 @@
 #' @importFrom grDevices hcl
 
 scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, title=NULL,
-                      palette=gg_color_hue, col.team="steelblue1", legend=TRUE) {
+                      palette=gg_color_hue, col.team='dodgerblue', legend=TRUE) {
 
   ShotType <- NULL
   if (shot.type=="FT" & (var=="playlength" | var=="shot_distance")) {
