@@ -5,7 +5,7 @@
 \title{Scoring probability plot}
 \usage{
 scoringprob(data, var, shot.type, players = NULL, bw = 20,
-  period.length = 12, title = NULL, palette = NULL,
+  period.length = 12, title = NULL, palette = gg_color_hue,
   col.team = "steelblue1", legend = TRUE)
 }
 \arguments{
@@ -17,7 +17,7 @@ scoringprob(data, var, shot.type, players = NULL, bw = 20,
 
 \item{players}{Subset of players to be displayed}
 
-\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})}
+\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})}
 
 \item{period.length}{period.length}
 

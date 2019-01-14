@@ -4,7 +4,7 @@
 #' @param var A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".
 #' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "field"
 #' @param players Subset of players to be displayed
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})
+#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})
 #' @param period.length period.length
 #' @param title Plot title
 #' @param palette Color palette
@@ -22,10 +22,10 @@
 #' @importFrom grDevices hcl
 
 scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, title=NULL,
-                      palette=NULL, col.team="steelblue1", legend=TRUE) {
+                      palette=gg_color_hue, col.team="steelblue1", legend=TRUE) {
 
   ShotType <- NULL
-  if (shot.type=="FT" & (var=="play length" | var=="shot distance")) {
+  if (shot.type=="FT" & (var=="playlength" | var=="shot_distance")) {
     print("FT & var: invalid selection")
   }
 
@@ -33,15 +33,11 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
     title <- shot.type
   }
 
-  if (is.null(palette)) {
-    palette <- gg_color_hue
-  }
-
   if (is.null(bw)) {
     bw <- "nrd0"
   }
 
-  if(shot.type!="FT" | (var!="play length" & var!="shot distance")){
+  if (shot.type!="FT" | (var!="playlength" & var!="shot_distance")) {
 
     if (shot.type!="field") {
       data <- subset(data, ShotType==shot.type)
@@ -87,6 +83,7 @@ ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Sco
   ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
   ksm <- as.data.frame(ksm[c("x", "y")])
   ksm$Player <- "Team"
+  npl <- 0
   if (!is.null(players)) {
     npl <- length(players)
     kmslst <- vector(npl+1, mode="list")
@@ -106,11 +103,11 @@ ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Sco
     cols <- palette(length(players))
     cols[players=="Team"] <- col.team
     p <- ggplot(ksm, aes(x=x, y=y, color=Player)) +
-      geom_line(lwd=2) +
+      geom_line(lwd=1.5) +
       scale_color_manual(values=cols, breaks=players)
   } else {
     p <- ggplot(ksm, aes(x=x, y=y)) +
-      geom_line(color = col.team, lwd=2)
+      geom_line(color = col.team, lwd=1.5)
   }
   p <- p + labs(title = title) +
     scale_y_continuous(name=ylab) +
@@ -120,7 +117,7 @@ ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Sco
                                 breaks=seq(xrng[1],xrng[2],length.out=ntks),
                                 labels=seq(xrng[1],xrng[2],length.out=ntks))
   } else {
-    p <- p + scale_x_continuous(name=xlab)
+    p <- p + xlab(xlab)
   }
   if (!legend) {
     p <- p + theme(legend.position="none")
