@@ -10,12 +10,13 @@
 #'                    Pbox$TOV,Pbox$STL,Pbox$BLK)/Pbox$MIN
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
-#' out <- corr.analysis(data)
+#' out <- corranalysis(data)
+#' plot(out)
 #' @export
 #' @importFrom corrplot cor.mtest
 #' @importFrom stats cor
 
-corr.analysis <- function(data, threshold = 0.5, sl = 0.01) {
+corranalysis <- function(data, threshold = 0.5, sl = 0.01) {
 
   cor_mtx <- stats::cor(data, use = "pairwise.complete.obs")
   cor_mtest <- corrplot::cor.mtest(data)
@@ -27,7 +28,7 @@ corr.analysis <- function(data, threshold = 0.5, sl = 0.01) {
 
   lst <- list(cor.mtx = cor_mtx, cor.mtx.trunc = cor_mtx_trunc,
               cor.mtest = cor_mtest, threshold = threshold, siglevel = sl)
-  class(lst) <- append("corr.analysis", class(lst))
+  class(lst) <- append("corranalysis", class(lst))
   invisible(lst)
 
 }

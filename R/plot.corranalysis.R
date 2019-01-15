@@ -10,10 +10,10 @@
 #'                    Pbox$TOV,Pbox$STL,Pbox$BLK)/Pbox$MIN
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
-#' out <- corr.analysis(data)
+#' out <- corranalysis(data)
 #' plot(out)
 #' @export
-#' @method plot corr.analysis
+#' @method plot corranalysis
 #' @importFrom ggplotify as.ggplot
 #' @importFrom network network
 #' @importFrom network set.edge.attribute
@@ -36,7 +36,7 @@
 #' @importFrom corrplot colorlegend
 
 
-plot.corr.analysis <- function(x, title = NULL, ...) {
+plot.corranalysis <- function(x, title = NULL, ...) {
 
   corr_plot_mixed <- function(cor_mtx, cor_mtest, sl) {
     par(mar = c(0, 0, 0, 0), bg = "white")
@@ -44,8 +44,8 @@ plot.corr.analysis <- function(x, title = NULL, ...) {
     corr_plot(cor_mtx, type = "lower", method = "number", diag = F, add = T, tl.pos = "n", cl.pos = "n", p.mat = cor_mtest$p, sig.level = sl)
   }
 
-  if (!is.corr.analysis(x)) {
-    stop("Not a 'corr.analysis' object")
+  if (!is.corranalysis(x)) {
+    stop("Not a 'corranalysis' object")
   }
 
   cor_mtx <- x[["cor.mtx"]]
@@ -57,13 +57,18 @@ plot.corr.analysis <- function(x, title = NULL, ...) {
   p1 <- ggplotify::as.ggplot(as.expression(txt))
 
   net <- network::network(cor_mtx_trunc, matrix.type = "adjacency", ignore.eval = FALSE, names.eval = "weights")
-  network::set.edge.attribute(net, "edge.color", ifelse(net %e% "weights" > 0, "lightsteelblue", "tomato"))
-  network::set.edge.attribute(net, "edge.size", 4 * abs(net %e% "weights"))
-  p2 <- GGally::ggnet2(net, label = T, mode = "circle", node.color = "white", edge.size = "edge.size", edge.color = "edge.color")
+  netwt <- (net %e% "weights")
+  if (!is.null(netwt)) {
+    network::set.edge.attribute(net, "edge.color", ifelse(netwt > 0, "lightsteelblue", "tomato"))
+    network::set.edge.attribute(net, "edge.size", 4 * abs(netwt))
+    p2 <- GGally::ggnet2(net, label = T, mode = "circle", node.color = "white", edge.size = "edge.size", edge.color = "edge.color")
+  } else {
+    p2 <- GGally::ggnet2(net, label = T, mode = "circle", node.color = "white")
+  }
 
   gridExtra::grid.arrange(p1, p2, nrow = 1)
-  lst <- list(corrplot = p1, netplot = p2)
-  invisible(lst)
+  listPlot <- list(corrplot = p1, netplot = p2)
+  invisible(listPlot)
 }
 
 #' @note pure function

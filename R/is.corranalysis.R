@@ -8,10 +8,10 @@
 #'                    Pbox$TOV,Pbox$STL,Pbox$BLK)/Pbox$MIN
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
-#' out <- corr.analysis(data)
-#' is.corr.analysis(out)
+#' out <- corranalysis(data)
+#' is.corranalysis(out)
 #' @export
 
-is.corr.analysis <- function(x) {
-  inherits(x, "corr.analysis")
+is.corranalysis <- function(x) {
+  inherits(x, "corranalysis")
 }
