@@ -16,7 +16,7 @@
 #' @importFrom corrplot cor.mtest
 #' @importFrom stats cor
 
-corranalysis <- function(data, threshold = 0.5, sl = 0.01) {
+corranalysis <- function(data, threshold = 0, sl = 0.05) {
 
   cor_mtx <- stats::cor(data, use = "pairwise.complete.obs")
   cor_mtest <- corrplot::cor.mtest(data)

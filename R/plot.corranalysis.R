@@ -1,6 +1,7 @@
 #' Plot inequality
 #'
 #' @param x A 'inequality' objects
+#' @param horizontal If TRUE, the two plots are arranged horizontally
 #' @param title Plot title
 #' @param ... other graphical parameters
 #' @return A ggplot2 object
@@ -11,7 +12,7 @@
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
 #' out <- corranalysis(data)
-#' plot(out)
+#' plot(out, threshold=0.5)
 #' @export
 #' @method plot corranalysis
 #' @importFrom ggplotify as.ggplot
@@ -34,10 +35,18 @@
 #' @importFrom corrplot corrMatOrder
 #' @importFrom corrplot corrRect.hclust
 #' @importFrom corrplot colorlegend
+#' @importFrom ggnetwork geom_nodes
+#' @importFrom ggnetwork geom_edges
+#' @importFrom ggnetwork ggnetwork
+#' @importFrom ggnetwork theme_blank
+#' @importFrom ggnetwork geom_nodetext_repel
+#' @importFrom ggplot2 scale_alpha
+#' @importFrom ggplot2 scale_colour_gradientn
 
 
-plot.corranalysis <- function(x, title = NULL, ...) {
+plot.corranalysis <- function(x, horizontal= TRUE, title = NULL, ...) {
 
+  y <- xend <- yend <- edge.color <- vertex.names <- NULL
   corr_plot_mixed <- function(cor_mtx, cor_mtest, sl) {
     par(mar = c(0, 0, 0, 0), bg = "white")
     corr_plot(cor_mtx, type = "upper", method = "ellipse", diag = F, tl.pos = "n", p.mat = cor_mtest$p, sig.level = sl)
@@ -47,6 +56,8 @@ plot.corranalysis <- function(x, title = NULL, ...) {
   if (!is.corranalysis(x)) {
     stop("Not a 'corranalysis' object")
   }
+
+  if (horizontal) ncol=2 else ncol=1
 
   cor_mtx <- x[["cor.mtx"]]
   cor_mtest <- x[["cor.mtest"]]
@@ -58,15 +69,30 @@ plot.corranalysis <- function(x, title = NULL, ...) {
 
   net <- network::network(cor_mtx_trunc, matrix.type = "adjacency", ignore.eval = FALSE, names.eval = "weights")
   netwt <- (net %e% "weights")
+  pal <- colorRampPalette(c("blue","white","red"))
+
+  cols <- rev(colorRampPalette(c("#67001F", "#B2182B", "#D6604D",
+                                 "#F4A582", "#FDDBC7", "#FFFFFF", "#D1E5F0", "#92C5DE",
+                                 "#4393C3", "#2166AC", "#053061"))(200))
   if (!is.null(netwt)) {
-    network::set.edge.attribute(net, "edge.color", ifelse(netwt > 0, "lightsteelblue", "tomato"))
-    network::set.edge.attribute(net, "edge.size", 4 * abs(netwt))
-    p2 <- GGally::ggnet2(net, label = T, mode = "circle", node.color = "white", edge.size = "edge.size", edge.color = "edge.color")
+    network::set.edge.attribute(net, "edge.color", netwt)
+    datanet <- ggnetwork::ggnetwork(net, layout = "circle")
+    p2 <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
+      ggnetwork::geom_nodes(shape=21, fill="#D6EAF877", color="#3498DB77", size=15) +
+      ggnetwork::geom_edges(aes(color=edge.color, alpha=edge.color), size=1.5) +
+      scale_colour_gradientn("", colors = cols, limits=c(-1,1)) +
+      scale_alpha(guide=FALSE) +
+      ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
+      ggnetwork::theme_blank()
   } else {
-    p2 <- GGally::ggnet2(net, label = T, mode = "circle", node.color = "white")
+    datanet <- ggnetwork::ggnetwork(net, layout = "circle")
+    p2 <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
+      ggnetwork::geom_nodes(shape=21, fill="#D6EAF877", color="#3498DB77", size=15) +
+      ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
+      ggnetwork::theme_blank()
   }
 
-  gridExtra::grid.arrange(p1, p2, nrow = 1)
+  gridExtra::grid.arrange(p1, p2, ncol = ncol)
   listPlot <- list(corrplot = p1, netplot = p2)
   invisible(listPlot)
 }

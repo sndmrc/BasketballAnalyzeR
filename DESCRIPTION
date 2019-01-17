@@ -33,7 +33,9 @@ Imports:
     sp (>= 1.3),
     operators (>= 0.1), 
     stringr (>= 1.3),
-    GGally (>= 1.4), 
+    GGally (>= 1.4),
+    ggnetwork (>= 0.5), 
+    statnet.common (>= 4.2),
     stats,
     grDevices,
     graphics

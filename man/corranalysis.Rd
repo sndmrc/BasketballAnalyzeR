@@ -4,7 +4,7 @@
 \alias{corranalysis}
 \title{Correlation analysis}
 \usage{
-corranalysis(data, threshold = 0.5, sl = 0.01)
+corranalysis(data, threshold = 0, sl = 0.05)
 }
 \arguments{
 \item{data}{A dataframe}

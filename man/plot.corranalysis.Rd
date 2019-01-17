@@ -4,10 +4,12 @@
 \alias{plot.corranalysis}
 \title{Plot inequality}
 \usage{
-\method{plot}{corranalysis}(x, title = NULL, ...)
+\method{plot}{corranalysis}(x, horizontal = TRUE, title = NULL, ...)
 }
 \arguments{
 \item{x}{A 'inequality' objects}
+
+\item{horizontal}{If TRUE, the two plots are arranged horizontally}
 
 \item{title}{Plot title}
 
@@ -26,5 +28,5 @@ data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
 names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 data <- subset(data, Pbox$MIN >= 500)
 out <- corranalysis(data)
-plot(out)
+plot(out, threshold=0.5)
 }
