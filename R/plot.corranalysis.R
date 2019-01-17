@@ -11,8 +11,8 @@
 #'                    Pbox$TOV,Pbox$STL,Pbox$BLK)/Pbox$MIN
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
-#' out <- corranalysis(data)
-#' plot(out, threshold=0.5)
+#' out <- corranalysis(data, threshold=0.5)
+#' plot(out)
 #' @export
 #' @method plot corranalysis
 #' @importFrom ggplotify as.ggplot
