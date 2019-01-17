@@ -10,7 +10,7 @@
 #'                    Pbox$TOV,Pbox$STL,Pbox$BLK)/Pbox$MIN
 #' names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 #' data <- subset(data, Pbox$MIN >= 500)
-#' out <- corranalysis(data)
+#' out <- corranalysis(data, threshold = 0.5)
 #' plot(out)
 #' @export
 #' @importFrom corrplot cor.mtest
