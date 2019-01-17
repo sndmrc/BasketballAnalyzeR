@@ -41,10 +41,12 @@
 #' @importFrom ggnetwork theme_blank
 #' @importFrom ggnetwork geom_nodetext_repel
 #' @importFrom ggplot2 scale_alpha
+#' @importFrom ggplot2 aes_string
 #' @importFrom ggplot2 scale_colour_gradientn
+#' @importFrom statnet.common order
 
 
-plot.corranalysis <- function(x, horizontal= TRUE, title = NULL, ...) {
+plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
 
   y <- xend <- yend <- edge.color <- vertex.names <- NULL
   corr_plot_mixed <- function(cor_mtx, cor_mtest, sl) {
@@ -69,8 +71,6 @@ plot.corranalysis <- function(x, horizontal= TRUE, title = NULL, ...) {
 
   net <- network::network(cor_mtx_trunc, matrix.type = "adjacency", ignore.eval = FALSE, names.eval = "weights")
   netwt <- (net %e% "weights")
-  pal <- colorRampPalette(c("blue","white","red"))
-
   cols <- rev(colorRampPalette(c("#67001F", "#B2182B", "#D6604D",
                                  "#F4A582", "#FDDBC7", "#FFFFFF", "#D1E5F0", "#92C5DE",
                                  "#4393C3", "#2166AC", "#053061"))(200))

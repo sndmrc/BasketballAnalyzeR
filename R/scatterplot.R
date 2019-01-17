@@ -136,7 +136,8 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     } else {
       df <- data[, data.var]
       df$z <- data[, z.var]
-      p <- GGally::ggpairs(df, mapping=aes(color=z), title=title,
+      names(df)[ncol(df)] <- z.var
+      p <- GGally::ggpairs(df, mapping=aes_string(color=z.var), title=title,
                            lower=lower, upper=upper, diag=diag)
     }
   }
