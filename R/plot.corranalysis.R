@@ -66,15 +66,21 @@ plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
   sig_lev <- x[["siglevel"]]
   cor_mtx_trunc <- x[["cor.mtx.trunc"]]
 
+  # Correlation plot
   txt <- substitute(corr_plot_mixed(cor_mtx, cor_mtest, sig_lev))
   p1 <- ggplotify::as.ggplot(as.expression(txt))
 
+  # Network of correlations
+  allzero <- all(cor_mtx_trunc==0)
+  if (allzero) {
+    cor_mtx_trunc[1:2,1:2] <- 0.01
+  }
   net <- network::network(cor_mtx_trunc, matrix.type = "adjacency", ignore.eval = FALSE, names.eval = "weights")
   netwt <- (net %e% "weights")
   cols <- rev(colorRampPalette(c("#67001F", "#B2182B", "#D6604D",
                                  "#F4A582", "#FDDBC7", "#FFFFFF", "#D1E5F0", "#92C5DE",
                                  "#4393C3", "#2166AC", "#053061"))(200))
-  if (!is.null(netwt)) {
+  if (!allzero) {
     network::set.edge.attribute(net, "edge.color", netwt)
     datanet <- ggnetwork::ggnetwork(net, layout = "circle")
     p2 <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
