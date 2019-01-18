@@ -63,11 +63,11 @@ plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
 
   cor_mtx <- x[["cor.mtx"]]
   cor_mtest <- x[["cor.mtest"]]
-  sig_lev <- x[["siglevel"]]
+  sig_lev <- x[["sig.level"]]
   cor_mtx_trunc <- x[["cor.mtx.trunc"]]
 
   # Correlation plot
-  txt <- substitute(corr_plot_mixed(cor_mtx, cor_mtest, sig_lev))
+  txt <- substitute(corr_plot_mixed(cor_mtx, cor_mtest, 1-sig_lev))
   p1 <- ggplotify::as.ggplot(as.expression(txt))
 
   # Network of correlations

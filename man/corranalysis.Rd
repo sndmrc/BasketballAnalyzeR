@@ -4,17 +4,17 @@
 \alias{corranalysis}
 \title{Correlation analysis}
 \usage{
-corranalysis(data, threshold = 0, sl = 0.05)
+corranalysis(data, threshold = 0, sig.level = 0.95)
 }
 \arguments{
 \item{data}{A dataframe}
 
 \item{threshold}{threshold}
 
-\item{sl}{Significance level}
+\item{sig.level}{Significance level}
 }
 \value{
-A list with the following elements: corr.mtx, corr.mtx.trunc, cor.mtest, threshold, siglevel
+A list with the following elements: corr.mtx, corr.mtx.trunc, cor.mtest, threshold, sig.level
 }
 \description{
 Correlation analysis
