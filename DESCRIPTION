@@ -13,6 +13,7 @@ Depends:
     R (>= 3.4),
     ggplot2 (>= 2.2.0)
 Imports: 
+    hexbin (>= 1.27),
     plyr (>= 1.8.4),
     dplyr (>= 0.7.6),
     tidyr (>= 0.8.1),
