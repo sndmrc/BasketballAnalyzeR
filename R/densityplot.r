@@ -2,7 +2,7 @@
 #'
 #' @param data A play-by-play data frame
 #' @param var A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".
-#' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "field".
+#' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".
 #' @param thresholds A numerical vector with two thresholds defining the range boundaries of the three regions
 #' @param best.scorer If TRUE, display the player who scored the higher number of points in the corresponding interval
 #' @param period.length period.length
