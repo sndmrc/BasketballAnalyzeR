@@ -48,7 +48,7 @@
 
 shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
      type=NULL, scatter=FALSE, num.sect=7, n=1000, col.limits=c(NA,NA),
-     courtline.col = "black", bg.col="white", legend=TRUE, drop.levels=TRUE,
+     courtline.col = "black", bg.col="white", legend=FALSE, drop.levels=TRUE,
      pt.col="black", pt.alpha=0.5,  nbins=25, palette="mixed") {
 
   if (num.sect<4) {
@@ -163,8 +163,10 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           color=pt.col, alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
-    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
-             theme(legend.position = 'none')
+    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
+    if (!legend) {
+      p <- p + theme(legend.position = 'none')
+    }
 
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
@@ -175,8 +177,10 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
-    p <- p +  coord_fixed()+ themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col) +
-              theme(legend.position = 'none')
+    p <- p +  coord_fixed()+ themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
+    if (!legend) {
+      p <- p + theme(legend.position = 'none')
+    }
 
   } else if (type=="density-hexbin") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +

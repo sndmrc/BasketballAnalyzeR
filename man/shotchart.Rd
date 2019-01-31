@@ -7,7 +7,7 @@
 shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
   type = NULL, scatter = FALSE, num.sect = 7, n = 1000,
   col.limits = c(NA, NA), courtline.col = "black", bg.col = "white",
-  legend = TRUE, drop.levels = TRUE, pt.col = "black",
+  legend = FALSE, drop.levels = TRUE, pt.col = "black",
   pt.alpha = 0.5, nbins = 25, palette = "mixed")
 }
 \arguments{

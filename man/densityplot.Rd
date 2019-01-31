@@ -12,7 +12,7 @@ densityplot(data, var, shot.type = "field", thresholds = NULL,
 
 \item{var}{A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".}
 
-\item{shot.type}{A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "field".}
+\item{shot.type}{A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".}
 
 \item{thresholds}{A numerical vector with two thresholds defining the range boundaries of the three regions}
 
