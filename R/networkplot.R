@@ -38,11 +38,11 @@ networkplot <- function(data, assist="assist", player="player",
 
   x <- y <- xend <- yend <- N <- N2P3P_made_with_assist <- N2P3P_made <- event_type <- vertex.names <- NULL
   data <- droplev_by_col(data)
-  data_no_assist <- subset(data, assist!="")
+  data <- data %>% dplyr::rename(assist=!!assist, player=!!player)
+  data_no_assist <- data %>%  dplyr::filter(assist!="")
   data_no_assist <- droplev_by_col(data_no_assist)
-  assist_var <- data_no_assist[, assist]
-  player_var <- data_no_assist[, player]
-  tbl <- as.matrix(table(assist_var, player_var, useNA="no"))
+  assist_player <- data_no_assist %>% dplyr::select(assist, player)
+  tbl <- as.matrix(table(assist_player, useNA="no"))
   if (nrow(tbl)!=ncol(tbl)) {
     stop("The number of players in 'assist' and 'player' variables are not the same.")
   }
