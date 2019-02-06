@@ -31,7 +31,6 @@ A ggplot2 object
 Create a graph with a barplot and a line plot
 }
 \examples{
-data("Pbox")
 dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
 barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
         line="MIN", order.by="Player",
