@@ -109,9 +109,7 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
       if (is.null(min.mid.max)) {
         ming <- min(prfls[, -pos.clst.nm])
         maxg <- max(prfls[, -pos.clst.nm])
-        #ming <- -max(mn,mx)
         midg <- 0
-        #maxg <- max(mn,mx)
         min.mid.max <- c(ming,midg,maxg)
       }
       p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange,

@@ -34,10 +34,10 @@ plot.inequality <- function(x, title = NULL, ...) {
        geom_line(aes(y = Q), col = "dodgerblue", lwd = 1.2) +
        geom_line(aes(y = Qmax), col = "dodgerblue", lwd = 1.2) +
        geom_line(aes(y = F), col = "dodgerblue", lwd = 1.2) +
-       annotate("text", x = 25, y = 80, label = paste("Gini index = ", gini, "%", sep = ""), size = 6) +
+       annotate("text", x = 25, y = 80, label = paste("Gini index = ", gini, "%", sep = ""), size = 5) +
        labs(title=title, x="", y="")
 
-  print(p)
-  invisible(p)
+  #print(p)
+  return(p)
 
 }

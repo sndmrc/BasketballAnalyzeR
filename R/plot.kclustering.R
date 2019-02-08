@@ -64,14 +64,13 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
     }
     pos.clst.nm <- which(names(profiles)=="clustnames")
     if (is.null(min.mid.max)) {
-      mn <- min(profiles[, -pos.clst.nm])
-      mx <- max(profiles[, -pos.clst.nm])
-      ming <- -max(mn,mx)
+      ming <- min(profiles[, -pos.clst.nm])
+      maxg <- max(profiles[, -pos.clst.nm])
       midg <- 0
-      maxg <- max(mn,mx)
       min.mid.max <- c(ming,midg,maxg)
     }
-    p <- radialprofile(data=profiles[,-pos.clst.nm], title=title, ncol.arrange=ncol.arrange, std=FALSE, min.mid.max=min.mid.max)
+    p <- radialprofile(data=profiles[,-pos.clst.nm], title=title, ncol.arrange=ncol.arrange,
+                       std=FALSE, min.mid.max=min.mid.max)
   }
   invisible(p)
 }
