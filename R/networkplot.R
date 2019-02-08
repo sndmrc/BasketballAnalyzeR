@@ -5,6 +5,8 @@
 #' @param player player
 #' @param layout Network vertex layout algorithms
 #' @param layout.par Paramater for network vertex layout algorithms
+#' @param edge.thr Threshold for edge values; values below the threshold are set to 0
+#' @param edge.col.lim A numeric vector of length two providing limits of the scale for edge color
 #' @param node.data Data with variables for node size and node color
 #' @param node.size A string with the variable name for node size
 #' @param node.col A string with the variable name for node color
@@ -32,6 +34,7 @@
 
 networkplot <- function(data, assist="assist", player="player",
                         layout="kamadakawai", layout.par=list(),
+                        edge.thr=0, edge.col.lim=NULL,
                         node.data=NULL, node.size=NULL, node.col=NULL, node.col.lim=NULL,
                         node.pal=colorRampPalette(c("white","blue", "red")),
                         edge.pal=colorRampPalette(c("white","blue", "red"))) {
@@ -43,6 +46,7 @@ networkplot <- function(data, assist="assist", player="player",
   data_no_assist <- droplev_by_col(data_no_assist)
   assist_player <- data_no_assist %>% dplyr::select(assist, player)
   tbl <- as.matrix(table(assist_player, useNA="no"))
+  tbl[tbl < edge.thr] <- 0
   if (nrow(tbl)!=ncol(tbl)) {
     stop("The number of players in 'assist' and 'player' variables are not the same.")
   }
@@ -63,6 +67,9 @@ networkplot <- function(data, assist="assist", player="player",
     network::set.vertex.attribute(net, "node.col", nodes$node.col)
     if (is.null(node.col.lim)) {
       node.col.lim <- c(0,100)
+    }
+    if (is.null(node.col.lim)) {
+      edge.col.lim <- range(tbl)
     }
 
   } else if (!is.null(node.size) & !is.null(node.col)) {
@@ -90,7 +97,7 @@ networkplot <- function(data, assist="assist", player="player",
     geom_edges(aes(color=N, alpha=N), size=1.5, curvature=0.1, arrow=arrow(length=unit(6, "pt"), type="closed")) +
     scale_size_continuous(paste0("Node size:\n",node.size), breaks=pretty(nodes$node.size,n=7)) +
     scale_fill_gradientn(paste0("Node color:\n",node.col), limits=node.col.lim, colors=node.pal(100)) +
-    scale_colour_gradientn("Edge color:\nAssist num.", colors=edge.pal(100)) +
+    scale_colour_gradientn("Edge color:\nAssist num.", limits=edge.col.lim, colors=edge.pal(100)) +
     scale_alpha(guide=FALSE) +
     theme_blank() +
     guides(fill=guide_colorbar(order=1), size=guide_legend(order=3))

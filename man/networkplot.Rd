@@ -5,8 +5,9 @@
 \title{Create a network plot}
 \usage{
 networkplot(data, assist = "assist", player = "player",
-  layout = "kamadakawai", layout.par = list(), node.data = NULL,
-  node.size = NULL, node.col = NULL, node.col.lim = NULL,
+  layout = "kamadakawai", layout.par = list(), edge.thr = 0,
+  edge.col.lim = NULL, node.data = NULL, node.size = NULL,
+  node.col = NULL, node.col.lim = NULL,
   node.pal = colorRampPalette(c("white", "blue", "red")),
   edge.pal = colorRampPalette(c("white", "blue", "red")))
 }
@@ -20,6 +21,10 @@ networkplot(data, assist = "assist", player = "player",
 \item{layout}{Network vertex layout algorithms}
 
 \item{layout.par}{Paramater for network vertex layout algorithms}
+
+\item{edge.thr}{Threshold for edge values; values below the threshold are set to 0}
+
+\item{edge.col.lim}{A numeric vector of length two providing limits of the scale for edge color}
 
 \item{node.data}{Data with variables for node size and node color}
 
