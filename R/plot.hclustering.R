@@ -107,14 +107,15 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
       }
       pos.clst.nm <- which(names(prfls)=="clustnames")
       if (is.null(min.mid.max)) {
-        mn <- min(prfls[, -pos.clst.nm])
-        mx <- max(prfls[, -pos.clst.nm])
-        ming <- -max(mn,mx)
+        ming <- min(prfls[, -pos.clst.nm])
+        maxg <- max(prfls[, -pos.clst.nm])
+        #ming <- -max(mn,mx)
         midg <- 0
-        maxg <- max(mn,mx)
+        #maxg <- max(mn,mx)
         min.mid.max <- c(ming,midg,maxg)
       }
-      p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange, std=FALSE, min.mid.max=min.mid.max)
+      p <- radialprofile(data = prfls[, -pos.clst.nm], title = title, ncol.arrange = ncol.arrange,
+                        std=FALSE, min.mid.max=min.mid.max)
     } else {
       hcl <- x[["Hclust"]]
       dend <- hcl %>%

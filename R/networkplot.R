@@ -17,7 +17,7 @@
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & player!="")
-#' networkplot(PbP.GSW, layout="circle")
+#' networkplot(PbP.GSW, layout="circle", edge.thr=30)
 #' @export
 #' @importFrom ggnetwork ggnetwork
 #' @importFrom ggnetwork geom_nodes
