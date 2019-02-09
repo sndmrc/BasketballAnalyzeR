@@ -97,9 +97,9 @@ plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
       ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
       ggnetwork::theme_blank()
   }
-
-  gridExtra::grid.arrange(p1, p2, ncol = ncol)
   listPlot <- list(corrplot = p1, netplot = p2)
+  gridExtra::grid.arrange(grobs=listPlot, ncol = ncol)
+
   invisible(listPlot)
 }
 

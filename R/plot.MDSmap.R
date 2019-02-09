@@ -74,8 +74,7 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
   if (is.null(z.var)) { ### If 'z.var' is NULL
     listPlots <- vector(1, mode = "list")
     p <- scatterplot(data=config, data.var=c("X1","X2"), labels=labels, repel_labels=repel_labels,
-           text_label=text_label, subset=subset, col.subset = col.subset, zoom = zoom, title = title,
-           draw.plot=FALSE)
+           text_label=text_label, subset=subset, col.subset = col.subset, zoom = zoom, title = title)
     p <- p + xlab("") + ylab("") +
       annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
       coord_cartesian(clip = 'off')
@@ -90,7 +89,7 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
       names(dts) <- c("X1", "X2", vark)
       p <- scatterplot(data=dts, data.var=c("X1","X2"), z.var=vark, palette=palette,
             labels=labels, repel_labels=repel_labels, text_label=text_label, subset=subset, col.subset = col.subset,
-            zoom = zoom, title = title, draw.plot=FALSE)
+            zoom = zoom, title = title)
       p <- p + xlab("") + ylab("") +
         annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
         coord_cartesian(clip = 'off')
@@ -132,15 +131,13 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
   # Arrange level plots
   if (length(listPlots)>1) {
     if (is.null(ncol.arrange)) {
-      p <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
-    } else {
-      p <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
+      ncol.arrange <- ceiling(sqrt(length(listPlots)))
     }
-    grid::grid.draw(p)
+    p <- gridExtra::arrangeGrob(grobs = listPlots, ncol = ncol.arrange)
   } else {
-    listPlots <- listPlots[[1]]
-    grid::grid.draw(listPlots)
+    p <- listPlots[[1]]
   }
+  grid::grid.draw(p)
 
   invisible(listPlots)
 }
