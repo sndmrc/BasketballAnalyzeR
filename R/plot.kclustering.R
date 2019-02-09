@@ -51,7 +51,6 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
       scale_x_continuous(breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
       xlab("Number of clusters") + ylab("BD/TD - Increments") +
       theme_bw()
-    print(p)
   } else {
     profiles <- x[["Profiles"]]
     if (is.null(ncol.arrange)) {
@@ -72,5 +71,11 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
     p <- radialprofile(data=profiles[,-pos.clst.nm], title=title, ncol.arrange=ncol.arrange,
                        std=FALSE, min.mid.max=min.mid.max)
   }
-  invisible(p)
+
+  if (is.list(p)) {
+    invisible(p)
+  } else {
+    return(p)
+  }
+
 }

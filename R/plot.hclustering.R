@@ -93,7 +93,6 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
       scale_x_continuous(breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
       xlab("Number of clusters") + ylab("BD/TD - Increments") +
       theme_bw()
-    print(p)
   } else {
     if (profiles) {
       prfls <- x[["Profiles"]]
@@ -141,9 +140,14 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
         }
       }
       p <- p+labs(title=title)
-      print(p)
     }
   }
-  invisible(p)
+
+  if (is.list(p)) {
+    invisible(p)
+  } else {
+    return(p)
+  }
+
 }
 

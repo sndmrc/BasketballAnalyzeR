@@ -46,7 +46,7 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
 
   # Set defaults
   if (npl == 1 & std == TRUE) {
-    print("One subject: std parameter set to FALSE")
+    warning("One subject: std parameter set to FALSE")
     std <- FALSE
   }
 
@@ -77,22 +77,21 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
   }
 
   # List of radial plots
-  listPlots <- vector(npl, mode = "list")
+  listggplots <- vector(npl, mode = "list")
   for (i in 1:npl) {
     X <- profile[i, ]
-    listPlots[[i]] <- CreateRadialPlot(X, grid.min = ming, grid.mid = midg, grid.max = maxg,
+    listggplots[[i]] <- CreateRadialPlot(X, grid.min = ming, grid.mid = midg, grid.max = maxg,
                                        label.gridline.min = F, gridline.mid.colour = "dodgerblue", group.line.width = 0.7,
                                        group.point.size = 2, label.centre.y = F, background.circle.colour = "dodgerblue",
                                        plot.extent.x.sf = 1.2, plot.extent.y.sf = 1.2, titolo = TRUE)
   }
-  names(listPlots) <- profile[, 1]
+  names(listggplots) <- profile[, 1]
 
   # Arrange radial plots
   if (is.null(ncol.arrange)) {
-    out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ceiling(sqrt(length(listPlots))))
-  } else {
-    out <- gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
+    ncol.arrange - ceiling(sqrt(length(listPlots)))
   }
-  invisible(listPlots)
+  gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
 
+  invisible(listPlots)
 }
