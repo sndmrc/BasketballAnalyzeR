@@ -80,6 +80,5 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
     geom_line(data=df2, mapping=aes(x=x, y=y), lwd=1.5, col='grey', inherit.aes=F) +
     scale_y_continuous(name="Variables", limits=c(0,NA),
                        sec.axis=sec_axis(~.*max(df2$Line)/max(df2$rsum), name=label.line))
-  print(p)
-  invisible(p)
+  return(p)
 }

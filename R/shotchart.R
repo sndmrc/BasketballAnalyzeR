@@ -199,8 +199,8 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
   } else { ##############
     stop("Please, select a valid plot type and/or a scatter plot")
   }
-  print(p)
-  invisible(p)
+
+  return(p)
 }
 
 

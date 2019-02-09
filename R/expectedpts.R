@@ -62,6 +62,6 @@ expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.tea
   if (!legend) {
     p <- p + theme(legend.position="none")
   }
-  print(p)
-  invisible(p)
+
+  return(p)
 }

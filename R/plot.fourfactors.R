@@ -30,7 +30,7 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   PACEplot <- ggplot(data=x, aes(x=PACE.Off, y=PACE.Def, label=Team,
                                 text=paste("Team:",Team,"<br>PACE Team:",PACE.Off,"<br>PACE Opp:",PACE.Def))) +
     geom_point() +
-    geom_text_repel(aes(label=Team))+
+    ggrepel::geom_text_repel(aes(label=Team))+
     labs(title=ttl)+
     labs(x = "Pace (Possessions per minute) of the Team") +
     labs(y = "Pace (Possessions per minute) of the Opponents")
@@ -43,7 +43,7 @@ plot.fourfactors <- function(x, title=NULL, ...) {
   RTgplot <- ggplot(data=x, aes(x=ORtg, y=DRtg, label=Team,
                                text=paste("Team:",Team,"<br>Offensive rating:",ORtg,"<br>Defensive rating:",DRtg))) +
     geom_point() +
-    geom_text_repel(aes(label = Team))+
+    ggrepel::geom_text_repel(aes(label = Team))+
     labs(title = ttl)+
     labs(x = "Offensive Rating of the Team (ORtg)") +
     labs(y = "Offensive Rating of the Opponents (DRtg)")

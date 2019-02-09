@@ -37,7 +37,5 @@ plot.inequality <- function(x, title = NULL, ...) {
        annotate("text", x = 25, y = 80, label = paste("Gini index = ", gini, "%", sep = ""), size = 5) +
        labs(title=title, x="", y="")
 
-  #print(p)
   return(p)
-
 }

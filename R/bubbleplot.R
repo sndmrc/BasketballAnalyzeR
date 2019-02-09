@@ -63,6 +63,5 @@ bubbleplot <- function(data, id, x, y, col, size, labels = NULL, mx = NULL, my =
     p <- p + geom_text(size = 2.5)
   }
 
-  print(p)
-  invisible(p)
+  return(p)
 }

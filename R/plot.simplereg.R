@@ -87,6 +87,5 @@ plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99
     labs(title = title, x = xtitle, y = ytitle) +
     theme_bw()
 
-  print(p)
-  invisible(p)
+  return(p)
 }

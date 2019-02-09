@@ -101,6 +101,6 @@ networkplot <- function(data, assist="assist", player="player",
     scale_alpha(guide=FALSE) +
     theme_blank() +
     guides(fill=guide_colorbar(order=1), size=guide_legend(order=3))
-  print(p)
-  invisible(p)
+
+    return(p)
 }

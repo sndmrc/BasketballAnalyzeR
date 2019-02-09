@@ -124,9 +124,8 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
 
     }
     p <- p + theme_bw()
-    print(p)
   }
-  invisible(p)
+  return(p)
 }
 
 #' @noRd

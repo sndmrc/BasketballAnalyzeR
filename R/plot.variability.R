@@ -53,7 +53,6 @@ plot.variability <- function(x, title = NULL, ...) {
                         label = paste0("Range = ", round(rg, 2)), size = 4) +
        guides(size=guide_legend(title=paste(names(df.size), collapse="\n")))
 
-  print(p)
-  invisible(p)
+  return(p)
 }
 
