@@ -7,7 +7,7 @@
 scatterplot(data, data.var, z.var = NULL, palette = NULL,
   labels = NULL, repel_labels = FALSE, text_label = TRUE,
   subset = NULL, col.subset = "gray50", zoom = NULL, title = NULL,
-  legend = "yes", upper = list(continuous = "cor", combo =
+  legend = TRUE, upper = list(continuous = "cor", combo =
   "box_no_facet", discrete = "facetbar", na = "na"),
   lower = list(continuous = "points", combo = "facethist", discrete =
   "facetbar", na = "na"), diag = list(continuous = "densityDiag",
@@ -36,7 +36,7 @@ scatterplot(data, data.var, z.var = NULL, palette = NULL,
 
 \item{title}{Plot title}
 
-\item{legend}{Set legend='no' to remove legend}
+\item{legend}{Set legend=FALSE to remove legend}
 
 \item{upper}{See help for GGally::ggpairs}
 
