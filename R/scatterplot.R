@@ -11,7 +11,7 @@
 #' @param col.subset Color for the subset of points; only for single scatter plot
 #' @param zoom X and Y axis range; only for single scatter plot
 #' @param title Plot title
-#' @param legend Set legend='no' to remove legend
+#' @param legend Set legend=FALSE to remove legend
 #' @param upper  See help for GGally::ggpairs
 #' @param lower  See help for GGally::ggpairs
 #' @param diag  See help for GGally::ggpairs
@@ -30,7 +30,7 @@
 #' @importFrom GGally ggpairs
 
 scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, repel_labels=FALSE, text_label=TRUE,
-                        subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend='yes',
+                        subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend=TRUE,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
                         diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag")) {
@@ -141,7 +141,7 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     }
   }
   p <- p + theme_bw()
-  if (!is.null(z.var) & legend=="no") {
+  if (!is.null(z.var) & !legend) {
     p <- p + theme(legend.position="none")
   }
 

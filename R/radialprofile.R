@@ -89,9 +89,9 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
 
   # Arrange radial plots
   if (is.null(ncol.arrange)) {
-    ncol.arrange - ceiling(sqrt(length(listPlots)))
+    ncol.arrange - ceiling(sqrt(length(listggplots)))
   }
-  gridExtra::grid.arrange(grobs = listPlots, ncol = ncol.arrange)
+  gridExtra::grid.arrange(grobs = listggplots, ncol = ncol.arrange)
 
-  invisible(listPlots)
+  invisible(listggplots)
 }

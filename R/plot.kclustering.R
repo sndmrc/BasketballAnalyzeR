@@ -5,7 +5,7 @@
 #' @param ncol.arrange Number of columns when arranging multiple grobs on a page
 #' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
-#' @return A list of ggplot2 radial plots
+#' @return A single plot or a list of ggplot2 radial plots
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' OD.Rtg <- FF$ORtg/FF$DRtg

@@ -19,7 +19,7 @@
 \item{...}{other graphical parameters}
 }
 \value{
-A list of ggplot2 radial plots
+A single plot or a list of ggplot2 radial plots
 }
 \description{
 Plot k-means clustering of NBA teams
