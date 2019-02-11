@@ -72,7 +72,7 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
                        std=FALSE, min.mid.max=min.mid.max)
   }
 
-  if (is.list(p)) {
+  if (!is.ggplot(p)) {
     invisible(p)
   } else {
     return(p)

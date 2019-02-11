@@ -143,7 +143,7 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
     }
   }
 
-  if (is.list(p)) {
+  if (!is.ggplot(p)) {
     invisible(p)
   } else {
     return(p)
