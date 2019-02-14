@@ -66,9 +66,9 @@ networkplot <- function(data, assist="assist", player="player",
     network::set.vertex.attribute(net, "node.size", nodes$node.size)
     network::set.vertex.attribute(net, "node.col", nodes$node.col)
     if (is.null(node.col.lim)) {
-      node.col.lim <- c(0,100)
+      node.col.lim <- range(nodes$node.col)
     }
-    if (is.null(node.col.lim)) {
+    if (is.null(edge.col.lim)) {
       edge.col.lim <- range(tbl)
     }
 
