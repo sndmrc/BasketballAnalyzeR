@@ -5,7 +5,7 @@
 \title{k-means clustering of NBA teams}
 \usage{
 kclustering(data, k = NULL, labels = NULL, nclumax = 10,
-  nruns = 10, iter.max = 50)
+  nruns = 10, iter.max = 50, algorithm = "Hartigan-Wong")
 }
 \arguments{
 \item{data}{A dataframe}
@@ -19,6 +19,8 @@ kclustering(data, k = NULL, labels = NULL, nclumax = 10,
 \item{nruns}{nruns}
 
 \item{iter.max}{Maximum number of iterations allowed in k-means clustering}
+
+\item{algorithm}{Algorithm used in k-means clustering (see \link[stats]{kmeans})}
 }
 \value{
 A 'klust' object, i.e. a list of ...(specificare)
