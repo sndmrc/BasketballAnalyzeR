@@ -3,8 +3,9 @@
 #' @param data A dataframe
 #' @param k Numer of clusters
 #' @param labels labels
-#' @param nclumax Max number of clusters (when k=NULL)
+#' @param nclumax Maximum number of clusters (when k=NULL)
 #' @param nruns nruns
+#' @param iter.max Maximum number of iterations allowed in k-means clustering
 #' @return A 'klust' object, i.e. a list of ...(specificare)
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
@@ -23,7 +24,7 @@
 #' @export
 
 
-kclustering <- function(data, k = NULL, labels = NULL, nclumax = 10, nruns = 10) {
+kclustering <- function(data, k = NULL, labels = NULL, nclumax = 10, nruns = 10, iter.max=50) {
 
   varb <- function(x) {
     x <- stats::na.omit(x)
@@ -49,7 +50,7 @@ kclustering <- function(data, k = NULL, labels = NULL, nclumax = 10, nruns = 10)
       clumean.r <- array(0, c(nclu, nvars, nruns))
       varfra.tot.nruns <- array(0, nruns)
       for (r in 1:nruns) {
-        ca.k <- stats::kmeans(data, nclu, algorithm = "Hartigan-Wong")
+        ca.k <- stats::kmeans(data, nclu, algorithm = "Hartigan-Wong", iter.max=iter.max)
         clu.r[, r] <- ca.k$cluster
         clumean.r[, , r] <- ca.k$centers
         tbl_clust <- table(ca.k$cluster)/nunits

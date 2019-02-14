@@ -5,7 +5,7 @@
 \title{k-means clustering of NBA teams}
 \usage{
 kclustering(data, k = NULL, labels = NULL, nclumax = 10,
-  nruns = 10)
+  nruns = 10, iter.max = 50)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -14,9 +14,11 @@ kclustering(data, k = NULL, labels = NULL, nclumax = 10,
 
 \item{labels}{labels}
 
-\item{nclumax}{Max number of clusters (when k=NULL)}
+\item{nclumax}{Maximum number of clusters (when k=NULL)}
 
 \item{nruns}{nruns}
+
+\item{iter.max}{Maximum number of iterations allowed in k-means clustering}
 }
 \value{
 A 'klust' object, i.e. a list of ...(specificare)
