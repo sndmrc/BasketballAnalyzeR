@@ -54,53 +54,56 @@ networkplot <- function(data, assist="assist", player="player",
                           ignore.eval=FALSE,  names.eval="N")
 
   if (is.null(node.size) & is.null(node.col)) {
-    node.size <- node.col <- "% P2+P3 with\nassist"
-    nodes <- data %>%
+    node.col <- "% P2+P3 with\nan assist"
+    node.size <-"Pts created by\nplayer assist"
+    nodes1 <- data %>%
       dplyr::group_by(player) %>%
       dplyr::summarise(N2P3P_made=sum(event_type=="shot"),
                        N2P3P_made_with_assist=sum(event_type=="shot" & assist!=""),
-                       node.size=100*N2P3P_made_with_assist/N2P3P_made,
-                       node.col=node.size) %>%
-      tidyr::replace_na(list(node.size=0, node.col=0)) %>%
+                       node.col=100*N2P3P_made_with_assist/N2P3P_made) %>%
       as.data.frame()
-    network::set.vertex.attribute(net, "node.size", nodes$node.size)
-    network::set.vertex.attribute(net, "node.col", nodes$node.col)
-    if (is.null(node.col.lim)) {
-      node.col.lim <- range(nodes$node.col)
-    }
-    if (is.null(edge.col.lim)) {
-      edge.col.lim <- range(tbl)
-    }
+    nodes2 <- data %>%
+      dplyr::filter(assist!="") %>%
+      dplyr::group_by(assist) %>%
+      dplyr::summarise(node.size=sum(points)) %>%
+      as.data.frame()
+    nodes <- merge(nodes1, nodes2, by.x="player", by.y="assist", all=T) %>%
+      tidyr::replace_na(list(node.col=0, node.size=0))
 
   } else if (!is.null(node.size) & !is.null(node.col)) {
     nodes <- node.data %>%
       dplyr::select(player, node.size, node.col) %>%
       dplyr::rename(node.size=!!node.size, node.col=!!node.col)
-    plyrs1 <- dimnames(tbl)[[1]]
-    plyrs2 <- as.character(nodes$player)
-    idx <- match(plyrs1, plyrs2)
-    if (any(plyrs1!=plyrs2[idx])) {
-      stop("Players in 'data' and 'node.data' are not exactly the same.")
-    }
-    nodes <- nodes[idx,]
-    network::set.vertex.attribute(net, "node.size", nodes$node.size)
-    network::set.vertex.attribute(net, "node.col", nodes$node.col)
-    if (is.null(node.col.lim)) {
-      node.col.lim <- range(nodes$node.col)
-    }
+  }
+
+  plyrs1 <- dimnames(tbl)[[1]]
+  plyrs2 <- as.character(nodes$player)
+  idx <- match(plyrs1, plyrs2)
+  if (any(plyrs1!=plyrs2[idx])) {
+    stop("Players in 'data' and 'node.data' are not exactly the same.")
+  }
+  nodes <- nodes[idx,]
+
+  network::set.vertex.attribute(net, "node.size", nodes$node.size)
+  network::set.vertex.attribute(net, "node.col", nodes$node.col)
+  if (is.null(node.col.lim)) {
+    node.col.lim <- range(nodes$node.col)
+  }
+  if (is.null(edge.col.lim)) {
+    edge.col.lim <- range(tbl)
   }
 
   datanet <- ggnetwork::ggnetwork(net, layout=layout, layout.par=layout.par)
   p <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
-    geom_nodes(aes(size=node.size, fill=node.col), shape=21, color="blue") +
-    geom_nodetext_repel(aes(label=vertex.names)) +
-    geom_edges(aes(color=N, alpha=N), size=1.5, curvature=0.1, arrow=arrow(length=unit(6, "pt"), type="closed")) +
+    ggnetwork::geom_nodes(aes(size=node.size, fill=node.col), shape=21, color="blue") +
+    ggnetwork::geom_edges(aes(color=N, alpha=N), size=1.5, curvature=0.1, arrow=arrow(length=unit(6, "pt"), type="closed")) +
+    ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
     scale_size_continuous(paste0("Node size:\n",node.size), breaks=pretty(nodes$node.size,n=7)) +
     scale_fill_gradientn(paste0("Node color:\n",node.col), limits=node.col.lim, colors=node.pal(100)) +
     scale_colour_gradientn("Edge color:\nAssist num.", limits=edge.col.lim, colors=edge.pal(100)) +
     scale_alpha(guide=FALSE) +
-    theme_blank() +
+    ggnetwork::theme_blank() +
     guides(fill=guide_colorbar(order=1), size=guide_legend(order=3))
 
-    return(p)
+  return(p)
 }
