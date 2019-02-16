@@ -6,8 +6,9 @@
 \usage{
 networkplot(data, assist = "assist", player = "player",
   layout = "kamadakawai", layout.par = list(), edge.thr = 0,
-  edge.col.lim = NULL, node.data = NULL, node.size = NULL,
-  node.col = NULL, node.col.lim = NULL,
+  edge.col.lim = NULL, edge.col.lab = NULL, node.data = NULL,
+  node.size = NULL, node.size.lab = NULL, node.col = NULL,
+  node.col.lim = NULL, node.col.lab = NULL,
   node.pal = colorRampPalette(c("white", "blue", "red")),
   edge.pal = colorRampPalette(c("white", "blue", "red")))
 }
@@ -26,13 +27,19 @@ networkplot(data, assist = "assist", player = "player",
 
 \item{edge.col.lim}{A numeric vector of length two providing limits of the scale for edge color}
 
+\item{edge.col.lab}{Label for edge color legend}
+
 \item{node.data}{Data with variables for node size and node color}
 
 \item{node.size}{A string with the variable name for node size}
 
+\item{node.size.lab}{Label for node size legend}
+
 \item{node.col}{A string with the variable name for node color}
 
 \item{node.col.lim}{A numeric vector of length two providing limits of the scale for node color}
+
+\item{node.col.lab}{Label for node color legend}
 
 \item{node.pal}{Palette for node colors}
 
