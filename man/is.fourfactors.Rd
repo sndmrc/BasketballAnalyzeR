@@ -16,8 +16,6 @@ returns TRUE if its argument is of class 'fourfactors' and FALSE otherwise
 Reports whether x is a fourfactors object
 }
 \examples{
-data("Tbox")
-data("Pbox")
 selTeams <- c(2,6,10,11)
 out <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 is.fourfactors(out)

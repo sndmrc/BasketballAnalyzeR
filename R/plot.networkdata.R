@@ -1,8 +1,6 @@
 #' Create a network plot
 #'
-#' @param data A dataframe
-#' @param assist assist
-#' @param player player
+#' @param x An object of class 'networkdata'
 #' @param layout Network vertex layout algorithms
 #' @param layout.par Paramater for network vertex layout algorithms
 #' @param edge.thr Threshold for edge values; values below the threshold are set to 0
@@ -16,11 +14,14 @@
 #' @param node.col.lab Label for node color legend
 #' @param node.pal Palette for node colors
 #' @param edge.pal Palette for edge colors
+#' @param ... other graphical parameters
 #' @return A ggplot2 object
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & player!="")
-#' networkplot(PbP.GSW, layout="circle", edge.thr=30)
+#' out <- netcalc(PbP.GSW)
+#' plot(out, layout="circle", edge.thr=30)
+#' @method plot networkdata
 #' @export
 #' @importFrom ggnetwork ggnetwork
 #' @importFrom ggnetwork geom_nodes
@@ -30,30 +31,24 @@
 #' @importFrom ggplot2 arrow
 #' @importFrom ggplot2 scale_alpha
 #' @importFrom ggplot2 scale_size_continuous
-#' @importFrom network set.vertex.attribute
 #' @importFrom ggplot2 unit
 #' @importFrom ggplot2 guide_colorbar
-#' @importFrom tidyr replace_na
 
-networkplot <- function(data, assist="assist", player="player",
-                        layout="kamadakawai", layout.par=list(),
-                        edge.thr=0, edge.col.lim=NULL, edge.col.lab=NULL,
-                        node.data=NULL, node.size=NULL, node.size.lab=NULL,
-                        node.col=NULL, node.col.lim=NULL, node.col.lab=NULL,
-                        node.pal=colorRampPalette(c("white","blue", "red")),
-                        edge.pal=colorRampPalette(c("white","blue", "red"))) {
+plot.networkdata <- function(x, layout="kamadakawai", layout.par=list(),
+                             edge.thr=0, edge.col.lim=NULL, edge.col.lab=NULL,
+                             node.data=NULL, node.size=NULL, node.size.lab=NULL,
+                             node.col=NULL, node.col.lim=NULL, node.col.lab=NULL,
+                             node.pal=colorRampPalette(c("white","blue", "red")),
+                             edge.pal=colorRampPalette(c("white","blue", "red")), ...) {
 
-  x <- y <- xend <- yend <- N <- N2P3P_made_with_assist <- N2P3P_made <- event_type <- vertex.names <- NULL
-  data <- droplev_by_col(data)
-  data <- data %>% dplyr::rename(assist=!!assist, player=!!player)
-  data_no_assist <- data %>%  dplyr::filter(assist!="")
-  data_no_assist <- droplev_by_col(data_no_assist)
-  assist_player <- data_no_assist %>% dplyr::select(assist, player)
-  tbl <- as.matrix(table(assist_player, useNA="no"))
-  tbl[tbl < edge.thr] <- 0
-  if (nrow(tbl)!=ncol(tbl)) {
-    stop("The number of players in 'assist' and 'player' variables are not the same.")
+  if (!is.networkdata(x)) {
+    stop("Not a 'networkdata' object")
   }
+
+  y <- xend <- yend <- N <- player <- vertex.names <- NULL
+
+  tbl <- x[["assistTable"]]
+  #tbl[tbl < edge.thr] <- 0
   net <- network::network(tbl, matrix.type="adjacency", directed=TRUE,
                           ignore.eval=FALSE,  names.eval="N")
 
@@ -64,19 +59,8 @@ networkplot <- function(data, assist="assist", player="player",
     if (is.null(node.size.lab)) {
       node.size.lab <- "Node size:\nPTS assisted by\nthe player"
     }
-    nodes1 <- data %>%
-      dplyr::group_by(player) %>%
-      dplyr::summarise(N2P3P_made=sum(event_type=="shot"),
-                       N2P3P_made_with_assist=sum(event_type=="shot" & assist!=""),
-                       node.col=100*N2P3P_made_with_assist/N2P3P_made) %>%
-      as.data.frame()
-    nodes2 <- data %>%
-      dplyr::filter(assist!="") %>%
-      dplyr::group_by(assist) %>%
-      dplyr::summarise(node.size=sum(points)) %>%
-      as.data.frame()
-    nodes <- merge(nodes1, nodes2, by.x="player", by.y="assist", all=T) %>%
-      tidyr::replace_na(list(node.col=0, node.size=0))
+    nodes <- x[["stats"]] %>%
+      dplyr::rename(node.size=!!"PTS_assisted_shots", node.col=!!"pctN2P3P_made_with_assist")
 
   } else if (!is.null(node.size) & !is.null(node.col)) {
     if (is.null(node.col.lab)) {
@@ -110,14 +94,15 @@ networkplot <- function(data, assist="assist", player="player",
     edge.col.lab <- "Edge color:\nnumber of assists"
   }
 
-  datanet <- ggnetwork::ggnetwork(net, layout=layout, layout.par=layout.par)
+  datanet <- ggnetwork::ggnetwork(net, layout=layout, layout.par=layout.par) %>%
+    dplyr::mutate(N = replace(N, N < edge.thr, NA))
   p <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
     ggnetwork::geom_nodes(aes(size=node.size, fill=node.col), shape=21, color="gray") +
     ggnetwork::geom_edges(aes(color=N, alpha=N), size=1.5, curvature=0.1, arrow=arrow(length=unit(6, "pt"), type="closed")) +
     ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
     scale_size_continuous(node.size.lab, breaks=pretty(nodes$node.size,n=7)) +
     scale_fill_gradientn(node.col.lab, limits=node.col.lim, colors=node.pal(100)) +
-    scale_colour_gradientn(edge.col.lab, limits=edge.col.lim, colors=edge.pal(100)) +
+    scale_colour_gradientn(edge.col.lab, limits=edge.col.lim, colors=edge.pal(100), na.value="transparent") +
     scale_alpha(guide=FALSE) +
     ggnetwork::theme_blank() +
     guides(fill=guide_colorbar(order=1), size=guide_legend(order=3))
