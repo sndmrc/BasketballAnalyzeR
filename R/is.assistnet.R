@@ -5,10 +5,10 @@
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & player!="")
-#' out <- netcalc(PbP.GSW)
-#' is.networkdata(out)
+#' out <- assistnet(PbP.GSW)
+#' is.assistnet(out)
 #' @export
 
-is.networkdata <- function(x) {
-  inherits(x, "networkdata")
+is.assistnet <- function(x) {
+  inherits(x, "assistnet")
 }
