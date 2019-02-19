@@ -45,6 +45,7 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
   }
   y <- xend <- yend <- N <- player <- vertex.names <- NULL
   net <- x[["assistNet"]]
+  tbl <- x[["assistTable"]]
 
   if (!is.null(node.size) & !is.null(node.col)) { ####
     if (is.null(node.col.lab)) {
@@ -56,7 +57,6 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
     nodeData <- x[["nodeStats"]] %>%
       dplyr::rename(node.size=!!node.size, node.col=!!node.col) %>%
       dplyr::select(player, node.size, node.col)
-    tbl <- x[["assistTable"]]
     plyrs1 <- dimnames(tbl)[[1]]
     plyrs2 <- as.character(nodeData$player)
     idx <- match(plyrs1, plyrs2)
