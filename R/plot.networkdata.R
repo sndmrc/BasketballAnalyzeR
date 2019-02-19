@@ -69,11 +69,11 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
     if (is.null(node.col.lim)) {
       node.col.lim <- range(nodeData$node.col)
     }
-    if (is.null(edge.col.lim)) {
-      edge.col.lim <- range(tbl)
-    }
   }
 
+  if (is.null(edge.col.lim)) {
+    edge.col.lim <- range(tbl)
+  }
   if (is.null(edge.col.lab)) {
     edge.col.lab <- "Edge color:\nnumber of assists"
   }
