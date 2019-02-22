@@ -4,7 +4,7 @@
 \alias{variability}
 \title{Variability analysis}
 \usage{
-variability(data, data.var, size.var, weight = FALSE)
+variability(data, data.var, size.var, VC = TRUE, weight = FALSE)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -12,6 +12,8 @@ variability(data, data.var, size.var, weight = FALSE)
 \item{data.var}{A vector of variable names or of column numbers defining variables whose variability will be analyzed by 'variability'}
 
 \item{size.var}{A vector of variable names or of column numbers defining variables used for bubble sizes}
+
+\item{VC}{If TRUE, calculate variation coefficients of variables in data.var}
 
 \item{weight}{If TRUE, calculates weighted variation coefficients}
 }

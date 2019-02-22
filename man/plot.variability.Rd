@@ -6,7 +6,7 @@
 \usage{
 \method{plot}{variability}(x, title = "Variability diagram",
   ylim = NULL, ylab = NULL, size.lim = NULL, max.circle = 25,
-  n.circle = 4, VC = TRUE, leg.brk = NULL, leg.pos = "right",
+  n.circle = 4, leg.brk = NULL, leg.pos = "right",
   leg.just = "left", leg.nrow = NULL, leg.title = NULL,
   leg.title.pos = "top", ...)
 }
@@ -24,8 +24,6 @@
 \item{max.circle}{Maximum size of the 'size' plotting symbol (circles)}
 
 \item{n.circle}{Set a sequence of about n.circle+1 equally spaced 'round' values which cover the range of the values in 'size'}
-
-\item{VC}{If TRUE, print values of variation coefficients in the plot}
 
 \item{leg.brk}{Breaks for 'size' legend}
 

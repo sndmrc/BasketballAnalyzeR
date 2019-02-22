@@ -3,6 +3,7 @@
 #' @param data A dataframe
 #' @param data.var A vector of variable names or of column numbers defining variables whose variability will be analyzed by 'variability'
 #' @param size.var A vector of variable names or of column numbers defining variables used for bubble sizes
+#' @param VC If TRUE, calculate variation coefficients of variables in data.var
 #' @param weight If TRUE, calculates weighted variation coefficients
 #' @return A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size)
 #' @examples
@@ -14,13 +15,17 @@
 #' plot(list_variability, leg.brk=c(10,25,50,100,500,1000), max.circle=30)
 #' @export
 
-variability <- function(data, data.var, size.var, weight = FALSE) {
+variability <- function(data, data.var, size.var, VC=TRUE, weight = FALSE) {
 
-  cvfun <- function(x) {
+  cvfun <- function(x, VC) {
     s = sd(x)
-    cv = s/abs(mean(x))
     rg <- max(x) - min(x)
-    c(s, cv, rg)
+    if (VC) {
+      cv = s/abs(mean(x))
+      c(s, rg, cv)
+    } else {
+      c(s, rg)
+    }
   }
 
   wcvfun <- function(x, w) {
@@ -59,11 +64,14 @@ variability <- function(data, data.var, size.var, weight = FALSE) {
       mtx <- apply(df.data, 2, wcvfun, w = df.size[, 1])
     }
   } else {
-    mtx <- apply(df.data, 2, cvfun)
+    mtx <- apply(df.data, 2, cvfun, VC=VC)
   }
-  rownames(mtx) <- c("Range", "VC", "SD")
+  if (VC) {
+    lst <- list(weight = weight, SD = mtx[1, ], range = mtx[2, ], VC = mtx[3, ], data = df.data, size = df.size)
+  } else {
+    lst <- list(weight = weight, SD = mtx[1, ], range = mtx[2, ], data = df.data, size = df.size)
+  }
 
-  lst <- list(weight = weight, range = mtx[3, ], VC = mtx[2, ], SD = mtx[1, ], data = df.data, size = df.size)
   class(lst) <- append("variability", class(lst))
   return(lst)
 }

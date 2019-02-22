@@ -7,7 +7,6 @@
 #' @param size.lim Set limits of 'size' legend
 #' @param max.circle  Maximum size of the 'size' plotting symbol (circles)
 #' @param n.circle  Set a sequence of about n.circle+1 equally spaced 'round' values which cover the range of the values in 'size'
-#' @param VC If TRUE, print values of variation coefficients in the plot
 #' @param leg.brk Breaks for 'size' legend
 #' @param leg.pos The position of legend ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param leg.just Anchor point for positioning legend inside plot ("center" or two-element numeric vector) or the justification according to the plot area when positioned outside the plot
@@ -26,7 +25,7 @@
 #' @export
 
 plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NULL,
-                             size.lim=NULL, max.circle=25, n.circle=4, VC=TRUE,
+                             size.lim=NULL, max.circle=25, n.circle=4,
                              leg.brk=NULL, leg.pos="right", leg.just="left",
                              leg.nrow=NULL, leg.title=NULL, leg.title.pos="top", ...) {
 
@@ -38,8 +37,14 @@ plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NUL
   df.size <- x[["size"]]
 
   weight <- x[["weight"]]
-  vc <- x[["VC"]]
   rg <- x[["range"]]
+
+  if (!is.null(x$VC)) {
+    vc <- x[["VC"]]
+    VC <- TRUE
+  } else {
+    VC <- FALSE
+  }
   nc.data <- ncol(df.data)
   nc.size <- ncol(df.size)
   nr <- nrow(df.data)
