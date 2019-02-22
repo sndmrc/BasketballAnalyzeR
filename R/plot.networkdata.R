@@ -89,7 +89,7 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
   if (!is.null(node.size) & !is.null(node.col)) { ####
     p <- p +
       ggnetwork::geom_nodes(aes(size=node.size, fill=node.col), shape=21, color="gray") +
-      scale_size_continuous(node.size.lab, breaks=pretty(nodeData$node.size,n=7)) +
+      scale_size_continuous(node.size.lab, breaks=pretty(nodeData$node.size,n=5)) +
       scale_fill_gradientn(node.col.lab, limits=node.col.lim, colors=node.pal(100)) +
       guides(fill=guide_colorbar(order=1), size=guide_legend(order=3))
   } else {

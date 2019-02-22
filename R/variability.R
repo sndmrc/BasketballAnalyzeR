@@ -18,7 +18,7 @@ variability <- function(data, data.var, size.var, weight = FALSE) {
 
   cvfun <- function(x) {
     s = sd(x)
-    cv = s/mean(x)
+    cv = s/abs(mean(x))
     rg <- max(x) - min(x)
     c(s, cv, rg)
   }
@@ -41,9 +41,6 @@ variability <- function(data, data.var, size.var, weight = FALSE) {
       stop(paste(size.var, "not column(s) of 'data'"))
     df.data <- data[, sel.data.var, drop = F]
     df.size <- data[, sel.size.var, drop = F]
-    if (!weight) {
-      warning(paste(size.var, "not used for estimation of variability"))
-    }
   } else if (is.numeric(data.var) & is.numeric(size.var)) {
     df.data <- data[, data.var, drop = F]
     df.size <- data[, size.var, drop = F]

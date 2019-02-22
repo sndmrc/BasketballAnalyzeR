@@ -4,12 +4,35 @@
 \alias{plot.variability}
 \title{Plot variability}
 \usage{
-\method{plot}{variability}(x, title = NULL, ...)
+\method{plot}{variability}(x, title = "Variability diagram",
+  ylim = NULL, ylab = NULL, size.lim = NULL, max.circle = 10,
+  VC = TRUE, leg.pos = "right", leg.just = "left", leg.nrow = NULL,
+  leg.title = NULL, leg.title.pos = "top", ...)
 }
 \arguments{
 \item{x}{A 'variability' objects}
 
 \item{title}{Plot title}
+
+\item{ylim}{Set y-axis limits}
+
+\item{ylab}{Set y-axis legend}
+
+\item{size.lim}{Set limits of 'size' legend}
+
+\item{max.circle}{Maximum size of the 'size' plotting symbol (circles)}
+
+\item{VC}{If TRUE, print values of variation coefficients in the plot}
+
+\item{leg.pos}{The position of legend ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+
+\item{leg.just}{Anchor point for positioning legend inside plot ("center" or two-element numeric vector) or the justification according to the plot area when positioned outside the plot}
+
+\item{leg.nrow}{The desired number of rows of 'size' legend}
+
+\item{leg.title}{Title of 'size' legend}
+
+\item{leg.title.pos}{A character string indicating the position of a title. One of "top" (default for a vertical legend), "bottom", "left" (default for a horizontal legend), or "right."}
 
 \item{...}{other graphical parameters}
 }
