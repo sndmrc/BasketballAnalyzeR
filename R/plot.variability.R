@@ -6,7 +6,9 @@
 #' @param ylab Set y-axis legend
 #' @param size.lim Set limits of 'size' legend
 #' @param max.circle  Maximum size of the 'size' plotting symbol (circles)
+#' @param n.circle  Set a sequence of about n.circle+1 equally spaced 'round' values which cover the range of the values in 'size'
 #' @param VC If TRUE, print values of variation coefficients in the plot
+#' @param leg.brk Breaks for 'size' legend
 #' @param leg.pos The position of legend ("none", "left", "right", "bottom", "top", or two-element numeric vector)
 #' @param leg.just Anchor point for positioning legend inside plot ("center" or two-element numeric vector) or the justification according to the plot area when positioned outside the plot
 #' @param leg.nrow The desired number of rows of 'size' legend
@@ -19,13 +21,13 @@
 #'                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
 #' out <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
 #'                    size.var=c("P2A","P3A","FTA"), weight=TRUE)
-#' plot(out)
+#' plot(out, leg.brk=c(10,25,50,100,500,1000), max.circle=30)
 #' @method plot variability
 #' @export
 
 plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NULL,
-                             size.lim=NULL, max.circle=10, VC=TRUE,
-                             leg.pos="right", leg.just="left",
+                             size.lim=NULL, max.circle=25, n.circle=4, VC=TRUE,
+                             leg.brk=NULL, leg.pos="right", leg.just="left",
                              leg.nrow=NULL, leg.title=NULL, leg.title.pos="top", ...) {
 
   if (!is.variability(x)) {
@@ -54,6 +56,15 @@ plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NUL
   if (is.null(ylim)) {
     ylim <- range(df3$V1)
   }
+  if (is.null(size.lim)) {
+    size.lim <- range(df3$V2)
+  }
+  if (is.null(leg.brk)) {
+    leg.brk <- pretty(df3$V2, n=n.circle)
+  }
+  if (is.null(leg.title)) {
+    leg.title <- paste(names(df.size), collapse="\n")
+  }
 
   p <- ggplot(df3, aes(x=id, y=V1)) +
     geom_point(aes(size=V2), shape = 21, colour = "dodgerblue") +
@@ -68,18 +79,13 @@ plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NUL
                       label = c("    VC:", paste0(round(vc, 2), "%")), size = 4)
   }
 
-  if (is.null(size.lim)) {
-    p <- p + scale_size_continuous(breaks=pretty(size.lim,n=4))
-  } else {
-    p <- p + scale_size_continuous(breaks=pretty(size.lim,n=4), limits=size.lim, range=c(1,max.circle))
-  }
   p <- p +
-    guides(size=guide_legend(title=paste(names(df.size), collapse="\n"))) +
+    scale_size_continuous(breaks=sort(leg.brk, decreasing=FALSE), limits=size.lim, range=c(1,max.circle)) +
     theme(legend.position=leg.pos, legend.justification=leg.just,
-          panel.background=element_rect(fill="transparent", colour="gray50"),
-          panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+          #panel.background=element_rect(fill="transparent", colour="gray50"),
+          #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
           legend.key = element_rect(fill="transparent", colour="transparent")) +
-    labs(title=title, size=leg.title, y=ylab) +
-    guides(size=guide_legend(nrow=leg.nrow, title.position=leg.title.pos))
+    labs(title=title, y=ylab) +
+    guides(size=guide_legend(title=leg.title, nrow=leg.nrow, title.position=leg.title.pos))
   return(p)
 }

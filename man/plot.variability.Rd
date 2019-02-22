@@ -5,9 +5,10 @@
 \title{Plot variability}
 \usage{
 \method{plot}{variability}(x, title = "Variability diagram",
-  ylim = NULL, ylab = NULL, size.lim = NULL, max.circle = 10,
-  VC = TRUE, leg.pos = "right", leg.just = "left", leg.nrow = NULL,
-  leg.title = NULL, leg.title.pos = "top", ...)
+  ylim = NULL, ylab = NULL, size.lim = NULL, max.circle = 25,
+  n.circle = 4, VC = TRUE, leg.brk = NULL, leg.pos = "right",
+  leg.just = "left", leg.nrow = NULL, leg.title = NULL,
+  leg.title.pos = "top", ...)
 }
 \arguments{
 \item{x}{A 'variability' objects}
@@ -22,7 +23,11 @@
 
 \item{max.circle}{Maximum size of the 'size' plotting symbol (circles)}
 
+\item{n.circle}{Set a sequence of about n.circle+1 equally spaced 'round' values which cover the range of the values in 'size'}
+
 \item{VC}{If TRUE, print values of variation coefficients in the plot}
+
+\item{leg.brk}{Breaks for 'size' legend}
 
 \item{leg.pos}{The position of legend ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
@@ -47,5 +52,5 @@ Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
 out <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
                    size.var=c("P2A","P3A","FTA"), weight=TRUE)
-plot(out)
+plot(out, leg.brk=c(10,25,50,100,500,1000), max.circle=30)
 }

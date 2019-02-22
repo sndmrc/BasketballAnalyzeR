@@ -27,5 +27,5 @@ Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
 list_variability <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
                                 size.var=c("P2A","P3A","FTA"), weight=TRUE)
 print(list_variability)
-plot(list_variability)
+plot(list_variability, leg.brk=c(10,25,50,100,500,1000), max.circle=30)
 }
