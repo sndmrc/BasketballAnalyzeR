@@ -4,8 +4,8 @@
 \alias{bubbleplot}
 \title{Create a bubble plot}
 \usage{
-bubbleplot(data, id, x, y, col, size, labels = NULL, mx = NULL,
-  my = NULL, mcol = NULL, title = NULL, repel = TRUE)
+bubbleplot(data, id, x, y, col, size, scale.size = TRUE, labels = NULL,
+  mx = NULL, my = NULL, mcol = NULL, title = NULL, repel = TRUE)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -19,6 +19,8 @@ bubbleplot(data, id, x, y, col, size, labels = NULL, mx = NULL,
 \item{col}{Name of variable on the color axis}
 
 \item{size}{Name of variable on the size axis}
+
+\item{scale.size}{If TRUE, 'size' variable is rescaled between 0 and 100.}
 
 \item{labels}{Vector of labels for 4 variables}
 

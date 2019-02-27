@@ -6,6 +6,7 @@
 #' @param y Name of variable on the y axis
 #' @param col Name of variable on the color axis
 #' @param size Name of variable on the size axis
+#' @param scale.size If TRUE, 'size' variable is rescaled between 0 and 100.
 #' @param labels Vector of labels for 4 variables
 #' @param mx mx
 #' @param my my
@@ -20,7 +21,7 @@
 #' @importFrom ggplot2 geom_hline
 #' @importFrom ggplot2 geom_vline
 
-bubbleplot <- function(data, id, x, y, col, size, labels = NULL, mx = NULL, my = NULL,
+bubbleplot <- function(data, id, x, y, col, size, scale.size=TRUE, labels = NULL, mx = NULL, my = NULL,
                        mcol = NULL, title = NULL, repel = TRUE) {
 
   ID <- NULL
@@ -44,8 +45,9 @@ bubbleplot <- function(data, id, x, y, col, size, labels = NULL, mx = NULL, my =
   xmax <- max(dts$x) + (max(dts$x) - mx)/4
   ymin <- min(dts$y) - (my - min(dts$y))/4
   ymax <- max(dts$y) + (max(dts$y) - my)/4
-  dts$size <- (dts$size - min(dts$size))/(max(dts$size) - min(dts$size)) * 100
-
+  if (scale.size) {
+    dts$size <- (dts$size - min(dts$size))/(max(dts$size) - min(dts$size)) * 100
+  }
   p <- ggplot(dts, aes(x = x, y = y, label = ID)) +
     geom_point(aes(size = size, fill = col), shape = 21, colour = "white") +
     scale_size_area(max_size = 10, guide = guide_legend(override.aes = list(colour = "black"))) +

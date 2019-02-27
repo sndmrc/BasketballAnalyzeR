@@ -77,11 +77,11 @@ plot.variability <- function(x, title="Variability diagram", ylim=NULL, ylab=NUL
                        breaks = 0:(nc.data + 1),
                        labels = c("", names(df.data), "")) +
     annotate("text", x = 0:nc.data, y = rep(9*ylim[2]/8, nc.data+1),
-             label = c("Range:", round(rg, 2)), size = 4)
+             label = c(" Range: ", round(rg, 2)), size = 4)
 
   if (VC) {
     p <- p + annotate("text", x = 0:nc.data, y = rep(10*ylim[2]/8, nc.data+1),
-                      label = c("    VC:", paste0(round(vc, 2), "%")), size = 4)
+                      label = c("    VC: ", paste0(round(vc, 2), "%")), size = 4)
   }
 
   p <- p +
