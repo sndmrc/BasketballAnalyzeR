@@ -22,8 +22,9 @@
 expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.team="gray",
           col.hline="black", xlab="Shot distance", title=NULL, legend=TRUE, var="shot_distance") {
 
-  player <- Player <- NULL
-  data <- data[, c(var, "points", "player")]
+  event_type <- player <- Player <- NULL
+  data <- data %>% dplyr::select_(.dots=list(var, "points", "player", "event_type")) %>%
+                   dplyr::filter(event_type=="shot" | event_type=="miss")
   x <- data[, var]
   y <- data$points
   ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, x.points=x, kernel='normal')
