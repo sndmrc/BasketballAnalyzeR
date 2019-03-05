@@ -23,7 +23,7 @@ expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.tea
           col.hline="black", xlab="Shot distance", title=NULL, legend=TRUE, var="shot_distance") {
 
   event_type <- player <- Player <- NULL
-  data <- data %>% dplyr::select_(.dots=list(var, "points", "player", "event_type")) %>%
+  data <- data %>% dplyr::select(dplyr::one_of(var, "points", "player", "event_type")) %>%
                    dplyr::filter(event_type=="shot" | event_type=="miss")
   x <- data[, var]
   y <- data$points

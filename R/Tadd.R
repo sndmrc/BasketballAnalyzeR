@@ -4,7 +4,8 @@
 #'
 #' @format A data frame with 30 rows and 23 variables:
 #' \describe{
-#'   \item{Team}{Teams}
+#'   \item{Team}{Team name}
+#'   \item{team}{Team name (short)}
 #'   \item{Conference}{Conference}
 #'   \item{Division}{Division}
 #'   \item{Rank}{Rank}
