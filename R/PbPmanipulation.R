@@ -6,6 +6,7 @@
 #' @importFrom stringr str_sub
 #' @importFrom operators %~%
 #' @importFrom operators %!~%
+#' @importFrom readr parse_number
 
 PbPmanipulation <- function(data) {
   #### Convert shot distance and x-y coordinates to numeric
@@ -33,6 +34,20 @@ PbPmanipulation <- function(data) {
                   ifelse(mat$event_type!="free throw" & mat$description%!~%"3PT","2P","FT"))
   data$ShotType[filt] <- mat$ShotType
   data$ShotType <- as.factor(data$ShotType)
+
+  # Clean game_id
+  data$game_id <- readr::parse_number(as.character(data$game_id))
+
+  # Creat oppTeam
+  games <- unique(data$game_id)
+  data$oppTeam <- ""
+  for (gm in games) {
+    idx <- data$game_id==gm & data$team!=""
+    tbl <- table(data[idx,"team"])
+    playing_teams <- names(tbl)[tbl!=0]
+    opp_team <- playing_teams[playing_teams!="GSW"]
+    data[idx,"oppTeam"] <- opp_team
+  }
 
   return(data)
 }
