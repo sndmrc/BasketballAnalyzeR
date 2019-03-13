@@ -18,10 +18,11 @@
 variability <- function(data, data.var, size.var, VC=TRUE, weight = FALSE) {
 
   cvfun <- function(x, VC) {
-    s = sd(x)
-    rg <- max(x) - min(x)
+    mn <- mean(x, na.rm=TRUE)
+    s = sqrt(mean((x-mn)^2, na.rm=TRUE)) # Population SD
+    rg <- max(x, na.rm=TRUE) - min(x, na.rm=TRUE)
     if (VC) {
-      cv = s/abs(mean(x))
+      cv = s/abs(mn)
       c(s, rg, cv)
     } else {
       c(s, rg)
