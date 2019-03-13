@@ -24,6 +24,9 @@ assistnet <- function(data, assist="assist", player="player") {
   data_no_assist <- droplev_by_col(data_no_assist)
   assist_player <- data_no_assist %>%
     dplyr::select(assist, player)
+  all_ast_plr <- unique(unlist(assist_player))
+  assist_player$assist <- factor(assist_player$assist, levels=all_ast_plr)
+  assist_player$player <- factor(assist_player$player, levels=all_ast_plr)
 
   tbl <- as.matrix(table(assist_player, useNA="no"))
   if (nrow(tbl)!=ncol(tbl)) {
