@@ -4,8 +4,9 @@
 \alias{bubbleplot}
 \title{Create a bubble plot}
 \usage{
-bubbleplot(data, id, x, y, col, size, scale.size = TRUE, labels = NULL,
-  mx = NULL, my = NULL, mcol = NULL, title = NULL, repel = TRUE)
+bubbleplot(data, id, x, y, col, size, text.col = NULL, text.size = 2.5,
+  scale.size = TRUE, labels = NULL, mx = NULL, my = NULL,
+  mcol = NULL, title = NULL, repel = TRUE, text.legend = TRUE)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -20,9 +21,13 @@ bubbleplot(data, id, x, y, col, size, scale.size = TRUE, labels = NULL,
 
 \item{size}{Name of variable on the size axis}
 
+\item{text.col}{Name of variable for text colors}
+
+\item{text.size}{Text font size}
+
 \item{scale.size}{If TRUE, 'size' variable is rescaled between 0 and 100.}
 
-\item{labels}{Vector of labels for 4 variables}
+\item{labels}{Vector of variable labels (on legend and axis)}
 
 \item{mx}{mx}
 
@@ -33,10 +38,20 @@ bubbleplot(data, id, x, y, col, size, scale.size = TRUE, labels = NULL,
 \item{title}{Title for the plot}
 
 \item{repel}{Activate text repelling}
+
+\item{text.legend}{If TRUE, show the legend for text color}
 }
 \value{
 A ggplot2 object
 }
 \description{
 Create a bubble plot
+}
+\examples{
+X <- data.frame(T=Tbox$Team, P2p=Tbox$P2p, P3p=Tbox$P3p,
+       FTp=Tbox$FTp, AS=Tbox$P2A + Tbox$P3A + Tbox$FTA)
+labs <- c("2-point shots (\% made)","3-point shots (\% made)",
+          "free throws (\% made)","Total shots attempted")
+bubbleplot(X, id="T", x="P2p", y="P3p", col="FTp",
+           size="AS", labels=labs)
 }
