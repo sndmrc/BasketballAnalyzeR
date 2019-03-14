@@ -33,7 +33,7 @@ variability <- function(data, data.var, size.var, VC=TRUE, weight = FALSE) {
     wmean <- stats::weighted.mean(x, w)
     wsd <- sqrt(stats::weighted.mean(x^2, w) - wmean^2)
     rg <- max(x) - min(x)
-    c(wsd, wsd/wmean, rg)
+    c(wsd, rg, wsd/abs(wmean))
   }
 
   data <- stats::na.omit(data)
