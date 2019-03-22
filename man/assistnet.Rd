@@ -4,14 +4,19 @@
 \alias{assistnet}
 \title{Calculate table of assists and some useful player statistics}
 \usage{
-assistnet(data, assist = "assist", player = "player")
+assistnet(data, assist = "assist", player = "player",
+  points = "points", event.type = "event_type")
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{A play-by-play dataframe}
 
-\item{assist}{assist}
+\item{assist}{A string for the name of the column with players who made the assists}
 
-\item{player}{player}
+\item{player}{A string for the name of the column with players responsible for the recorded events}
+
+\item{points}{A string for the name of the column with points made}
+
+\item{event.type}{A string for the name of the column with type of event}
 }
 \value{
 A list with 3 elements: assistTable (a table), nodeStats (a dataframe), and a net (a network object)

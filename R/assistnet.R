@@ -1,8 +1,10 @@
 #' Calculate table of assists and some useful player statistics
 #'
-#' @param data A dataframe
-#' @param assist assist
-#' @param player player
+#' @param data A play-by-play dataframe
+#' @param assist A string for the name of the column with players who made the assists
+#' @param player A string for the name of the column with players responsible for the recorded events
+#' @param points A string for the name of the column with points made
+#' @param event.type A string for the name of the column with type of event
 #' @return A list with 3 elements: assistTable (a table), nodeStats (a dataframe), and a net (a network object)
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
@@ -13,12 +15,12 @@
 #' @importFrom network set.vertex.attribute
 #' @importFrom tidyr replace_na
 
-assistnet <- function(data, assist="assist", player="player") {
+assistnet <- function(data, assist="assist", player="player", points="points", event.type="event_type") {
 
-  points <- event_type <- FGM <- FGM_AST <- FGM_ASTp <- FGPTS <- FGPTS_AST <- FGPTS_ASTp <- NULL
+  FGM <- FGM_AST <- FGM_ASTp <- FGPTS <- FGPTS_AST <- FGPTS_ASTp <- NULL
   data <- droplev_by_col(data)
   data <- data %>%
-    dplyr::rename(assist=!!assist, player=!!player)
+    dplyr::rename(assist=!!assist, player=!!player, points=!!points, event.type=!!event.type)
   data_no_assist <- data %>%
     dplyr::filter(assist!="")
   data_no_assist <- droplev_by_col(data_no_assist)
@@ -36,7 +38,7 @@ assistnet <- function(data, assist="assist", player="player") {
   # Calculate some player/node statistics
   nodeData1 <- data %>%
     dplyr::group_by(player) %>%
-    dplyr::filter(event_type=="shot") %>%
+    dplyr::filter(event.type=="shot") %>%
     dplyr::summarise(FGM=dplyr::n(),
                      FGM_AST=sum(assist!=""),
                      FGM_ASTp=100*FGM_AST/FGM,
