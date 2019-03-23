@@ -68,7 +68,8 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     df <- data[, data.var]
     names(df) <- c("x","y")
     if (is.null(z.var)) {
-      p <- ggplot(data=df, aes(x=x, y=y))
+      p <- ggplot(data=df, aes(x=x, y=y, text=paste0(nm.data.vars[1],": ",df$x,"<br>",
+                                                     nm.data.vars[2],": ",df$y,"<br>")))
     } else {
       z <- data[, z.var]
       if (is.character(z)) {
@@ -77,7 +78,9 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       } else if (is.factor(z) | is.numeric(z)) {
         df$z <- z
       }
-      p <- ggplot(data=df, aes(x=x, y=y, color=z))
+      p <- ggplot(data=df, aes(x=x, y=y, color=z, text=paste0(nm.data.vars[1],": ",df$x,"<br>",
+                                                              nm.data.vars[2],": ",df$y,"<br>",
+                                                              z.var,": ",df$z)))
     }
     if (!is.null(zoom)) {
       xmin <- zoom[1]
@@ -120,9 +123,9 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
         }
       }
     }
-    if (!is.null(palette) & is.factor(z)) {
+    if (!is.null(palette) & !is.null(z) & is.factor(z)) {
       p <- p + scale_color_manual(name=nm.z.var, values=palette(length(unique(z))))
-    } else if (!is.null(palette) & !is.factor(z)) {
+    } else if (!is.null(palette) & !is.null(z) & !is.factor(z)) {
       p <- p + scale_color_gradientn(name=nm.z.var, colors=palette(length(unique(z))))
     }
     p <- p + labs(title=title, x=nm.data.vars[1], y=nm.data.vars[2]) +
