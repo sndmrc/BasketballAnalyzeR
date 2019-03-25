@@ -79,8 +79,7 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
         df$z <- z
       }
       p <- ggplot(data=df, aes(x=x, y=y, color=z, text=paste0(nm.data.vars[1],": ",df$x,"<br>",
-                                                              nm.data.vars[2],": ",df$y,"<br>",
-                                                              z.var,": ",df$z)))
+                                                              nm.data.vars[2],": ",df$y,"<br>",                                                              z.var,": ",df$z)))
     }
     if (!is.null(zoom)) {
       xmin <- zoom[1]
@@ -109,17 +108,17 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
           geom_point(data = subset2, size = 4, col = col.subset)
       } else {
         if (repel_labels) {
-          p <- p + ggrepel::geom_text_repel(data=subset1, aes(label = subset1.labels), size = 3)
+          p <- p + ggrepel::geom_text_repel(data=subset1, aes(x=x, y=y, label = subset1.labels), size = 3, inherit.aes=FALSE)
         } else {
-          p <- p + geom_text(data=subset1, aes(label = subset1.labels), size = 3)
+          p <- p + geom_text(data=subset1, aes(x=x, y=y, label = subset1.labels), size = 3, inherit.aes=FALSE)
         }
 
         if (text_label) {
-          p <- p + ggrepel::geom_label_repel(data = subset2, aes(label = subset2.labels),
-                                             size = 4, col = col.subset, fontface = 2)
+          p <- p + ggrepel::geom_label_repel(data = subset2, aes(x=x, y=y, label = subset2.labels),
+                                             size = 4, col = col.subset, fontface = 2, inherit.aes=FALSE)
         } else {
-          p <- p + ggrepel::geom_text_repel(data = subset2, aes(label = subset2.labels),
-                                            size = 4, col = col.subset, fontface = 2)
+          p <- p + ggrepel::geom_text_repel(data = subset2, aes(x=x, y=y, label = subset2.labels),
+                                            size = 4, col = col.subset, fontface = 2, inherit.aes=FALSE)
         }
       }
     }
