@@ -68,8 +68,8 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     df <- data[, data.var]
     names(df) <- c("x","y")
     if (is.null(z.var)) {
-      p <- ggplot(data=df, aes(x=x, y=y, text=paste0(nm.data.vars[1],": ",df$x,"<br>",
-                                                     nm.data.vars[2],": ",df$y,"<br>")))
+      p <- ggplot(data=df, aes(x=x, y=y, text=paste0(nm.data.vars[1],": ",x,"<br>",
+                                                     nm.data.vars[2],": ",y,"<br>")))
     } else {
       z <- data[, z.var]
       if (is.character(z)) {
@@ -78,8 +78,8 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       } else if (is.factor(z) | is.numeric(z)) {
         df$z <- z
       }
-      p <- ggplot(data=df, aes(x=x, y=y, color=z, text=paste0(nm.data.vars[1],": ",df$x,"<br>",
-                                                              nm.data.vars[2],": ",df$y,"<br>",                                                              z.var,": ",df$z)))
+      p <- ggplot(data=df, aes(x=x, y=y, color=z, text=paste0(nm.data.vars[1],": ",x,"<br>",
+                                                              nm.data.vars[2],": ",y,"<br>", z.var,": ", z)))
     }
     if (!is.null(zoom)) {
       xmin <- zoom[1]
@@ -88,6 +88,7 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       ymax <- zoom[4]
       p <- p + xlim(c(xmin, xmax)) + ylim(c(ymin, ymax))
     }
+
     if (is.null(subset)) { ### if 'subset' is not defined
       if (is.null(labels)) {
         p <- p + geom_point()
@@ -108,19 +109,18 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
           geom_point(data = subset2, size = 4, col = col.subset)
       } else {
         if (repel_labels) {
-          p <- p + ggrepel::geom_text_repel(data=subset1, aes(x=x, y=y, color=z, label = subset1.labels),
-                                            size = 3, inherit.aes=FALSE)
+          p <- p + ggrepel::geom_text_repel(data=subset1, aes(label=subset1.labels),
+                                            size = 3)
         } else {
-          p <- p + geom_text(data=subset1, aes(x=x, y=y, color=z, label = subset1.labels),
-                             size = 3, inherit.aes=FALSE)
+          p <- p + geom_text(data=subset1, aes(label=subset1.labels),
+                             size = 3)
         }
-
         if (text_label) {
-          p <- p + ggrepel::geom_label_repel(data = subset2, aes(x=x, y=y, color=z, label=subset2.labels),
-                                             size = 4, col = col.subset, fontface = 2, inherit.aes=FALSE)
+          p <- p + ggrepel::geom_label_repel(data = subset2, aes(label=subset2.labels),
+                                             size = 4, col = col.subset, fontface = 2)
         } else {
-          p <- p + ggrepel::geom_text_repel(data = subset2, aes(x=x, y=y, color=z, label=subset2.labels),
-                                            size = 4, col = col.subset, fontface = 2, inherit.aes=FALSE)
+          p <- p + ggrepel::geom_text_repel(data = subset2, aes(label=subset2.labels),
+                                            size = 4, col = col.subset, fontface = 2)
         }
       }
     }
