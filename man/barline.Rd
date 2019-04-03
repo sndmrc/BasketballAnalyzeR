@@ -4,8 +4,8 @@
 \alias{barline}
 \title{Create a graph with a barplot and a line plot}
 \usage{
-barline(data, id, bars, line, order.by = id, labels.bars = NULL,
-  label.line = NULL, title = NULL)
+barline(data, id, bars, line, order.by = id, decreasing = TRUE,
+  labels.bars = NULL, label.line = NULL, title = NULL)
 }
 \arguments{
 \item{data}{A dataframe}
@@ -17,6 +17,8 @@ barline(data, id, bars, line, order.by = id, labels.bars = NULL,
 \item{line}{The name of the line variable}
 
 \item{order.by}{The name of the variable used to order name players (on the x axis)}
+
+\item{decreasing}{Logical. Should the sort order be increasing or decreasing?}
 
 \item{labels.bars}{Vector of labels for the bar variables}
 

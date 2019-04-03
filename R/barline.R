@@ -5,6 +5,7 @@
 #' @param bars Vector of names of the bar variables
 #' @param line The name of the line variable
 #' @param order.by The name of the variable used to order name players (on the x axis)
+#' @param decreasing Logical. Should the sort order be increasing or decreasing?
 #' @param labels.bars Vector of labels for the bar variables
 #' @param label.line The label for the line variable on the second axis (on the right)
 #' @param title Title for the plot
@@ -28,7 +29,7 @@
 #' @importFrom ggplot2 sec_axis
 #' @importFrom plyr "."
 
-barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.line=NULL, title=NULL) {
+barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.bars=NULL, label.line=NULL, title=NULL) {
 
   Line <- Value <- Variables <- rsum <- x <- y <- ID <- NULL
   if (is.null(labels.bars)) {
@@ -50,10 +51,10 @@ barline <- function(data, id, bars, line, order.by=id, labels.bars=NULL, label.l
 
   var_ord <- data[[order.by]]
   if (class(var_ord)=="factor") {
-    ord_df1 <- order(levels(var_ord))
+    ord_df1 <- order(levels(var_ord), decreasing=decreasing)
     ord_df2 <- match(levels(df1$ID)[ord_df1], data[[id]])
   } else {
-    ord_df2 <- order(var_ord, decreasing=T)
+    ord_df2 <- order(var_ord, decreasing=decreasing)
     ord_df1 <- match(data[ord_df2, id], levels(df1$ID))
   }
 

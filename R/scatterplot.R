@@ -68,8 +68,9 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
     df <- data[, data.var]
     names(df) <- c("x","y")
     if (is.null(z.var)) {
-      p <- ggplot(data=df, aes(x=x, y=y, text=paste0(nm.data.vars[1],": ",x,"<br>",
-                                                     nm.data.vars[2],": ",y,"<br>")))
+      df$text <- paste0(nm.data.vars[1],": ",x,"<br>",
+                        nm.data.vars[2],": ",y,"<br>")
+      p <- ggplot(data=df, aes(x=x, y=y, text=text))
     } else {
       z <- data[, z.var]
       if (is.character(z)) {
@@ -78,8 +79,9 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       } else if (is.factor(z) | is.numeric(z)) {
         df$z <- z
       }
-      p <- ggplot(data=df, aes(x=x, y=y, color=z, text=paste0(nm.data.vars[1],": ",x,"<br>",
-                                                              nm.data.vars[2],": ",y,"<br>", z.var,": ", z)))
+      df$text <- paste0(nm.data.vars[1],": ",x,"<br>",
+                        nm.data.vars[2],": ",y,"<br>", z.var,": ", z)
+      p <- ggplot(data=df, aes(x=x, y=y, color=z, text=text))
     }
     if (!is.null(zoom)) {
       xmin <- zoom[1]

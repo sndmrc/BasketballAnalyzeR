@@ -82,7 +82,7 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
     dplyr::mutate(N = replace(N, N <= edge.thr, NA))
   p <- ggplot(datanet, aes(x = x, y = y, xend = xend, yend = yend)) +
     ggnetwork::geom_edges(aes(color=N, alpha=N), size=1.5, curvature=0.1,
-                          arrow=arrow(length=unit(6, "pt"), type="closed")) +
+                          arrow=ggplot2::arrow(length=unit(6, "pt"), type="closed")) +
     scale_colour_gradientn(edge.col.lab, limits=edge.col.lim, colors=edge.pal(100),
                            na.value="transparent")
 
