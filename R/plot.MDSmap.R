@@ -68,8 +68,8 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
   } else {
     warn <- "FAIR FIT"
   }
-  subtitle <- paste("Stress Index = ", round(stress, 2), "% - ", warn, sep = "")
-
+  #subtitle <- paste("Stress Index = ", round(stress, 2), "% - ", warn, sep = "")
+  subtitle <- paste("Stress Index = ", round(stress, 2), "%", sep = "")
 
   if (is.null(z.var)) { ### If 'z.var' is NULL
     listPlots <- vector(1, mode = "list")
