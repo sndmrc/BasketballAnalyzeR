@@ -1,6 +1,7 @@
 #' Manipulate play-by-play (PbP) dataset
 #'
 #' @param data PbP dataframe
+#' @param playTeam Playing team
 #' @return A Pbp data frame
 #' @export
 #' @importFrom stringr str_sub
@@ -8,7 +9,7 @@
 #' @importFrom operators %!~%
 #' @importFrom readr parse_number
 
-PbPmanipulation <- function(data) {
+PbPmanipulation <- function(data, playTeam="GSW") {
   #### Convert shot distance and x-y coordinates to numeric
   num_vars <- c("shot_distance","original_x","original_y","converted_x","converted_y")
   data[,num_vars] <- sapply(data[,num_vars], function(x) suppressWarnings(as.numeric(as.character(x))))
@@ -45,7 +46,7 @@ PbPmanipulation <- function(data) {
     idx <- data$game_id==gm & data$team!=""
     tbl <- table(data[idx,"team"])
     playing_teams <- names(tbl)[tbl!=0]
-    opp_team <- playing_teams[playing_teams!="GSW"]
+    opp_team <- playing_teams[playing_teams!=playTeam]
     data[idx,"oppTeam"] <- opp_team
   }
 

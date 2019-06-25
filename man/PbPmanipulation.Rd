@@ -4,10 +4,12 @@
 \alias{PbPmanipulation}
 \title{Manipulate play-by-play (PbP) dataset}
 \usage{
-PbPmanipulation(data)
+PbPmanipulation(data, playTeam = "GSW")
 }
 \arguments{
 \item{data}{PbP dataframe}
+
+\item{playTeam}{Playing team}
 }
 \value{
 A Pbp data frame
