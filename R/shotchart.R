@@ -41,6 +41,7 @@
 #' @importFrom ggplot2 theme_void
 #' @importFrom ggplot2 coord_fixed
 #' @importFrom ggplot2 guides
+#' @importFrom ggplot2 ggplot_build
 #' @importFrom PBSmapping as.PolySet
 #' @importFrom PBSmapping calcCentroid
 #' @importFrom sp point.in.polygon
@@ -167,6 +168,11 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
     if (!legend) {
       p <- p + theme(legend.position = 'none')
     }
+    plot_xrange <- ggplot_build(p)$layout$panel_params[[1]]$x.range
+    plot_yrange <- ggplot_build(p)$layout$panel_params[[1]]$y.range
+    p <- p + scale_x_continuous(limits = plot_xrange * 1.25) +
+      scale_y_continuous(limits = plot_yrange * 1.25) +
+      coord_fixed(xlim=plot_xrange, ylim=plot_yrange)
 
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
