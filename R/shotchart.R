@@ -164,7 +164,7 @@ shotchart <- function(data, x=NULL, y=NULL, z=NULL, result=NULL,
                           color=pt.col, alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
     }
     p <- drawNBAcourt(p, full=FALSE, size=1, col=courtline.col)
-    p <- p + coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
+    p <- p + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
     if (!legend) {
       p <- p + theme(legend.position = 'none')
     }
