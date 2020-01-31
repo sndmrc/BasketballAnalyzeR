@@ -4,8 +4,14 @@
 \alias{radialprofile}
 \title{Plot radial plot for player profiles}
 \usage{
-radialprofile(data, perc = FALSE, std = TRUE, title = NULL,
-  ncol.arrange = NULL, min.mid.max = NULL)
+radialprofile(
+  data,
+  perc = FALSE,
+  std = TRUE,
+  title = NULL,
+  ncol.arrange = NULL,
+  min.mid.max = NULL
+)
 }
 \arguments{
 \item{data}{A dataframe}

@@ -4,11 +4,22 @@
 \alias{plot.MDSmap}
 \title{Draw some two-dimensional plots for multidimensional scaling (MDS)}
 \usage{
-\method{plot}{MDSmap}(x, z.var = NULL, level.plot = TRUE,
-  title = NULL, labels = NULL, repel_labels = FALSE,
-  text_label = TRUE, subset = NULL, col.subset = "gray50",
-  zoom = NULL, palette = NULL, contour = FALSE,
-  ncol.arrange = NULL, ...)
+\method{plot}{MDSmap}(
+  x,
+  z.var = NULL,
+  level.plot = TRUE,
+  title = NULL,
+  labels = NULL,
+  repel_labels = FALSE,
+  text_label = TRUE,
+  subset = NULL,
+  col.subset = "gray50",
+  zoom = NULL,
+  palette = NULL,
+  contour = FALSE,
+  ncol.arrange = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{An object of class 'MDSmap'}

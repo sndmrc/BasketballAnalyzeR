@@ -2,67 +2,99 @@
 % Please edit documentation in R/shotchart.R
 \name{shotchart}
 \alias{shotchart}
-\title{Plot shortcharts}
+\title{Plots different kinds of charts based on shot coordinates}
 \usage{
-shotchart(data, x = NULL, y = NULL, z = NULL, result = NULL,
-  type = NULL, scatter = FALSE, num.sect = 7, n = 1000,
-  col.limits = c(NA, NA), courtline.col = "black", bg.col = "white",
-  legend = FALSE, drop.levels = TRUE, pt.col = "black",
-  pt.alpha = 0.5, nbins = 25, palette = "mixed")
+shotchart(
+  data,
+  x,
+  y,
+  z = NULL,
+  z.fun = median,
+  result = NULL,
+  type = NULL,
+  scatter = FALSE,
+  num.sect = 7,
+  n = 1000,
+  col.limits = c(NA, NA),
+  courtline.col = "black",
+  bg.col = "white",
+  sectline.col = "white",
+  text.col = "white",
+  legend = FALSE,
+  drop.levels = TRUE,
+  pt.col = "black",
+  pt.alpha = 0.5,
+  nbins = 25,
+  palette = "mixed"
+)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame whose rows are field shots and columns are half-court shot coordinates x and y, and optionally additional variables to be specified in \code{z} and/or \code{result} (see Details).}
 
-\item{x}{Variable name for the x coordinate}
+\item{x}{character, indicating the variable name of the x coordinate.}
 
-\item{y}{Variable name for the y coordinate}
+\item{y}{character, indicating the variable name of the y coordinate.}
 
-\item{z}{Name of 'data' variable to be used as a third variable}
+\item{z}{character, indicating the name of the variable used to color the points (if \code{type=NULL}) or the sectors (if \code{type="sectors"}, in this case \code{z} must be a numeric variable).}
 
-\item{result}{Name of 'data' variable containing the type of shot; this variable is used to generate shot statistics; allowed categories: 'made' and 'missed'}
+\item{z.fun}{function (active when \code{type="sectors"}), used to summarize the values of \code{z} variable within each sector (recommended: \code{mean}, \code{median}).}
 
-\item{type}{A string with the plot type: 'sectors', 'density-polygon', 'density-raster', 'density-hexbin'}
+\item{result}{character (active when \code{type="sectors"} and \code{scatter=FALSE}), indicating the name of the factor with the shot result (allowed categories \code{made} and \code{missed}).}
 
-\item{scatter}{Logical. If TRUE a scatter plot was added to the plot}
+\item{type}{character, indicating the plot type; available option are \code{NULL}, \code{"sectors"}, \code{"density-polygon"}, \code{"density-raster"}, \code{"density-hexbin"}.}
 
-\item{num.sect}{Number of sectors in shotchart plot split by sectors}
+\item{scatter}{logical, if TRUE a scatter plot of the shots is added to the plot.}
 
-\item{n}{Number of point used when drawing arcs in shotchart plot split by sectors}
+\item{num.sect}{integer (active when \code{type="sectors"}), number of sectors.}
 
-\item{col.limits}{Vector of limits c(min, max) for the gratient color scale}
+\item{n}{integer (active when \code{type="sectors"}), number of points used to draw arcs (must be > 500).}
 
-\item{courtline.col}{Color of court lines}
+\item{col.limits}{numeric vector, (active  when \code{z} is a numeric variable), limits \code{c(min, max)} for the gradient color scale of \code{z} variable.}
 
-\item{bg.col}{Background color}
+\item{courtline.col}{color of court lines.}
 
-\item{legend}{If TRUE a legend is plotted}
+\item{bg.col}{background color.}
 
-\item{drop.levels}{If TRUE, drop unused levels of the 'z' variable.}
+\item{sectline.col}{color of sector lines (active when \code{type="sectors"}).}
 
-\item{pt.col}{Color of points in the scatter plot}
+\item{text.col}{color of text annotation within sectors (active when \code{type="sectors"}).}
 
-\item{pt.alpha}{Transparency of points in the scatter plot}
+\item{legend}{logical, if TRUE a legend for \code{z} is plotted.}
 
-\item{nbins}{Number of bins in the 'density-hexbin' plot}
+\item{drop.levels}{logical, if TRUE unused levels of the \code{z} variable are dropped.}
 
-\item{palette}{Palette color for the scatter plot: 'main', 'cool', 'hot', 'mixed', 'grey'}
+\item{pt.col}{color of points in the scatter plot.}
+
+\item{pt.alpha}{numeric, transparency of points in the scatter plot.}
+
+\item{nbins}{integer (active when \code{type="density-hexbin"}), number of bins.}
+
+\item{palette}{color palette; available options \code{"main"}, \code{"cool"}, \code{"hot"}, \code{"mixed"}, \code{"grey"}.}
 }
 \value{
-A ggplot2 object
+A ggplot2 object.
 }
 \description{
-Plot shortcharts
+Plots different kinds of charts based on shot coordinates
+}
+\details{
+The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots have missing \code{x} and \code{y} coordinates.
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
-subdata <- subset(PbP, player=="Kevin Durant" & result!="")
-subdata$result <- droplevels(subdata$result)
+subdata <- subset(PbP, player=="Kevin Durant")
 subdata$xx <- subdata$original_x/10
-subdata$yy <- subdata$original_y/10-42
-# Shotchart with colored sectors and statistics for a 3rd variable
+subdata$yy <- subdata$original_y/10-41.75
+shotchart(data=subdata, x="xx", y="yy", scatter=TRUE)
+shotchart(data=subdata, x="xx", y="yy", scatter=TRUE, z="result")
+shotchart(data=subdata, x="xx", y="yy", scatter=TRUE, z="result",
+          bg.col="black", courtline.col="white", palette="hot")
+shotchart(data=subdata, x="xx", y="yy", result="result",
+          type="sectors", sectline.col="gray", text.col="red")
 shotchart(data=subdata, x="xx", y="yy", z="playlength", result="result",
-          type="sectors",  num.sect=7)
-# Shotchart with scatter plot and a stratification variable
-shotchart(data=subdata, x="xx", y="yy", z="result",
-          type=NULL, scatter=TRUE, palette="mixed")
+          type="sectors",  num.sect=5)
+shotchart(data=subdata, x="xx", y="yy", type="density-polygons", palette="bwr")
+shotchart(data=subdata, x="xx", y="yy", type="density-raster",
+          scatter=TRUE, pt.col="tomato", pt.alpha=0.1)
+shotchart(data=subdata, x="xx", y="yy", type="density-hexbin", nbins=30)
 }

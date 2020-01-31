@@ -4,18 +4,30 @@
 \alias{expectedpts}
 \title{Plot expected points of player shots as a function of the distance from the basket}
 \usage{
-expectedpts(data, players = NULL, bw = 10, palette = gg_color_hue,
-  col.team = "gray", col.hline = "black", xlab = "Shot distance",
-  title = NULL, legend = TRUE, var = "shot_distance")
+expectedpts(
+  data,
+  players = NULL,
+  bw = 10,
+  palette = gg_color_hue,
+  team = TRUE,
+  col.team = "gray",
+  col.hline = "black",
+  xlab = NULL,
+  title = NULL,
+  legend = TRUE,
+  var = "shot_distance"
+)
 }
 \arguments{
-\item{data}{A play-by-play data frame}
+\item{data}{A data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
 
 \item{players}{Subset of players to be displayed}
 
 \item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})}
 
 \item{palette}{Color palette}
+
+\item{team}{team}
 
 \item{col.team}{Color of the scoring probability line for team}
 

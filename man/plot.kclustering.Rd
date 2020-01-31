@@ -4,8 +4,7 @@
 \alias{plot.kclustering}
 \title{Plot k-means clustering of NBA teams}
 \usage{
-\method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL,
-  min.mid.max = NULL, ...)
+\method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...)
 }
 \arguments{
 \item{x}{An object of class 'kclust'}

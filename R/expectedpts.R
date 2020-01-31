@@ -1,10 +1,11 @@
 #' Plot expected points of player shots as a function of the distance from the basket
 #'
-#' @param data A play-by-play data frame
+#' @param data A data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
 #' @param players Subset of players to be displayed
 #' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})
 #' @param title Plot title
 #' @param palette Color palette
+#' @param team team
 #' @param col.team Color of the scoring probability line for team
 #' @param col.hline Color of the dashed horizontal line
 #' @param legend If TRUE, color legend is displayed (only when 'players' is not NULL)
@@ -19,17 +20,41 @@
 #'         palette=colorRampPalette(c("gray","black")), col.hline="red")
 #' @export
 
-expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.team="gray",
-          col.hline="black", xlab="Shot distance", title=NULL, legend=TRUE, var="shot_distance") {
+expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, team=TRUE, col.team="gray",
+          col.hline="black", xlab=NULL, title=NULL, legend=TRUE, var="shot_distance") {
 
   event_type <- player <- Player <- NULL
   data <- data %>% dplyr::select(dplyr::one_of(var, "points", "player", "event_type")) %>%
                    dplyr::filter(event_type=="shot" | event_type=="miss")
   x <- data[, var]
   y <- data$points
-  ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, x.points=x, kernel='normal')
-  ksm <- as.data.frame(ksm[c("x", "y")])
-  ksm$Player <- "Team"
+
+  period.length <- 12
+  if (var=="playlength") {
+    xrng <- c(0, 24)
+    if (is.null(xlab)) xlab <- "Play length"
+    ntks <- 25
+  } else if (var=="totalTime") {
+    xrng <- c(0, period.length*4*60)
+    if (is.null(xlab)) xlab <- "Total time"
+    ntks <- 10
+  } else if (var=="periodTime") {
+    xrng <- c(0, period.length*60)
+    if (is.null(xlab)) xlab <- "Period time"
+    ntks <- 10
+  } else if (var=="shot_distance") {
+    if (is.null(xlab)) xlab <- "Shot distance"
+    ntks <- NULL
+    xrng <- range(data[, var], na.rm=TRUE)
+  } else {
+    if (is.null(xlab)) xlab <- var
+  }
+
+  if (team) {
+    ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, x.points=x, kernel='normal')
+    ksm <- as.data.frame(ksm[c("x", "y")])
+    ksm$Player <- "Team"
+  }
 
   npl <- 0
   if (!is.null(players)) {
@@ -45,7 +70,7 @@ expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, col.tea
       ksm_k$Player <- playerk
       kmslst[[k]] <- ksm_k
     }
-    kmslst[[npl+1]] <- ksm
+    if (team) kmslst[[npl+1]] <- ksm
     ksm <- do.call(rbind, kmslst)
     players <- sort(unique(ksm$Player))
     cols <- palette(npl+1)

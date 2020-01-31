@@ -4,14 +4,25 @@
 \alias{scatterplot}
 \title{Scatter plot and matrix of scatter plot}
 \usage{
-scatterplot(data, data.var, z.var = NULL, palette = NULL,
-  labels = NULL, repel_labels = FALSE, text_label = TRUE,
-  subset = NULL, col.subset = "gray50", zoom = NULL, title = NULL,
-  legend = TRUE, upper = list(continuous = "cor", combo =
-  "box_no_facet", discrete = "facetbar", na = "na"),
-  lower = list(continuous = "points", combo = "facethist", discrete =
-  "facetbar", na = "na"), diag = list(continuous = "densityDiag",
-  discrete = "barDiag", na = "naDiag"))
+scatterplot(
+  data,
+  data.var,
+  z.var = NULL,
+  palette = NULL,
+  labels = NULL,
+  repel_labels = FALSE,
+  text_label = TRUE,
+  subset = NULL,
+  col.subset = "gray50",
+  zoom = NULL,
+  title = NULL,
+  legend = TRUE,
+  upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na =
+    "na"),
+  lower = list(continuous = "points", combo = "facethist", discrete = "facetbar", na =
+    "na"),
+  diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag")
+)
 }
 \arguments{
 \item{data}{A dataframe}

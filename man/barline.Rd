@@ -4,8 +4,17 @@
 \alias{barline}
 \title{Create a graph with a barplot and a line plot}
 \usage{
-barline(data, id, bars, line, order.by = id, decreasing = TRUE,
-  labels.bars = NULL, label.line = NULL, title = NULL)
+barline(
+  data,
+  id,
+  bars,
+  line,
+  order.by = id,
+  decreasing = TRUE,
+  labels.bars = NULL,
+  label.line = NULL,
+  title = NULL
+)
 }
 \arguments{
 \item{data}{A dataframe}

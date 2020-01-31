@@ -4,8 +4,7 @@
 \alias{hclustering}
 \title{Hierarchical clustering of NBA teams}
 \usage{
-hclustering(data, k = NULL, nclumax = 10, labels = NULL,
-  linkage = "ward.D")
+hclustering(data, k = NULL, nclumax = 10, labels = NULL, linkage = "ward.D")
 }
 \arguments{
 \item{data}{A dataframe}

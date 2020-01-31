@@ -4,24 +4,39 @@
 \alias{CreateRadialPlot}
 \title{R function CreateRadialPlot by William D. Vickers, freely downloadable from the web}
 \usage{
-CreateRadialPlot(plot.data, axis.labels = colnames(plot.data)[-1],
-  grid.min = -0.5, grid.mid = 0, grid.max = 0.5,
+CreateRadialPlot(
+  plot.data,
+  axis.labels = colnames(plot.data)[-1],
+  grid.min = -0.5,
+  grid.mid = 0,
+  grid.max = 0.5,
   centre.y = grid.min - ((1/9) * (grid.max - grid.min)),
-  plot.extent.x.sf = 1.2, plot.extent.y.sf = 1.2,
+  plot.extent.x.sf = 1.2,
+  plot.extent.y.sf = 1.2,
   x.centre.range = 0.02 * (grid.max - centre.y),
-  label.centre.y = FALSE, grid.line.width = 0.5,
+  label.centre.y = FALSE,
+  grid.line.width = 0.5,
   gridline.min.linetype = "longdash",
   gridline.mid.linetype = "longdash",
-  gridline.max.linetype = "longdash", gridline.min.colour = "grey",
-  gridline.mid.colour = "blue", gridline.max.colour = "grey",
-  grid.label.size = 4, gridline.label.offset = -0.02 * (grid.max -
-  centre.y), label.gridline.min = TRUE, axis.label.offset = 1.15,
-  axis.label.size = 2.5, axis.line.colour = "grey",
-  group.line.width = 1, group.point.size = 4,
+  gridline.max.linetype = "longdash",
+  gridline.min.colour = "grey",
+  gridline.mid.colour = "blue",
+  gridline.max.colour = "grey",
+  grid.label.size = 4,
+  gridline.label.offset = -0.02 * (grid.max - centre.y),
+  label.gridline.min = TRUE,
+  axis.label.offset = 1.15,
+  axis.label.size = 2.5,
+  axis.line.colour = "grey",
+  group.line.width = 1,
+  group.point.size = 4,
   background.circle.colour = "yellow",
-  background.circle.transparency = 0.2, plot.legend = if
-  (nrow(plot.data) > 1) TRUE else FALSE, legend.title = "Player",
-  legend.text.size = grid.label.size, titolo = FALSE)
+  background.circle.transparency = 0.2,
+  plot.legend = if (nrow(plot.data) > 1) TRUE else FALSE,
+  legend.title = "Player",
+  legend.text.size = grid.label.size,
+  titolo = FALSE
+)
 }
 \arguments{
 \item{plot.data}{plot.data}

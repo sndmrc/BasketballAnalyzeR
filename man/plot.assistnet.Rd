@@ -4,12 +4,22 @@
 \alias{plot.assistnet}
 \title{Create a network plot}
 \usage{
-\method{plot}{assistnet}(x, layout = "kamadakawai",
-  layout.par = list(), edge.thr = 0, edge.col.lim = NULL,
-  edge.col.lab = NULL, node.size = NULL, node.size.lab = NULL,
-  node.col = NULL, node.col.lim = NULL, node.col.lab = NULL,
+\method{plot}{assistnet}(
+  x,
+  layout = "kamadakawai",
+  layout.par = list(),
+  edge.thr = 0,
+  edge.col.lim = NULL,
+  edge.col.lab = NULL,
+  node.size = NULL,
+  node.size.lab = NULL,
+  node.col = NULL,
+  node.col.lim = NULL,
+  node.col.lab = NULL,
   node.pal = colorRampPalette(c("white", "blue", "red")),
-  edge.pal = colorRampPalette(c("white", "blue", "red")), ...)
+  edge.pal = colorRampPalette(c("white", "blue", "red")),
+  ...
+)
 }
 \arguments{
 \item{x}{An object of class 'networkdata'}

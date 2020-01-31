@@ -8,6 +8,7 @@
 #' @param period.length period.length
 #' @param title Plot title
 #' @param palette Color palette
+#' @param team team
 #' @param col.team Color of the scoring probability line for team
 #' @param legend If TRUE, color legend is displayed (only when 'players' is not NULL)
 #' @return A ggplot2 plot
@@ -22,7 +23,7 @@
 #' @importFrom grDevices hcl
 
 scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, title=NULL,
-                      palette=gg_color_hue, col.team='dodgerblue', legend=TRUE) {
+                      palette=gg_color_hue, team=TRUE, col.team='dodgerblue', legend=TRUE) {
 
   ShotType <- NULL
   if (shot.type=="FT" & (var=="playlength" | var=="shot_distance")) {
@@ -67,7 +68,7 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
       xrng <- range(data[, var], na.rm=TRUE)
     }
     p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
-                legend=legend, palette=palette, col.team=col.team)
+                legend=legend, palette=palette, team=team, col.team=col.team)
     print(p)
   }
   return(p)
@@ -75,14 +76,16 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
 
 #' @noRd
 ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Scoring probability", title=NULL,
-                   palette=gg_color_hue, col.team="gray", legend=TRUE) {
+                   palette=gg_color_hue, col.team="gray", legend=TRUE, team=TRUE) {
 
   player <- Player <- NULL
   x <- data[, var]
   y <- data$result01
-  ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
-  ksm <- as.data.frame(ksm[c("x", "y")])
-  ksm$Player <- "Team"
+  if (team) {
+    ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
+    ksm <- as.data.frame(ksm[c("x", "y")])
+    ksm$Player <- "Team"
+  }
   npl <- 0
   if (!is.null(players)) {
     npl <- length(players)
@@ -97,7 +100,7 @@ ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Sco
       ksm_k$Player <- playerk
       kmslst[[k]] <- ksm_k
     }
-    kmslst[[npl+1]] <- ksm
+    if (team) kmslst[[npl+1]] <- ksm
     ksm <- do.call(rbind, kmslst)
     players <- sort(unique(ksm$Player))
     cols <- palette(length(players))

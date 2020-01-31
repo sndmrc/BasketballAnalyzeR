@@ -4,8 +4,16 @@
 \alias{densityplot}
 \title{Shot density plot}
 \usage{
-densityplot(data, var, shot.type = "field", thresholds = NULL,
-  best.scorer = FALSE, period.length = 12, bw = NULL, title = NULL)
+densityplot(
+  data,
+  var,
+  shot.type = "field",
+  thresholds = NULL,
+  best.scorer = FALSE,
+  period.length = 12,
+  bw = NULL,
+  title = NULL
+)
 }
 \arguments{
 \item{data}{A play-by-play data frame}

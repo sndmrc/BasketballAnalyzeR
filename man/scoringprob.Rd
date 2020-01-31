@@ -4,9 +4,19 @@
 \alias{scoringprob}
 \title{Scoring probability plot}
 \usage{
-scoringprob(data, var, shot.type, players = NULL, bw = 20,
-  period.length = 12, title = NULL, palette = gg_color_hue,
-  col.team = "dodgerblue", legend = TRUE)
+scoringprob(
+  data,
+  var,
+  shot.type,
+  players = NULL,
+  bw = 20,
+  period.length = 12,
+  title = NULL,
+  palette = gg_color_hue,
+  team = TRUE,
+  col.team = "dodgerblue",
+  legend = TRUE
+)
 }
 \arguments{
 \item{data}{A play-by-play data frame}
@@ -24,6 +34,8 @@ scoringprob(data, var, shot.type, players = NULL, bw = 20,
 \item{title}{Plot title}
 
 \item{palette}{Color palette}
+
+\item{team}{team}
 
 \item{col.team}{Color of the scoring probability line for team}
 

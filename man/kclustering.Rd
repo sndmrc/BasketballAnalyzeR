@@ -4,8 +4,15 @@
 \alias{kclustering}
 \title{k-means clustering of NBA teams}
 \usage{
-kclustering(data, k = NULL, labels = NULL, nclumax = 10,
-  nruns = 10, iter.max = 50, algorithm = "Hartigan-Wong")
+kclustering(
+  data,
+  k = NULL,
+  labels = NULL,
+  nclumax = 10,
+  nruns = 10,
+  iter.max = 50,
+  algorithm = "Hartigan-Wong"
+)
 }
 \arguments{
 \item{data}{A dataframe}

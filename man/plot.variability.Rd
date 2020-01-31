@@ -4,11 +4,22 @@
 \alias{plot.variability}
 \title{Plot variability}
 \usage{
-\method{plot}{variability}(x, title = "Variability diagram",
-  ylim = NULL, ylab = NULL, size.lim = NULL, max.circle = 25,
-  n.circle = 4, leg.brk = NULL, leg.pos = "right",
-  leg.just = "left", leg.nrow = NULL, leg.title = NULL,
-  leg.title.pos = "top", ...)
+\method{plot}{variability}(
+  x,
+  title = "Variability diagram",
+  ylim = NULL,
+  ylab = NULL,
+  size.lim = NULL,
+  max.circle = 25,
+  n.circle = 4,
+  leg.brk = NULL,
+  leg.pos = "right",
+  leg.just = "left",
+  leg.nrow = NULL,
+  leg.title = NULL,
+  leg.title.pos = "top",
+  ...
+)
 }
 \arguments{
 \item{x}{A 'variability' objects}

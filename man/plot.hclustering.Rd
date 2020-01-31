@@ -4,10 +4,21 @@
 \alias{plot.hclustering}
 \title{Plot hierarchical clustering of NBA teams}
 \usage{
-\method{plot}{hclustering}(x, title = NULL, profiles = FALSE,
-  ncol.arrange = NULL, circlize = FALSE, horiz = TRUE,
-  cex.labels = 0.7, colored.labels = TRUE, colored.branches = FALSE,
-  rect = FALSE, lower.rect = NULL, min.mid.max = NULL, ...)
+\method{plot}{hclustering}(
+  x,
+  title = NULL,
+  profiles = FALSE,
+  ncol.arrange = NULL,
+  circlize = FALSE,
+  horiz = TRUE,
+  cex.labels = 0.7,
+  colored.labels = TRUE,
+  colored.branches = FALSE,
+  rect = FALSE,
+  lower.rect = NULL,
+  min.mid.max = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{An object of class 'hclustering'}

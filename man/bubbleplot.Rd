@@ -4,9 +4,24 @@
 \alias{bubbleplot}
 \title{Create a bubble plot}
 \usage{
-bubbleplot(data, id, x, y, col, size, text.col = NULL, text.size = 2.5,
-  scale.size = TRUE, labels = NULL, mx = NULL, my = NULL,
-  mcol = NULL, title = NULL, repel = TRUE, text.legend = TRUE)
+bubbleplot(
+  data,
+  id,
+  x,
+  y,
+  col,
+  size,
+  text.col = NULL,
+  text.size = 2.5,
+  scale.size = TRUE,
+  labels = NULL,
+  mx = NULL,
+  my = NULL,
+  mcol = NULL,
+  title = NULL,
+  repel = TRUE,
+  text.legend = TRUE
+)
 }
 \arguments{
 \item{data}{A dataframe}
