@@ -67,7 +67,7 @@ plot(out)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{hclustering}}
+\code{\link{hclustering}}, \code{\link{radialprofile}}, option \code{lower_rect} of \code{\link{rect.dendrogram}}
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
