@@ -1,19 +1,22 @@
-#' Plot hierarchical clustering of NBA teams
+#' Plot hierarchical clustering from a hclustering object
 #'
-#' @param x An object of class 'hclustering'
-#' @param title Plot title
-#' @param profiles Plot a radial plots of cluster mean profiles
-#' @param ncol.arrange Number of columns when arranging multiple grobs on a page
-#' @param circlize Plot a circular dendrogram
-#' @param horiz Plot an horizontal dendrogram (only for non circular dendrograms)
-#' @param cex.labels The magnification to be used for dendrogram labels
-#' @param colored.labels Assign different colors to labels of different clusters
-#' @param colored.branches Assign different colors to dendrogram branches of different clusters
-#' @param rect Draw rectangles around the branches of a dendrogram in order to highlight the corresponding clusters
-#' @param lower.rect A (scalar) value of how low should the lower part of the rect be
-#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
+#' @param x an object of class \code{hclustering}
+#' @param title plot title
+#' @param profiles logical; if \code{TRUE}, plot a radial plots of cluster mean profiles
+#' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page
+#' @param circlize logical; if \code{TRUE}, plot a circular dendrogram
+#' @param horiz logical; if \code{TRUE}, plot an horizontal dendrogram (only for non circular dendrograms)
+#' @param cex.labels numeric, the magnification to be used for dendrogram labels
+#' @param colored.labels logical; if \code{TRUE}, Assign different colors to labels of different clusters
+#' @param colored.branches logical; if \code{TRUE}, assign different colors to dendrogram branches of different clusters
+#' @param rect logical; if \code{TRUE}, draw rectangles around the branches of a dendrogram in order to highlight the corresponding clusters
+#' @param lower.rect numeric, a value of how low should the lower part of the rect be
+#' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
-#' @return A single ggplot2 plot or (when \code{profile=FALSE}) a list of (radial) plots (when \code{profile=TRUE}))
+#' @seealso \code{\link{hclustering}}
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A single \code{ggplot2} plot (when \code{profile=FALSE}) or a list of (radial) plots (when \code{profile=TRUE}))
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,
 #'                    Pbox$OREB + Pbox$DREB, Pbox$AST,

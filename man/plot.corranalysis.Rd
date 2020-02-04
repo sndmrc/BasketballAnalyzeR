@@ -7,11 +7,11 @@
 \method{plot}{corranalysis}(x, horizontal = TRUE, title = NULL, ...)
 }
 \arguments{
-\item{x}{An object of class \code{corranalysis}}
+\item{x}{an object of class \code{corranalysis}}
 
-\item{horizontal}{If TRUE, the two plots are arranged horizontally}
+\item{horizontal}{logical; if TRUE, the two plots are arranged horizontally}
 
-\item{title}{Plot title}
+\item{title}{plot title}
 
 \item{...}{other graphical parameters}
 }
@@ -37,5 +37,5 @@ P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications 
 \code{\link{corranalysis}}
 }
 \author{
-Marco Sandri, Paola Zuccolotto, Marica Manisera, \email{basketball.analyzer.help@gmail.com}
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }
