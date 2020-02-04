@@ -12,6 +12,8 @@
 #' @param xlab x-axis label
 #' @param var A character string giving the numerical variable on the x-axis (default "shot_distance").
 #' @return A ggplot2 plot
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & !is.na(shot_distance))

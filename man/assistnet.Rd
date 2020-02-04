@@ -24,7 +24,7 @@ assistnet(
 \item{event.type}{character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).}
 }
 \value{
-A list with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a dataframe), and a \code{assistNet} (a network object). See Details.
+A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a dataframe), and \code{assistNet} (a network object). See Details.
 }
 \description{
 Investigates the network of assists-shots in a team
@@ -34,23 +34,39 @@ The \code{data} dataframe could also be a play-by-play dataset provided that row
 
 \code{assistTable} is the cross-table of assists made and received by the players.
 
-\code{nodeStats} is a dataframe with the variables
+\code{nodeStats} is a dataframe with the following variables:
 
-- \code{FGM} (fields goals made),
+\itemize{
+\item \code{FGM} (fields goals made),
+}
 
-- \code{FGM_AST} (field goals made thanks to a teammate's assist),
+\itemize{
+\item \code{FGM_AST} (field goals made thanks to a teammate's assist),
+}
 
-- \code{FGM_ASTp} (percentage of \code{FGM_AST} over \code{FGM}),
+\itemize{
+\item \code{FGM_ASTp} (percentage of \code{FGM_AST} over \code{FGM}),
+}
 
-- \code{FGPTS} (points scored with field goals),
+\itemize{
+\item \code{FGPTS} (points scored with field goals),
+}
 
-- \code{FGPTS_AST} (points scored thanks to a teammate's assist),
+\itemize{
+\item \code{FGPTS_AST} (points scored thanks to a teammate's assist),
+}
 
-- \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
+\itemize{
+\item \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
+}
 
-- \code{AST} (assists made),
+\itemize{
+\item \code{AST} (assists made),
+}
 
-- \code{ASTPTS} (point scored by assist's teammates).
+\itemize{
+\item \code{ASTPTS} (point scored by assist's teammates).
+}
 
 \code{assistNet} is a object of class \code{network} that can be used for further network analysis with specific R packages.
 }
@@ -59,4 +75,10 @@ PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW" & player!="")
 out <- assistnet(PbP.GSW)
 plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera, \email{basketball.analyzer.help@gmail.com}
 }

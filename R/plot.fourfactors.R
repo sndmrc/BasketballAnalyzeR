@@ -1,9 +1,12 @@
-#' Plot possession, pace, ratings, and Four Factors
+#' Plot possession, pace, ratings, and Four Factors from a fourfactors object
 #'
-#' @param x A data.frame with calculated possession, pace, ratings, and Four Factors
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x An object of class \code{fourfactors}.
 #' @param title Plot title
 #' @param ... other graphical parameters
-#' @return A list of four ggplot2 plots
+#' @return A list of four \code{ggplot2} plots
+#' @seealso \code{\link{fourfactors}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' selTeams <- c(2,6,10,11)
 #' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])

@@ -1,10 +1,13 @@
-#' Plot inequality
+#' Plot the correlation matrix and the correlation network from a corranalysis object
 #'
-#' @param x A 'inequality' objects
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x An object of class \code{corranalysis}
 #' @param horizontal If TRUE, the two plots are arranged horizontally
 #' @param title Plot title
 #' @param ... other graphical parameters
-#' @return A ggplot2 object
+#' @return A \code{ggplot2} object
+#' @seealso \code{\link{corranalysis}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
 #'                    Pbox$OREB + Pbox$DREB,Pbox$AST,

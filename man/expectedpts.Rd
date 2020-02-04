@@ -54,3 +54,9 @@ plrys <- c("Stephen Curry","Kevin Durant")
 expectedpts(data=PbP.GSW, bw=10, players=plrys, col.team='dodgerblue',
         palette=colorRampPalette(c("gray","black")), col.hline="red")
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera, \email{basketball.analyzer.help@gmail.com}
+}

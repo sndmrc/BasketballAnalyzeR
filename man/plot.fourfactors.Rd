@@ -2,25 +2,34 @@
 % Please edit documentation in R/plot.fourfactors.R
 \name{plot.fourfactors}
 \alias{plot.fourfactors}
-\title{Plot possession, pace, ratings, and Four Factors}
+\title{Plot possession, pace, ratings, and Four Factors from a fourfactors object}
 \usage{
 \method{plot}{fourfactors}(x, title = NULL, ...)
 }
 \arguments{
-\item{x}{A data.frame with calculated possession, pace, ratings, and Four Factors}
+\item{x}{An object of class \code{fourfactors}.}
 
 \item{title}{Plot title}
 
 \item{...}{other graphical parameters}
 }
 \value{
-A list of four ggplot2 plots
+A list of four \code{ggplot2} plots
 }
 \description{
-Plot possession, pace, ratings, and Four Factors
+Plot possession, pace, ratings, and Four Factors from a fourfactors object
 }
 \examples{
 selTeams <- c(2,6,10,11)
 FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 plot(FF)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{fourfactors}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera, \email{basketball.analyzer.help@gmail.com}
 }

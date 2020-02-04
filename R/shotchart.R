@@ -23,6 +23,8 @@
 #' @param nbins integer (active when \code{type="density-hexbin"}), number of bins.
 #' @return A ggplot2 object.
 #' @details The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots have missing \code{x} and \code{y} coordinates.
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' subdata <- subset(PbP, player=="Kevin Durant")

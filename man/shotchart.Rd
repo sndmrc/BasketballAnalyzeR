@@ -98,3 +98,9 @@ shotchart(data=subdata, x="xx", y="yy", type="density-raster",
           scatter=TRUE, pt.col="tomato", pt.alpha=0.1)
 shotchart(data=subdata, x="xx", y="yy", type="density-hexbin", nbins=30)
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera, \email{basketball.analyzer.help@gmail.com}
+}

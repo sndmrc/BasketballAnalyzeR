@@ -6,11 +6,11 @@
 \title{Players box scores dataset - NBA 2017-2018}
 \format{A data.frame with 605 rows and 22 variables:
 \describe{
-  \item{Team}{Teams}
-  \item{Player}{Players}
-  \item{GP}{GP}
-  \item{MIN}{MIN}
-  \item{PTS}{PTS}
+\item{Team}{Teams}
+\item{Player}{Players}
+\item{GP}{GP}
+\item{MIN}{MIN}
+\item{PTS}{PTS}
 }}
 \source{
 \url{https://github.com/sndmrc/BasketballAnalyzeR}
