@@ -48,7 +48,7 @@
 \item{...}{other graphical parameters}
 }
 \value{
-A single \code{ggplot2} plot (when \code{profile=FALSE}) or a list of (radial) plots (when \code{profile=TRUE}))
+A single \code{ggplot2} plot (if \code{profile=FALSE}) or a list of radial plots (if \code{profile=TRUE}))
 }
 \description{
 Plot hierarchical clustering from a hclustering object
@@ -67,7 +67,7 @@ plot(out)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{hclustering}}, \code{\link{radialprofile}}, option \code{lower_rect} of \code{\link{rect.dendrogram}}
+\code{\link{hclustering}}, \code{\link{radialprofile}}, option \code{lower_rect} of \code{\link[dendextend]{rect.dendrogram}}
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
