@@ -8,8 +8,8 @@
 #' @param event.type character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).
 #' @return A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a dataframe), and \code{assistNet} (a network object). See Details.
 #' @details The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
-#' @details \code{assistTable} is the cross-table of assists made and received by the players.
-#' @details \code{nodeStats} is a dataframe with the following variables:
+#' @details \code{assistTable}, the cross-table of assists made and received by the players.
+#' @details \code{nodeStats}, a dataframe with the following variables:
 #' @details * \code{FGM} (fields goals made),
 #' @details * \code{FGM_AST} (field goals made thanks to a teammate's assist),
 #' @details * \code{FGM_ASTp} (percentage of \code{FGM_AST} over \code{FGM}),
@@ -18,7 +18,7 @@
 #' @details * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
 #' @details * \code{AST} (assists made),
 #' @details * \code{ASTPTS} (point scored by assist's teammates).
-#' @details \code{assistNet} is a object of class \code{network} that can be used for further network analysis with specific R packages.
+#' @details \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)

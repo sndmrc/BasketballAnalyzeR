@@ -2,7 +2,7 @@
 % Please edit documentation in R/kclustering.R
 \name{kclustering}
 \alias{kclustering}
-\title{k-means clustering of NBA teams}
+\title{K-means  cluster analysis}
 \usage{
 kclustering(
   data,
@@ -15,25 +15,41 @@ kclustering(
 )
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{numeric data frame}
 
-\item{k}{Numer of clusters}
+\item{k}{integer, number of clusters}
 
-\item{labels}{labels}
+\item{labels}{character, row labels}
 
-\item{nclumax}{Maximum number of clusters (when k=NULL)}
+\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters}
 
-\item{nruns}{nruns}
+\item{nruns}{integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion}
 
-\item{iter.max}{Maximum number of iterations allowed in k-means clustering}
+\item{iter.max}{integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans})}
 
-\item{algorithm}{Algorithm used in k-means clustering (see \link[stats]{kmeans})}
+\item{algorithm}{character, the algorithm used in k-means clustering (see \link[stats]{kmeans})}
 }
 \value{
-A 'klust' object, i.e. a list of ...(specificare)
+A \code{klustering} object, i.e. a list of 4 elements:
+
+\itemize{
+\item \code{k} (number of clusters),
+}
+
+\itemize{
+\item \code{Subjects} (subjects' cluster identifiers),
+}
+
+\itemize{
+\item \code{ClusterList} (clusters' composition),
+}
+
+\itemize{
+\item \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters)
+}
 }
 \description{
-k-means clustering of NBA teams
+K-means  cluster analysis
 }
 \examples{
 FF <- fourfactors(Tbox,Obox)
@@ -49,4 +65,13 @@ kclu1 <- kclustering(X)
 plot(kclu1)
 kclu2 <- kclustering(X, k=9)
 plot(kclu2)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.kclustering}}, \code{\link[stats]{kmeans}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

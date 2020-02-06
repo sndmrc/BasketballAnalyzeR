@@ -2,26 +2,26 @@
 % Please edit documentation in R/plot.kclustering.R
 \name{plot.kclustering}
 \alias{plot.kclustering}
-\title{Plot k-means clustering of NBA teams}
+\title{Plot k-means clustering from a kclustering object}
 \usage{
 \method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...)
 }
 \arguments{
-\item{x}{An object of class 'kclust'}
+\item{x}{an object of class \code{kclustering}}
 
 \item{title}{Plot title}
 
-\item{ncol.arrange}{Number of columns when arranging multiple grobs on a page}
+\item{ncol.arrange}{integrer, number of columns when arranging multiple grobs on a page}
 
-\item{min.mid.max}{A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
 
 \item{...}{other graphical parameters}
 }
 \value{
-A single plot or a list of ggplot2 radial plots
+A single plot or a list of \code{ggplot2} radial plots
 }
 \description{
-Plot k-means clustering of NBA teams
+Plot k-means clustering from a kclustering object
 }
 \examples{
 FF <- fourfactors(Tbox,Obox)
@@ -37,4 +37,13 @@ kclu1 <- kclustering(X)
 plot(kclu1)
 kclu2 <- kclustering(X, k=9)
 plot(kclu2)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{kclustering}}, \code{\link{radialprofile}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

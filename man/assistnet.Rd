@@ -32,9 +32,9 @@ Investigates the network of assists-shots in a team
 \details{
 The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
 
-\code{assistTable} is the cross-table of assists made and received by the players.
+\code{assistTable}, the cross-table of assists made and received by the players.
 
-\code{nodeStats} is a dataframe with the following variables:
+\code{nodeStats}, a dataframe with the following variables:
 
 \itemize{
 \item \code{FGM} (fields goals made),
@@ -68,7 +68,7 @@ The \code{data} dataframe could also be a play-by-play dataset provided that row
 \item \code{ASTPTS} (point scored by assist's teammates).
 }
 
-\code{assistNet} is a object of class \code{network} that can be used for further network analysis with specific R packages.
+\code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

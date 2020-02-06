@@ -1,11 +1,14 @@
-#' Plot k-means clustering of NBA teams
+#' Plot k-means clustering from a kclustering object
 #'
-#' @param x An object of class 'kclust'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object of class \code{kclustering}
 #' @param title Plot title
-#' @param ncol.arrange Number of columns when arranging multiple grobs on a page
-#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
+#' @param ncol.arrange integrer, number of columns when arranging multiple grobs on a page
+#' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
-#' @return A single plot or a list of ggplot2 radial plots
+#' @seealso \code{\link{kclustering}}, \code{\link{radialprofile}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A single plot or a list of \code{ggplot2} radial plots
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' OD.Rtg <- FF$ORtg/FF$DRtg

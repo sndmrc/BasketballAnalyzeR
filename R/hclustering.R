@@ -1,11 +1,19 @@
-#' Hierarchical clustering of NBA teams
+#' Agglomerative hierarchical clustering
 #'
-#' @param data A dataframe
-#' @param k Numer of clusters
-#' @param nclumax Max number of clusters (when k=NULL)
-#' @param labels labels
-#' @param linkage linkage
-#' @return A 'hclustering' object, i.e. a list of ...(specificare)
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data numeric  data frame
+#' @param k integer, number of clusters
+#' @param nclumax integer, maximum number of clusters (when \code{k=NULL})
+#' @param labels character, row labels
+#' @param linkage character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})
+#' @seealso \code{\link{plot.hclustering}}, \code{\link[stats]{hclust}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A \code{hclustering} object, i.e. a list of 5 elements:
+#' @return * \code{k} (number of clusters),
+#' @return * \code{Subjects} (subjects' cluster identifiers),
+#' @return * \code{ClusterList} (clusters' composition),
+#' @return * \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters),
+#' @return * \code{Hclust} (an object of class \code{hclust}, see \code{\link[stats]{hclust}})
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,
 #'                    Pbox$OREB + Pbox$DREB, Pbox$AST,

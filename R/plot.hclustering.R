@@ -1,5 +1,6 @@
 #' Plot hierarchical clustering from a hclustering object
 #'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 #' @param x an object of class \code{hclustering}
 #' @param title plot title
 #' @param profiles logical; if \code{TRUE}, plot a radial plots of cluster mean profiles
@@ -14,7 +15,6 @@
 #' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
 #' @param ... other graphical parameters
 #' @seealso \code{\link{hclustering}}, \code{\link{radialprofile}}, option \code{lower_rect} of \code{\link{rect.dendrogram}}
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A single \code{ggplot2} plot (when \code{profile=FALSE}) or a list of (radial) plots (when \code{profile=TRUE}))
 #' @examples

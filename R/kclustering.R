@@ -1,13 +1,20 @@
-#' k-means clustering of NBA teams
+#' K-means  cluster analysis
 #'
-#' @param data A dataframe
-#' @param k Numer of clusters
-#' @param labels labels
-#' @param nclumax Maximum number of clusters (when k=NULL)
-#' @param nruns nruns
-#' @param iter.max Maximum number of iterations allowed in k-means clustering
-#' @param algorithm Algorithm used in k-means clustering (see \link[stats]{kmeans})
-#' @return A 'klust' object, i.e. a list of ...(specificare)
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data numeric data frame
+#' @param k integer, number of clusters
+#' @param labels character, row labels
+#' @param nclumax integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters
+#' @param nruns integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion
+#' @param iter.max integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans})
+#' @param algorithm character, the algorithm used in k-means clustering (see \link[stats]{kmeans})
+#' @seealso \code{\link{plot.kclustering}}, \code{\link[stats]{kmeans}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A \code{klustering} object, i.e. a list of 4 elements:
+#' @return * \code{k} (number of clusters),
+#' @return * \code{Subjects} (subjects' cluster identifiers),
+#' @return * \code{ClusterList} (clusters' composition),
+#' @return * \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters)
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' OD.Rtg <- FF$ORtg/FF$DRtg

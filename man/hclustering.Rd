@@ -2,26 +2,46 @@
 % Please edit documentation in R/hclustering.R
 \name{hclustering}
 \alias{hclustering}
-\title{Hierarchical clustering of NBA teams}
+\title{Agglomerative hierarchical clustering}
 \usage{
 hclustering(data, k = NULL, nclumax = 10, labels = NULL, linkage = "ward.D")
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{numeric  data frame}
 
-\item{k}{Numer of clusters}
+\item{k}{integer, number of clusters}
 
-\item{nclumax}{Max number of clusters (when k=NULL)}
+\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL})}
 
-\item{labels}{labels}
+\item{labels}{character, row labels}
 
-\item{linkage}{linkage}
+\item{linkage}{character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})}
 }
 \value{
-A 'hclustering' object, i.e. a list of ...(specificare)
+A \code{hclustering} object, i.e. a list of 5 elements:
+
+\itemize{
+\item \code{k} (number of clusters),
+}
+
+\itemize{
+\item \code{Subjects} (subjects' cluster identifiers),
+}
+
+\itemize{
+\item \code{ClusterList} (clusters' composition),
+}
+
+\itemize{
+\item \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters),
+}
+
+\itemize{
+\item \code{Hclust} (an object of class \code{hclust}, see \code{\link[stats]{hclust}})
+}
 }
 \description{
-Hierarchical clustering of NBA teams
+Agglomerative hierarchical clustering
 }
 \examples{
 data <- data.frame(Pbox$PTS,Pbox$P3M,
@@ -32,4 +52,13 @@ data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
 out <- hclustering(data, labels=ID, k=7)
 plot(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.hclustering}}, \code{\link[stats]{hclust}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }
