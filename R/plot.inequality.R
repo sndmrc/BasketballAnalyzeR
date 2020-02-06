@@ -1,9 +1,12 @@
-#' Plot inequality
+#' Plot Lorenz curve from a inequality object
 #'
-#' @param x A 'inequality' objects
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object of class \code{inequality}
 #' @param title Plot title
 #' @param ... other graphical parameters
-#' @return A ggplot2 object
+#' @return A \code{ggplot2} object
+#' @seealso \code{\link{inequality}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")
 #' out <- inequality(Pbox.BN$PTS, nplayers=8)

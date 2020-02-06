@@ -2,26 +2,35 @@
 % Please edit documentation in R/plot.inequality.R
 \name{plot.inequality}
 \alias{plot.inequality}
-\title{Plot inequality}
+\title{Plot Lorenz curve from a inequality object}
 \usage{
 \method{plot}{inequality}(x, title = NULL, ...)
 }
 \arguments{
-\item{x}{A 'inequality' objects}
+\item{x}{an object of class \code{inequality}}
 
 \item{title}{Plot title}
 
 \item{...}{other graphical parameters}
 }
 \value{
-A ggplot2 object
+A \code{ggplot2} object
 }
 \description{
-Plot inequality
+Plot Lorenz curve from a inequality object
 }
 \examples{
 Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")
 out <- inequality(Pbox.BN$PTS, nplayers=8)
 print(out)
 plot(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{inequality}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

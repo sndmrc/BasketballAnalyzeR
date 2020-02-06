@@ -7,12 +7,12 @@
 inequality(data, nplayers)
 }
 \arguments{
-\item{data}{A numerical vector}
+\item{data}{numeric vector}
 
-\item{nplayers}{Number of players to include in the analysis}
+\item{nplayers}{integer, number of players to include in the analysis}
 }
 \value{
-A list with the following elements:  Lorenz curve ("Lorenz") and Gini coefficient ("Gini") for a given number of players
+A list with the following elements: \code{Lorenz} (cumulative distribution used to plot the Lorenz curve) and \code{Gini} (Gini coefficient)
 }
 \description{
 Inequality analysis
@@ -22,4 +22,13 @@ Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")
 out <- inequality(Pbox.BN$PTS, nplayers=8)
 print(out)
 plot(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.inequality}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

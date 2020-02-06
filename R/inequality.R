@@ -1,8 +1,11 @@
 #' Inequality analysis
 #'
-#' @param data A numerical vector
-#' @param nplayers Number of players to include in the analysis
-#' @return A list with the following elements:  Lorenz curve ("Lorenz") and Gini coefficient ("Gini") for a given number of players
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data numeric vector
+#' @param nplayers integer, number of players to include in the analysis
+#' @return A list with the following elements: \code{Lorenz} (cumulative distribution used to plot the Lorenz curve) and \code{Gini} (Gini coefficient)
+#' @seealso \code{\link{plot.inequality}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")
 #' out <- inequality(Pbox.BN$PTS, nplayers=8)
