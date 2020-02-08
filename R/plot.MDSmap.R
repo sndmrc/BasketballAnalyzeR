@@ -1,20 +1,23 @@
-#' Draw some two-dimensional plots for multidimensional scaling (MDS)
+#' Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 #'
-#' @param x An object of class 'MDSmap'
-#' @param z.var The stratification variable (color)
-#' @param level.plot If TRUE, draw a level plot, otherwise draw a scatter plot
-#' @param title Plot title
-#' @param labels Text labels for (x, y) points; only for single scatter plot
-#' @param repel_labels If TRUE, draw text labels of not evidenced points using repelling
-#' @param text_label If TRUE, draw a rectangle behind the evidenced text
-#' @param subset Subset of points to be evidenced
-#' @param col.subset Color for the subset of points
-#' @param zoom X and Y axis range
-#' @param palette Color palette
-#' @param contour If TRUE, contour lines are plotted
-#' @param ncol.arrange Number of columns when arranging multiple grobs on a page
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object of class \code{MDSmap}
+#' @param level.plot logical; if TRUE, draw a level plot, otherwise draw a scatter plot
+#' @param z.var character vector; define the set of variables used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot
+#' @param title character, plot title
+#' @param labels character vector, labels for (x, y) points (only for single scatter plot)
+#' @param repel_labels logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}})
+#' @param text_label logical; if \code{TRUE}, draw a rectangle behind the text labels
+#' @param subset logical vector, to select a subset of points to be highlighted
+#' @param col.subset character, color for the subset of points
+#' @param zoom numerical vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot)
+#' @param palette color palette
+#' @param contour logical; if \code{TRUE}, contour lines are plotted
+#' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page
 #' @param ... other graphical parameters
-#' @return A single ggplot2 plot or a list of ggplot2 plots
+#' @seealso \code{\link{MDSmap}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A single \code{ggplot2} plot or a list of \code{ggplot2} plots
 #' @examples
 #' data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,
 #' Pbox$TOV,Pbox$STL, Pbox$BLK)

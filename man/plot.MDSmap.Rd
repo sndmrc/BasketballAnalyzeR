@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MDSmap.R
 \name{plot.MDSmap}
 \alias{plot.MDSmap}
-\title{Draw some two-dimensional plots for multidimensional scaling (MDS)}
+\title{Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object}
 \usage{
 \method{plot}{MDSmap}(
   x,
@@ -22,39 +22,39 @@
 )
 }
 \arguments{
-\item{x}{An object of class 'MDSmap'}
+\item{x}{an object of class \code{MDSmap}}
 
-\item{z.var}{The stratification variable (color)}
+\item{z.var}{character vector; define the set of variables used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot}
 
-\item{level.plot}{If TRUE, draw a level plot, otherwise draw a scatter plot}
+\item{level.plot}{logical; if TRUE, draw a level plot, otherwise draw a scatter plot}
 
-\item{title}{Plot title}
+\item{title}{character, plot title}
 
-\item{labels}{Text labels for (x, y) points; only for single scatter plot}
+\item{labels}{character vector, labels for (x, y) points (only for single scatter plot)}
 
-\item{repel_labels}{If TRUE, draw text labels of not evidenced points using repelling}
+\item{repel_labels}{logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}})}
 
-\item{text_label}{If TRUE, draw a rectangle behind the evidenced text}
+\item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the text labels}
 
-\item{subset}{Subset of points to be evidenced}
+\item{subset}{logical vector, to select a subset of points to be highlighted}
 
-\item{col.subset}{Color for the subset of points}
+\item{col.subset}{character, color for the subset of points}
 
-\item{zoom}{X and Y axis range}
+\item{zoom}{numerical vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot)}
 
-\item{palette}{Color palette}
+\item{palette}{color palette}
 
-\item{contour}{If TRUE, contour lines are plotted}
+\item{contour}{logical; if \code{TRUE}, contour lines are plotted}
 
-\item{ncol.arrange}{Number of columns when arranging multiple grobs on a page}
+\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page}
 
 \item{...}{other graphical parameters}
 }
 \value{
-A single ggplot2 plot or a list of ggplot2 plots
+A single \code{ggplot2} plot or a list of \code{ggplot2} plots
 }
 \description{
-Draw some two-dimensional plots for multidimensional scaling (MDS)
+Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 }
 \examples{
 data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,
@@ -65,4 +65,13 @@ data <- data[selp,]
 id <- Pbox$Player[selp]
 mds <- MDSmap(data)
 plot(mds, labels=id, z.var="P2M", level.plot=FALSE, palette=rainbow)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{MDSmap}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

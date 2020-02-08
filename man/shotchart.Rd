@@ -102,7 +102,7 @@ shotchart(data=subdata, x="xx", y="yy", type="density-hexbin", nbins=30)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{drawNBAcourt}}, \code{\link[ggplot2]{stat_density_2d}}, \code{\link[ggplot2]{geom_hex}}
+\code{\link{drawNBAcourt}}, \code{\link[ggplot2]{geom_density_2d}}, \code{\link[ggplot2]{geom_hex}}
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
