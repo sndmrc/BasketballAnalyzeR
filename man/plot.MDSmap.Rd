@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MDSmap.R
 \name{plot.MDSmap}
 \alias{plot.MDSmap}
-\title{Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object}
+\title{Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object}
 \usage{
 \method{plot}{MDSmap}(
   x,
@@ -54,7 +54,7 @@
 A single \code{ggplot2} plot or a list of \code{ggplot2} plots
 }
 \description{
-Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
+Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 }
 \examples{
 data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,

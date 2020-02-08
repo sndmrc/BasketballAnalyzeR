@@ -1,19 +1,22 @@
-#' Create a network plot
+#' Plot a network from a assistnet object
 #'
-#' @param x An object of class 'networkdata'
-#' @param layout Network vertex layout algorithms
-#' @param layout.par Paramater for network vertex layout algorithms
-#' @param edge.thr Threshold for edge values; values below the threshold are set to 0
-#' @param edge.col.lim A numeric vector of length two providing limits of the scale for edge color
-#' @param edge.col.lab Label for edge color legend
-#' @param node.size A string with the variable name for node size
-#' @param node.size.lab Label for node size legend
-#' @param node.col A string with the variable name for node color
-#' @param node.col.lim A numeric vector of length two providing limits of the scale for node color
-#' @param node.col.lab Label for node color legend
-#' @param node.pal Palette for node colors
-#' @param edge.pal Palette for edge colors
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object of class \code{assistnet}
+#' @param layout character, network vertex layout algorithm (see \code{\link[sna]{gplot.layout}}) such as "kamadakawai (the default)
+#' @param layout.par a list of parameters for the network vertex layout algorithm (see \code{\link[sna]{gplot.layout}})
+#' @param edge.thr numeric, threshold for edge values; values below the threshold are set to 0
+#' @param edge.col.lim numeric vector of length two providing limits of the scale for edge color
+#' @param edge.col.lab character, label for edge color legend
+#' @param node.size character, indicating the name of the variable for node size
+#' @param node.size.lab character, label for node size legend
+#' @param node.col character, indicating the name of the variable for node color
+#' @param node.col.lim numeric vector of length two providing limits of the scale for node color
+#' @param node.col.lab character, label for node color legend
+#' @param node.pal color palette for node colors
+#' @param edge.pal color palette for edge colors
 #' @param ... other graphical parameters
+#' @seealso \code{\link{assistnet}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A ggplot2 object
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)

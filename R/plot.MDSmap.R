@@ -1,4 +1,4 @@
-#' Draw some two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
+#' Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 #' @param x an object of class \code{MDSmap}
