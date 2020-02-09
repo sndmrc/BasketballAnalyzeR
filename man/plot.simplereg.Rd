@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.simplereg.R
 \name{plot.simplereg}
 \alias{plot.simplereg}
-\title{Plot simple regression}
+\title{Plot simple regression from a simplereg object}
 \usage{
 \method{plot}{simplereg}(
   x,
@@ -20,32 +20,32 @@
 )
 }
 \arguments{
-\item{x}{An object of class 'simplereg'}
+\item{x}{an object of class \code{simplereg}}
 
-\item{labels}{Labels for the subjects (optional)}
+\item{labels}{character, labels for subjects}
 
-\item{subset}{Subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles}
+\item{subset}{an optional vector specifying a subset of observations to be highlighted in the graph or \code{'quant'} to highligh observations above and below the upper and lower quantiles, respectively}
 
-\item{Lx}{Active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01}
+\item{Lx}{numeric; if \code{subset='quant'}, lower quantile for x (default = 0.01)}
 
-\item{Ux}{Active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99}
+\item{Ux}{numeric; if \code{subset='quant'}, upper quantile for x (default = 0.99)}
 
-\item{Ly}{Active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01}
+\item{Ly}{numeric; if \code{subset='quant'}, lower quantile of y (default = 0.01)}
 
-\item{Uy}{Active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99}
+\item{Uy}{numeric; if \code{subset='quant'}, upper quantile of y (default = 0.99)}
 
-\item{title}{Plot title}
+\item{title}{character, plot title}
 
-\item{xtitle}{Label of x-axis}
+\item{xtitle}{character, x-axis label}
 
-\item{ytitle}{Label of y-axis}
+\item{ytitle}{character, y-axis label}
 
-\item{repel}{Text labels repel away from each other}
+\item{repel}{logical, if \code{TRUE} (the default) text labels repel away from each other}
 
 \item{...}{Other graphical parameters}
 }
 \description{
-Plot simple regression
+Plot simple regression from a simplereg object
 }
 \examples{
 Pbox.sel <- subset(Pbox, MIN >= 500)
@@ -54,4 +54,13 @@ Y <- Pbox.sel$TOV/Pbox.sel$MIN
 Pl <- Pbox.sel$Player
 mod <- simplereg(x=X, y=Y, type="lin")
 plot(mod)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{simplereg}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

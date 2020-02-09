@@ -1,17 +1,20 @@
-#' Plot simple regression
+#' Plot simple regression from a simplereg object
 #'
-#' @param x An object of class 'simplereg'
-#' @param labels Labels for the subjects (optional)
-#' @param subset Subset of subjects to be highlighted in the graph  (optional) - or 'quant' to highligh the upper and lower quantiles
-#' @param Lx Active in case of subset='auto'; specify the lower quantiles of x to display - default = 0.01
-#' @param Ux Active in case of subset='auto'; specify the upper quantiles of x to display - default = 0.99
-#' @param Ly Active in case of subset='auto'; specify the lower quantiles of y to display - default = 0.01
-#' @param Uy Active in case of subset='auto'; specify the upper quantiles of y to display - default = 0.99
-#' @param title Plot title
-#' @param xtitle Label of x-axis
-#' @param ytitle Label of y-axis
-#' @param repel Text labels repel away from each other
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object of class \code{simplereg}
+#' @param labels character, labels for subjects
+#' @param subset an optional vector specifying a subset of observations to be highlighted in the graph or \code{'quant'} to highligh observations above and below the upper and lower quantiles, respectively
+#' @param Lx numeric; if \code{subset='quant'}, lower quantile for x (default = 0.01)
+#' @param Ux numeric; if \code{subset='quant'}, upper quantile for x (default = 0.99)
+#' @param Ly numeric; if \code{subset='quant'}, lower quantile of y (default = 0.01)
+#' @param Uy numeric; if \code{subset='quant'}, upper quantile of y (default = 0.99)
+#' @param title character, plot title
+#' @param xtitle character, x-axis label
+#' @param ytitle character, y-axis label
+#' @param repel logical, if \code{TRUE} (the default) text labels repel away from each other
 #' @param ... Other graphical parameters
+#' @seealso \code{\link{simplereg}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
