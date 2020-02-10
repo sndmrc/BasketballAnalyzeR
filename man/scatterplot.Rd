@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatterplot.R
 \name{scatterplot}
 \alias{scatterplot}
-\title{Scatter plot and matrix of scatter plot}
+\title{Scatter plot and matrix of scatter plots}
 \usage{
 scatterplot(
   data,
@@ -25,41 +25,41 @@ scatterplot(
 )
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{an object of class \code{data.frame}}
 
-\item{data.var}{A vector of characaters with name of variables used on the axes of scatter plot(s)}
+\item{data.var}{character vector, name of variables used on the axes of scatter plots}
 
-\item{z.var}{The stratification variable (color)}
+\item{z.var}{character, variable name used to assign colors to points}
 
-\item{palette}{Color palette}
+\item{palette}{color palette}
 
-\item{labels}{Text labels for (x, y) points; only for single scatter plot}
+\item{labels}{character vector, labels for (x, y) points (available only when plotting a single scatter plot)}
 
-\item{repel_labels}{If TRUE, draw text labels of not evidenced points using repelling}
+\item{repel_labels}{logical; if \code{TRUE}, draw text labels of not highlighted points using repelling}
 
-\item{text_label}{If TRUE, draw a rectangle behind the evidenced text}
+\item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the labels of highlighted points}
 
-\item{subset}{Subset of points to be evidenced; only for single scatter plot}
+\item{subset}{logical vector, to select a subset of points to be highlighted}
 
-\item{col.subset}{Color for the subset of points; only for single scatter plot}
+\item{col.subset}{character, color for the subset of highlighted points (available only when plotting a single scatter plot)}
 
-\item{zoom}{X and Y axis range; only for single scatter plot}
+\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (available only when plotting a single scatter plot)}
 
-\item{title}{Plot title}
+\item{title}{character, plot title}
 
-\item{legend}{Set legend=FALSE to remove legend}
+\item{legend}{logical, if \code{legend=FALSE} legend is removed}
 
-\item{upper}{See help for GGally::ggpairs}
+\item{upper}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{lower} in \code{\link[GGally]{ggpairs}})}
 
-\item{lower}{See help for GGally::ggpairs}
+\item{lower}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{upper} in \code{\link[GGally]{ggpairs}})}
 
-\item{diag}{See help for GGally::ggpairs}
+\item{diag}{list, may contain the variables \code{continuous}, \code{discrete}, and \code{na} (See \code{diag} in \code{\link[GGally]{ggpairs}})}
 }
 \value{
-A ggplot2 plot
+A \code{ggplot2} plot
 }
 \description{
-Scatter plot and matrix of scatter plot
+Scatter plot and matrix of scatter plots
 }
 \examples{
 # Single scatter plot
@@ -71,4 +71,13 @@ scatterplot(X, data.var=c("AST","TOV"), z.var="PTSpm", labels=1:nrow(X), palette
 # Matrix of scatter plots
 data <- Pbox[1:50, c("PTS","P3M","P2M","OREB","Team")]
 scatterplot(data, data.var=1:4, z.var="Team")
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link[GGally]{ggpairs}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

@@ -1,21 +1,24 @@
-#' Scatter plot and matrix of scatter plot
+#' Scatter plot and matrix of scatter plots
 #'
-#' @param data A dataframe
-#' @param data.var A vector of characaters with name of variables used on the axes of scatter plot(s)
-#' @param z.var The stratification variable (color)
-#' @param palette Color palette
-#' @param labels Text labels for (x, y) points; only for single scatter plot
-#' @param subset Subset of points to be evidenced; only for single scatter plot
-#' @param repel_labels If TRUE, draw text labels of not evidenced points using repelling
-#' @param text_label If TRUE, draw a rectangle behind the evidenced text
-#' @param col.subset Color for the subset of points; only for single scatter plot
-#' @param zoom X and Y axis range; only for single scatter plot
-#' @param title Plot title
-#' @param legend Set legend=FALSE to remove legend
-#' @param upper  See help for GGally::ggpairs
-#' @param lower  See help for GGally::ggpairs
-#' @param diag  See help for GGally::ggpairs
-#' @return A ggplot2 plot
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data an object of class \code{data.frame}
+#' @param data.var character vector, name of variables used on the axes of scatter plots
+#' @param z.var character, variable name used to assign colors to points
+#' @param palette color palette
+#' @param labels character vector, labels for (x, y) points (available only when plotting a single scatter plot)
+#' @param subset logical vector, to select a subset of points to be highlighted
+#' @param repel_labels logical; if \code{TRUE}, draw text labels of not highlighted points using repelling
+#' @param text_label logical; if \code{TRUE}, draw a rectangle behind the labels of highlighted points
+#' @param col.subset character, color for the subset of highlighted points (available only when plotting a single scatter plot)
+#' @param zoom  numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (available only when plotting a single scatter plot)
+#' @param title character, plot title
+#' @param legend logical, if \code{legend=FALSE} legend is removed
+#' @param upper  list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{lower} in \code{\link[GGally]{ggpairs}})
+#' @param lower  list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{upper} in \code{\link[GGally]{ggpairs}})
+#' @param diag  list, may contain the variables \code{continuous}, \code{discrete}, and \code{na} (See \code{diag} in \code{\link[GGally]{ggpairs}})
+#' @return A \code{ggplot2} plot
+#' @seealso \code{\link[GGally]{ggpairs}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' # Single scatter plot
 #' Pbox.sel <- subset(Pbox, MIN>= 500)

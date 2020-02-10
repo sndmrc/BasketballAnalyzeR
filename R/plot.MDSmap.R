@@ -10,7 +10,7 @@
 #' @param text_label logical; if \code{TRUE}, draw a rectangle behind the text labels
 #' @param subset logical vector, to select a subset of points to be highlighted
 #' @param col.subset character, color for the subset of points
-#' @param zoom numerical vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot)
+#' @param zoom numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot
 #' @param palette color palette
 #' @param contour logical; if \code{TRUE}, contour lines are plotted
 #' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page

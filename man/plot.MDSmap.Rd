@@ -40,7 +40,7 @@
 
 \item{col.subset}{character, color for the subset of points}
 
-\item{zoom}{numerical vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot)}
+\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot}
 
 \item{palette}{color palette}
 
