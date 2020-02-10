@@ -1,20 +1,23 @@
-#' Plot variability
+#' Plot variability diagrams from variability objects
 #'
-#' @param x A 'variability' objects
-#' @param title Plot title
-#' @param ylim Set y-axis limits
-#' @param ylab Set y-axis legend
-#' @param size.lim Set limits of 'size' legend
-#' @param max.circle  Maximum size of the 'size' plotting symbol (circles)
-#' @param n.circle  Set a sequence of about n.circle+1 equally spaced 'round' values which cover the range of the values in 'size'
-#' @param leg.brk Breaks for 'size' legend
-#' @param leg.pos The position of legend ("none", "left", "right", "bottom", "top", or two-element numeric vector)
-#' @param leg.just Anchor point for positioning legend inside plot ("center" or two-element numeric vector) or the justification according to the plot area when positioned outside the plot
-#' @param leg.nrow The desired number of rows of 'size' legend
-#' @param leg.title Title of 'size' legend
-#' @param leg.title.pos A character string indicating the position of a title. One of "top" (default for a vertical legend), "bottom", "left" (default for a horizontal legend), or "right."
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x a \code{variability} objects
+#' @param title character, plot title
+#' @param ylim numeric vector of length two, y-axis limits
+#' @param ylab character, y-axis label
+#' @param size.lim numeric vector of length two, set limits of the \code{size} scale (see \code{limits} of \code{\link[ggplot2]{scale_size}})
+#' @param max.circle numeric, maximum size of the \code{size} plotting symbol (see \code{range} of \code{\link[ggplot2]{scale_size}})
+#' @param leg.brk numeric vector, breaks for \code{size} legend (see \code{breaks} of \code{\link[ggplot2]{scale_size}})
+#' @param n.circle  integer; if \code{leg.brk=NULL}, set a sequence of about \code{n.circle+1} equally spaced 'round' values which cover the range of the values in \code{size}
+#' @param leg.pos character or numeric vector of length two, legend position; available options \code{none}, \code{left}, \code{right} (default), \code{bottom}, \code{top}, or a \code{c(x,y)} numeric vector (x and y are coordinates of the legend box; their values should be between 0 and 1; c(0,0) corresponds to the 'bottom left' and c(1,1) corresponds to the 'top right' position)
+#' @param leg.just character or numeric vector of length two; anchor point for positioning legend inside plot (\code{center} or two-element numeric vector) or the justification according to the plot area when positioned outside the plot
+#' @param leg.nrow integer, number of rows of \code{size} legend
+#' @param leg.title character, title of \code{size} legend
+#' @param leg.title.pos character, position of the legend title; available options: \code{top} (default for a vertical legend), \code{bottom}, \code{left} (default for a horizontal legend), or \code{right}
+#' @seealso \code{\link{variability}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @param ... other graphical parameters
-#' @return A ggplot2 object
+#' @return A \code{ggplot2} object
 #' @examples
 #' Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
 #'                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
