@@ -2,7 +2,7 @@
 % Please edit documentation in R/radialprofile.R
 \name{radialprofile}
 \alias{radialprofile}
-\title{Plot radial plot for player profiles}
+\title{Draw radial plots for player profiles}
 \usage{
 radialprofile(
   data,
@@ -14,23 +14,23 @@ radialprofile(
 )
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{an object of class \code{data.frame}}
 
-\item{perc}{perc}
+\item{perc}{logical; if \code{perc=TRUE}, \code{std=FALSE} and \code{min.mid.max=NULL}, set axes range between 0 and 100 and set the middle dashed line at 50}
 
-\item{std}{std}
+\item{std}{logical; if \code{std=TRUE}, variables are preliminarily standardized}
 
-\item{title}{Title(s) for radial plots(s)}
+\item{title}{character vector, titles for radial plots}
 
-\item{ncol.arrange}{The number of columns in the grid of arranged plots}
+\item{ncol.arrange}{integer, number of columns in the grid of arranged plots}
 
-\item{min.mid.max}{A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
 }
 \value{
-A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
+A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
 }
 \description{
-Plot radial plot for player profiles
+Draw radial plots for player profiles
 }
 \examples{
 data("Pbox")
@@ -39,4 +39,13 @@ X <- data.frame(Pbox.PG$P2M, Pbox.PG$P3M, Pbox.PG$OREB+Pbox.PG$DREB,
                 Pbox.PG$AST, Pbox.PG$TO)/Pbox.PG$MIN
 names(X) <- c("P2M","P3M","REB","AST","TO")
 radialprofile(data=X, ncol.arrange=3, title=Pbox.PG$Player)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.kclustering}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

@@ -1,12 +1,15 @@
-#' Plot radial plot for player profiles
+#' Draw radial plots for player profiles
 #'
-#' @param data A dataframe
-#' @param perc perc
-#' @param std std
-#' @param title Title(s) for radial plots(s)
-#' @param ncol.arrange  The number of columns in the grid of arranged plots
-#' @param min.mid.max A numerical vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
-#' @return A list of ggplot2 radial plots or a single ggplot2 plot of arranged radial plots
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data an object of class \code{data.frame}
+#' @param perc logical; if \code{perc=TRUE}, \code{std=FALSE} and \code{min.mid.max=NULL}, set axes range between 0 and 100 and set the middle dashed line at 50
+#' @param std logical; if \code{std=TRUE}, variables are preliminarily standardized
+#' @param title character vector, titles for radial plots
+#' @param ncol.arrange  integer, number of columns in the grid of arranged plots
+#' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
+#' @seealso \code{\link{plot.kclustering}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
 #' @examples
 #' data("Pbox")
 #' Pbox.PG <- Pbox[1:6,]

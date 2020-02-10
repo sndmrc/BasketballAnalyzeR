@@ -14,9 +14,9 @@
 #' @param leg.nrow integer, number of rows of \code{size} legend
 #' @param leg.title character, title of \code{size} legend
 #' @param leg.title.pos character, position of the legend title; available options: \code{top} (default for a vertical legend), \code{bottom}, \code{left} (default for a horizontal legend), or \code{right}
+#' @param ... other graphical parameters
 #' @seealso \code{\link{variability}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @param ... other graphical parameters
 #' @return A \code{ggplot2} object
 #' @examples
 #' Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
