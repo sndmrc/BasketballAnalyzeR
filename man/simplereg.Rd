@@ -2,21 +2,44 @@
 % Please edit documentation in R/simplereg.R
 \name{simplereg}
 \alias{simplereg}
-\title{Simple regression}
+\title{Simple linear and nonparametric regression}
 \usage{
 simplereg(x, y, type = "lin", sp = NULL)
 }
 \arguments{
-\item{x}{data for x-axis}
+\item{x}{numerical vector, input x values}
 
-\item{y}{data for y-axis}
+\item{y}{numerical vector, input y values}
 
-\item{type}{type of regression: linear ('lin'), polynomial local fitting ('pol'), kernel smoothing ('ks')}
+\item{type}{character, type of regression; available options are: \code{lin} (linear regression, the default), \code{pol} (local polynomial regression of degree 2), \code{ks} (nonparametric kernel smoothing)}
 
-\item{sp}{parameter to control the degree of smoothing: span for loess and bandwidth for ksmooth (optional)}
+\item{sp}{numeric, parameter to control the degree of smoothing; span for local polynomial regression and bandwidth for ksmooth}
+}
+\value{
+An object of class \code{simplereg}, i.e. a list with the following objects:
+
+\itemize{
+\item \code{Model}, the output model (linear regression, local polynomial regression, or kernel smoothing)
+}
+
+\itemize{
+\item \code{R2}, (in-sample) coefficient of determination
+}
+
+\itemize{
+\item \code{x}, input x values
+}
+
+\itemize{
+\item \code{y}, input y values
+}
+
+\itemize{
+\item \code{type}, type of regression
+}
 }
 \description{
-Simple regression
+Simple linear and nonparametric regression
 }
 \examples{
 Pbox.sel <- subset(Pbox, MIN >= 500)
@@ -24,4 +47,13 @@ X <- Pbox.sel$AST/Pbox.sel$MIN
 Y <- Pbox.sel$TOV/Pbox.sel$MIN
 Pl <- Pbox.sel$Player
 mod <- simplereg(x=X, y=Y, type="lin")
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{loess}}, \code{\link{ksmooth}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

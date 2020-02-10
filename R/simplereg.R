@@ -1,9 +1,18 @@
-#' Simple regression
+#' Simple linear and nonparametric regression
 #'
-#' @param x data for x-axis
-#' @param y data for y-axis
-#' @param type type of regression: linear ('lin'), polynomial local fitting ('pol'), kernel smoothing ('ks')
-#' @param sp parameter to control the degree of smoothing: span for loess and bandwidth for ksmooth (optional)
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x numerical vector, input x values
+#' @param y numerical vector, input y values
+#' @param type character, type of regression; available options are: \code{lin} (linear regression, the default), \code{pol} (local polynomial regression of degree 2), \code{ks} (nonparametric kernel smoothing)
+#' @param sp numeric, parameter to control the degree of smoothing; span for local polynomial regression and bandwidth for ksmooth
+#' @seealso \code{\link{loess}}, \code{\link{ksmooth}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return An object of class \code{simplereg}, i.e. a list with the following objects:
+#' @return * \code{Model}, the output model (linear regression, local polynomial regression, or kernel smoothing)
+#' @return * \code{R2}, (in-sample) coefficient of determination
+#' @return * \code{x}, input x values
+#' @return * \code{y}, input y values
+#' @return * \code{type}, type of regression
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN
