@@ -1,7 +1,10 @@
 #' Functions to check if an object is of class 'kclustering'.
 #'
-#' @param x any R object
-#' @return returns TRUE if its argument is of class 'kclustering' and FALSE otherwise
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object to test
+#' @seealso \code{\link{kclustering}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return returns TRUE if its argument is of class \code{kclustering} and FALSE otherwise
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' OD.Rtg <- FF$ORtg/FF$DRtg

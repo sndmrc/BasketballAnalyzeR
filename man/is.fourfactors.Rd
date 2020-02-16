@@ -7,10 +7,10 @@
 is.fourfactors(x)
 }
 \arguments{
-\item{x}{An object to test}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'fourfactors' and FALSE otherwise
+returns TRUE if its argument is of class \code{fourfactors} and FALSE otherwise
 }
 \description{
 Reports whether x is a fourfactors object
@@ -19,4 +19,13 @@ Reports whether x is a fourfactors object
 selTeams <- c(2,6,10,11)
 out <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 is.fourfactors(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{fourfactors}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

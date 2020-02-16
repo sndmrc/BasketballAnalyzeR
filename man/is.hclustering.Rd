@@ -7,10 +7,10 @@
 is.hclustering(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'hclustering' and FALSE otherwise
+returns TRUE if its argument is of class \code{hclustering} and FALSE otherwise
 }
 \description{
 Functions to check if an object is of class 'hclustering'.
@@ -24,4 +24,13 @@ data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
 out <- hclustering(data, labels=ID, k=7)
 is.hclustering(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{hclustering}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

@@ -7,10 +7,10 @@
 is.kclustering(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'kclustering' and FALSE otherwise
+returns TRUE if its argument is of class \code{kclustering} and FALSE otherwise
 }
 \description{
 Functions to check if an object is of class 'kclustering'.
@@ -27,4 +27,13 @@ STL.r <- Tbox$STL/Obox$STL
 X <- data.frame(OD.Rtg,F1.r,F2.r,F3.O,F3.D,P3M,STL.r)
 kclu1 <- kclustering(X)
 is.kclustering(kclu1)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{kclustering}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

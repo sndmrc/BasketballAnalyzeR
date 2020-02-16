@@ -7,10 +7,10 @@
 is.variability(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'variability' and FALSE otherwise
+returns TRUE if its argument is of class \code{variability} and FALSE otherwise
 }
 \description{
 Functions to check if an object is of class 'variability'.
@@ -21,4 +21,13 @@ Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
 out <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
                    size.var=c("P2A","P3A","FTA"), weight=TRUE)
 is.variability(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{variability}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

@@ -7,10 +7,10 @@
 is.corranalysis(x)
 }
 \arguments{
-\item{x}{An object to test}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'corr.analysis' and FALSE otherwise
+returns TRUE if its argument is of class \code{corranalysis} and FALSE otherwise
 }
 \description{
 Reports whether x is a corr.analysis object
@@ -23,4 +23,13 @@ names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 data <- subset(data, Pbox$MIN >= 500)
 out <- corranalysis(data)
 is.corranalysis(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{corranalysis}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

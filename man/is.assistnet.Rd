@@ -7,10 +7,10 @@
 is.assistnet(x)
 }
 \arguments{
-\item{x}{An object to test}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'networkdata' and FALSE otherwise
+returns TRUE if its argument is of class \code{networkdata} and FALSE otherwise
 }
 \description{
 Reports whether x is a networkdata object
@@ -20,4 +20,13 @@ PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW" & player!="")
 out <- assistnet(PbP.GSW)
 is.assistnet(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{assistnet}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

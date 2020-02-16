@@ -1,7 +1,10 @@
 #' Functions to check if an object is of class 'variability'.
 #'
-#' @param x any R object
-#' @return returns TRUE if its argument is of class 'variability' and FALSE otherwise
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object to test
+#' @seealso \code{\link{variability}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return returns TRUE if its argument is of class \code{variability} and FALSE otherwise
 #' @examples
 #' Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
 #'                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))

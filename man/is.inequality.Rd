@@ -7,10 +7,10 @@
 is.inequality(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'inequality' and FALSE otherwise
+returns TRUE if its argument is of class \code{inequality} and FALSE otherwise
 }
 \description{
 Functions to check if an object is of class 'inequality'.
@@ -19,4 +19,13 @@ Functions to check if an object is of class 'inequality'.
 Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")
 out <- inequality(Pbox.BN$PTS, npl=8)
 is.inequality(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{inequality}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

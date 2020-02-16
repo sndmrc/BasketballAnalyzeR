@@ -1,7 +1,10 @@
 #' Reports whether x is a corr.analysis object
 #'
-#' @param x An object to test
-#' @return returns TRUE if its argument is of class 'corr.analysis' and FALSE otherwise
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object to test
+#' @seealso \code{\link{corranalysis}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return returns TRUE if its argument is of class \code{corranalysis} and FALSE otherwise
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
 #'                    Pbox$OREB + Pbox$DREB,Pbox$AST,

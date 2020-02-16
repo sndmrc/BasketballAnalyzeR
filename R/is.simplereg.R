@@ -1,6 +1,10 @@
 #' Reports whether x is a simplereg object
 #'
-#' @param x An object to test
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param x an object to test
+#' @seealso \code{\link{simplereg}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return returns TRUE if its argument is of class \code{simplereg} and FALSE otherwise
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)
 #' X <- Pbox.sel$AST/Pbox.sel$MIN

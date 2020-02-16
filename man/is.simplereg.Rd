@@ -7,7 +7,10 @@
 is.simplereg(x)
 }
 \arguments{
-\item{x}{An object to test}
+\item{x}{an object to test}
+}
+\value{
+returns TRUE if its argument is of class \code{simplereg} and FALSE otherwise
 }
 \description{
 Reports whether x is a simplereg object
@@ -19,4 +22,13 @@ Y <- Pbox.sel$TOV/Pbox.sel$MIN
 Pl <- Pbox.sel$Player
 out <- simplereg(x=X, y=Y, type="lin")
 is.simplereg(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{simplereg}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

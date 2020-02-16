@@ -7,10 +7,10 @@
 is.MDSmap(x)
 }
 \arguments{
-\item{x}{any R object}
+\item{x}{an object to test}
 }
 \value{
-returns TRUE if its argument is of class 'MDSmap' and FALSE otherwise
+returns TRUE if its argument is of class \code{MDSmap} and FALSE otherwise
 }
 \description{
 Functions to check if an object is of class 'MDSmap'.
@@ -19,6 +19,15 @@ Functions to check if an object is of class 'MDSmap'.
 data <- subset(Pbox, MIN >= 1500)
 data <- data.frame(data$PTS, data$P3M, data$P2M, data$OREB + data$DREB, data$AST,
                    data$TOV,data$STL, data$BLK)
-                   mds <- MDSmap(data)
+mds <- MDSmap(data)
 is.MDSmap(mds)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{MDSmap}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }
