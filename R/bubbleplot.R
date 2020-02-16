@@ -1,21 +1,23 @@
-#' Create a bubble plot
+#' Draw a bubble plot
 #'
-#' @param data A dataframe
-#' @param id The name of the ID variable
-#' @param x Name of variable on the x axis
-#' @param y Name of variable on the y axis
-#' @param col Name of variable on the color axis
-#' @param size Name of variable on the size axis
-#' @param text.col Name of variable for text colors
-#' @param text.size Text font size
-#' @param scale.size If TRUE, 'size' variable is rescaled between 0 and 100.
-#' @param labels Vector of variable labels (on legend and axis)
-#' @param mx mx
-#' @param my my
-#' @param mcol mcol
-#' @param title Title for the plot
-#' @param repel Activate text repelling
-#' @param text.legend If TRUE, show the legend for text color
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data a dataframe
+#' @param id character, name of the ID variable
+#' @param x character, name of the x-axis variable
+#' @param y character, name of the y-axis variable
+#' @param col character, name of variable on the color axis
+#' @param size character, name of variable on the size axis
+#' @param text.col character, name of variable for text colors
+#' @param text.size integer, text font size
+#' @param scale.size logical; if \code{TRUE}, size variable is rescaled between 0 and 100
+#' @param labels character vector, variable labels (on legend and axis)
+#' @param mx numeric, midpoint of the x-axis; default is the mean value of \code{x} variable
+#' @param my numeric, midpoint of the y-axis; default is the mean value of \code{y} variable
+#' @param mcol numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable
+#' @param title character, plot title
+#' @param repel logical; if \code{TRUE}, activate text repelling
+#' @param text.legend logical; if \code{TRUE}, show the legend for text color
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A ggplot2 object
 #' @examples
 #' X <- data.frame(T=Tbox$Team, P2p=Tbox$P2p, P3p=Tbox$P3p,

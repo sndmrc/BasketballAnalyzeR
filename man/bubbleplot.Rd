@@ -2,7 +2,7 @@
 % Please edit documentation in R/bubbleplot.R
 \name{bubbleplot}
 \alias{bubbleplot}
-\title{Create a bubble plot}
+\title{Draw a bubble plot}
 \usage{
 bubbleplot(
   data,
@@ -24,43 +24,43 @@ bubbleplot(
 )
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{a dataframe}
 
-\item{id}{The name of the ID variable}
+\item{id}{character, name of the ID variable}
 
-\item{x}{Name of variable on the x axis}
+\item{x}{character, name of the x-axis variable}
 
-\item{y}{Name of variable on the y axis}
+\item{y}{character, name of the y-axis variable}
 
-\item{col}{Name of variable on the color axis}
+\item{col}{character, name of variable on the color axis}
 
-\item{size}{Name of variable on the size axis}
+\item{size}{character, name of variable on the size axis}
 
-\item{text.col}{Name of variable for text colors}
+\item{text.col}{character, name of variable for text colors}
 
-\item{text.size}{Text font size}
+\item{text.size}{integer, text font size}
 
-\item{scale.size}{If TRUE, 'size' variable is rescaled between 0 and 100.}
+\item{scale.size}{logical; if \code{TRUE}, size variable is rescaled between 0 and 100}
 
-\item{labels}{Vector of variable labels (on legend and axis)}
+\item{labels}{character vector, variable labels (on legend and axis)}
 
-\item{mx}{mx}
+\item{mx}{numeric, midpoint of the x-axis; default is the mean value of \code{x} variable}
 
-\item{my}{my}
+\item{my}{numeric, midpoint of the y-axis; default is the mean value of \code{y} variable}
 
-\item{mcol}{mcol}
+\item{mcol}{numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable}
 
-\item{title}{Title for the plot}
+\item{title}{character, plot title}
 
-\item{repel}{Activate text repelling}
+\item{repel}{logical; if \code{TRUE}, activate text repelling}
 
-\item{text.legend}{If TRUE, show the legend for text color}
+\item{text.legend}{logical; if \code{TRUE}, show the legend for text color}
 }
 \value{
 A ggplot2 object
 }
 \description{
-Create a bubble plot
+Draw a bubble plot
 }
 \examples{
 X <- data.frame(T=Tbox$Team, P2p=Tbox$P2p, P3p=Tbox$P3p,
@@ -69,4 +69,10 @@ labs <- c("2-point shots (\% made)","3-point shots (\% made)",
           "free throws (\% made)","Total shots attempted")
 bubbleplot(X, id="T", x="P2p", y="P3p", col="FTp",
            size="AS", labels=labs)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

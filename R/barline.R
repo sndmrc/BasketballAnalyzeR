@@ -1,14 +1,16 @@
-#' Create a graph with a barplot and a line plot
+#' Draw a bar-line plot
 #'
-#' @param data A dataframe
-#' @param id The name of the ID variable
-#' @param bars Vector of names of the bar variables
-#' @param line The name of the line variable
-#' @param order.by The name of the variable used to order name players (on the x axis)
-#' @param decreasing Logical. Should the sort order be increasing or decreasing?
-#' @param labels.bars Vector of labels for the bar variables
-#' @param label.line The label for the line variable on the second axis (on the right)
-#' @param title Title for the plot
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data a dataframe
+#' @param id character, name of the ID variable
+#' @param bars character vector, names of the bar variables
+#' @param line character, name of the line variable
+#' @param order.by character, name of the variable used to order name players (on the x axis)
+#' @param decreasing logical; if \code{TRUE}, decreasing order
+#' @param labels.bars character vector, labels for the bar variables
+#' @param label.line character, label for the line variable on the second y-axis (on the right)
+#' @param title character, title plot
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A ggplot2 object
 #' @examples
 #' dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)

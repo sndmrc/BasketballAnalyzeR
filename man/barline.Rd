@@ -2,7 +2,7 @@
 % Please edit documentation in R/barline.R
 \name{barline}
 \alias{barline}
-\title{Create a graph with a barplot and a line plot}
+\title{Draw a bar-line plot}
 \usage{
 barline(
   data,
@@ -17,33 +17,39 @@ barline(
 )
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{a dataframe}
 
-\item{id}{The name of the ID variable}
+\item{id}{character, name of the ID variable}
 
-\item{bars}{Vector of names of the bar variables}
+\item{bars}{character vector, names of the bar variables}
 
-\item{line}{The name of the line variable}
+\item{line}{character, name of the line variable}
 
-\item{order.by}{The name of the variable used to order name players (on the x axis)}
+\item{order.by}{character, name of the variable used to order name players (on the x axis)}
 
-\item{decreasing}{Logical. Should the sort order be increasing or decreasing?}
+\item{decreasing}{logical; if \code{TRUE}, decreasing order}
 
-\item{labels.bars}{Vector of labels for the bar variables}
+\item{labels.bars}{character vector, labels for the bar variables}
 
-\item{label.line}{The label for the line variable on the second axis (on the right)}
+\item{label.line}{character, label for the line variable on the second y-axis (on the right)}
 
-\item{title}{Title for the plot}
+\item{title}{character, title plot}
 }
 \value{
 A ggplot2 object
 }
 \description{
-Create a graph with a barplot and a line plot
+Draw a bar-line plot
 }
 \examples{
 dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
 barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),
         line="MIN", order.by="Player",
         labels.bars=c("2P","3P","FT"), title="Houston Rockets")
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }
