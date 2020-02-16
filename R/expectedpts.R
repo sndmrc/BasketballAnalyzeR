@@ -1,19 +1,19 @@
 #' Plot expected points of player shots as a function of the distance from the basket
 #'
-#' @param data A data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
-#' @param players Subset of players to be displayed
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})
-#' @param title Plot title
-#' @param palette Color palette
-#' @param team team
-#' @param col.team Color of the scoring probability line for team
-#' @param col.hline Color of the dashed horizontal line
-#' @param legend If TRUE, color legend is displayed (only when 'players' is not NULL)
-#' @param xlab x-axis label
-#' @param var A character string giving the numerical variable on the x-axis (default "shot_distance").
-#' @return A ggplot2 plot
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
+#' @param players subset of players to be displayed
+#' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}})
+#' @param title character, plot title
+#' @param palette color palette
+#' @param team logical; if \code{TRUE}, draw the scoring probability line for team
+#' @param col.team character, color of the scoring probability line for team(default \code{"gray"})
+#' @param col.hline character, color of the dashed horizontal line (default \code{"black"})
+#' @param legend logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL})
+#' @param xlab character, x-axis label
+#' @param var character, numerical variable on the x-axis (default \code{"shot_distance"}).
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A \code{ggplot2} plot
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & !is.na(shot_distance))

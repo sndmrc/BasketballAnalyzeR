@@ -19,30 +19,30 @@ expectedpts(
 )
 }
 \arguments{
-\item{data}{A data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
+\item{data}{a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
 
-\item{players}{Subset of players to be displayed}
+\item{players}{subset of players to be displayed}
 
-\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})}
+\item{bw}{numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}})}
 
-\item{palette}{Color palette}
+\item{palette}{color palette}
 
-\item{team}{team}
+\item{team}{logical; if \code{TRUE}, draw the scoring probability line for team}
 
-\item{col.team}{Color of the scoring probability line for team}
+\item{col.team}{character, color of the scoring probability line for team(default \code{"gray"})}
 
-\item{col.hline}{Color of the dashed horizontal line}
+\item{col.hline}{character, color of the dashed horizontal line (default \code{"black"})}
 
-\item{xlab}{x-axis label}
+\item{xlab}{character, x-axis label}
 
-\item{title}{Plot title}
+\item{title}{character, plot title}
 
-\item{legend}{If TRUE, color legend is displayed (only when 'players' is not NULL)}
+\item{legend}{logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL})}
 
-\item{var}{A character string giving the numerical variable on the x-axis (default "shot_distance").}
+\item{var}{character, numerical variable on the x-axis (default \code{"shot_distance"}).}
 }
 \value{
-A ggplot2 plot
+A \code{ggplot2} plot
 }
 \description{
 Plot expected points of player shots as a function of the distance from the basket

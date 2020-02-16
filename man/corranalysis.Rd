@@ -7,14 +7,21 @@
 corranalysis(data, threshold = 0, sig.level = 0.95)
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{a data frame}
 
-\item{threshold}{threshold}
+\item{threshold}{numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0}
 
-\item{sig.level}{Significance level}
+\item{sig.level}{numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0}
 }
 \value{
-A list with the following elements: corr.mtx, corr.mtx.trunc, cor.mtest, threshold, sig.level
+A list with the following elements:
+\itemize{
+\item \code{corr.mtx} (the complete correlation matrix)
+\item \code{corr.mtx.trunc} (the truncated correlation matrix)
+\item \code{cor.mtest} (the output of the significance test on correlations; see \code{\link[corrplot]{cor.mtest}})
+\item \code{threshold} correlation cutoff
+\item \code{sig.level} significance level
+}
 }
 \description{
 Correlation analysis
@@ -27,4 +34,13 @@ names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 data <- subset(data, Pbox$MIN >= 500)
 out <- corranalysis(data, threshold = 0.5)
 plot(out)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.corranalysis}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

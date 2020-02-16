@@ -1,9 +1,17 @@
 #' Correlation analysis
 #'
-#' @param data A dataframe
-#' @param threshold threshold
-#' @param sig.level Significance level
-#' @return A list with the following elements: corr.mtx, corr.mtx.trunc, cor.mtest, threshold, sig.level
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data a data frame
+#' @param threshold numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0
+#' @param sig.level numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0
+#' @seealso \code{\link{plot.corranalysis}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A list with the following elements:
+#' * \code{corr.mtx} (the complete correlation matrix)
+#' * \code{corr.mtx.trunc} (the truncated correlation matrix)
+#' * \code{cor.mtest} (the output of the significance test on correlations; see \code{\link[corrplot]{cor.mtest}})
+#' * \code{threshold} correlation cutoff
+#' * \code{sig.level} significance level
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
 #'                    Pbox$OREB + Pbox$DREB,Pbox$AST,
