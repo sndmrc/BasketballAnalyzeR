@@ -2,28 +2,51 @@
 % Please edit documentation in R/MDSmap.R
 \name{MDSmap}
 \alias{MDSmap}
-\title{Create some two-dimensional plots for multidimensional scaling (MDS)}
+\title{Multidimensional scaling (MDS)}
 \usage{
 MDSmap(data, std = TRUE)
 }
 \arguments{
-\item{data}{A dataframe to use for plot}
+\item{data}{A data frame}
 
-\item{std}{If TRUE, columns of 'data' are standardized}
+\item{std}{logical; if TRUE, \code{data} columns are standardized (centered and scaled)}
 }
 \value{
-An object of class 'MDSmap': a list with 4 objects: points, stress, data, std
+An object of class \code{MDSmap}, i.e. a list with 4 objects:
+
+\itemize{
+\item \code{points}, a k-column vector of the fitted configuration (see \code{\link[MASS]{isoMDS}});
+}
+
+\itemize{
+\item \code{stress}, the final stress achieved in percent  (see \code{\link[MASS]{isoMDS}});
+}
+
+\itemize{
+\item \code{data}, the input data frame;
+}
+
+\itemize{
+\item \code{std}, the logical \code{std} input.
+}
 }
 \description{
-Create some two-dimensional plots for multidimensional scaling (MDS)
+Multidimensional scaling (MDS)
 }
 \examples{
-data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,
-Pbox$TOV,Pbox$STL, Pbox$BLK)
-names(data) <- c('PTS','P3M','P2M','REB','AST','TOV','STL','BLK')
+data <- with(Pbox, data.frame(PTS, P3M, P2M, REB=OREB+DREB, AST, TOV, STL, BLK))
 selp <- which(Pbox$MIN >= 1500)
-data <- data[selp,]
+data <- data[selp, ]
 id <- Pbox$Player[selp]
 mds <- MDSmap(data)
 plot(mds, labels=id, z.var="P2M", level.plot=FALSE, palette=rainbow)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link[MASS]{isoMDS}}, \code{\link{plot.MDSmap}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

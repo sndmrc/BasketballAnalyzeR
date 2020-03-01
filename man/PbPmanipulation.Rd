@@ -2,18 +2,30 @@
 % Please edit documentation in R/PbPmanipulation.R
 \name{PbPmanipulation}
 \alias{PbPmanipulation}
-\title{Manipulate play-by-play (PbP) dataset}
+\title{Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR}
 \usage{
 PbPmanipulation(data, playTeam = "GSW")
 }
 \arguments{
-\item{data}{PbP dataframe}
+\item{data}{a PbP data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}}
 
-\item{playTeam}{Playing team}
+\item{playTeam}{character, playing team}
 }
 \value{
-A Pbp data frame
+A PbP data frame
 }
 \description{
-Manipulate play-by-play (PbP) dataset
+Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR
+}
+\examples{
+PbP <- PbPmanipulation(PbP.BDB)
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{PbP.BDB}}
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 }

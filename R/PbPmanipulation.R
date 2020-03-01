@@ -1,8 +1,13 @@
-#' Manipulate play-by-play (PbP) dataset
+#' Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR
 #'
-#' @param data PbP dataframe
-#' @param playTeam Playing team
-#' @return A Pbp data frame
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @param data a PbP data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}
+#' @param playTeam character, playing team
+#' @return A PbP data frame
+#' @seealso \code{\link{PbP.BDB}}
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @examples
+#' PbP <- PbPmanipulation(PbP.BDB)
 #' @export
 #' @importFrom stringr str_sub
 #' @importFrom operators %~%
