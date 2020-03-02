@@ -49,9 +49,11 @@ PbPmanipulation <- function(data, playTeam="GSW") {
   data$oppTeam <- ""
   for (gm in games) {
     idx <- data$game_id==gm & data$team!=""
-    tbl <- table(data[idx,"team"])
+    team_vec <- data[idx,"team"]
+    tbl <- table(team_vec)
     playing_teams <- names(tbl)[tbl!=0]
-    opp_team <- playing_teams[playing_teams!=playTeam]
+    opp_team <- ifelse(team_vec==playing_teams[1], playing_teams[2], playing_teams[1])
+    #opp_team <- playing_teams[playing_teams!=playTeam]
     data[idx,"oppTeam"] <- opp_team
   }
 
