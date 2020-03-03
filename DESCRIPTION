@@ -10,7 +10,7 @@ License: GPL (>= 2.0)
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/sndmrc/BasketballAnalyzeR 
-Contact: <basketball.analyzer.help@gmail.com>
+Contact: <basketballanalyzer.help@unibs.it>
 Depends:
     R (>= 3.4),
     ggplot2 (>= 2.2.0)
