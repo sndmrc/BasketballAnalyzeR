@@ -39,4 +39,7 @@ Obox
 \description{
 In this data frame cases (rows) are teams and variables (columns) are referred to achievements of the opponents in the different games
 }
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}
 \keyword{datasets}

@@ -22,3 +22,9 @@ selTeams <- c(2,6,10,11)
 FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
 plot(FF)
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}

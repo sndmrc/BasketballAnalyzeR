@@ -21,4 +21,10 @@ Pbox
 \description{
 In this data frame, called Pbox, cases (rows) are players and variables (columns) are referred to the individual achievements in the different games
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}
 \keyword{datasets}

@@ -21,4 +21,10 @@ PbP.BDB
 \description{
 In this data frame, called PbP, cases (rows) are shots and variables (columns) are referred to
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}
 \keyword{datasets}

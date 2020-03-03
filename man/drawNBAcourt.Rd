@@ -26,3 +26,6 @@ library(ggplot2)
 p <- ggplot(data.frame(x=0, y=0), aes(x,y)) + coord_fixed()
 drawNBAcourt(p)
 }
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}

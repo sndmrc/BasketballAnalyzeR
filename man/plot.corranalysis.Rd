@@ -37,5 +37,5 @@ P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications 
 \code{\link{corranalysis}}
 }
 \author{
-Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 }

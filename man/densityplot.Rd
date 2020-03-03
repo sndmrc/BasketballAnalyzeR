@@ -45,3 +45,9 @@ densityplot(data=data.team, shot.type="2P", var="playlength", best.scorer=TRUE)
 data.opp <- subset(PbP, team!="GSW" & result!="")
 densityplot(data=data.opp, shot.type="2P", var="shot_distance", best.scorer=TRUE)
 }
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+}
