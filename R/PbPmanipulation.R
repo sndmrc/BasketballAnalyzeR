@@ -2,7 +2,6 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 #' @param data a PbP data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}
-#' @param playTeam character, playing team
 #' @return A PbP data frame
 #' @seealso \code{\link{PbP.BDB}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
@@ -14,7 +13,8 @@
 #' @importFrom operators %!~%
 #' @importFrom readr parse_number
 
-PbPmanipulation <- function(data, playTeam="GSW") {
+# PbPmanipulation <- function(data, playTeam="GSW") {
+PbPmanipulation <- function(data) {
   #### Convert shot distance and x-y coordinates to numeric
   num_vars <- c("shot_distance","original_x","original_y","converted_x","converted_y")
   data[,num_vars] <- sapply(data[,num_vars], function(x) suppressWarnings(as.numeric(as.character(x))))

@@ -69,7 +69,7 @@ shotchart(
 
 \item{nbins}{integer (active when \code{type="density-hexbin"}), number of bins.}
 
-\item{palette}{color palette; available options \code{"main"}, \code{"cool"}, \code{"hot"}, \code{"mixed"}, \code{"grey"}.}
+\item{palette}{color palette; available options \code{"main"}, \code{"cool"}, \code{"hot"}, \code{"mixed"}, \code{"grey"}, \code{"bwr"} (blue, white, red).}
 }
 \value{
 A ggplot2 object.

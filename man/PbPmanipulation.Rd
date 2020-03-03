@@ -4,12 +4,10 @@
 \alias{PbPmanipulation}
 \title{Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR}
 \usage{
-PbPmanipulation(data, playTeam = "GSW")
+PbPmanipulation(data)
 }
 \arguments{
 \item{data}{a PbP data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}}
-
-\item{playTeam}{character, playing team}
 }
 \value{
 A PbP data frame
