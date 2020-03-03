@@ -16,21 +16,21 @@ densityplot(
 )
 }
 \arguments{
-\item{data}{A play-by-play data frame}
+\item{data}{A play-by-play data frame with the following columns: \code{"ShotType"}, \code{"shot_distance"}, \code{"player"}, \code{"points"} and the column specified in \code{var}.}
 
 \item{var}{A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".}
 
 \item{shot.type}{A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".}
 
-\item{thresholds}{A numerical vector with two thresholds defining the range boundaries of the three regions}
+\item{thresholds}{A numerical vector with two thresholds defining the range boundaries of the three regions.}
 
-\item{best.scorer}{If TRUE, display the player who scored the higher number of points in the corresponding interval}
+\item{best.scorer}{If TRUE, display the player who scored the higher number of points in the corresponding interval.}
 
 \item{period.length}{period.length}
 
-\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})}
+\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).}
 
-\item{title}{Plot title}
+\item{title}{Plot title.}
 }
 \value{
 A ggplot2 plot

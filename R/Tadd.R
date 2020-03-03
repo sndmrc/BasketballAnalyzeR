@@ -1,15 +1,16 @@
 #' Tadd dataset - NBA 2017-2018
 #'
-#' @description In this data frame cases (rows) are teams and variables (columns) are referred to achievements of the opponents in the different games
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+#' @description  In this data frame, called Tadd, the cases (rows) are the analyzed teams and the variables (columns) are qualitative information such as Conference, Division, final rank, qualification for Playoffs
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #'
-#' @format A data frame with 30 rows and 23 variables:
+#' @format A data frame with 30 rows and 6 variables:
 #' \describe{
-#'   \item{Team}{Team name}
-#'   \item{team}{Team name (short)}
-#'   \item{Conference}{Conference}
-#'   \item{Division}{Division}
-#'   \item{Rank}{Rank}
-#'   \item{Playoff}{Playoff}
+#'   \item{Team}{Analyzed team (long name), factor}
+#'   \item{team}{Analyzed team (short name), factor}
+#'   \item{Conference}{Conference, factor}
+#'   \item{Division}{Division, factor}
+#'   \item{Rank}{Rank (end season), numeric}
+#'   \item{Playoff}{Playoff qualification (Yes or No), factor}
 #' }
-#' @source \url{https://github.com/sndmrc/BasketballAnalyzeR}
 "Tadd"

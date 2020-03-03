@@ -1,14 +1,14 @@
 #' Shot density plot
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data A play-by-play data frame
+#' @param data A play-by-play data frame with the following columns: \code{"ShotType"}, \code{"shot_distance"}, \code{"player"}, \code{"points"} and the column specified in \code{var}.
 #' @param var A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".
 #' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".
-#' @param thresholds A numerical vector with two thresholds defining the range boundaries of the three regions
-#' @param best.scorer If TRUE, display the player who scored the higher number of points in the corresponding interval
+#' @param thresholds A numerical vector with two thresholds defining the range boundaries of the three regions.
+#' @param best.scorer If TRUE, display the player who scored the higher number of points in the corresponding interval.
 #' @param period.length period.length
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})
-#' @param title Plot title
+#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).
+#' @param title Plot title.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A ggplot2 plot
 #' @examples
