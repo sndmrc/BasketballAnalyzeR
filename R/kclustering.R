@@ -1,6 +1,6 @@
 #' K-means  cluster analysis
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data numeric data frame
 #' @param k integer, number of clusters
 #' @param labels character, row labels

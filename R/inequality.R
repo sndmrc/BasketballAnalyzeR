@@ -1,6 +1,6 @@
 #' Inequality analysis
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data numeric vector
 #' @param nplayers integer, number of players to include in the analysis
 #' @return A list with the following elements: \code{Lorenz} (cumulative distribution used to plot the Lorenz curve) and \code{Gini} (Gini coefficient)

@@ -1,6 +1,6 @@
 #' Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a PbP data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}
 #' @return A PbP data frame
 #' @seealso \code{\link{PbP.BDB}}

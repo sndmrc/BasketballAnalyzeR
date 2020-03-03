@@ -1,6 +1,6 @@
 #' Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{MDSmap}
 #' @param level.plot logical; if TRUE, draw a level plot, otherwise draw a scatter plot
 #' @param z.var character vector; define the set of variables used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot

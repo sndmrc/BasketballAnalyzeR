@@ -1,6 +1,6 @@
 #' Plot variability diagrams from variability objects
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x a \code{variability} objects
 #' @param title character, plot title
 #' @param ylim numeric vector of length two, y-axis limits

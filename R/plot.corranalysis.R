@@ -1,6 +1,6 @@
 #' Plot the correlation matrix and the correlation network from a corranalysis object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{corranalysis}
 #' @param horizontal logical; if TRUE, the two plots are arranged horizontally
 #' @param title plot title

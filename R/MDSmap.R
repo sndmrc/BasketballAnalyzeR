@@ -1,6 +1,6 @@
 #' Multidimensional scaling (MDS)
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data A data frame
 #' @param std logical; if TRUE, \code{data} columns are standardized (centered and scaled)
 #' @return An object of class \code{MDSmap}, i.e. a list with 4 objects:

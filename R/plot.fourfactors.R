@@ -1,6 +1,6 @@
 #' Plot possession, pace, ratings, and Four Factors from a fourfactors object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x An object of class \code{fourfactors}.
 #' @param title Plot title
 #' @param ... other graphical parameters

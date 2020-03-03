@@ -1,6 +1,6 @@
 #' Plot hierarchical clustering from a hclustering object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{hclustering}
 #' @param title plot title
 #' @param profiles logical; if \code{TRUE}, plot a radial plots of cluster mean profiles

@@ -1,6 +1,6 @@
 #' Draw a bar-line plot
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{	basketballanalyzer.help@unibs.it})
 #' @param data a dataframe
 #' @param id character, name of the ID variable
 #' @param bars character vector, names of the bar variables

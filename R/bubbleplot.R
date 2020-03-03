@@ -1,6 +1,6 @@
 #' Draw a bubble plot
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a dataframe
 #' @param id character, name of the ID variable
 #' @param x character, name of the x-axis variable

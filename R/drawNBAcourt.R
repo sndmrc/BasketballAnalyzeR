@@ -1,5 +1,6 @@
 #' Add lines of NBA court to an existing ggplot2 plot
 #'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param p A ggplot2 object
 #' @param size Line size
 #' @param col Line color

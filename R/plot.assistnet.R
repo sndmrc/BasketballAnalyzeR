@@ -1,6 +1,6 @@
 #' Plot a network from a assistnet object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{assistnet}
 #' @param layout character, network vertex layout algorithm (see \code{\link[sna]{gplot.layout}}) such as "kamadakawai (the default)
 #' @param layout.par a list of parameters for the network vertex layout algorithm (see \code{\link[sna]{gplot.layout}})

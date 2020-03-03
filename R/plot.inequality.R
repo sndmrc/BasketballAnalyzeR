@@ -1,6 +1,6 @@
 #' Plot Lorenz curve from a inequality object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{inequality}
 #' @param title Plot title
 #' @param ... other graphical parameters

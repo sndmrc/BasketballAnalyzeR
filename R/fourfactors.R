@@ -1,7 +1,9 @@
 #' Calculates possession, pace, ratings, and Four Factors
 #'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param TEAM A dataframe
 #' @param OPP A dataframe
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
 #' @examples
 #' selTeams <- c(2,6,10,11)

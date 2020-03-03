@@ -1,5 +1,6 @@
 #' Shot density plot
 #'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data A play-by-play data frame
 #' @param var A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".
 #' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".
@@ -8,6 +9,7 @@
 #' @param period.length period.length
 #' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density})
 #' @param title Plot title
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A ggplot2 plot
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)

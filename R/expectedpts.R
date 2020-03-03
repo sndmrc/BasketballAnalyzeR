@@ -1,6 +1,6 @@
 #' Plot expected points of player shots as a function of the distance from the basket
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
 #' @param players subset of players to be displayed
 #' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}})

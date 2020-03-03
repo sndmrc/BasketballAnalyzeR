@@ -1,5 +1,6 @@
 #' Opponents box scores dataset - NBA 2017-2018
 #'
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @description In this data frame cases (rows) are teams and variables (columns) are referred to achievements of the opponents in the different games
 #'
 #' @format A data frame with 30 rows and 23 variables:

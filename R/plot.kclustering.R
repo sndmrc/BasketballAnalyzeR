@@ -1,6 +1,6 @@
 #' Plot k-means clustering from a kclustering object
 #'
-#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{kclustering}
 #' @param title Plot title
 #' @param ncol.arrange integrer, number of columns when arranging multiple grobs on a page
