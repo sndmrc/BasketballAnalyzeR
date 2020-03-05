@@ -7,18 +7,18 @@
 variability(data, data.var, size.var, VC = TRUE, weight = FALSE)
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{A data frame.}
 
-\item{data.var}{A vector of variable names or of column numbers defining variables whose variability will be analyzed by 'variability'}
+\item{data.var}{A vector of variable names or of column numbers defining (numeric) variables whose variability will be analyzed by \code{variability}.}
 
-\item{size.var}{A vector of variable names or of column numbers defining variables used for bubble sizes}
+\item{size.var}{A vector of variable names or of column numbers defining variables for weights (active only if \code{weight=TRUE}).}
 
-\item{VC}{If TRUE, calculate variation coefficients of variables in data.var}
+\item{VC}{If \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.}
 
-\item{weight}{If TRUE, calculates weighted variation coefficients}
+\item{weight}{If TRUE, calculates weighted variation coefficients.}
 }
 \value{
-A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size)
+A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size).
 }
 \description{
 Variability analysis
@@ -30,4 +30,7 @@ list_variability <- variability(data=Pbox.BC, data.var=c("P2p","P3p","FTp"),
                                 size.var=c("P2A","P3A","FTA"), weight=TRUE)
 print(list_variability)
 plot(list_variability, leg.brk=c(10,25,50,100,500,1000), max.circle=30)
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 }

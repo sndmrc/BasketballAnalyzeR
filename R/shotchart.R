@@ -23,6 +23,7 @@
 #' @param nbins integer (active when \code{type="density-hexbin"}), number of bins.
 #' @return A ggplot2 object.
 #' @details The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots have missing \code{x} and \code{y} coordinates.
+#' @details \code{x} and \code{y} coordinates must be expressed in feets; the origin of the axes is positioned at the center of the field.
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
 #' @seealso \code{\link{drawNBAcourt}}, \code{\link[ggplot2]{geom_density_2d}}, \code{\link[ggplot2]{geom_hex}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

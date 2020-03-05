@@ -79,6 +79,8 @@ Plots different kinds of charts based on shot coordinates
 }
 \details{
 The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots have missing \code{x} and \code{y} coordinates.
+
+\code{x} and \code{y} coordinates must be expressed in feets; the origin of the axes is positioned at the center of the field.
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

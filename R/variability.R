@@ -1,11 +1,12 @@
 #' Variability analysis
 #'
-#' @param data A dataframe
-#' @param data.var A vector of variable names or of column numbers defining variables whose variability will be analyzed by 'variability'
-#' @param size.var A vector of variable names or of column numbers defining variables used for bubble sizes
-#' @param VC If TRUE, calculate variation coefficients of variables in data.var
-#' @param weight If TRUE, calculates weighted variation coefficients
-#' @return A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size)
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+#' @param data A data frame.
+#' @param data.var A vector of variable names or of column numbers defining (numeric) variables whose variability will be analyzed by \code{variability}.
+#' @param size.var A vector of variable names or of column numbers defining variables for weights (active only if \code{weight=TRUE}).
+#' @param VC If \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.
+#' @param weight If TRUE, calculates weighted variation coefficients.
+#' @return A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size).
 #' @examples
 #' Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,
 #'                     select=c("P2p","P3p","FTp","P2A","P3A","FTA"))
