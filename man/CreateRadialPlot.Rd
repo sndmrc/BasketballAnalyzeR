@@ -99,8 +99,14 @@ CreateRadialPlot(
 
 \item{legend.text.size}{legend.text.size}
 
-\item{titolo}{titolo}
+\item{titolo}{plot title}
 }
 \description{
 R function CreateRadialPlot by William D. Vickers, freely downloadable from the web
+}
+\details{
+A description of the function can be found at the following link: \url{http://rstudio-pubs-static.s3.amazonaws.com/5795_e6e6411731bb4f1b9cc7eb49499c2082.html}
+}
+\references{
+Vickers D.W. (2006) Multi-Level Integrated Classifications Based on the 2001 Census, PhD Thesis, School of Geography, The University of Leeds
 }

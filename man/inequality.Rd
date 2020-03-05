@@ -7,12 +7,12 @@
 inequality(data, nplayers)
 }
 \arguments{
-\item{data}{numeric vector}
+\item{data}{numeric vector containing the achievements (e.g. scored points) of the players whose inequality has to be analyzed.}
 
-\item{nplayers}{integer, number of players to include in the analysis}
+\item{nplayers}{integer, number of players to include in the analysis (ranked in nondecreasing order according to the values in data).}
 }
 \value{
-A list with the following elements: \code{Lorenz} (cumulative distribution used to plot the Lorenz curve) and \code{Gini} (Gini coefficient)
+A list with the following elements: \code{Lorenz} (cumulative distributions used to plot the Lorenz curve) and \code{Gini} (Gini coefficient).
 }
 \description{
 Inequality analysis

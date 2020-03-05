@@ -2,27 +2,27 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data A data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).
-#' @param assist character, indicating the name of the variable with players who made the assists.
+#' @param assist character, indicating the name of the variable with players who made the assists, if any.
 #' @param player character, indicating the name of the variable with players who made the shot.
 #' @param points character, indicating the name of the variable with points.
 #' @param event.type character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).
-#' @return A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a dataframe), and \code{assistNet} (a network object). See Details.
-#' @details The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
-#' @details \code{assistTable}, the cross-table of assists made and received by the players.
-#' @details \code{nodeStats}, a dataframe with the following variables:
-#' @details * \code{FGM} (fields goals made),
-#' @details * \code{FGM_AST} (field goals made thanks to a teammate's assist),
-#' @details * \code{FGM_ASTp} (percentage of \code{FGM_AST} over \code{FGM}),
-#' @details * \code{FGPTS} (points scored with field goals),
-#' @details * \code{FGPTS_AST} (points scored thanks to a teammate's assist),
-#' @details * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
-#' @details * \code{AST} (assists made),
-#' @details * \code{ASTPTS} (point scored by assist's teammates).
-#' @details \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
+#' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
+#' @return A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.
+#' @return \code{assistTable}, the cross-table of assists made and received by the players.
+#' @return \code{nodeStats}, a data frame with the following variables:
+#' @return * \code{FGM} (fields goals made),
+#' @return * \code{FGM_AST} (field goals made thanks to a teammate's assist),
+#' @return * \code{FGM_ASTp} (percentage of \code{FGM_AST} over \code{FGM}),
+#' @return * \code{FGPTS} (points scored with field goals),
+#' @return * \code{FGPTS_AST} (points scored thanks to a teammate's assist),
+#' @return * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
+#' @return * \code{AST} (assists made),
+#' @return * \code{ASTPTS} (point scored by assist's teammates).
+#' @return \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
-#' PbP.GSW <- subset(PbP, team=="GSW" & player!="")
+#' PbP.GSW <- subset(PbP, team=="GSW")
 #' out <- assistnet(PbP.GSW)
 #' plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
 #' @export

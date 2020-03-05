@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MDSmap.R
 \name{plot.MDSmap}
 \alias{plot.MDSmap}
-\title{Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object}
+\title{Draws two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object}
 \usage{
 \method{plot}{MDSmap}(
   x,
@@ -22,39 +22,39 @@
 )
 }
 \arguments{
-\item{x}{an object of class \code{MDSmap}}
+\item{x}{an object of class \code{MDSmap}.}
 
-\item{z.var}{character vector; define the set of variables used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot}
+\item{z.var}{character vector; defines the set of variables (available in the \code{data} data frame of \code{\link{MDSmap}}) used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot.}
 
-\item{level.plot}{logical; if TRUE, draw a level plot, otherwise draw a scatter plot}
+\item{level.plot}{logical; if TRUE, draws a level plot, otherwise draw a scatter plot (not active if \code{zvar=NULL}).}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{labels}{character vector, labels for (x, y) points (only for single scatter plot)}
+\item{labels}{character vector, labels for (x, y) points (only for single scatter plot).}
 
-\item{repel_labels}{logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}})}
+\item{repel_labels}{logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}}).}
 
-\item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the text labels}
+\item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the text labels (not active if \code{subset=NULL}).}
 
-\item{subset}{logical vector, to select a subset of points to be highlighted}
+\item{subset}{logical vector, to select a subset of points to be highlighted.}
 
-\item{col.subset}{character, color for the subset of points}
+\item{col.subset}{character, color for the subset of points.}
 
-\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot}
+\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot.}
 
-\item{palette}{color palette}
+\item{palette}{color palette.}
 
-\item{contour}{logical; if \code{TRUE}, contour lines are plotted}
+\item{contour}{logical; if \code{TRUE}, contour lines are plotted (not active if \code{level.plot=FALSE}).}
 
-\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page}
+\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page.}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
 A single \code{ggplot2} plot or a list of \code{ggplot2} plots
 }
 \description{
-Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
+Draws two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 }
 \examples{
 data <- data.frame(Pbox$PTS, Pbox$P3M, Pbox$P2M, Pbox$OREB + Pbox$DREB, Pbox$AST,

@@ -15,7 +15,7 @@ assistnet(
 \arguments{
 \item{data}{A data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).}
 
-\item{assist}{character, indicating the name of the variable with players who made the assists.}
+\item{assist}{character, indicating the name of the variable with players who made the assists, if any.}
 
 \item{player}{character, indicating the name of the variable with players who made the shot.}
 
@@ -24,17 +24,11 @@ assistnet(
 \item{event.type}{character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).}
 }
 \value{
-A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a dataframe), and \code{assistNet} (a network object). See Details.
-}
-\description{
-Investigates the network of assists-shots in a team
-}
-\details{
-The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
+A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.
 
 \code{assistTable}, the cross-table of assists made and received by the players.
 
-\code{nodeStats}, a dataframe with the following variables:
+\code{nodeStats}, a data frame with the following variables:
 
 \itemize{
 \item \code{FGM} (fields goals made),
@@ -70,9 +64,15 @@ The \code{data} dataframe could also be a play-by-play dataset provided that row
 
 \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 }
+\description{
+Investigates the network of assists-shots in a team
+}
+\details{
+The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
+}
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
-PbP.GSW <- subset(PbP, team=="GSW" & player!="")
+PbP.GSW <- subset(PbP, team=="GSW")
 out <- assistnet(PbP.GSW)
 plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
 }

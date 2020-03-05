@@ -1,16 +1,16 @@
-#' Plot expected points of player shots as a function of the distance from the basket
+#' Plots expected points of shots as a function of the distance from the basket (default) or another variable
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
-#' @param players subset of players to be displayed
-#' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}})
-#' @param title character, plot title
-#' @param palette color palette
-#' @param team logical; if \code{TRUE}, draw the scoring probability line for team
-#' @param col.team character, color of the scoring probability line for team(default \code{"gray"})
-#' @param col.hline character, color of the dashed horizontal line (default \code{"black"})
-#' @param legend logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL})
-#' @param xlab character, x-axis label
+#' @param players subset of players to be displayed.
+#' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).
+#' @param title character, plot title.
+#' @param palette color palette.
+#' @param team logical; if \code{TRUE}, draws the expected points for all the shots in data.
+#' @param col.team character, color of the expected points line for all the shots in data (default \code{"gray"}).
+#' @param col.hline character, color of the dashed horizontal line (default \code{"black"}) denoting the expected points for all the shots in data, not conditional to the variable in the x-axis.
+#' @param legend logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).
+#' @param xlab character, x-axis label.
 #' @param var character, numerical variable on the x-axis (default \code{"shot_distance"}).
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A \code{ggplot2} plot

@@ -1,10 +1,10 @@
 #' Correlation analysis
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a data frame
-#' @param threshold numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0
-#' @param sig.level numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0
-#' @seealso \code{\link{plot.corranalysis}}
+#' @param data a numeric matrix or data frame (see \code{\link[stats]{cor}}).
+#' @param threshold numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0.
+#' @param sig.level numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0.
+#' @seealso \code{\link{plot.corranalysis}}.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A list with the following elements:
 #' * \code{corr.mtx} (the complete correlation matrix)

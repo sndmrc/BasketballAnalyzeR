@@ -1,14 +1,15 @@
 #' Multidimensional scaling (MDS)
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data A data frame
-#' @param std logical; if TRUE, \code{data} columns are standardized (centered and scaled)
+#' @param data a numeric matrix, data frame or \code{"dist"} object (see \code{\link[stats]{dist}}).
+#' @param std logical; if TRUE, \code{data} columns are standardized (centered and scaled).
 #' @return An object of class \code{MDSmap}, i.e. a list with 4 objects:
-#' @return * \code{points}, a k-column vector of the fitted configuration (see \code{\link[MASS]{isoMDS}});
-#' @return * \code{stress}, the final stress achieved in percent  (see \code{\link[MASS]{isoMDS}});
+#' @return * \code{points}, a 2-column vector of the fitted configuration (see \code{\link[MASS]{isoMDS}});
+#' @return * \code{stress}, the final stress achieved in percent (see \code{\link[MASS]{isoMDS}});
 #' @return * \code{data}, the input data frame;
 #' @return * \code{std}, the logical \code{std} input.
-#' @seealso \code{\link[MASS]{isoMDS}}, \code{\link{plot.MDSmap}}
+#' @seealso \code{\link[MASS]{isoMDS}}, \code{\link{plot.MDSmap}}.
+#' @details If \code{data} is an object of class \code{"dist"}, \code{std} is not active and \code{data} is directly inputted into \code{MASS::isoMDS}.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' data <- with(Pbox, data.frame(PTS, P3M, P2M, REB=OREB+DREB, AST, TOV, STL, BLK))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/barline.R
 \name{barline}
 \alias{barline}
-\title{Draw a bar-line plot}
+\title{Draws a bar-line plot}
 \usage{
 barline(
   data,
@@ -17,29 +17,29 @@ barline(
 )
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data frame.}
 
-\item{id}{character, name of the ID variable}
+\item{id}{character, name of the ID variable.}
 
-\item{bars}{character vector, names of the bar variables}
+\item{bars}{character vector, names of the bar variables.}
 
-\item{line}{character, name of the line variable}
+\item{line}{character, name of the line variable.}
 
-\item{order.by}{character, name of the variable used to order name players (on the x axis)}
+\item{order.by}{character, name of the variable used to order bars (on the x axis).}
 
-\item{decreasing}{logical; if \code{TRUE}, decreasing order}
+\item{decreasing}{logical; if \code{TRUE}, decreasing order.}
 
-\item{labels.bars}{character vector, labels for the bar variables}
+\item{labels.bars}{character vector, labels for the bar variables.}
 
-\item{label.line}{character, label for the line variable on the second y-axis (on the right)}
+\item{label.line}{character, label for the line variable on the second y-axis (on the right).}
 
-\item{title}{character, title plot}
+\item{title}{character, plot title.}
 }
 \value{
-A ggplot2 object
+A \code{ggplot2} object
 }
 \description{
-Draw a bar-line plot
+Draws a bar-line plot
 }
 \examples{
 dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)

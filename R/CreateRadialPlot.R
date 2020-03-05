@@ -29,7 +29,7 @@
 #' @param plot.legend plot.legend
 #' @param legend.title legend.title
 #' @param legend.text.size legend.text.size
-#' @param titolo titolo
+#' @param titolo plot title
 #' @importFrom ggplot2 theme_bw
 #' @importFrom ggplot2 element_blank
 #' @importFrom ggplot2 theme_bw
@@ -41,6 +41,9 @@
 #' @importFrom ggplot2 xlab
 #' @importFrom ggplot2 ylab
 #' @importFrom ggplot2 coord_equal
+#' @references Vickers D.W. (2006) Multi-Level Integrated Classifications Based on the 2001 Census, PhD Thesis, School of Geography, The University of Leeds
+#' @details A description of the function can be found at the following link: \url{http://rstudio-pubs-static.s3.amazonaws.com/5795_e6e6411731bb4f1b9cc7eb49499c2082.html}
+
 
 CreateRadialPlot <- function(plot.data,
                              axis.labels=colnames(plot.data)[-1],

@@ -1,27 +1,26 @@
-#' Draw a bubble plot
+#' Draws a bubble plot
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a dataframe
-#' @param id character, name of the ID variable
-#' @param x character, name of the x-axis variable
-#' @param y character, name of the y-axis variable
-#' @param col character, name of variable on the color axis
-#' @param size character, name of variable on the size axis
-#' @param text.col character, name of variable for text colors
-#' @param text.size integer, text font size
-#' @param scale.size logical; if \code{TRUE}, size variable is rescaled between 0 and 100
-#' @param labels character vector, variable labels (on legend and axis)
-#' @param mx numeric, midpoint of the x-axis; default is the mean value of \code{x} variable
-#' @param my numeric, midpoint of the y-axis; default is the mean value of \code{y} variable
-#' @param mcol numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable
-#' @param title character, plot title
-#' @param repel logical; if \code{TRUE}, activate text repelling
-#' @param text.legend logical; if \code{TRUE}, show the legend for text color
+#' @param data a data frame.
+#' @param id character, name of the ID variable.
+#' @param x character, name of the x-axis variable.
+#' @param y character, name of the y-axis variable.
+#' @param col character, name of variable on the color axis.
+#' @param size character, name of variable on the size axis.
+#' @param text.col character, name of variable for text colors.
+#' @param text.size integer, text font size.
+#' @param scale.size logical; if \code{TRUE}, size variable is rescaled between 0 and 100.
+#' @param labels character vector, variable labels (on legend and axis).
+#' @param mx numeric, x-coordinate of the vertical axis; default is the mean value of \code{x} variable.
+#' @param my numeric, y-coordinate of the horizontal axis; default is the mean value of \code{y} variable.
+#' @param mcol numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable.
+#' @param title character, plot title.
+#' @param repel logical; if \code{TRUE}, activate text repelling.
+#' @param text.legend logical; if \code{TRUE}, show the legend for text color.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A ggplot2 object
+#' @return A \code{ggplot2} object
 #' @examples
-#' X <- data.frame(T=Tbox$Team, P2p=Tbox$P2p, P3p=Tbox$P3p,
-#'        FTp=Tbox$FTp, AS=Tbox$P2A + Tbox$P3A + Tbox$FTA)
+#' X <- with(Tbox, data.frame(T=Team, P2p=P2p, P3p=P3p, FTp=FTp, AS=P2A+P3A+FTA))
 #' labs <- c("2-point shots (% made)","3-point shots (% made)",
 #'           "free throws (% made)","Total shots attempted")
 #' bubbleplot(X, id="T", x="P2p", y="P3p", col="FTp",

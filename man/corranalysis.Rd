@@ -7,11 +7,11 @@
 corranalysis(data, threshold = 0, sig.level = 0.95)
 }
 \arguments{
-\item{data}{a data frame}
+\item{data}{a numeric matrix or data frame (see \code{\link[stats]{cor}}).}
 
-\item{threshold}{numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0}
+\item{threshold}{numeric, correlation cutoff (default 0); correlations in absolute value below \code{threshold} are set to 0.}
 
-\item{sig.level}{numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0}
+\item{sig.level}{numeric, significance level (default 0.95); correlations with p-values greater that \code{1-sig.level} are set to 0.}
 }
 \value{
 A list with the following elements:
@@ -39,7 +39,7 @@ plot(out)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{plot.corranalysis}}
+\code{\link{plot.corranalysis}}.
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})

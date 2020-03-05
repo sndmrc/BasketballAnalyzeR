@@ -2,7 +2,7 @@
 % Please edit documentation in R/densityplot.r
 \name{densityplot}
 \alias{densityplot}
-\title{Shot density plot}
+\title{Computes and plots kernel density estimation of shots with respect to a concurrent variable}
 \usage{
 densityplot(
   data,
@@ -16,27 +16,27 @@ densityplot(
 )
 }
 \arguments{
-\item{data}{A play-by-play data frame with the following columns: \code{"ShotType"}, \code{"shot_distance"}, \code{"player"}, \code{"points"} and the column specified in \code{var}.}
+\item{data}{A play-by-play data frame with at least the following columns: \code{"ShotType"}, \code{"shot_distance"}, \code{"player"}, \code{"points"} and the column specified in \code{var}.}
 
-\item{var}{A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".}
+\item{var}{A character string giving the numerical variable according to which the shot density is estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".}
 
-\item{shot.type}{A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "FT", field".}
+\item{shot.type}{A character string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.}
 
 \item{thresholds}{A numerical vector with two thresholds defining the range boundaries of the three regions.}
 
-\item{best.scorer}{If TRUE, display the player who scored the higher number of points in the corresponding interval.}
+\item{best.scorer}{If TRUE, displays the player who scored the highest number of points in the corresponding interval.}
 
-\item{period.length}{period.length}
+\item{period.length}{the length of a quarter in minutes (default: 12 minutes as in NBA).}
 
 \item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).}
 
 \item{title}{Plot title.}
 }
 \value{
-A ggplot2 plot
+A \code{ggplot2} plot
 }
 \description{
-Shot density plot
+Computes and plots kernel density estimation of shots with respect to a concurrent variable
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

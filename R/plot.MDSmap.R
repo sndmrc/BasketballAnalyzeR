@@ -1,20 +1,20 @@
-#' Draw two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
+#' Draws two-dimensional plots for multidimensional scaling (MDS) from a MDSmap object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param x an object of class \code{MDSmap}
-#' @param level.plot logical; if TRUE, draw a level plot, otherwise draw a scatter plot
-#' @param z.var character vector; define the set of variables used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot
-#' @param title character, plot title
-#' @param labels character vector, labels for (x, y) points (only for single scatter plot)
-#' @param repel_labels logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}})
-#' @param text_label logical; if \code{TRUE}, draw a rectangle behind the text labels
-#' @param subset logical vector, to select a subset of points to be highlighted
-#' @param col.subset character, color for the subset of points
-#' @param zoom numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot
-#' @param palette color palette
-#' @param contour logical; if \code{TRUE}, contour lines are plotted
-#' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page
-#' @param ... other graphical parameters
+#' @param x an object of class \code{MDSmap}.
+#' @param level.plot logical; if TRUE, draws a level plot, otherwise draw a scatter plot (not active if \code{zvar=NULL}).
+#' @param z.var character vector; defines the set of variables (available in the \code{data} data frame of \code{\link{MDSmap}}) used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot.
+#' @param title character, plot title.
+#' @param labels character vector, labels for (x, y) points (only for single scatter plot).
+#' @param repel_labels logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}}).
+#' @param text_label logical; if \code{TRUE}, draw a rectangle behind the text labels (not active if \code{subset=NULL}).
+#' @param subset logical vector, to select a subset of points to be highlighted.
+#' @param col.subset character, color for the subset of points.
+#' @param zoom numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot.
+#' @param palette color palette.
+#' @param contour logical; if \code{TRUE}, contour lines are plotted (not active if \code{level.plot=FALSE}).
+#' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page.
+#' @param ... other graphical parameters.
 #' @seealso \code{\link{MDSmap}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A single \code{ggplot2} plot or a list of \code{ggplot2} plots

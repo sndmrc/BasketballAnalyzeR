@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.assistnet.R
 \name{plot.assistnet}
 \alias{plot.assistnet}
-\title{Plot a network from a assistnet object}
+\title{Plots a network from a assistnet object}
 \usage{
 \method{plot}{assistnet}(
   x,
@@ -22,39 +22,39 @@
 )
 }
 \arguments{
-\item{x}{an object of class \code{assistnet}}
+\item{x}{an object of class \code{assistnet}.}
 
-\item{layout}{character, network vertex layout algorithm (see \code{\link[sna]{gplot.layout}}) such as "kamadakawai (the default)}
+\item{layout}{character, network vertex layout algorithm (see \code{\link[sna]{gplot.layout}}) such as \code{"kamadakawai"} (the default).}
 
-\item{layout.par}{a list of parameters for the network vertex layout algorithm (see \code{\link[sna]{gplot.layout}})}
+\item{layout.par}{a list of parameters for the network vertex layout algorithm (see \code{\link[sna]{gplot.layout}}).}
 
-\item{edge.thr}{numeric, threshold for edge values; values below the threshold are set to 0}
+\item{edge.thr}{numeric, threshold for edge values; values below the threshold are set to 0.}
 
-\item{edge.col.lim}{numeric vector of length two providing limits of the scale for edge color}
+\item{edge.col.lim}{numeric vector of length two providing limits of the scale for edge color.}
 
-\item{edge.col.lab}{character, label for edge color legend}
+\item{edge.col.lab}{character, label for edge color legend.}
 
-\item{node.size}{character, indicating the name of the variable for node size}
+\item{node.size}{character, indicating the name of the variable for node size.}
 
-\item{node.size.lab}{character, label for node size legend}
+\item{node.size.lab}{character, label for node size legend.}
 
-\item{node.col}{character, indicating the name of the variable for node color}
+\item{node.col}{character, indicating the name of the variable for node color.}
 
-\item{node.col.lim}{numeric vector of length two providing limits of the scale for node color}
+\item{node.col.lim}{numeric vector of length two providing limits of the scale for node color.}
 
-\item{node.col.lab}{character, label for node color legend}
+\item{node.col.lab}{character, label for node color legend.}
 
-\item{node.pal}{color palette for node colors}
+\item{node.pal}{color palette for node colors.}
 
-\item{edge.pal}{color palette for edge colors}
+\item{edge.pal}{color palette for edge colors.}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
-A ggplot2 object
+A \code{ggplot2} object
 }
 \description{
-Plot a network from a assistnet object
+Plots a network from a assistnet object
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

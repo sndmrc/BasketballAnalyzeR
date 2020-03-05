@@ -7,19 +7,19 @@
 MDSmap(data, std = TRUE)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{a numeric matrix, data frame or \code{"dist"} object (see \code{\link[stats]{dist}}).}
 
-\item{std}{logical; if TRUE, \code{data} columns are standardized (centered and scaled)}
+\item{std}{logical; if TRUE, \code{data} columns are standardized (centered and scaled).}
 }
 \value{
 An object of class \code{MDSmap}, i.e. a list with 4 objects:
 
 \itemize{
-\item \code{points}, a k-column vector of the fitted configuration (see \code{\link[MASS]{isoMDS}});
+\item \code{points}, a 2-column vector of the fitted configuration (see \code{\link[MASS]{isoMDS}});
 }
 
 \itemize{
-\item \code{stress}, the final stress achieved in percent  (see \code{\link[MASS]{isoMDS}});
+\item \code{stress}, the final stress achieved in percent (see \code{\link[MASS]{isoMDS}});
 }
 
 \itemize{
@@ -33,6 +33,9 @@ An object of class \code{MDSmap}, i.e. a list with 4 objects:
 \description{
 Multidimensional scaling (MDS)
 }
+\details{
+If \code{data} is an object of class \code{"dist"}, \code{std} is not active and \code{data} is directly inputted into \code{MASS::isoMDS}.
+}
 \examples{
 data <- with(Pbox, data.frame(PTS, P3M, P2M, REB=OREB+DREB, AST, TOV, STL, BLK))
 selp <- which(Pbox$MIN >= 1500)
@@ -45,7 +48,7 @@ plot(mds, labels=id, z.var="P2M", level.plot=FALSE, palette=rainbow)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link[MASS]{isoMDS}}, \code{\link{plot.MDSmap}}
+\code{\link[MASS]{isoMDS}}, \code{\link{plot.MDSmap}}.
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})

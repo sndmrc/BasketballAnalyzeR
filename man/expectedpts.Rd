@@ -2,7 +2,7 @@
 % Please edit documentation in R/expectedpts.R
 \name{expectedpts}
 \alias{expectedpts}
-\title{Plot expected points of player shots as a function of the distance from the basket}
+\title{Plots expected points of shots as a function of the distance from the basket (default) or another variable}
 \usage{
 expectedpts(
   data,
@@ -21,23 +21,23 @@ expectedpts(
 \arguments{
 \item{data}{a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
 
-\item{players}{subset of players to be displayed}
+\item{players}{subset of players to be displayed.}
 
-\item{bw}{numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}})}
+\item{bw}{numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).}
 
-\item{palette}{color palette}
+\item{palette}{color palette.}
 
-\item{team}{logical; if \code{TRUE}, draw the scoring probability line for team}
+\item{team}{logical; if \code{TRUE}, draws the expected points for all the shots in data.}
 
-\item{col.team}{character, color of the scoring probability line for team(default \code{"gray"})}
+\item{col.team}{character, color of the expected points line for all the shots in data (default \code{"gray"}).}
 
-\item{col.hline}{character, color of the dashed horizontal line (default \code{"black"})}
+\item{col.hline}{character, color of the dashed horizontal line (default \code{"black"}) denoting the expected points for all the shots in data, not conditional to the variable in the x-axis.}
 
-\item{xlab}{character, x-axis label}
+\item{xlab}{character, x-axis label.}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{legend}{logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL})}
+\item{legend}{logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).}
 
 \item{var}{character, numerical variable on the x-axis (default \code{"shot_distance"}).}
 }
@@ -45,7 +45,7 @@ expectedpts(
 A \code{ggplot2} plot
 }
 \description{
-Plot expected points of player shots as a function of the distance from the basket
+Plots expected points of shots as a function of the distance from the basket (default) or another variable
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

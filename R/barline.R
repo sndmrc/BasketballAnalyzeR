@@ -1,17 +1,17 @@
-#' Draw a bar-line plot
+#' Draws a bar-line plot
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{	basketballanalyzer.help@unibs.it})
-#' @param data a dataframe
-#' @param id character, name of the ID variable
-#' @param bars character vector, names of the bar variables
-#' @param line character, name of the line variable
-#' @param order.by character, name of the variable used to order name players (on the x axis)
-#' @param decreasing logical; if \code{TRUE}, decreasing order
-#' @param labels.bars character vector, labels for the bar variables
-#' @param label.line character, label for the line variable on the second y-axis (on the right)
-#' @param title character, title plot
+#' @param data a data frame.
+#' @param id character, name of the ID variable.
+#' @param bars character vector, names of the bar variables.
+#' @param line character, name of the line variable.
+#' @param order.by character, name of the variable used to order bars (on the x axis).
+#' @param decreasing logical; if \code{TRUE}, decreasing order.
+#' @param labels.bars character vector, labels for the bar variables.
+#' @param label.line character, label for the line variable on the second y-axis (on the right).
+#' @param title character, plot title.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A ggplot2 object
+#' @return A \code{ggplot2} object
 #' @examples
 #' dts <- subset(Pbox, Team=="Houston Rockets" & MIN>=500)
 #' barline(data=dts, id="Player", bars=c("P2p","P3p","FTp"),

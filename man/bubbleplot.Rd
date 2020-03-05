@@ -2,7 +2,7 @@
 % Please edit documentation in R/bubbleplot.R
 \name{bubbleplot}
 \alias{bubbleplot}
-\title{Draw a bubble plot}
+\title{Draws a bubble plot}
 \usage{
 bubbleplot(
   data,
@@ -24,47 +24,46 @@ bubbleplot(
 )
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data frame.}
 
-\item{id}{character, name of the ID variable}
+\item{id}{character, name of the ID variable.}
 
-\item{x}{character, name of the x-axis variable}
+\item{x}{character, name of the x-axis variable.}
 
-\item{y}{character, name of the y-axis variable}
+\item{y}{character, name of the y-axis variable.}
 
-\item{col}{character, name of variable on the color axis}
+\item{col}{character, name of variable on the color axis.}
 
-\item{size}{character, name of variable on the size axis}
+\item{size}{character, name of variable on the size axis.}
 
-\item{text.col}{character, name of variable for text colors}
+\item{text.col}{character, name of variable for text colors.}
 
-\item{text.size}{integer, text font size}
+\item{text.size}{integer, text font size.}
 
-\item{scale.size}{logical; if \code{TRUE}, size variable is rescaled between 0 and 100}
+\item{scale.size}{logical; if \code{TRUE}, size variable is rescaled between 0 and 100.}
 
-\item{labels}{character vector, variable labels (on legend and axis)}
+\item{labels}{character vector, variable labels (on legend and axis).}
 
-\item{mx}{numeric, midpoint of the x-axis; default is the mean value of \code{x} variable}
+\item{mx}{numeric, x-coordinate of the vertical axis; default is the mean value of \code{x} variable.}
 
-\item{my}{numeric, midpoint of the y-axis; default is the mean value of \code{y} variable}
+\item{my}{numeric, y-coordinate of the horizontal axis; default is the mean value of \code{y} variable.}
 
-\item{mcol}{numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable}
+\item{mcol}{numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable.}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{repel}{logical; if \code{TRUE}, activate text repelling}
+\item{repel}{logical; if \code{TRUE}, activate text repelling.}
 
-\item{text.legend}{logical; if \code{TRUE}, show the legend for text color}
+\item{text.legend}{logical; if \code{TRUE}, show the legend for text color.}
 }
 \value{
-A ggplot2 object
+A \code{ggplot2} object
 }
 \description{
-Draw a bubble plot
+Draws a bubble plot
 }
 \examples{
-X <- data.frame(T=Tbox$Team, P2p=Tbox$P2p, P3p=Tbox$P3p,
-       FTp=Tbox$FTp, AS=Tbox$P2A + Tbox$P3A + Tbox$FTA)
+X <- with(Tbox, data.frame(T=Team, P2p=P2p, P3p=P3p, FTp=FTp, AS=P2A+P3A+FTA))
 labs <- c("2-point shots (\% made)","3-point shots (\% made)",
           "free throws (\% made)","Total shots attempted")
 bubbleplot(X, id="T", x="P2p", y="P3p", col="FTp",
