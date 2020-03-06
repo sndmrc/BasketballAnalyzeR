@@ -7,12 +7,12 @@
 fourfactors(TEAM, OPP)
 }
 \arguments{
-\item{TEAM}{A dataframe}
+\item{TEAM}{a data frame (see Details).}
 
-\item{OPP}{A dataframe}
+\item{OPP}{a data frame (see Details).}
 }
 \value{
-A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
+An object of class \code{fourfactors}, i.e. a data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents.
 }
 \description{
 Calculates possession, pace, ratings, and Four Factors
@@ -24,6 +24,9 @@ plot(FF)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\seealso{
+\code{\link{plot.fourfactors}}
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})

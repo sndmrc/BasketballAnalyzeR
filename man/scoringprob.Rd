@@ -2,7 +2,7 @@
 % Please edit documentation in R/scoringprob.R
 \name{scoringprob}
 \alias{scoringprob}
-\title{Scoring probability plot}
+\title{Plots scoring probability of shots as a function of a given variable}
 \usage{
 scoringprob(
   data,
@@ -19,33 +19,33 @@ scoringprob(
 )
 }
 \arguments{
-\item{data}{A play-by-play data frame}
+\item{data}{a play-by-play data frame.}
 
-\item{var}{A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".}
+\item{var}{character, the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.}
 
-\item{shot.type}{A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "field"}
+\item{shot.type}{character, the type of shots to be analyzed; available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.}
 
-\item{players}{Subset of players to be displayed}
+\item{players}{subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).}
 
-\item{bw}{A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})}
+\item{bw}{numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).}
 
-\item{period.length}{period.length}
+\item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).}
 
-\item{title}{Plot title}
+\item{title}{character, plot title.}
 
-\item{palette}{Color palette}
+\item{palette}{color palette.}
 
-\item{team}{team}
+\item{team}{character; if \code{TRUE} draws the scoring probability for all the shots in data.}
 
-\item{col.team}{Color of the scoring probability line for team}
+\item{col.team}{character, color of the scoring probability line for all the shots in data.}
 
-\item{legend}{If TRUE, color legend is displayed (only when 'players' is not NULL)}
+\item{legend}{character; if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).}
 }
 \value{
-A ggplot2 plot
+A \code{ggplot2} plot
 }
 \description{
-Scoring probability plot
+Plots scoring probability of shots as a function of a given variable
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
@@ -53,4 +53,10 @@ PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 players <- c("Kevin Durant","Draymond Green","Klay Thompson")
 p <- scoringprob(data=PbP.GSW, shot.type="2P", players=players,
                  var="shot_distance", col.team="gray")
+}
+\references{
+P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+}
+\author{
+Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 }

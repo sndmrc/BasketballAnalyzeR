@@ -2,8 +2,9 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
-#' @param players subset of players to be displayed.
+#' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).
+#' @param period.length	the length of a quarter in minutes (default: 12 minutes as in NBA).
 #' @param title character, plot title.
 #' @param palette color palette.
 #' @param team logical; if \code{TRUE}, draws the expected points for all the shots in data.
@@ -22,7 +23,7 @@
 #'         palette=colorRampPalette(c("gray","black")), col.hline="red")
 #' @export
 
-expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, team=TRUE, col.team="gray",
+expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_color_hue, team=TRUE, col.team="gray",
           col.hline="black", xlab=NULL, title=NULL, legend=TRUE, var="shot_distance") {
 
   event_type <- player <- Player <- NULL
@@ -31,7 +32,6 @@ expectedpts <- function(data, players=NULL, bw=10, palette=gg_color_hue, team=TR
   x <- data[, var]
   y <- data$points
 
-  period.length <- 12
   if (var=="playlength") {
     xrng <- c(0, 24)
     if (is.null(xlab)) xlab <- "Play length"

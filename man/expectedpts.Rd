@@ -8,6 +8,7 @@ expectedpts(
   data,
   players = NULL,
   bw = 10,
+  period.length = 12,
   palette = gg_color_hue,
   team = TRUE,
   col.team = "gray",
@@ -21,9 +22,11 @@ expectedpts(
 \arguments{
 \item{data}{a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
 
-\item{players}{subset of players to be displayed.}
+\item{players}{subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).}
 
 \item{bw}{numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).}
+
+\item{period.length}{the length of a quarter in minutes (default: 12 minutes as in NBA).}
 
 \item{palette}{color palette.}
 

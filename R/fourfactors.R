@@ -1,10 +1,11 @@
 #' Calculates possession, pace, ratings, and Four Factors
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param TEAM A dataframe
-#' @param OPP A dataframe
+#' @param TEAM a data frame (see Details).
+#' @param OPP a data frame (see Details).
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents
+#' @seealso \code{\link{plot.fourfactors}}
+#' @return An object of class \code{fourfactors}, i.e. a data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents.
 #' @examples
 #' selTeams <- c(2,6,10,11)
 #' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])

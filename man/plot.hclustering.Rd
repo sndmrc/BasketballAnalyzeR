@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.hclustering.R
 \name{plot.hclustering}
 \alias{plot.hclustering}
-\title{Plot hierarchical clustering from a hclustering object}
+\title{Plots hierarchical clustering from a hclustering object}
 \usage{
 \method{plot}{hclustering}(
   x,
@@ -21,29 +21,29 @@
 )
 }
 \arguments{
-\item{x}{an object of class \code{hclustering}}
+\item{x}{an object of class \code{hclustering}.}
 
-\item{title}{plot title}
+\item{title}{plot title.}
 
-\item{profiles}{logical; if \code{TRUE}, plot a radial plots of cluster mean profiles}
+\item{profiles}{logical; if \code{TRUE}, plots a radial plots of cluster mean profiles.}
 
-\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page}
+\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page (active only when \code{profiles=TRUE}).}
 
-\item{circlize}{logical; if \code{TRUE}, plot a circular dendrogram}
+\item{circlize}{logical; if \code{TRUE}, plots a circular dendrogram (active only when \code{profiles=TRUE}).}
 
-\item{horiz}{logical; if \code{TRUE}, plot an horizontal dendrogram (only for non circular dendrograms)}
+\item{horiz}{logical; if \code{TRUE}, plots an horizontal dendrogram (active only when \code{profiles=TRUE}, and only for non circular dendrograms)}
 
 \item{cex.labels}{numeric, the magnification to be used for dendrogram labels}
 
-\item{colored.labels}{logical; if \code{TRUE}, Assign different colors to labels of different clusters}
+\item{colored.labels}{logical; if \code{TRUE}, assigns different colors to labels of different clusters}
 
-\item{colored.branches}{logical; if \code{TRUE}, assign different colors to dendrogram branches of different clusters}
+\item{colored.branches}{logical; if \code{TRUE}, assigns different colors to dendrogram branches of different clusters}
 
-\item{rect}{logical; if \code{TRUE}, draw rectangles around the branches of a dendrogram in order to highlight the corresponding clusters}
+\item{rect}{logical; if \code{TRUE}, draws rectangles around the branches of a dendrogram in order to highlight the corresponding clusters}
 
-\item{lower.rect}{numeric, a value of how low should the lower part of the rect be}
+\item{lower.rect}{numeric, a value of how low should the lower part of the rect be (see option \code{lower_rect} of \code{\link[dendextend]{rect.dendrogram}})}
 
-\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (only for axes in radial plots)}
 
 \item{...}{other graphical parameters}
 }
@@ -51,13 +51,10 @@
 A single \code{ggplot2} plot (if \code{profile=FALSE}) or a list of radial plots (if \code{profile=TRUE}))
 }
 \description{
-Plot hierarchical clustering from a hclustering object
+Plots hierarchical clustering from a hclustering object
 }
 \examples{
-data <- data.frame(Pbox$PTS,Pbox$P3M,
-                   Pbox$OREB + Pbox$DREB, Pbox$AST,
-                   Pbox$TOV, Pbox$STL, Pbox$BLK,Pbox$PF)
-names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
+data <- with(Pbox, data.frame(PTS, P3M, REB=OREB+DREB, AST, TOV, STL, BLK, PF))
 data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
 out <- hclustering(data, labels=ID, k=7)
@@ -67,7 +64,7 @@ plot(out)
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{hclustering}}, \code{\link{radialprofile}}, option \code{lower_rect} of \code{\link[dendextend]{rect.dendrogram}}
+\code{\link{hclustering}}, \code{\link{radialprofile}}.
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})

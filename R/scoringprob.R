@@ -1,17 +1,19 @@
-#' Scoring probability plot
+#' Plots scoring probability of shots as a function of a given variable
 #'
-#' @param data A play-by-play data frame
-#' @param var A character string giving the numerical variable whose density to be estimated. Available options: "playlength", "periodTime", "totalTime", "shot_distance".
-#' @param shot.type A character string giving the type of shots to be analyzed. Available options: "2P", "3P", "field"
-#' @param players Subset of players to be displayed
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth})
-#' @param period.length period.length
-#' @param title Plot title
-#' @param palette Color palette
-#' @param team team
-#' @param col.team Color of the scoring probability line for team
-#' @param legend If TRUE, color legend is displayed (only when 'players' is not NULL)
-#' @return A ggplot2 plot
+#' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
+#' @param data a play-by-play data frame.
+#' @param var character, the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
+#' @param shot.type character, the type of shots to be analyzed; available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.
+#' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
+#' @param bw numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).
+#' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param title character, plot title.
+#' @param palette color palette.
+#' @param team character; if \code{TRUE} draws the scoring probability for all the shots in data.
+#' @param col.team character, color of the scoring probability line for all the shots in data.
+#' @param legend character; if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).
+#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return A \code{ggplot2} plot
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & result!="")
