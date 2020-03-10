@@ -48,8 +48,8 @@ fourfactors <- function(TEAM, OPP) {
   # Implies that defensive rebounds have no possession value
   POSS.Off <- (P2A.Off + P3A.Off) + 0.44 * FTA.Off - OREB.Off + TO.Off
   POSS.Def <- (P2A.Def + P3A.Def) + 0.44 * FTA.Def - OREB.Def + TO.Def
-  PACE.Off <- 5 * POSS.Off/MIN.Off
-  PACE.Def <- 5 * POSS.Def/MIN.Def
+  PACE.Off <- POSS.Off/MIN.Off
+  PACE.Def <- POSS.Def/MIN.Def
 
   # Formulas (5) and (6) of the Dean Oliver paper
   # Offensive (ORtg) and Defensive (DRtg) Ratings
