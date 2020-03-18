@@ -4,7 +4,8 @@
 \name{PbP.BDB}
 \alias{PbP.BDB}
 \title{Play-by-play dataset - NBA 2017-2018}
-\format{A data.frame with 37430 rows and 48 variables:
+\format{
+A data.frame with 37430 rows and 48 variables:
 \describe{
 \item{game_id}{Identification code for the game}
 \item{data_set}{Season: years and type (Regular or Playoffs)}
@@ -36,7 +37,8 @@
 \item{original_x ; original_y}{Coordinates of the shooting player}
 \item{converted_x ; converted_y}{\code{original}: tracking coordinate system half court, (0,0) center of the basket; \code{converted}: coordinates in feet full court, (0,0) bottom-left corner}
 \item{description}{Textual description of the event}
-}}
+}
+}
 \source{
 \url{https://github.com/sndmrc/BasketballAnalyzeR}
 }

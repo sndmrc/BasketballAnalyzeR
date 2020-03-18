@@ -4,7 +4,8 @@
 \name{Obox}
 \alias{Obox}
 \title{Opponents box scores dataset - NBA 2017-2018}
-\format{A data frame with 30 rows and 23 variables:
+\format{
+A data frame with 30 rows and 23 variables:
 \describe{
 \item{Team}{Analyzed team, character}
 \item{GP}{Games Played, numeric}
@@ -29,7 +30,8 @@
 \item{BLK}{Blocks, numeric}
 \item{PF}{Personal Fouls, numeric}
 \item{PM}{Plus/Minus, numeric}
-}}
+}
+}
 \usage{
 Obox
 }

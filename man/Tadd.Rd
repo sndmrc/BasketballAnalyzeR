@@ -4,7 +4,8 @@
 \name{Tadd}
 \alias{Tadd}
 \title{Tadd dataset - NBA 2017-2018}
-\format{A data frame with 30 rows and 6 variables:
+\format{
+A data frame with 30 rows and 6 variables:
 \describe{
 \item{Team}{Analyzed team (long name), factor}
 \item{team}{Analyzed team (short name), factor}
@@ -12,7 +13,8 @@
 \item{Division}{Division, factor}
 \item{Rank}{Rank (end season), numeric}
 \item{Playoff}{Playoff qualification (Yes or No), factor}
-}}
+}
+}
 \usage{
 Tadd
 }

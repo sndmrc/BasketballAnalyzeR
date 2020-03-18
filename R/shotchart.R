@@ -6,7 +6,7 @@
 #' @param z character, indicating the name of the variable used to color the points (if \code{type=NULL}) or the sectors (if \code{type="sectors"}, in this case \code{z} must be a numeric variable).
 #' @param z.fun function (active when \code{type="sectors"}), used to summarize the values of \code{z} variable within each sector (recommended: \code{mean}, \code{median}).
 #' @param result character (active when \code{type="sectors"} and \code{scatter=FALSE}), indicating the name of the factor with the shot result (allowed categories \code{made} and \code{missed}).
-#' @param type character, indicating the plot type; available option are \code{NULL}, \code{"sectors"}, \code{"density-polygon"}, \code{"density-raster"}, \code{"density-hexbin"}.
+#' @param type character, indicating the plot type; available option are \code{NULL}, \code{"sectors"}, \code{"density-polygons"}, \code{"density-raster"}, \code{"density-hexbin"}.
 #' @param scatter logical, if TRUE a scatter plot of the shots is added to the plot.
 #' @param num.sect integer (active when \code{type="sectors"}), number of sectors.
 #' @param n integer (active when \code{type="sectors"}), number of points used to draw arcs (must be > 500).

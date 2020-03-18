@@ -41,7 +41,7 @@ shotchart(
 
 \item{result}{character (active when \code{type="sectors"} and \code{scatter=FALSE}), indicating the name of the factor with the shot result (allowed categories \code{made} and \code{missed}).}
 
-\item{type}{character, indicating the plot type; available option are \code{NULL}, \code{"sectors"}, \code{"density-polygon"}, \code{"density-raster"}, \code{"density-hexbin"}.}
+\item{type}{character, indicating the plot type; available option are \code{NULL}, \code{"sectors"}, \code{"density-polygons"}, \code{"density-raster"}, \code{"density-hexbin"}.}
 
 \item{scatter}{logical, if TRUE a scatter plot of the shots is added to the plot.}
 

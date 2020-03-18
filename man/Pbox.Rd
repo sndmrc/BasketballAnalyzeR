@@ -4,14 +4,16 @@
 \name{Pbox}
 \alias{Pbox}
 \title{Players box scores dataset - NBA 2017-2018}
-\format{A data.frame with 605 rows and 22 variables:
+\format{
+A data.frame with 605 rows and 22 variables:
 \describe{
 \item{Team}{Analyzed team, character}
 \item{Player}{Analyzed player, character}
 \item{GP}{Games Played, numeric}
 \item{MIN}{Minutes Played, numeric}
 \item{PTS}{Points Made, numeric}
-}}
+}
+}
 \usage{
 Pbox
 }
