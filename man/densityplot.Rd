@@ -22,7 +22,7 @@ densityplot(
 
 \item{shot.type}{A character string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.}
 
-\item{thresholds}{A numerical vector with two thresholds defining the range boundaries of the three regions.}
+\item{thresholds}{A numerical vector with two thresholds defining the range boundaries that divide the area under the density curve into three regions. If \code{NULL} default values are used.}
 
 \item{best.scorer}{If TRUE, displays the player who scored the highest number of points in the corresponding interval.}
 
@@ -43,19 +43,33 @@ The \code{data} dataframe could also be a play-by-play dataset provided that row
 
 Required columns:
 
-*\code{ShotType}, a factor with the following levels: \code{"2P"}, \code{"3P"}, \code{"FT"} (and \code{NA} for events different from shots)
+\itemize{
+\item \code{ShotType}, a factor with the following levels: \code{"2P"}, \code{"3P"}, \code{"FT"} (and \code{NA} for events different from shots)
+}
 
-*\code{player}, a factor with the name of the player who made the shot
+\itemize{
+\item \code{player}, a factor with the name of the player who made the shot
+}
 
-*\code{points}, a numeric variable (integer) with the points scored by made shots and \code{0} for missed shots
+\itemize{
+\item \code{points}, a numeric variable (integer) with the points scored by made shots and \code{0} for missed shots
+}
 
-*\code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+\itemize{
+\item \code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+}
 
-*\code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+\itemize{
+\item \code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+}
 
-*\code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+\itemize{
+\item \code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+}
 
-*\code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
+\itemize{
+\item \code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
+}
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
