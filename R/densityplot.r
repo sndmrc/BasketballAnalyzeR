@@ -1,15 +1,15 @@
 #' Computes and plots kernel density estimation of shots with respect to a concurrent variable
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data A data frame whose rows are shots and with the following columns: \code{ShotType}, \code{player}, \code{points} and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).
-#' @param var A character string giving the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
-#' @param shot.type A character string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.
-#' @param thresholds A numerical vector with two thresholds defining the range boundaries that divide the area under the density curve into three regions. If \code{NULL} default values are used.
-#' @param best.scorer If TRUE, displays the player who scored the highest number of points in the corresponding interval.
-#' @param period.length the length of a quarter in minutes (default: 12 minutes as in NBA).
-#' @param bw A numerical value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).
-#' @param title Plot title.
-#' @details The \code{data} dataframe could also be a play-by-play dataset provided that rows corresponding to events different from shots have \code{NA} in the \code{ShotType} variable.
+#' @param data a data frame whose rows are shots and with the following columns: \code{ShotType}, \code{player}, \code{points} and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).
+#' @param var character, a string giving the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
+#' @param shot.type character, a string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.
+#' @param thresholds numerical vector with two thresholds defining the range boundaries that divide the area under the density curve into three regions. If \code{NULL} default values are used.
+#' @param best.scorer logical; if TRUE, displays the player who scored the highest number of points in the corresponding interval.
+#' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param bw numeric, the value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).
+#' @param title character, plot title.
+#' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from shots have \code{NA} in the \code{ShotType} variable.
 #' @details Required columns:
 #' @details * \code{ShotType}, a factor with the following levels: \code{"2P"}, \code{"3P"}, \code{"FT"} (and \code{NA} for events different from shots)
 #' @details * \code{player}, a factor with the name of the player who made the shot

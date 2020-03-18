@@ -1,10 +1,10 @@
 #' Plots expected points of shots as a function of the distance from the basket (default) or another variable
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.
+#' @param data a data frame whose rows are field shots and with the following columns: \code{points}, \code{event_type}, \code{player} (only if the \code{players} argument is not \code{NULL}) and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).
 #' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).
-#' @param period.length	the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param period.length	numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
 #' @param title character, plot title.
 #' @param palette color palette.
 #' @param team logical; if \code{TRUE}, draws the expected points for all the shots in data.
@@ -13,6 +13,15 @@
 #' @param legend logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).
 #' @param xlab character, x-axis label.
 #' @param var character, numerical variable on the x-axis (default \code{"shot_distance"}).
+#' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots have values different from \code{"shot"} or \code{"miss"} in the \code{even_type} variable.
+#' @details Required columns:
+#' @details * \code{event_type}, a factor with the following levels: \code{"shot"} for made field shots and \code{"miss"} for missed field shots
+#' @details * \code{player}, a factor with the name of the player who made the shot
+#' @details * \code{points}, a numeric variable (integer) with the points scored by made shots and \code{0} for missed shots
+#' @details * \code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+#' @details * \code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+#' @details * \code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+#' @details * \code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A \code{ggplot2} plot
 #' @examples

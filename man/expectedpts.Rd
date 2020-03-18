@@ -20,13 +20,13 @@ expectedpts(
 )
 }
 \arguments{
-\item{data}{a data frame whose rows are field shots and columns are variables to be specified in \code{var} and optionally in \code{players}.}
+\item{data}{a data frame whose rows are field shots and with the following columns: \code{points}, \code{event_type}, \code{player} (only if the \code{players} argument is not \code{NULL}) and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).}
 
 \item{players}{subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).}
 
 \item{bw}{numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).}
 
-\item{period.length}{the length of a quarter in minutes (default: 12 minutes as in NBA).}
+\item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).}
 
 \item{palette}{color palette.}
 
@@ -49,6 +49,39 @@ A \code{ggplot2} plot
 }
 \description{
 Plots expected points of shots as a function of the distance from the basket (default) or another variable
+}
+\details{
+The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots have values different from \code{"shot"} or \code{"miss"} in the \code{even_type} variable.
+
+Required columns:
+
+\itemize{
+\item \code{event_type}, a factor with the following levels: \code{"shot"} for made field shots and \code{"miss"} for missed field shots
+}
+
+\itemize{
+\item \code{player}, a factor with the name of the player who made the shot
+}
+
+\itemize{
+\item \code{points}, a numeric variable (integer) with the points scored by made shots and \code{0} for missed shots
+}
+
+\itemize{
+\item \code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+}
+
+\itemize{
+\item \code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+}
+
+\itemize{
+\item \code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+}
+
+\itemize{
+\item \code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
+}
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
