@@ -12,7 +12,7 @@
 #' @param col.hline character, color of the dashed horizontal line (default \code{"black"}) denoting the expected points for all the shots in data, not conditional to the variable in the x-axis.
 #' @param legend logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).
 #' @param xlab character, x-axis label.
-#' @param var character, numerical variable on the x-axis (default \code{"shot_distance"}).
+#' @param var character, a string giving the name of the numerical variable according to which the expected points are estimated; available options \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"} (default).
 #' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots have values different from \code{"shot"} or \code{"miss"} in the \code{even_type} variable.
 #' @details Required columns:
 #' @details * \code{event_type}, a factor with the following levels: \code{"shot"} for made field shots and \code{"miss"} for missed field shots

@@ -2,7 +2,7 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a data frame whose rows are shots and with the following columns: \code{ShotType}, \code{player}, \code{points} and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).
-#' @param var character, a string giving the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
+#' @param var character, a string giving the name of the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
 #' @param shot.type character, a string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.
 #' @param thresholds numerical vector with two thresholds defining the range boundaries that divide the area under the density curve into three regions. If \code{NULL} default values are used.
 #' @param best.scorer logical; if TRUE, displays the player who scored the highest number of points in the corresponding interval.

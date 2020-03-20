@@ -42,7 +42,7 @@ expectedpts(
 
 \item{legend}{logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).}
 
-\item{var}{character, numerical variable on the x-axis (default \code{"shot_distance"}).}
+\item{var}{character, a string giving the name of the numerical variable according to which the expected points are estimated; available options \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"} (default).}
 }
 \value{
 A \code{ggplot2} plot

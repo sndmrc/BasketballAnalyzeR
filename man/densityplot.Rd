@@ -18,7 +18,7 @@ densityplot(
 \arguments{
 \item{data}{a data frame whose rows are shots and with the following columns: \code{ShotType}, \code{player}, \code{points} and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).}
 
-\item{var}{character, a string giving the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.}
+\item{var}{character, a string giving the name of the numerical variable according to which the shot density is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.}
 
 \item{shot.type}{character, a string giving the type of shots to be analyzed. Available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.}
 

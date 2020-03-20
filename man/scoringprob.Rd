@@ -19,9 +19,9 @@ scoringprob(
 )
 }
 \arguments{
-\item{data}{a play-by-play data frame.}
+\item{data}{a data frame whose rows are shots and with the following columns: \code{result}, \code{ShotType}, \code{player} (only if the \code{players} argument is not \code{NULL}) and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).}
 
-\item{var}{character, the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.}
+\item{var}{character, the string giving the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.}
 
 \item{shot.type}{character, the type of shots to be analyzed; available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.}
 
@@ -46,6 +46,39 @@ A \code{ggplot2} plot
 }
 \description{
 Plots scoring probability of shots as a function of a given variable
+}
+\details{
+The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from shots have \code{NA} in the \code{ShotType} variable.
+
+Required columns:
+
+\itemize{
+\item \code{result}, a factor with the following levels: \code{"made"} for made shots, \code{"miss"} for missed shots, and \code{""} for events different from shots
+}
+
+\itemize{
+\item \code{ShotType}, a factor with the following levels: \code{"2P"}, \code{"3P"}, \code{"FT"} (and \code{NA} for events different from shots)
+}
+
+\itemize{
+\item \code{player}, a factor with the name of the player who made the shot
+}
+
+\itemize{
+\item \code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+}
+
+\itemize{
+\item \code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+}
+
+\itemize{
+\item \code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+}
+
+\itemize{
+\item \code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
+}
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

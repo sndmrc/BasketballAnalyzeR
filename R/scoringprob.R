@@ -1,8 +1,8 @@
 #' Plots scoring probability of shots as a function of a given variable
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a play-by-play data frame.
-#' @param var character, the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
+#' @param data a data frame whose rows are shots and with the following columns: \code{result}, \code{ShotType}, \code{player} (only if the \code{players} argument is not \code{NULL}) and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).
+#' @param var character, the string giving the name of the numerical variable according to which the scoring probability is estimated. Available options: \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"}.
 #' @param shot.type character, the type of shots to be analyzed; available options: \code{"2P"}, \code{"3P"}, \code{"FT"}, \code{"field"}.
 #' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).
@@ -12,6 +12,15 @@
 #' @param team character; if \code{TRUE} draws the scoring probability for all the shots in data.
 #' @param col.team character, color of the scoring probability line for all the shots in data.
 #' @param legend character; if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).
+#' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from shots have \code{NA} in the \code{ShotType} variable.
+#' @details Required columns:
+#' @details * \code{result}, a factor with the following levels: \code{"made"} for made shots, \code{"miss"} for missed shots, and \code{""} for events different from shots
+#' @details * \code{ShotType}, a factor with the following levels: \code{"2P"}, \code{"3P"}, \code{"FT"} (and \code{NA} for events different from shots)
+#' @details * \code{player}, a factor with the name of the player who made the shot
+#' @details * \code{playlength}, a numeric variable with time between the shot and the immediately preceding event
+#' @details * \code{periodTime}, a numeric variable with seconds played in the quarter when the shot is attempted
+#' @details * \code{totalTime}, a numeric variable with seconds played in the whole match when the shot is attempted
+#' @details * \code{shot_distance}, a numeric variable with the distance of the shooting player from the basket (in feet)
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A \code{ggplot2} plot
 #' @examples
@@ -71,7 +80,6 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
     }
     p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
                 legend=legend, palette=palette, team=team, col.team=col.team)
-    print(p)
   }
   return(p)
 }
