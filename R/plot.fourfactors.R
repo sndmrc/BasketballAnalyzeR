@@ -1,10 +1,11 @@
-#' Plot possession, pace, ratings, and Four Factors from a fourfactors object
+#' Plot possessions, pace, offensive and defensive rating, and Four Factors from a fourfactors object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x An object of class \code{fourfactors}.
 #' @param title Plot title
 #' @param ... other graphical parameters
 #' @return A list of four \code{ggplot2} plots
+#' @details The height of the bars in the two four factor plots are given by the difference between the team value and the average on the analyzed teams.
 #' @seealso \code{\link{fourfactors}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples

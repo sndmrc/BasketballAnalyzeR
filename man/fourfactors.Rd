@@ -2,20 +2,129 @@
 % Please edit documentation in R/fourfactors.R
 \name{fourfactors}
 \alias{fourfactors}
-\title{Calculates possession, pace, ratings, and Four Factors}
+\title{Calculates possessions, pace, offensive and defensive rating, and Four Factors}
 \usage{
 fourfactors(TEAM, OPP)
 }
 \arguments{
-\item{TEAM}{a data frame (see Details).}
+\item{TEAM}{a data frame whose rows are the analyzed teams and with columns referred to the team achievements in the considered games (a box score); required variables: \code{Team}, \code{P2A}, \code{P2M}, \code{P3A}, \code{P3M}, \code{FTA}, \code{FTM}, \code{OREB}, \code{DREB}, \code{TOV}, \code{MIN} (see Details).}
 
-\item{OPP}{a data frame (see Details).}
+\item{OPP}{a data frame whose rows are the analyzed teams and with columns referred to the achievements of the opponents of each team in the considered game; required variables: \code{Team}, \code{P2A}, \code{P2M}, \code{P3A}, \code{P3M}, \code{FTA}, \code{FTM}, \code{OREB}, \code{DREB}, \code{TOV}, \code{MIN} (see Details).}
 }
 \value{
-An object of class \code{fourfactors}, i.e. a data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents.
+An object of class \code{fourfactors}, i.e. a data frame with the following columns:
+
+\itemize{
+\item \code{Team}, a factor with the name of the analyzed team
+}
+
+\itemize{
+\item \code{POSS.Off}, a numeric variable with the number of possessions of each team calculated with the formula \eqn{POSS=(P2A+P3A)+0.44*FTA-OREB+TOV}
+}
+
+\itemize{
+\item \code{POSS.Def}, a numeric variable with the number of possessions of the opponents of each team calculated with the formula \eqn{POSS=(P2A+P3A)+0.44*FTA-OREB+TOV}
+}
+
+\itemize{
+\item \code{PACE.Off}, a numeric variable with the pace of each team (number of possessions per minute played)
+}
+
+\itemize{
+\item \code{PACE.Def}, a numeric variable with the pace of the opponents of each team (number of possessions per minute played)
+}
+
+\itemize{
+\item \code{ORtg}, a numeric variable with the offensive rating (the points scored by each team per 100 possessions)
+}
+
+\itemize{
+\item \code{DRtg}, a numeric variable with the defensive rating (the points scored by the opponents of each team per 100 possessions)
+}
+
+\itemize{
+\item \code{F1.Off}, a numeric variable with the offensive first factor (effective field goal percentage)
+}
+
+\itemize{
+\item \code{F2.Off}, a numeric variable with the offensive second factor (turnovers per possession)
+}
+
+\itemize{
+\item \code{F3.Off}, a numeric variable with the offensive third factor (rebouding percentage)
+}
+
+\itemize{
+\item \code{F4.Off}, a numeric variable with the offensive fourth factor (free throw rate)
+}
+
+\itemize{
+\item \code{F1.Def}, a numeric variable with the defensive first factor (effective field goal percentage)
+}
+
+\itemize{
+\item \code{F2.Def}, a numeric variable with the defensive second factor (turnovers per possession)
+}
+
+\itemize{
+\item \code{F3.Def}, a numeric variable with the defensive third factor (rebouding percentage)
+}
+
+\itemize{
+\item \code{F4.Def}, a numeric variable with the defensive fourth factor (free throw rate)
+}
 }
 \description{
-Calculates possession, pace, ratings, and Four Factors
+Calculates possessions, pace, offensive and defensive rating, and Four Factors
+}
+\details{
+The rows of the \code{TEAM} and the \code{OPP} data frames must be referred to the same teams in the same order.
+
+Required columms:
+
+\itemize{
+\item \code{Team}, a factor with the name of the analyzed team
+}
+
+\itemize{
+\item \code{P2A}, a numeric variable (integer) with the number of 2-points shots attempted
+}
+
+\itemize{
+\item \code{P2M}, a numeric variable (integer) with the number of 2-points shots made
+}
+
+\itemize{
+\item \code{P3A}, a numeric variable (integer) with the number of 3-points shots attempted
+}
+
+\itemize{
+\item \code{P3M}, a numeric variable (integer) with the number of 3-points shots made
+}
+
+\itemize{
+\item \code{FTA}, a numeric variable (integer) with the number of free throws attempted
+}
+
+\itemize{
+\item \code{FTM}, a numeric variable (integer) with the number of free throws made
+}
+
+\itemize{
+\item \code{OREB}, a numeric variable (integer) with the number of offensive rebounds
+}
+
+\itemize{
+\item \code{DREB}, a numeric variable (integer) with the number of defensive rebounds
+}
+
+\itemize{
+\item \code{TOV}, a numeric variable (integer) with the number of turnovers
+}
+
+\itemize{
+\item \code{MIN}, a numeric variable (integer) with the number of minutes played
+}
 }
 \examples{
 selTeams <- c(2,6,10,11)

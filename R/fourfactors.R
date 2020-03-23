@@ -1,11 +1,39 @@
-#' Calculates possession, pace, ratings, and Four Factors
+#' Calculates possessions, pace, offensive and defensive rating, and Four Factors
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param TEAM a data frame (see Details).
-#' @param OPP a data frame (see Details).
+#' @param TEAM a data frame whose rows are the analyzed teams and with columns referred to the team achievements in the considered games (a box score); required variables: \code{Team}, \code{P2A}, \code{P2M}, \code{P3A}, \code{P3M}, \code{FTA}, \code{FTM}, \code{OREB}, \code{DREB}, \code{TOV}, \code{MIN} (see Details).
+#' @param OPP a data frame whose rows are the analyzed teams and with columns referred to the achievements of the opponents of each team in the considered game; required variables: \code{Team}, \code{P2A}, \code{P2M}, \code{P3A}, \code{P3M}, \code{FTA}, \code{FTM}, \code{OREB}, \code{DREB}, \code{TOV}, \code{MIN} (see Details).
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @seealso \code{\link{plot.fourfactors}}
-#' @return An object of class \code{fourfactors}, i.e. a data frame with possession, pace, ratings and Four Factors for the analyzed teams and the opponents.
+#' @details The rows of the \code{TEAM} and the \code{OPP} data frames must be referred to the same teams in the same order.
+#' @details Required columms:
+#' @details * \code{Team}, a factor with the name of the analyzed team
+#' @details * \code{P2A}, a numeric variable (integer) with the number of 2-points shots attempted
+#' @details * \code{P2M}, a numeric variable (integer) with the number of 2-points shots made
+#' @details * \code{P3A}, a numeric variable (integer) with the number of 3-points shots attempted
+#' @details * \code{P3M}, a numeric variable (integer) with the number of 3-points shots made
+#' @details * \code{FTA}, a numeric variable (integer) with the number of free throws attempted
+#' @details * \code{FTM}, a numeric variable (integer) with the number of free throws made
+#' @details * \code{OREB}, a numeric variable (integer) with the number of offensive rebounds
+#' @details * \code{DREB}, a numeric variable (integer) with the number of defensive rebounds
+#' @details * \code{TOV}, a numeric variable (integer) with the number of turnovers
+#' @details * \code{MIN}, a numeric variable (integer) with the number of minutes played
+#' @return An object of class \code{fourfactors}, i.e. a data frame with the following columns:
+#' @return * \code{Team}, a factor with the name of the analyzed team
+#' @return * \code{POSS.Off}, a numeric variable with the number of possessions of each team calculated with the formula \eqn{POSS=(P2A+P3A)+0.44*FTA-OREB+TOV}
+#' @return * \code{POSS.Def}, a numeric variable with the number of possessions of the opponents of each team calculated with the formula \eqn{POSS=(P2A+P3A)+0.44*FTA-OREB+TOV}
+#' @return * \code{PACE.Off}, a numeric variable with the pace of each team (number of possessions per minute played)
+#' @return * \code{PACE.Def}, a numeric variable with the pace of the opponents of each team (number of possessions per minute played)
+#' @return * \code{ORtg}, a numeric variable with the offensive rating (the points scored by each team per 100 possessions)
+#' @return * \code{DRtg}, a numeric variable with the defensive rating (the points scored by the opponents of each team per 100 possessions)
+#' @return * \code{F1.Off}, a numeric variable with the offensive first factor (effective field goal percentage)
+#' @return * \code{F2.Off}, a numeric variable with the offensive second factor (turnovers per possession)
+#' @return * \code{F3.Off}, a numeric variable with the offensive third factor (rebouding percentage)
+#' @return * \code{F4.Off}, a numeric variable with the offensive fourth factor (free throw rate)
+#' @return * \code{F1.Def}, a numeric variable with the defensive first factor (effective field goal percentage)
+#' @return * \code{F2.Def}, a numeric variable with the defensive second factor (turnovers per possession)
+#' @return * \code{F3.Def}, a numeric variable with the defensive third factor (rebouding percentage)
+#' @return * \code{F4.Def}, a numeric variable with the defensive fourth factor (free throw rate)
 #' @examples
 #' selTeams <- c(2,6,10,11)
 #' FF <- fourfactors(Tbox[selTeams,], Obox[selTeams,])
