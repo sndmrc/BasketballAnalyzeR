@@ -1,4 +1,4 @@
-#' Plot possessions, pace, offensive and defensive rating, and Four Factors from a fourfactors object
+#' Plot possessions, pace, offensive and defensive rating, and Four Factors from a 'fourfactors' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x An object of class \code{fourfactors}.

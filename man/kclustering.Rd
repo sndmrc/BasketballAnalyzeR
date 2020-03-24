@@ -30,37 +30,53 @@ kclustering(
 \item{algorithm}{character, the algorithm used in k-means clustering (see \link[stats]{kmeans})}
 }
 \value{
-A \code{klustering} object, i.e. a list of 4 elements:
+A \code{kclustering} object.
+
+If \code{k} is \code{NULL}, the \code{kclustering} object is a list of 3 elements:
 
 \itemize{
-\item \code{k} (number of clusters),
+\item \code{k} \code{NULL}
 }
 
 \itemize{
-\item \code{Subjects} (subjects' cluster identifiers),
+\item \code{clusterRange} integer vector, values of \code{k} (from 1 to \code{nclumax}) at which the \emph{variance between} of the clusterization is evaluated
 }
 
 \itemize{
-\item \code{ClusterList} (clusters' composition),
+\item \code{VarianceBetween} numeric vector, values of the \emph{variance between} evaluated for \code{k} in \code{clusterRange}
+}
+
+If \code{k} is not \code{NULL}, the \code{kclustering} object is a list of 4 elements:
+
+\itemize{
+\item \code{k} integer, number of clusters
 }
 
 \itemize{
-\item \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters)
+\item \code{Subjects} data frame, subjects' cluster identifiers
+}
+
+\itemize{
+\item \code{ClusterList} list, clusters' composition
+}
+
+\itemize{
+\item \code{Profiles} data frame, clusters' profiles, i.e. the average of the variables within clusters and the cluster eterogeineity index (\code{CHI})
 }
 }
 \description{
 K-means  cluster analysis
 }
+\details{
+The \code{kclustering} function performs a preliminary standardization of columns in \code{data}.
+}
 \examples{
 FF <- fourfactors(Tbox,Obox)
-OD.Rtg <- FF$ORtg/FF$DRtg
-F1.r <- FF$F1.Def/FF$F1.Off
-F2.r <- FF$F2.Off/FF$F2.Def
-F3.Off <- FF$F3.Def
-F3.Def <- FF$F3.Off
-P3M <- Tbox$P3M
-STL.r <- Tbox$STL/Obox$STL
-X <- data.frame(OD.Rtg,F1.r,F2.r,F3.Off,F3.Def,P3M,STL.r)
+X <- with(FF, data.frame(OD.Rtg=ORtg/DRtg,
+               F1.r=F1.Def/F1.Off, F2.r=F2.Off/F2.Def,
+               F3.O=F3.Def, F3.D=F3.Off))
+X$P3M <- Tbox$P3M
+X$STL.r <- Tbox$STL/Obox$STL
 kclu1 <- kclustering(X)
 plot(kclu1)
 kclu2 <- kclustering(X, k=9)

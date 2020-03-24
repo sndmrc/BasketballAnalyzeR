@@ -1,4 +1,4 @@
-#' Plot the correlation matrix and the correlation network from a corranalysis object
+#' Plot the correlation matrix and the correlation network from a 'corranalysis' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{corranalysis}

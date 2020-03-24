@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.simplereg.R
 \name{plot.simplereg}
 \alias{plot.simplereg}
-\title{Plot simple regression from a simplereg object}
+\title{Plot simple regression from a 'simplereg' object}
 \usage{
 \method{plot}{simplereg}(
   x,
@@ -45,7 +45,7 @@
 \item{...}{Other graphical parameters}
 }
 \description{
-Plot simple regression from a simplereg object
+Plot simple regression from a 'simplereg' object
 }
 \examples{
 Pbox.sel <- subset(Pbox, MIN >= 500)

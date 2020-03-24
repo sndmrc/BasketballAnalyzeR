@@ -1,8 +1,8 @@
-#' Plots hierarchical clustering from a hclustering object
+#' Plots hierarchical clustering from a 'hclustering' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{hclustering}.
-#' @param title plot title.
+#' @param title character, plot title.
 #' @param profiles logical; if \code{TRUE}, plots a radial plots of cluster mean profiles.
 #' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page (active only when \code{profiles=TRUE}).
 #' @param circlize logical; if \code{TRUE}, plots a circular dendrogram (active only when \code{profiles=TRUE}).
@@ -21,8 +21,10 @@
 #' data <- with(Pbox, data.frame(PTS, P3M, REB=OREB+DREB, AST, TOV, STL, BLK, PF))
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- hclustering(data, labels=ID, k=7)
-#' plot(out)
+#' hclu1 <- hclustering(data)
+#' plot(hclu1)
+#' hclu2 <- hclustering(data, labels=ID, k=7)
+#' plot(hclu2)
 #' @method plot hclustering
 #' @export
 #' @importFrom dendextend circlize_dendrogram
@@ -100,11 +102,13 @@ plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NUL
         ncol.arrange <- ceiling(sqrt(nrow(prfls)))
       }
       if (is.null(title)) {
-        title <- prfls$clustnames
+        #title <- prfls$clustnames
+        title <- paste("Cluster", prfls$ID, "- CHI =", prfls$CHI)
       } else if (length(title)!=nrow(prfls)) {
         stop("The length of 'title' is not equal to the number of clusters")
       }
-      pos.clst.nm <- which(names(prfls)=="clustnames")
+      #pos.clst.nm <- which(names(prfls)=="clustnames")
+      pos.clst.nm <- which(names(prfls) %in% c("ID", "CHI"))
       if (is.null(min.mid.max)) {
         ming <- min(prfls[, -pos.clst.nm])
         maxg <- max(prfls[, -pos.clst.nm])

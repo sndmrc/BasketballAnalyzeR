@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.corranalysis.R
 \name{plot.corranalysis}
 \alias{plot.corranalysis}
-\title{Plot the correlation matrix and the correlation network from a corranalysis object}
+\title{Plot the correlation matrix and the correlation network from a 'corranalysis' object}
 \usage{
 \method{plot}{corranalysis}(x, horizontal = TRUE, title = NULL, ...)
 }
@@ -19,7 +19,7 @@
 A \code{ggplot2} object
 }
 \description{
-Plot the correlation matrix and the correlation network from a corranalysis object
+Plot the correlation matrix and the correlation network from a 'corranalysis' object
 }
 \examples{
 data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,

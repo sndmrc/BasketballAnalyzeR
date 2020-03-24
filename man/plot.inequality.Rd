@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.inequality.R
 \name{plot.inequality}
 \alias{plot.inequality}
-\title{Plot Lorenz curve from a inequality object}
+\title{Plot Lorenz curve from a 'inequality' object}
 \usage{
 \method{plot}{inequality}(x, title = NULL, ...)
 }
@@ -17,7 +17,7 @@
 A \code{ggplot2} object
 }
 \description{
-Plot Lorenz curve from a inequality object
+Plot Lorenz curve from a 'inequality' object
 }
 \examples{
 Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")

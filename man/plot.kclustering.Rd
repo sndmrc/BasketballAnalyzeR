@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.kclustering.R
 \name{plot.kclustering}
 \alias{plot.kclustering}
-\title{Plot k-means clustering from a kclustering object}
+\title{Plot k-means clustering from a 'kclustering' object}
 \usage{
 \method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...)
 }
@@ -21,18 +21,15 @@
 A single plot or a list of \code{ggplot2} radial plots
 }
 \description{
-Plot k-means clustering from a kclustering object
+Plot k-means clustering from a 'kclustering' object
 }
 \examples{
 FF <- fourfactors(Tbox,Obox)
-OD.Rtg <- FF$ORtg/FF$DRtg
-F1.r <- FF$F1.D/FF$F1.O
-F2.r <- FF$F2.O/FF$F2.D
-F3.O <- FF$F3.D
-F3.D <- FF$F3.O
-P3M <- Tbox$P3M
-STL.r <- Tbox$STL/Obox$STL
-X <- data.frame(OD.Rtg,F1.r,F2.r,F3.O,F3.D,P3M,STL.r)
+X <- with(FF, data.frame(OD.Rtg=ORtg/DRtg,
+               F1.r=F1.Def/F1.Off, F2.r=F2.Off/F2.Def,
+               F3.O=F3.Def, F3.D=F3.Off))
+X$P3M <- Tbox$P3M
+X$STL.r <- Tbox$STL/Obox$STL
 kclu1 <- kclustering(X)
 plot(kclu1)
 kclu2 <- kclustering(X, k=9)

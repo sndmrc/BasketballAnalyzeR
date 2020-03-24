@@ -22,8 +22,8 @@ data <- data.frame(Pbox$PTS,Pbox$P3M,
 names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
 data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
-out <- hclustering(data, labels=ID, k=7)
-is.hclustering(out)
+hclu <- hclustering(data, labels=ID, k=7)
+is.hclustering(hclu)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

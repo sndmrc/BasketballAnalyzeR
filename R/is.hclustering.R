@@ -12,8 +12,8 @@
 #' names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- hclustering(data, labels=ID, k=7)
-#' is.hclustering(out)
+#' hclu <- hclustering(data, labels=ID, k=7)
+#' is.hclustering(hclu)
 #' @export
 
 is.hclustering <- function(x) {

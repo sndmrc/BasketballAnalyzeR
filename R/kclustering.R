@@ -8,23 +8,26 @@
 #' @param nruns integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion
 #' @param iter.max integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans})
 #' @param algorithm character, the algorithm used in k-means clustering (see \link[stats]{kmeans})
+#' @details The \code{kclustering} function performs a preliminary standardization of columns in \code{data}.
 #' @seealso \code{\link{plot.kclustering}}, \code{\link[stats]{kmeans}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A \code{klustering} object, i.e. a list of 4 elements:
-#' @return * \code{k} (number of clusters),
-#' @return * \code{Subjects} (subjects' cluster identifiers),
-#' @return * \code{ClusterList} (clusters' composition),
-#' @return * \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters)
+#' @return A \code{kclustering} object.
+#' @return If \code{k} is \code{NULL}, the \code{kclustering} object is a list of 3 elements:
+#' @return * \code{k} \code{NULL}
+#' @return * \code{clusterRange} integer vector, values of \code{k} (from 1 to \code{nclumax}) at which the \emph{variance between} of the clusterization is evaluated
+#' @return * \code{VarianceBetween} numeric vector, values of the \emph{variance between} evaluated for \code{k} in \code{clusterRange}
+#' @return If \code{k} is not \code{NULL}, the \code{kclustering} object is a list of 4 elements:
+#' @return * \code{k} integer, number of clusters
+#' @return * \code{Subjects} data frame, subjects' cluster identifiers
+#' @return * \code{ClusterList} list, clusters' composition
+#' @return * \code{Profiles} data frame, clusters' profiles, i.e. the average of the variables within clusters and the cluster eterogeineity index (\code{CHI})
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
-#' OD.Rtg <- FF$ORtg/FF$DRtg
-#' F1.r <- FF$F1.Def/FF$F1.Off
-#' F2.r <- FF$F2.Off/FF$F2.Def
-#' F3.Off <- FF$F3.Def
-#' F3.Def <- FF$F3.Off
-#' P3M <- Tbox$P3M
-#' STL.r <- Tbox$STL/Obox$STL
-#' X <- data.frame(OD.Rtg,F1.r,F2.r,F3.Off,F3.Def,P3M,STL.r)
+#' X <- with(FF, data.frame(OD.Rtg=ORtg/DRtg,
+#'                F1.r=F1.Def/F1.Off, F2.r=F2.Off/F2.Def,
+#'                F3.O=F3.Def, F3.D=F3.Off))
+#' X$P3M <- Tbox$P3M
+#' X$STL.r <- Tbox$STL/Obox$STL
 #' kclu1 <- kclustering(X)
 #' plot(kclu1)
 #' kclu2 <- kclustering(X, k=9)
@@ -42,6 +45,11 @@ kclustering <- function(data, k=NULL, labels=NULL, nclumax=10, nruns=10, iter.ma
 
   if (is.null(labels)) {
     labels <- c(1:nrow(data))
+  }
+
+  if (!is.null(k)) {
+     k <- ceiling(k)
+     if (k<=1) stop('Number of clusters k not above 1')
   }
 
   namesvars <- names(data)
@@ -94,8 +102,9 @@ kclustering <- function(data, k=NULL, labels=NULL, nclumax=10, nruns=10, iter.ma
     names(profiles) <- namesvars
     subjects.cluster <- data.frame(Label = labels, Cluster = clu.k)
     vars <- t(apply(data, 2, function(x) tapply(x, subjects.cluster$Cluster, varb)))
-    clustnames <- paste("Cluster", 1:k, "- CHI =", round(colMeans(vars), 2))
-    profiles <- data.frame(profiles, clustnames)
+    #clustnames <- paste("Cluster", 1:k, "- CHI =", round(colMeans(vars), 2))
+    #profiles <- data.frame(profiles, clustnames)
+    profiles <- data.frame(ID=1:k, profiles, CHI=round(colMeans(vars), 2))
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles)
   }

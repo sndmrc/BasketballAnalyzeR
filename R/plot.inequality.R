@@ -1,4 +1,4 @@
-#' Plot Lorenz curve from a inequality object
+#' Plot Lorenz curve from a 'inequality' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{inequality}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.fourfactors.R
 \name{plot.fourfactors}
 \alias{plot.fourfactors}
-\title{Plot possessions, pace, offensive and defensive rating, and Four Factors from a fourfactors object}
+\title{Plot possessions, pace, offensive and defensive rating, and Four Factors from a 'fourfactors' object}
 \usage{
 \method{plot}{fourfactors}(x, title = NULL, ...)
 }
@@ -17,7 +17,7 @@
 A list of four \code{ggplot2} plots
 }
 \description{
-Plot possessions, pace, offensive and defensive rating, and Four Factors from a fourfactors object
+Plot possessions, pace, offensive and defensive rating, and Four Factors from a 'fourfactors' object
 }
 \details{
 The height of the bars in the two four factor plots are given by the difference between the team value and the average on the analyzed teams.

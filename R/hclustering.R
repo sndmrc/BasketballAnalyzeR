@@ -1,28 +1,33 @@
 #' Agglomerative hierarchical clustering
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data numeric  data frame
+#' @param data numeric data frame
 #' @param k integer, number of clusters
 #' @param nclumax integer, maximum number of clusters (when \code{k=NULL})
 #' @param labels character, row labels
 #' @param linkage character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})
+#' @details The \code{hclustering} function performs a preliminary standardization of columns in \code{data}.
 #' @seealso \code{\link{plot.hclustering}}, \code{\link[stats]{hclust}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A \code{hclustering} object, i.e. a list of 5 elements:
-#' @return * \code{k} (number of clusters),
-#' @return * \code{Subjects} (subjects' cluster identifiers),
-#' @return * \code{ClusterList} (clusters' composition),
-#' @return * \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters),
-#' @return * \code{Hclust} (an object of class \code{hclust}, see \code{\link[stats]{hclust}})
+#' @return A \code{hclustering} object.
+#' @return If \code{k} is \code{NULL}, the \code{hclustering} object is a list of 3 elements:
+#' @return * \code{k} \code{NULL}
+#' @return * \code{clusterRange} integer vector, values of \code{k} (from 1 to \code{nclumax}) at which the \emph{variance between} of the clusterization is evaluated
+#' @return * \code{VarianceBetween} numeric vector, values of the \emph{variance between} evaluated for \code{k} in \code{clusterRange}
+#' @return If \code{k} is not \code{NULL}, the \code{hclustering} object is a list of 5 elements:
+#' @return * \code{k} integer, number of clusters
+#' @return * \code{Subjects} data frame, subjects' cluster identifiers
+#' @return * \code{ClusterList} list, clusters' composition
+#' @return * \code{Profiles} data frame, clusters' profiles, i.e. the average of the variables within clusters and the cluster eterogeineity index (\code{CHI})
+#' @return * \code{Hclust} an object of class \code{hclust}, see \code{\link[stats]{hclust}}
 #' @examples
-#' data <- data.frame(Pbox$PTS,Pbox$P3M,
-#'                    Pbox$OREB + Pbox$DREB, Pbox$AST,
-#'                    Pbox$TOV, Pbox$STL, Pbox$BLK,Pbox$PF)
-#' names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
+#' data <- with(Pbox, data.frame(PTS, P3M, REB=OREB+DREB, AST, TOV, STL, BLK, PF))
 #' data <- subset(data, Pbox$MIN >= 1500)
 #' ID <- Pbox$Player[Pbox$MIN >= 1500]
-#' out <- hclustering(data, labels=ID, k=7)
-#' plot(out)
+#' hclu1 <- hclustering(data)
+#' plot(hclu1)
+#' hclu2 <- hclustering(data, labels=ID, k=7)
+#' plot(hclu2)
 #' @export
 #' @importFrom stats cutree
 
@@ -36,6 +41,11 @@ hclustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='wa
 
   if (is.null(labels)) {
     labels <- c(1:nrow(data))
+  }
+
+  if (!is.null(k)) {
+    k <- ceiling(k)
+    if (k<=1) stop('Number of clusters k not above 1')
   }
 
   namesvars <- names(data)
@@ -72,8 +82,9 @@ hclustering <- function(data, k = NULL, nclumax = 10, labels = NULL, linkage='wa
     names(profiles) <- namesvars
     subjects.cluster <- data.frame(Label = labels, Cluster = clu)
     vars <- t(apply(data, 2, function(x) tapply(x, subjects.cluster$Cluster, varb)))
-    clustnames <- paste("Cluster", 1:k, "- CHI =", round(colMeans(vars), 2))
-    profiles <- data.frame(profiles, clustnames)
+    #clustnames <- paste("Cluster", 1:k, "- CHI =", round(colMeans(vars), 2))
+    #profiles <- data.frame(profiles, clustnames)
+    profiles <- data.frame(ID=1:k, profiles, CHI=round(colMeans(vars), 2))
     cluster.list <- by(subjects.cluster[, 1], subjects.cluster[, 2], list)
     out <- list(k = k, Subjects = subjects.cluster, ClusterList = cluster.list, Profiles = profiles, Hclust=hcl)
   }

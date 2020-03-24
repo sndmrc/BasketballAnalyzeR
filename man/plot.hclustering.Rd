@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.hclustering.R
 \name{plot.hclustering}
 \alias{plot.hclustering}
-\title{Plots hierarchical clustering from a hclustering object}
+\title{Plots hierarchical clustering from a 'hclustering' object}
 \usage{
 \method{plot}{hclustering}(
   x,
@@ -23,7 +23,7 @@
 \arguments{
 \item{x}{an object of class \code{hclustering}.}
 
-\item{title}{plot title.}
+\item{title}{character, plot title.}
 
 \item{profiles}{logical; if \code{TRUE}, plots a radial plots of cluster mean profiles.}
 
@@ -51,14 +51,16 @@
 A single \code{ggplot2} plot (if \code{profile=FALSE}) or a list of radial plots (if \code{profile=TRUE}))
 }
 \description{
-Plots hierarchical clustering from a hclustering object
+Plots hierarchical clustering from a 'hclustering' object
 }
 \examples{
 data <- with(Pbox, data.frame(PTS, P3M, REB=OREB+DREB, AST, TOV, STL, BLK, PF))
 data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
-out <- hclustering(data, labels=ID, k=7)
-plot(out)
+hclu1 <- hclustering(data)
+plot(hclu1)
+hclu2 <- hclustering(data, labels=ID, k=7)
+plot(hclu2)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

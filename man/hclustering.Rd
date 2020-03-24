@@ -7,7 +7,7 @@
 hclustering(data, k = NULL, nclumax = 10, labels = NULL, linkage = "ward.D")
 }
 \arguments{
-\item{data}{numeric  data frame}
+\item{data}{numeric data frame}
 
 \item{k}{integer, number of clusters}
 
@@ -18,40 +18,58 @@ hclustering(data, k = NULL, nclumax = 10, labels = NULL, linkage = "ward.D")
 \item{linkage}{character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})}
 }
 \value{
-A \code{hclustering} object, i.e. a list of 5 elements:
+A \code{hclustering} object.
+
+If \code{k} is \code{NULL}, the \code{hclustering} object is a list of 3 elements:
 
 \itemize{
-\item \code{k} (number of clusters),
+\item \code{k} \code{NULL}
 }
 
 \itemize{
-\item \code{Subjects} (subjects' cluster identifiers),
+\item \code{clusterRange} integer vector, values of \code{k} (from 1 to \code{nclumax}) at which the \emph{variance between} of the clusterization is evaluated
 }
 
 \itemize{
-\item \code{ClusterList} (clusters' composition),
+\item \code{VarianceBetween} numeric vector, values of the \emph{variance between} evaluated for \code{k} in \code{clusterRange}
+}
+
+If \code{k} is not \code{NULL}, the \code{hclustering} object is a list of 5 elements:
+
+\itemize{
+\item \code{k} integer, number of clusters
 }
 
 \itemize{
-\item \code{Profiles} (clusters' profiles, i.e. the average of the variables within clusters),
+\item \code{Subjects} data frame, subjects' cluster identifiers
 }
 
 \itemize{
-\item \code{Hclust} (an object of class \code{hclust}, see \code{\link[stats]{hclust}})
+\item \code{ClusterList} list, clusters' composition
+}
+
+\itemize{
+\item \code{Profiles} data frame, clusters' profiles, i.e. the average of the variables within clusters and the cluster eterogeineity index (\code{CHI})
+}
+
+\itemize{
+\item \code{Hclust} an object of class \code{hclust}, see \code{\link[stats]{hclust}}
 }
 }
 \description{
 Agglomerative hierarchical clustering
 }
+\details{
+The \code{hclustering} function performs a preliminary standardization of columns in \code{data}.
+}
 \examples{
-data <- data.frame(Pbox$PTS,Pbox$P3M,
-                   Pbox$OREB + Pbox$DREB, Pbox$AST,
-                   Pbox$TOV, Pbox$STL, Pbox$BLK,Pbox$PF)
-names(data) <- c("PTS","P3M","REB","AST","TOV","STL","BLK","PF")
+data <- with(Pbox, data.frame(PTS, P3M, REB=OREB+DREB, AST, TOV, STL, BLK, PF))
 data <- subset(data, Pbox$MIN >= 1500)
 ID <- Pbox$Player[Pbox$MIN >= 1500]
-out <- hclustering(data, labels=ID, k=7)
-plot(out)
+hclu1 <- hclustering(data)
+plot(hclu1)
+hclu2 <- hclustering(data, labels=ID, k=7)
+plot(hclu2)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

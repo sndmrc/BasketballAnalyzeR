@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.assistnet.R
 \name{plot.assistnet}
 \alias{plot.assistnet}
-\title{Plots a network from a assistnet object}
+\title{Plots a network from a 'assistnet' object}
 \usage{
 \method{plot}{assistnet}(
   x,
@@ -54,7 +54,7 @@
 A \code{ggplot2} object
 }
 \description{
-Plots a network from a assistnet object
+Plots a network from a 'assistnet' object
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

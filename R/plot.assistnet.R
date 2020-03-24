@@ -1,4 +1,4 @@
-#' Plots a network from a assistnet object
+#' Plots a network from a 'assistnet' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{assistnet}.
