@@ -23,32 +23,36 @@
 \arguments{
 \item{x}{an object of class \code{hclustering}.}
 
-\item{title}{character, plot title.}
+\item{title}{character or vector of characters (if \code{profiles=TRUE} and \code{x$k} is not \code{NULL}), plot title(s).}
 
-\item{profiles}{logical; if \code{TRUE}, plots a radial plots of cluster mean profiles.}
+\item{profiles}{logical; if \code{TRUE}, displays radial plots of cluster profiles (active if \code{x$k} is not \code{NULL}; see Value).}
 
-\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page (active only when \code{profiles=TRUE}).}
+\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).}
 
-\item{circlize}{logical; if \code{TRUE}, plots a circular dendrogram (active only when \code{profiles=TRUE}).}
+\item{circlize}{logical; if \code{TRUE}, plots a circular dendrogram (active when plotting a dendrogram; see Value).}
 
-\item{horiz}{logical; if \code{TRUE}, plots an horizontal dendrogram (active only when \code{profiles=TRUE}, and only for non circular dendrograms)}
+\item{horiz}{logical; if \code{TRUE}, plots an horizontal dendrogram (active when plotting a non circular dendrogram; see Value).}
 
-\item{cex.labels}{numeric, the magnification to be used for dendrogram labels}
+\item{cex.labels}{numeric, the magnification to be used for labels (active when plotting a dendrogram; see Value).}
 
-\item{colored.labels}{logical; if \code{TRUE}, assigns different colors to labels of different clusters}
+\item{colored.labels}{logical; if \code{TRUE}, assigns different colors to labels of different clusters (active when plotting a dendrogram; see Value).}
 
-\item{colored.branches}{logical; if \code{TRUE}, assigns different colors to dendrogram branches of different clusters}
+\item{colored.branches}{logical; if \code{TRUE}, assigns different colors to branches of different clusters (active when plotting a dendrogram; see Value).}
 
-\item{rect}{logical; if \code{TRUE}, draws rectangles around the branches of a dendrogram in order to highlight the corresponding clusters}
+\item{rect}{logical; if \code{TRUE}, draws rectangles around the branches in order to highlight the corresponding clusters (active when plotting a dendrogram; see Value).}
 
-\item{lower.rect}{numeric, a value of how low should the lower part of the rect be (see option \code{lower_rect} of \code{\link[dendextend]{rect.dendrogram}})}
+\item{lower.rect}{numeric, a value of how low should the lower part of the rect be (active when plotting a dendrogram; see option \code{lower_rect} of \code{\link[dendextend]{rect.dendrogram}}).}
 
-\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (only for axes in radial plots)}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
-A single \code{ggplot2} plot (if \code{profile=FALSE}) or a list of radial plots (if \code{profile=TRUE}))
+If \code{x$k} is \code{NULL}, \code{plot.hclustering} returns a single \code{ggplot2} object, displaying the pattern of the explained variance vs the number of clusters.
+
+If \code{x$k} is not \code{NULL} and \code{profiles=FALSE}, \code{plot.hclustering} returns a single \code{ggplot2} object, displaying the dendrogram.
+
+If \code{x$k} is not \code{NULL} and \code{profiles=TRUE}, \code{plot.hclustering} returns a list of \code{ggplot2} objects, displaying the radial plots of the cluster profiles.
 }
 \description{
 Plots hierarchical clustering from a 'hclustering' object

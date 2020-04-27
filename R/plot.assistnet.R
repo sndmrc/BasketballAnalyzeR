@@ -7,9 +7,9 @@
 #' @param edge.thr numeric, threshold for edge values; values below the threshold are set to 0.
 #' @param edge.col.lim numeric vector of length two providing limits of the scale for edge color.
 #' @param edge.col.lab character, label for edge color legend.
-#' @param node.size character, indicating the name of the variable for node size.
+#' @param node.size character, indicating the name of the variable for node size (one of the columns of the \code{nodeStats} data frame in the \code{x} object, see \code{\link{assistnet}}).
 #' @param node.size.lab character, label for node size legend.
-#' @param node.col character, indicating the name of the variable for node color.
+#' @param node.col character, indicating the name of the variable for node color (one of the columns of the \code{nodeStats} data frame in the \code{x} object, see \code{\link{assistnet}}).
 #' @param node.col.lim numeric vector of length two providing limits of the scale for node color.
 #' @param node.col.lab character, label for node color legend.
 #' @param node.pal color palette for node colors.

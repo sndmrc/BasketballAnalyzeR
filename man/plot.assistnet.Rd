@@ -34,11 +34,11 @@
 
 \item{edge.col.lab}{character, label for edge color legend.}
 
-\item{node.size}{character, indicating the name of the variable for node size.}
+\item{node.size}{character, indicating the name of the variable for node size (one of the columns of the \code{nodeStats} data frame in the \code{x} object, see \code{\link{assistnet}}).}
 
 \item{node.size.lab}{character, label for node size legend.}
 
-\item{node.col}{character, indicating the name of the variable for node color.}
+\item{node.col}{character, indicating the name of the variable for node color (one of the columns of the \code{nodeStats} data frame in the \code{x} object, see \code{\link{assistnet}}).}
 
 \item{node.col.lim}{numeric vector of length two providing limits of the scale for node color.}
 
