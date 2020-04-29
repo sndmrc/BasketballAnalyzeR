@@ -9,16 +9,18 @@
 \arguments{
 \item{x}{an object of class \code{kclustering}}
 
-\item{title}{Plot title}
+\item{title}{character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).}
 
-\item{ncol.arrange}{integrer, number of columns when arranging multiple grobs on a page}
+\item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).}
 
-\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).}
 
 \item{...}{other graphical parameters}
 }
 \value{
-A single plot or a list of \code{ggplot2} radial plots
+If \code{x$k} is \code{NULL}, \code{plot.kclustering} returns a single \code{ggplot2} object, displaying the pattern of the explained variance vs the number of clusters.
+
+If \code{x$k} is not \code{NULL}, \code{plot.kclustering} returns a list of \code{ggplot2} objects, displaying the radial plots of the cluster profiles.
 }
 \description{
 Plot k-means clustering from a 'kclustering' object

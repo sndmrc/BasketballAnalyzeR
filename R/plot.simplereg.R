@@ -3,17 +3,18 @@
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{simplereg}
 #' @param labels character, labels for subjects
-#' @param subset an optional vector specifying a subset of observations to be highlighted in the graph or \code{'quant'} to highligh observations above and below the upper and lower quantiles, respectively
-#' @param Lx numeric; if \code{subset='quant'}, lower quantile for x (default = 0.01)
-#' @param Ux numeric; if \code{subset='quant'}, upper quantile for x (default = 0.99)
-#' @param Ly numeric; if \code{subset='quant'}, lower quantile of y (default = 0.01)
-#' @param Uy numeric; if \code{subset='quant'}, upper quantile of y (default = 0.99)
+#' @param subset an optional vector specifying a subset of observations to be highlighted in the graph or \code{subset='quant'} to highligh observations with coordinates above and below the upper and lower quantiles of the variables on the x- and y-axis (\code{Lx}, \code{Ux}, \code{Ly}, \code{Uy})
+#' @param Lx numeric; if \code{subset='quant'}, lower quantile for the variable on the x-axis (default = 0.01)
+#' @param Ux numeric; if \code{subset='quant'}, upper quantile for the variable on the x-axis (default = 0.99)
+#' @param Ly numeric; if \code{subset='quant'}, lower quantile for the variable on the y-axis (default = 0.01)
+#' @param Uy numeric; if \code{subset='quant'}, upper quantile for the variable on the y-axis (default = 0.99)
 #' @param title character, plot title
 #' @param xtitle character, x-axis label
 #' @param ytitle character, y-axis label
 #' @param repel logical, if \code{TRUE} (the default) text labels repel away from each other
 #' @param ... Other graphical parameters
 #' @seealso \code{\link{simplereg}}
+#' @return A \code{ggplot2} object
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' Pbox.sel <- subset(Pbox, MIN >= 500)

@@ -14,6 +14,7 @@ expectedpts(
   col.team = "gray",
   col.hline = "black",
   xlab = NULL,
+  x.range = NULL,
   title = NULL,
   legend = TRUE,
   var = "shot_distance"
@@ -37,6 +38,8 @@ expectedpts(
 \item{col.hline}{character, color of the dashed horizontal line (default \code{"black"}) denoting the expected points for all the shots in data, not conditional to the variable in the x-axis.}
 
 \item{xlab}{character, x-axis label.}
+
+\item{x.range}{numerical vector or character; available options: \code{NULL} (x-axis range defined by \code{ggplot2}, the default), \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).}
 
 \item{title}{character, plot title.}
 

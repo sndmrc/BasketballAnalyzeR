@@ -23,7 +23,7 @@
 \arguments{
 \item{x}{an object of class \code{hclustering}.}
 
-\item{title}{character or vector of characters (if \code{profiles=TRUE} and \code{x$k} is not \code{NULL}), plot title(s).}
+\item{title}{character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).}
 
 \item{profiles}{logical; if \code{TRUE}, displays radial plots of cluster profiles (active if \code{x$k} is not \code{NULL}; see Value).}
 

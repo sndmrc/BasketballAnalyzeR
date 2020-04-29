@@ -2,13 +2,14 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{kclustering}
-#' @param title Plot title
-#' @param ncol.arrange integrer, number of columns when arranging multiple grobs on a page
-#' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis
+#' @param title character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).
+#' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).
+#' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).
 #' @param ... other graphical parameters
 #' @seealso \code{\link{kclustering}}, \code{\link{radialprofile}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return A single plot or a list of \code{ggplot2} radial plots
+#' @return If \code{x$k} is \code{NULL}, \code{plot.kclustering} returns a single \code{ggplot2} object, displaying the pattern of the explained variance vs the number of clusters.
+#' @return If \code{x$k} is not \code{NULL}, \code{plot.kclustering} returns a list of \code{ggplot2} objects, displaying the radial plots of the cluster profiles.
 #' @examples
 #' FF <- fourfactors(Tbox,Obox)
 #' X <- with(FF, data.frame(OD.Rtg=ORtg/DRtg,

@@ -5,6 +5,7 @@
 #' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, smoothing bandwidth of the kernel density estimator (see \code{\link[stats]{ksmooth}}).
 #' @param period.length	numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param x.range  numerical vector or character; available options: \code{NULL} (x-axis range defined by \code{ggplot2}, the default), \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).
 #' @param title character, plot title.
 #' @param palette color palette.
 #' @param team logical; if \code{TRUE}, draws the expected points for all the shots in data.
@@ -33,7 +34,7 @@
 #' @export
 
 expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_color_hue, team=TRUE, col.team="gray",
-          col.hline="black", xlab=NULL, title=NULL, legend=TRUE, var="shot_distance") {
+          col.hline="black", xlab=NULL, x.range=NULL, title=NULL, legend=TRUE, var="shot_distance") {
 
   event_type <- player <- Player <- NULL
   data <- data %>% dplyr::select(dplyr::one_of(var, "points", "player", "event_type")) %>%
@@ -41,22 +42,34 @@ expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_
   x <- data[, var]
   y <- data$points
 
+  if (length(x.range)==1 & is.character(x.range)) {
+    if (x.range=="auto") {
+      if (var=="playlength") {
+        xrng <- c(0, 24)
+      } else if (var=="totalTime") {
+        xrng <- c(0, period.length*4*60)
+      } else if (var=="periodTime") {
+        xrng <- c(0, period.length*60)
+      } else if (var=="shot_distance") {
+        xrng <- range(x, na.rm=TRUE)
+      }
+    }
+  } else if (length(x.range)==2 & is.numeric(x.range)) {
+    xrng <- x.range
+  }
+
   if (var=="playlength") {
-    xrng <- c(0, 24)
     if (is.null(xlab)) xlab <- "Play length"
     ntks <- 25
   } else if (var=="totalTime") {
-    xrng <- c(0, period.length*4*60)
     if (is.null(xlab)) xlab <- "Total time"
     ntks <- 10
   } else if (var=="periodTime") {
-    xrng <- c(0, period.length*60)
     if (is.null(xlab)) xlab <- "Period time"
     ntks <- 10
   } else if (var=="shot_distance") {
     if (is.null(xlab)) xlab <- "Shot distance"
     ntks <- NULL
-    xrng <- range(data[, var], na.rm=TRUE)
   } else {
     if (is.null(xlab)) xlab <- var
   }
@@ -87,18 +100,23 @@ expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_
     cols <- palette(npl+1)
     cols[players=="Team"] <- col.team
     p <- ggplot(ksm, aes(x=x, y=y, color=Player)) +
-      geom_line(lwd=1.5) +
+      geom_line(size=1.5) +
       scale_color_manual(values=cols, breaks=players)
   } else {
     p <- ggplot(ksm, aes(x=x, y=y)) +
-      geom_line(color = col.team, lwd=1.5)
+      geom_line(color = col.team, size=1.5)
   }
-  p <- p + geom_hline(yintercept=mean(y), col=col.hline, lty=2, lwd=1.2) +
+  p <- p + geom_hline(yintercept=mean(y), col=col.hline, linetype=2, size=1.2) +
     labs(x=xlab, y="Expected Points", title=title) +
     theme_bw()
   if (!legend) {
     p <- p + theme(legend.position="none")
   }
+  if (!is.null(x.range)) {
+    p <- p + xlim(xrng)
+  }
 
   return(p)
 }
+
+

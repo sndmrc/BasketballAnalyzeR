@@ -2,7 +2,7 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{hclustering}.
-#' @param title character or vector of characters (if \code{profiles=TRUE} and \code{x$k} is not \code{NULL}), plot title(s).
+#' @param title character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).
 #' @param profiles logical; if \code{TRUE}, displays radial plots of cluster profiles (active if \code{x$k} is not \code{NULL}; see Value).
 #' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).
 #' @param circlize logical; if \code{TRUE}, plots a circular dendrogram (active when plotting a dendrogram; see Value).

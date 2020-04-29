@@ -8,6 +8,8 @@
 #' @param best.scorer logical; if TRUE, displays the player who scored the highest number of points in the corresponding interval.
 #' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
 #' @param bw numeric, the value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).
+#' @param x.range  numerical vector or character; available options: \code{NULL} or \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).
+#' @param n.ticks integer, the number of ticks on the x-axis; if \code{n.ticks=NULL} (default) internal default values are selected.
 #' @param title character, plot title.
 #' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from shots have \code{NA} in the \code{ShotType} variable.
 #' @details Required columns:
@@ -30,7 +32,7 @@
 #' @importFrom stats density
 
 densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scorer=FALSE,
-                        period.length=12, bw=NULL, title=NULL) {
+                        period.length=12, bw=NULL, x.range=NULL, n.ticks=NULL, title=NULL) {
 
   ShotType <- NULL
   if (shot.type=="FT" & (var=="playlength" | var=="shot_distance")) {
@@ -53,23 +55,16 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
       mat <- subset(data, ShotType=="2P" | ShotType=="3P")
     }
     mat <- droplev_by_col(mat)
-
     x <- mat[, var]
-    if (var=="playlength") {
-      xrng <- c(0, 24)
-    } else if (var=="totalTime") {
-      xrng <- c(0, period.length*4*60)
-    } else if (var=="periodTime") {
-      xrng <- c(0, period.length*60)
-    } else if (var=="shot_distance") {
-      if (shot.type=="field") {
-        xrng <- c(0, 60)
-      } else if (shot.type=="2P") {
-        xrng <- c(0, 22)
-      } else if (shot.type=="3P") {
-        xrng <- c(22, 60)
-      }
+
+    if (is.null(x.range)) {
+      xrng <- x.range_densityplot_auto(var, period.length, shot.type)
+    } else if (length(x.range)==1 & is.character(x.range)) {
+      if (x.range=="auto") xrng <- x.range_densityplot_auto(var, period.length, shot.type)
+    }  else if (length(x.range)==2 & is.numeric(x.range)) {
+      xrng <- x.range
     }
+
     den <- stats::density(x, bw=bw, from=xrng[1], to=xrng[2])
     den <- as.data.frame(den[c("x", "y")])
 
@@ -81,8 +76,10 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
       } else {
         thr <- thresholds
       }
-      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=25,
-                            xadj=c(0,0,24), yadj=c(2,2,2,0.1), best.scorer=best.scorer, title=title, xlab="Play length")
+      if (is.null(n.ticks)) n.ticks <- 25
+      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=n.ticks,
+                            xadj=c(0,0,24), yadj=c(2,2,2,0.1),
+                            best.scorer=best.scorer, title=title, xlab="Play length")
     ####
     } else if (var=="totalTime") {
     ####
@@ -91,8 +88,10 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
       } else {
         thr <- thresholds
       }
-      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=10, title=title,
-                            xadj=c(0,0,period.length*60*4), yadj=c(2,2,2,10), best.scorer=best.scorer, xlab="Total time")
+      if (is.null(n.ticks)) n.ticks <- 10
+      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=n.ticks, title=title,
+                            xadj=c(0,0,period.length*60*4), yadj=c(2,2,2,10),
+                            best.scorer=best.scorer, xlab="Total time")
 
     ####
     } else if (var=="periodTime") {
@@ -102,8 +101,10 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
       } else {
         thr <- thresholds
       }
-      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=10, title=title,
-                            xadj=c(0,0,period.length*60), yadj=c(2,2,2,10), best.scorer=best.scorer, xlab="Period time")
+      if (is.null(n.ticks)) n.ticks <- 10
+      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=xrng, ntks=n.ticks, title=title,
+                            xadj=c(0,0,period.length*60), yadj=c(2,2,2,10),
+                            best.scorer=best.scorer, xlab="Period time")
 
     ####
     } else if (var=="shot_distance") {
@@ -130,13 +131,34 @@ densityplot <- function(data, var, shot.type="field", thresholds=NULL, best.scor
         xadj <- c(22, 0, 60)
         yadj <- c(6,2,2,0.5)
       }
-      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=c(0,60), ntks=21,
-                            xadj=xadj, yadj=yadj, best.scorer=best.scorer, title=title, xlab="Shot distance")
-
+      if (is.null(n.ticks)) n.ticks <- 21
+      p <- plot_shotdensity(mat, den, var=var, thr=thr, xrng=c(0,60), ntks=n.ticks,
+                            xadj=xadj, yadj=yadj, best.scorer=best.scorer,
+                            title=title, xlab="Shot distance")
     }
     p <- p + theme_bw()
   }
   return(p)
+}
+
+#' @noRd
+x.range_densityplot_auto <- function(var, period.length, shot.type) {
+  if (var=="playlength") {
+    xrng <- c(0, 24)
+  } else if (var=="totalTime") {
+    xrng <- c(0, period.length*4*60)
+  } else if (var=="periodTime") {
+    xrng <- c(0, period.length*60)
+  } else if (var=="shot_distance") {
+    if (shot.type=="field") {
+      xrng <- c(0, 60)
+    } else if (shot.type=="2P") {
+      xrng <- c(0, 22)
+    } else if (shot.type=="3P") {
+      xrng <- c(22, 60)
+    }
+  }
+  return(xrng)
 }
 
 #' @noRd
@@ -173,7 +195,7 @@ plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=N
   y3 <- mean(den$y[den$x<(x3 + yadj[4]) & den$x>(x3 - yadj[4])])/yadj[3]
 
   p <- ggplot(den,aes(x,y))+
-    geom_line(col='gray',lwd=2) +
+    geom_line(col='gray',size=2) +
     geom_ribbon(data=subset(den,x<=thr[1]),aes(x=x, ymax=y, ymin=0), fill="blue", alpha=0.3) +
     geom_ribbon(data=subset(den,x<=thr[2] & x>thr[1]),aes(x=x, ymax=y, ymin=0), fill="blue", alpha=0.5) +
     geom_ribbon(data=subset(den,x>thr[2]),aes(x=x, ymax=y, ymin=0), fill="red", alpha=0.3) +
@@ -190,7 +212,6 @@ plot_shotdensity <- function(mat, den, var, thr, xrng, ntks, xadj, yadj, title=N
     scale_x_continuous(name=xlab, limits=c(xrng[1], xrng[2]), breaks=seq(xrng[1],xrng[2],length.out=ntks),
                        labels=seq(xrng[1],xrng[2],length.out=ntks)) +
     scale_y_continuous(name="Frequency of shots", limits=c(0, NA),labels=NULL)
-
 
   if (best.scorer) {
     points1 <- tapply(m1$points, m1$player, sum, na.rm=T)

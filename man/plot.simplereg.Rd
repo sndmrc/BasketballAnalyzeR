@@ -24,15 +24,15 @@
 
 \item{labels}{character, labels for subjects}
 
-\item{subset}{an optional vector specifying a subset of observations to be highlighted in the graph or \code{'quant'} to highligh observations above and below the upper and lower quantiles, respectively}
+\item{subset}{an optional vector specifying a subset of observations to be highlighted in the graph or \code{subset='quant'} to highligh observations with coordinates above and below the upper and lower quantiles of the variables on the x- and y-axis (\code{Lx}, \code{Ux}, \code{Ly}, \code{Uy})}
 
-\item{Lx}{numeric; if \code{subset='quant'}, lower quantile for x (default = 0.01)}
+\item{Lx}{numeric; if \code{subset='quant'}, lower quantile for the variable on the x-axis (default = 0.01)}
 
-\item{Ux}{numeric; if \code{subset='quant'}, upper quantile for x (default = 0.99)}
+\item{Ux}{numeric; if \code{subset='quant'}, upper quantile for the variable on the x-axis (default = 0.99)}
 
-\item{Ly}{numeric; if \code{subset='quant'}, lower quantile of y (default = 0.01)}
+\item{Ly}{numeric; if \code{subset='quant'}, lower quantile for the variable on the y-axis (default = 0.01)}
 
-\item{Uy}{numeric; if \code{subset='quant'}, upper quantile of y (default = 0.99)}
+\item{Uy}{numeric; if \code{subset='quant'}, upper quantile for the variable on the y-axis (default = 0.99)}
 
 \item{title}{character, plot title}
 
@@ -43,6 +43,9 @@
 \item{repel}{logical, if \code{TRUE} (the default) text labels repel away from each other}
 
 \item{...}{Other graphical parameters}
+}
+\value{
+A \code{ggplot2} object
 }
 \description{
 Plot simple regression from a 'simplereg' object
