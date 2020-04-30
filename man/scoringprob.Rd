@@ -11,6 +11,7 @@ scoringprob(
   players = NULL,
   bw = 20,
   period.length = 12,
+  xlab = NULL,
   x.range = "auto",
   title = NULL,
   palette = gg_color_hue,
@@ -31,6 +32,8 @@ scoringprob(
 \item{bw}{numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).}
 
 \item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).}
+
+\item{xlab}{character, x-axis label.}
 
 \item{x.range}{numerical vector or character; available options: \code{NULL} (x-axis range defined by \code{ggplot2}, the default), \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).}
 
@@ -87,8 +90,8 @@ Required columns:
 PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 players <- c("Kevin Durant","Draymond Green","Klay Thompson")
-p <- scoringprob(data=PbP.GSW, shot.type="2P", players=players,
-                 var="shot_distance", col.team="gray", x.range="auto")
+scoringprob(data=PbP.GSW, shot.type="2P", players=players,
+            var="shot_distance", col.team="gray", x.range="auto")
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

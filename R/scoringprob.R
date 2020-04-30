@@ -7,6 +7,7 @@
 #' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).
 #' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param xlab character, x-axis label.
 #' @param x.range numerical vector or character; available options: \code{NULL} (x-axis range defined by \code{ggplot2}, the default), \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).
 #' @param title character, plot title.
 #' @param palette color palette.
@@ -28,13 +29,13 @@
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 #' players <- c("Kevin Durant","Draymond Green","Klay Thompson")
-#' p <- scoringprob(data=PbP.GSW, shot.type="2P", players=players,
-#'                  var="shot_distance", col.team="gray", x.range="auto")
+#' scoringprob(data=PbP.GSW, shot.type="2P", players=players,
+#'             var="shot_distance", col.team="gray", x.range="auto")
 #' @export
 #' @importFrom stats ksmooth
 #' @importFrom grDevices hcl
 
-scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, x.range="auto", title=NULL,
+scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, xlab=NULL, x.range="auto", title=NULL,
                       palette=gg_color_hue, team=TRUE, col.team='dodgerblue', legend=TRUE) {
 
   ShotType <- NULL
@@ -92,8 +93,8 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
       ntks <- NULL
     } else {
       if (is.null(xlab)) xlab <- var
+      ntks <- NULL
     }
-
 
     p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
                 legend=legend, palette=palette, team=team, col.team=col.team)
