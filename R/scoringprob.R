@@ -7,6 +7,7 @@
 #' @param players subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).
 #' @param bw numeric, the smoothing bandwidth of the kernel density estimator (see \link[stats]{ksmooth}).
 #' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).
+#' @param x.range numerical vector or character; available options: \code{NULL} (x-axis range defined by \code{ggplot2}, the default), \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).
 #' @param title character, plot title.
 #' @param palette color palette.
 #' @param team character; if \code{TRUE} draws the scoring probability for all the shots in data.
@@ -28,12 +29,12 @@
 #' PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 #' players <- c("Kevin Durant","Draymond Green","Klay Thompson")
 #' p <- scoringprob(data=PbP.GSW, shot.type="2P", players=players,
-#'                  var="shot_distance", col.team="gray")
+#'                  var="shot_distance", col.team="gray", x.range="auto")
 #' @export
 #' @importFrom stats ksmooth
 #' @importFrom grDevices hcl
 
-scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, title=NULL,
+scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length=12, x.range="auto", title=NULL,
                       palette=gg_color_hue, team=TRUE, col.team='dodgerblue', legend=TRUE) {
 
   ShotType <- NULL
@@ -61,23 +62,39 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
     data$result01[data$result=="made"] <- 1
     data <- data[, c(var, "result01", "player")]
 
+    if (length(x.range)==1 & is.character(x.range)) {
+      if (x.range=="auto") {
+        if (var=="playlength") {
+          xrng <- c(0, 24)
+        } else if (var=="totalTime") {
+          xrng <- c(0, period.length*4*60)
+        } else if (var=="periodTime") {
+          xrng <- c(0, period.length*60)
+        } else if (var=="shot_distance") {
+          xrng <- range(data[, var], na.rm=TRUE)
+        }
+      }
+    } else if (length(x.range)==2 & is.numeric(x.range)) {
+      xrng <- x.range
+    }
+
     if (var=="playlength") {
-      xrng <- c(0, 24)
-      xlab <- "Play length"
+      if (is.null(xlab)) xlab <- "Play length"
       ntks <- 25
     } else if (var=="totalTime") {
-      xrng <- c(0, period.length*4*60)
-      xlab <- "Total time"
+      if (is.null(xlab)) xlab <- "Total time"
       ntks <- 10
     } else if (var=="periodTime") {
-      xrng <- c(0, period.length*60)
-      xlab <- "Period time"
+      if (is.null(xlab)) xlab <- "Period time"
       ntks <- 10
     } else if (var=="shot_distance") {
-      xlab <- "Shot distance"
+      if (is.null(xlab)) xlab <- "Shot distance"
       ntks <- NULL
-      xrng <- range(data[, var], na.rm=TRUE)
+    } else {
+      if (is.null(xlab)) xlab <- var
     }
+
+
     p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
                 legend=legend, palette=palette, team=team, col.team=col.team)
   }
