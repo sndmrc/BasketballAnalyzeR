@@ -56,20 +56,18 @@ expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_
     }
   } else if (length(x.range)==2 & is.numeric(x.range)) {
     xrng <- x.range
+  } else if (is.null(x.range)) {
+    xrng <- NULL
   }
 
   if (var=="playlength") {
     if (is.null(xlab)) xlab <- "Play length"
-    ntks <- 25
   } else if (var=="totalTime") {
     if (is.null(xlab)) xlab <- "Total time"
-    ntks <- 10
   } else if (var=="periodTime") {
     if (is.null(xlab)) xlab <- "Period time"
-    ntks <- 10
   } else if (var=="shot_distance") {
     if (is.null(xlab)) xlab <- "Shot distance"
-    ntks <- NULL
   } else {
     if (is.null(xlab)) xlab <- var
   }
@@ -112,7 +110,7 @@ expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_
   if (!legend) {
     p <- p + theme(legend.position="none")
   }
-  if (!is.null(x.range)) {
+  if (!is.null(xrng)) {
     p <- p + xlim(xrng)
   }
 

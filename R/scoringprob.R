@@ -77,33 +77,30 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
       }
     } else if (length(x.range)==2 & is.numeric(x.range)) {
       xrng <- x.range
+    } else if (is.null(x.range)) {
+      xrng <- NULL
     }
 
     if (var=="playlength") {
       if (is.null(xlab)) xlab <- "Play length"
-      ntks <- 25
     } else if (var=="totalTime") {
       if (is.null(xlab)) xlab <- "Total time"
-      ntks <- 10
     } else if (var=="periodTime") {
       if (is.null(xlab)) xlab <- "Period time"
-      ntks <- 10
     } else if (var=="shot_distance") {
       if (is.null(xlab)) xlab <- "Shot distance"
-      ntks <- NULL
     } else {
       if (is.null(xlab)) xlab <- var
-      ntks <- NULL
     }
 
-    p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
+    p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=NULL, xlab=xlab, title=title, players=players,
                 legend=legend, palette=palette, team=team, col.team=col.team)
   }
   return(p)
 }
 
 #' @noRd
-ksplot <- function(data, var, bw, xrng, ntks, players=NULL, xlab=NULL, ylab="Scoring probability", title=NULL,
+ksplot <- function(data, var, bw, xrng=NULL, ntks, players=NULL, xlab=NULL, ylab="Scoring probability", title=NULL,
                    palette=gg_color_hue, col.team="gray", legend=TRUE, team=TRUE) {
 
   player <- Player <- NULL
