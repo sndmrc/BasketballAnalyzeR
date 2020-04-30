@@ -34,7 +34,7 @@
 #' @export
 
 expectedpts <- function(data, players=NULL, bw=10, period.length=12, palette=gg_color_hue, team=TRUE, col.team="gray",
-          col.hline="black", xlab=NULL, x.range=NULL, title=NULL, legend=TRUE, var="shot_distance") {
+          col.hline="black", xlab=NULL, x.range="auto", title=NULL, legend=TRUE, var="shot_distance") {
 
   event_type <- player <- Player <- NULL
   data <- data %>% dplyr::select(dplyr::one_of(var, "points", "player", "event_type")) %>%

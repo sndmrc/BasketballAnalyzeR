@@ -12,8 +12,6 @@ densityplot(
   best.scorer = FALSE,
   period.length = 12,
   bw = NULL,
-  x.range = NULL,
-  n.ticks = NULL,
   title = NULL
 )
 }
@@ -31,10 +29,6 @@ densityplot(
 \item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA).}
 
 \item{bw}{numeric, the value for the smoothing bandwidth of the kernel density estimator or a character string giving a rule to choose the bandwidth (see \link[stats]{density}).}
-
-\item{x.range}{numerical vector or character; available options: \code{NULL} or \code{"auto"} (internally defined x-axis range), or a 2-component numerical vector (user-defined x-axis range).}
-
-\item{n.ticks}{integer, the number of ticks on the x-axis; if \code{n.ticks=NULL} (default) internal default values are selected.}
 
 \item{title}{character, plot title.}
 }

@@ -14,7 +14,7 @@ expectedpts(
   col.team = "gray",
   col.hline = "black",
   xlab = NULL,
-  x.range = NULL,
+  x.range = "auto",
   title = NULL,
   legend = TRUE,
   var = "shot_distance"
