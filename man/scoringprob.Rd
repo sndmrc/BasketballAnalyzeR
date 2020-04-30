@@ -91,7 +91,7 @@ PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 players <- c("Kevin Durant","Draymond Green","Klay Thompson")
 scoringprob(data=PbP.GSW, shot.type="2P", players=players,
-            var="shot_distance", col.team="gray", x.range="auto")
+            var="shot_distance", col.team="gray")
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

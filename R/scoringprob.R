@@ -30,7 +30,7 @@
 #' PbP.GSW <- subset(PbP, team=="GSW" & result!="")
 #' players <- c("Kevin Durant","Draymond Green","Klay Thompson")
 #' scoringprob(data=PbP.GSW, shot.type="2P", players=players,
-#'             var="shot_distance", col.team="gray", x.range="auto")
+#'             var="shot_distance", col.team="gray")
 #' @export
 #' @importFrom stats ksmooth
 #' @importFrom grDevices hcl
@@ -100,14 +100,18 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
 }
 
 #' @noRd
-ksplot <- function(data, var, bw, xrng=NULL, ntks, players=NULL, xlab=NULL, ylab="Scoring probability", title=NULL,
+ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL, ylab="Scoring probability", title=NULL,
                    palette=gg_color_hue, col.team="gray", legend=TRUE, team=TRUE) {
 
   player <- Player <- NULL
   x <- data[, var]
   y <- data$result01
   if (team) {
-    ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
+    if (is.null(xrng)) {
+      ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
+    } else {
+      ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
+    }
     ksm <- as.data.frame(ksm[c("x", "y")])
     ksm$Player <- "Team"
   }
@@ -120,7 +124,11 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks, players=NULL, xlab=NULL, ylab
       datak <- subset(data, player==playerk)
       xk <- datak[, var]
       yk <- datak$result01
-      ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
+      if (is.null(xrng)) {
+        ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
+      } else {
+        ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
+      }
       ksm_k <- as.data.frame(ksm_k[c("x", "y")])
       ksm_k$Player <- playerk
       kmslst[[k]] <- ksm_k
@@ -146,6 +154,9 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks, players=NULL, xlab=NULL, ylab
                                 labels=seq(xrng[1],xrng[2],length.out=ntks))
   } else {
     p <- p + xlab(xlab)
+  }
+  if (!is.null(xrng)) {
+    p <- p + xlim(xrng)
   }
   if (!legend) {
     p <- p + theme(legend.position="none")
