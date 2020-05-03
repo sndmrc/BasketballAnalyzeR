@@ -50,6 +50,7 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
   if (is.null(bw)) {
     bw <- "nrd0"
   }
+  x <- data[, var]
 
   if (shot.type!="FT" | (var!="playlength" & var!="shot_distance")) {
 
@@ -67,18 +68,26 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
       if (x.range=="auto") {
         if (var=="playlength") {
           xrng <- c(0, 24)
+          ntks <- 25
         } else if (var=="totalTime") {
           xrng <- c(0, period.length*4*60)
+          ntks <- 10
         } else if (var=="periodTime") {
           xrng <- c(0, period.length*60)
+          ntks <- 10
         } else if (var=="shot_distance") {
-          xrng <- range(data[, var], na.rm=TRUE)
+          xrng <- range(x, na.rm=TRUE)
+          ntks <- NULL
         }
       }
     } else if (length(x.range)==2 & is.numeric(x.range)) {
       xrng <- x.range
+      if (xrng[1]<min(x,na.rm=T)) xrng[1]=min(x,na.rm=T)
+      if (xrng[2]>max(x,na.rm=T)) xrng[2]=max(x,na.rm=T)
+      ntks <- NULL
     } else if (is.null(x.range)) {
       xrng <- NULL
+      ntks <- NULL
     }
 
     if (var=="playlength") {
@@ -93,7 +102,7 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
       if (is.null(xlab)) xlab <- var
     }
 
-    p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=NULL, xlab=xlab, title=title, players=players,
+    p <- ksplot(data, var=var, bw=bw, xrng=xrng, ntks=ntks, xlab=xlab, title=title, players=players,
                 legend=legend, palette=palette, team=team, col.team=col.team)
   }
   return(p)
@@ -139,25 +148,27 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
     cols <- palette(length(players))
     cols[players=="Team"] <- col.team
     p <- ggplot(ksm, aes(x=x, y=y, color=Player)) +
-      geom_line(lwd=1.5) +
+      geom_line(size=1.5) +
       scale_color_manual(values=cols, breaks=players)
   } else {
     p <- ggplot(ksm, aes(x=x, y=y)) +
-      geom_line(color = col.team, lwd=1.5)
+      geom_line(color = col.team, size=1.5)
   }
   p <- p + labs(title = title) +
     scale_y_continuous(name=ylab) +
     theme_bw()
-  if (!is.null(ntks)) {
+  if (!is.null(ntks) & !is.null(xrng)) {
     p <- p + scale_x_continuous(name=xlab, limits=c(xrng[1], xrng[2]),
                                 breaks=seq(xrng[1],xrng[2],length.out=ntks),
                                 labels=seq(xrng[1],xrng[2],length.out=ntks))
+  } else if (is.null(ntks) & !is.null(xrng)) {
+    p <- p + xlim(xrng) + xlab(xlab)
   } else {
     p <- p + xlab(xlab)
   }
-  if (!is.null(xrng)) {
-    p <- p + xlim(xrng)
-  }
+  #if (!is.null(xrng)) {
+  #  p <- p + xlim(xrng)
+  #}
   if (!legend) {
     p <- p + theme(legend.position="none")
   }

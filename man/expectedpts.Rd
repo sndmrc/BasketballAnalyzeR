@@ -6,6 +6,7 @@
 \usage{
 expectedpts(
   data,
+  var = "shot_distance",
   players = NULL,
   bw = 10,
   period.length = 12,
@@ -16,12 +17,13 @@ expectedpts(
   xlab = NULL,
   x.range = "auto",
   title = NULL,
-  legend = TRUE,
-  var = "shot_distance"
+  legend = TRUE
 )
 }
 \arguments{
 \item{data}{a data frame whose rows are field shots and with the following columns: \code{points}, \code{event_type}, \code{player} (only if the \code{players} argument is not \code{NULL}) and at least one of \code{playlength}, \code{periodTime}, \code{totalTime}, \code{shot_distance} (the column specified in \code{var}, see Details).}
+
+\item{var}{character, a string giving the name of the numerical variable according to which the expected points are estimated; available options \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"} (default).}
 
 \item{players}{subset of players to be displayed (optional; it can be used only if the \code{player} column is present in \code{data}).}
 
@@ -44,8 +46,6 @@ expectedpts(
 \item{title}{character, plot title.}
 
 \item{legend}{logical, if \code{TRUE}, color legend is displayed (only when \code{players} is not \code{NULL}).}
-
-\item{var}{character, a string giving the name of the numerical variable according to which the expected points are estimated; available options \code{"playlength"}, \code{"periodTime"}, \code{"totalTime"}, \code{"shot_distance"} (default).}
 }
 \value{
 A \code{ggplot2} plot
