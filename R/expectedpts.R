@@ -88,6 +88,9 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
     #}
     ksm <- as.data.frame(ksm[c("x", "y")])
     ksm$Player <- "Team"
+    if (!is.null(xrng)) {
+      ksm <- subset(ksm, x>=xrng[1] & x<=xrng[2])
+    }
   }
   npl <- 0
   if (!is.null(players)) {
@@ -105,6 +108,9 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
       #}
       ksm_k <- as.data.frame(ksm_k[c("x", "y")])
       ksm_k$Player <- playerk
+      if (!is.null(xrng)) {
+        ksm_k <- subset(ksm_k, x>=xrng[1] & x<=xrng[2])
+      }
       kmslst[[k]] <- ksm_k
     }
     if (team) kmslst[[npl+1]] <- ksm
