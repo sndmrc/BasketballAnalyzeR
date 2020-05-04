@@ -81,11 +81,7 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
   }
 
   if (team) {
-    #if (is.null(xrng)) {
-      ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
-    #} else {
-    #  ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
-    #}
+    ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
     ksm <- as.data.frame(ksm[c("x", "y")])
     ksm$Player <- "Team"
     if (!is.null(xrng)) {
@@ -101,11 +97,7 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
       datak <- subset(data, player==playerk)
       xk <- datak[, var]
       yk <- datak$points
-      #if (is.null(xrng)) {
-        ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
-      #} else {
-      #  ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
-      #}
+      ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
       ksm_k <- as.data.frame(ksm_k[c("x", "y")])
       ksm_k$Player <- playerk
       if (!is.null(xrng)) {
@@ -141,21 +133,6 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
   } else {
     p <- p + xlab(xlab)
   }
-  #if (!is.null(xrng)) {
-  #  p <- p + xlim(xrng)
-  #}
-
-  #if (!is.null(ntks)) {
-  #  p <- p + scale_x_continuous(name=xlab, limits=c(xrng[1], xrng[2]),
-  #                              breaks=seq(xrng[1],xrng[2],length.out=ntks),
-  #                              labels=seq(xrng[1],xrng[2],length.out=ntks))
-  #} else {
-  #  p <- p + xlab(xlab)
-  #}
-  #if (!is.null(xrng)) {
-  #  p <- p + xlim(xrng)
-  #}
-
   return(p)
 }
 

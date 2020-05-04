@@ -50,7 +50,6 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
   if (is.null(bw)) {
     bw <- "nrd0"
   }
-  x <- data[, var]
 
   if (shot.type!="FT" | (var!="playlength" & var!="shot_distance")) {
 
@@ -63,6 +62,7 @@ scoringprob <- function(data, var, shot.type, players=NULL, bw=20, period.length
     data$result01 <- 0
     data$result01[data$result=="made"] <- 1
     data <- data[, c(var, "result01", "player")]
+    x <- data[, var]
 
     if (length(x.range)==1 & is.character(x.range)) {
       if (x.range=="auto") {
@@ -116,11 +116,7 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
   x <- data[, var]
   y <- data$result01
   if (team) {
-    #if (is.null(xrng)) {
-      ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
-    #} else {
-    #  ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
-    #}
+    ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
     ksm <- as.data.frame(ksm[c("x", "y")])
     ksm$Player <- "Team"
     if (!is.null(xrng)) {
@@ -136,11 +132,7 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
       datak <- subset(data, player==playerk)
       xk <- datak[, var]
       yk <- datak$result01
-      #if (is.null(xrng)) {
-        ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
-      #} else {
-      #  ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
-      #}
+      ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
       ksm_k <- as.data.frame(ksm_k[c("x", "y")])
       ksm_k$Player <- playerk
       if (!is.null(xrng)) {
@@ -172,9 +164,6 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
   } else {
     p <- p + xlab(xlab)
   }
-  #if (!is.null(xrng)) {
-  #  p <- p + xlim(xrng)
-  #}
   if (!legend) {
     p <- p + theme(legend.position="none")
   }
