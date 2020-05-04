@@ -116,11 +116,11 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
   x <- data[, var]
   y <- data$result01
   if (team) {
-    if (is.null(xrng)) {
+    #if (is.null(xrng)) {
       ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, kernel='normal')
-    } else {
-      ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
-    }
+    #} else {
+    #  ksm <- stats::ksmooth(x=x, y=y, bandwidth=bw, range.x=xrng, kernel='normal')
+    #}
     ksm <- as.data.frame(ksm[c("x", "y")])
     ksm$Player <- "Team"
   }
@@ -133,11 +133,11 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
       datak <- subset(data, player==playerk)
       xk <- datak[, var]
       yk <- datak$result01
-      if (is.null(xrng)) {
+      #if (is.null(xrng)) {
         ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, kernel='normal')
-      } else {
-        ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
-      }
+      #} else {
+      #  ksm_k <- stats::ksmooth(x=xk, y=yk, bandwidth=bw, range.x=xrng, kernel='normal')
+      #}
       ksm_k <- as.data.frame(ksm_k[c("x", "y")])
       ksm_k$Player <- playerk
       kmslst[[k]] <- ksm_k
