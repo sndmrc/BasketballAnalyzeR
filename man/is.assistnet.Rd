@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.assistnet.R
 \name{is.assistnet}
 \alias{is.assistnet}
-\title{Reports whether x is a networkdata object}
+\title{Reports whether x is a 'networkdata' object}
 \usage{
 is.assistnet(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{networkdata} and FALSE otherwise
+Returns TRUE if its argument is of class \code{networkdata} and FALSE otherwise.
 }
 \description{
-Reports whether x is a networkdata object
+Reports whether x is a 'networkdata' object
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

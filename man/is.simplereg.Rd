@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.simplereg.R
 \name{is.simplereg}
 \alias{is.simplereg}
-\title{Reports whether x is a simplereg object}
+\title{Reports whether x is a 'simplereg' object}
 \usage{
 is.simplereg(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{simplereg} and FALSE otherwise
+Returns TRUE if its argument is of class \code{simplereg} and FALSE otherwise.
 }
 \description{
-Reports whether x is a simplereg object
+Reports whether x is a 'simplereg' object
 }
 \examples{
 Pbox.sel <- subset(Pbox, MIN >= 500)

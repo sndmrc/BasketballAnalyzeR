@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.hclustering.R
 \name{is.hclustering}
 \alias{is.hclustering}
-\title{Functions to check if an object is of class 'hclustering'.}
+\title{Reports whether x is a 'hclustering' object}
 \usage{
 is.hclustering(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{hclustering} and FALSE otherwise
+Returns TRUE if its argument is of class \code{hclustering} and FALSE otherwise.
 }
 \description{
-Functions to check if an object is of class 'hclustering'.
+Reports whether x is a 'hclustering' object
 }
 \examples{
 data <- data.frame(Pbox$PTS,Pbox$P3M,

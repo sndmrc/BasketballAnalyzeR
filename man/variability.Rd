@@ -15,7 +15,7 @@ variability(data, data.var, size.var, VC = TRUE, weight = FALSE)
 
 \item{VC}{If \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.}
 
-\item{weight}{If TRUE, calculates weighted variation coefficients.}
+\item{weight}{If TRUE, calculates weighted variation coefficients and standard deviations.}
 }
 \value{
 A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size).

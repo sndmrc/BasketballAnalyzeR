@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.corranalysis.R
 \name{is.corranalysis}
 \alias{is.corranalysis}
-\title{Reports whether x is a corr.analysis object}
+\title{Reports whether x is a 'corranalysis' object}
 \usage{
 is.corranalysis(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{corranalysis} and FALSE otherwise
+Returns TRUE if its argument is of class \code{corranalysis} and FALSE otherwise.
 }
 \description{
-Reports whether x is a corr.analysis object
+Reports whether x is a 'corranalysis' object
 }
 \examples{
 data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,

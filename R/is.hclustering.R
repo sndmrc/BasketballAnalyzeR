@@ -1,10 +1,10 @@
-#' Functions to check if an object is of class 'hclustering'.
+#' Reports whether x is a 'hclustering' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
-#' @param x an object to test
+#' @param x an object to test.
 #' @seealso \code{\link{hclustering}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
-#' @return returns TRUE if its argument is of class \code{hclustering} and FALSE otherwise
+#' @return Returns TRUE if its argument is of class \code{hclustering} and FALSE otherwise.
 #' @examples
 #' data <- data.frame(Pbox$PTS,Pbox$P3M,
 #'                    Pbox$OREB + Pbox$DREB, Pbox$AST,

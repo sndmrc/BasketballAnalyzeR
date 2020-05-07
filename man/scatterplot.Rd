@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatterplot.R
 \name{scatterplot}
 \alias{scatterplot}
-\title{Scatter plot and matrix of scatter plots}
+\title{Draws a scatter plot or a matrix of scatter plots}
 \usage{
 scatterplot(
   data,
@@ -25,41 +25,44 @@ scatterplot(
 )
 }
 \arguments{
-\item{data}{an object of class \code{data.frame}}
+\item{data}{an object of class \code{data.frame}.}
 
-\item{data.var}{character vector, name of variables used on the axes of scatter plots}
+\item{data.var}{character or numeric vector, name or column number of variables (in \code{data} object) used on the axes of scatter plot(s).}
 
-\item{z.var}{character, variable name used to assign colors to points}
+\item{z.var}{character or number, name or column number of variable (in \code{data} object) used to assign colors to points (see Details).}
 
-\item{palette}{color palette}
+\item{palette}{color palette (active when plotting a single scatter plot; see Value).}
 
-\item{labels}{character vector, labels for (x, y) points (available only when plotting a single scatter plot)}
+\item{labels}{character vector, labels for points (active when plotting a single scatter plot, see Value).}
 
-\item{repel_labels}{logical; if \code{TRUE}, draw text labels of not highlighted points using repelling}
+\item{repel_labels}{logical; if \code{TRUE}, draws text labels of not highlighted points using repelling (active when plotting a single scatter plot; see Value).}
 
-\item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the labels of highlighted points}
+\item{text_label}{logical; if \code{TRUE}, draws a rectangle behind the labels of highlighted points (active when plotting a single scatter plot; see Value).}
 
-\item{subset}{logical vector, to select a subset of points to be highlighted}
+\item{subset}{logical or numeric vector, to select a subset of points to be highlighted (active when plotting a single scatter plot; see Value).}
 
-\item{col.subset}{character, color for the subset of highlighted points (available only when plotting a single scatter plot)}
+\item{col.subset}{character, color for the labels and rectangles of highlighted points (active when plotting a single scatter plot; see Value).}
 
-\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (available only when plotting a single scatter plot)}
+\item{zoom}{numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (active when plotting a single scatter plot; see Value).}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{legend}{logical, if \code{legend=FALSE} legend is removed}
+\item{legend}{logical, if \code{legend=FALSE} legend is removed (active when plotting a single scatter plot with \code{z.var} not \code{NULL}; see Value).}
 
-\item{upper}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{lower} in \code{\link[GGally]{ggpairs}})}
+\item{upper}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (active when plotting a matrix of scatter plot; see Value and \code{upper} in \code{\link[GGally]{ggpairs}})}
 
-\item{lower}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (See \code{upper} in \code{\link[GGally]{ggpairs}})}
+\item{lower}{list, may contain the variables \code{continuous}, \code{combo}, \code{discrete}, and \code{na} (active when plotting a matrix of scatter plot; see Value and \code{lower} in \code{\link[GGally]{ggpairs}})}
 
-\item{diag}{list, may contain the variables \code{continuous}, \code{discrete}, and \code{na} (See \code{diag} in \code{\link[GGally]{ggpairs}})}
+\item{diag}{list, may contain the variables \code{continuous}, \code{discrete}, and \code{na} (active when plotting a matrix of scatter plot; see Value and \code{diag} in \code{\link[GGally]{ggpairs}})}
 }
 \value{
-A \code{ggplot2} plot
+A \code{ggplot2} object with a single scatter plot if \code{length(data.var)=2} or a matrix of scatter plots if \code{length(data.var)>2}.
 }
 \description{
-Scatter plot and matrix of scatter plots
+Draws a scatter plot or a matrix of scatter plots
+}
+\details{
+If \code{length(data.var)=2}, the variable specified in \code{z.var} can be numeric or factor; if \code{length(data.var)>2}, the variable specified in \code{z.var} must be a factor.
 }
 \examples{
 # Single scatter plot

@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.fourfactors.R
 \name{is.fourfactors}
 \alias{is.fourfactors}
-\title{Reports whether x is a fourfactors object}
+\title{Reports whether x is a 'fourfactors' object}
 \usage{
 is.fourfactors(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{fourfactors} and FALSE otherwise
+Returns TRUE if its argument is of class \code{fourfactors} and FALSE otherwise.
 }
 \description{
-Reports whether x is a fourfactors object
+Reports whether x is a 'fourfactors' object
 }
 \examples{
 selTeams <- c(2,6,10,11)

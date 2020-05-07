@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.variability.R
 \name{is.variability}
 \alias{is.variability}
-\title{Functions to check if an object is of class 'variability'.}
+\title{Reports whether x is a 'variability' object}
 \usage{
 is.variability(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{variability} and FALSE otherwise
+Returns TRUE if its argument is of class \code{variability} and FALSE otherwise.
 }
 \description{
-Functions to check if an object is of class 'variability'.
+Reports whether x is a 'variability' object
 }
 \examples{
 Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,

@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.inequality.R
 \name{is.inequality}
 \alias{is.inequality}
-\title{Functions to check if an object is of class 'inequality'.}
+\title{Reports whether x is a 'inequality' object.}
 \usage{
 is.inequality(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{inequality} and FALSE otherwise
+Returns TRUE if its argument is of class \code{inequality} and FALSE otherwise.
 }
 \description{
-Functions to check if an object is of class 'inequality'.
+Reports whether x is a 'inequality' object.
 }
 \examples{
 Pbox.BN <- subset(Pbox, Team=="Brooklyn Nets")

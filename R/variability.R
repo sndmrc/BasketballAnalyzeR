@@ -5,7 +5,7 @@
 #' @param data.var A vector of variable names or of column numbers defining (numeric) variables whose variability will be analyzed by \code{variability}.
 #' @param size.var A vector of variable names or of column numbers defining variables for weights (active only if \code{weight=TRUE}).
 #' @param VC If \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.
-#' @param weight If TRUE, calculates weighted variation coefficients.
+#' @param weight If TRUE, calculates weighted variation coefficients and standard deviations.
 #' @return A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size).
 #' @examples
 #' Pbox.BC <- subset(Pbox, Team=="Oklahoma City Thunder" & MIN >= 500,

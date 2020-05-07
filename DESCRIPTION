@@ -1,7 +1,7 @@
 Package: BasketballAnalyzeR
 Type: Package
 Title: Tools for the analysis of basketball data
-Version: 0.4.0
+Version: 0.4.1
 Author: Marco Sandri, Paola Zuccolotto, Marica Manisera
 Maintainer: Marco Sandri <basketballanalyzer.help@unibs.it>
 Description: R package accompanying the book 

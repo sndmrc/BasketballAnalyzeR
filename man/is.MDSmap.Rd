@@ -2,18 +2,18 @@
 % Please edit documentation in R/is.MDSmap.R
 \name{is.MDSmap}
 \alias{is.MDSmap}
-\title{Functions to check if an object is of class 'MDSmap'.}
+\title{Reports whether x is a 'MDSmap' object}
 \usage{
 is.MDSmap(x)
 }
 \arguments{
-\item{x}{an object to test}
+\item{x}{an object to test.}
 }
 \value{
-returns TRUE if its argument is of class \code{MDSmap} and FALSE otherwise
+Returns TRUE if its argument is of class \code{MDSmap} and FALSE otherwise.
 }
 \description{
-Functions to check if an object is of class 'MDSmap'.
+Reports whether x is a 'MDSmap' object
 }
 \examples{
 data <- subset(Pbox, MIN >= 1500)
