@@ -7,14 +7,14 @@
 \method{plot}{fourfactors}(x, title = NULL, ...)
 }
 \arguments{
-\item{x}{An object of class \code{fourfactors}.}
+\item{x}{an object of class \code{fourfactors}.}
 
-\item{title}{Plot title}
+\item{title}{character, plot title.}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
-A list of four \code{ggplot2} plots
+A list of four \code{ggplot2} plots.
 }
 \description{
 Plot possessions, pace, offensive and defensive rating, and Four Factors from a 'fourfactors' object

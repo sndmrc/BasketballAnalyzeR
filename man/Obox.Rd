@@ -36,7 +36,7 @@ A data frame with 30 rows and 23 variables:
 Obox
 }
 \description{
-In this data frame cases (rows) are teams and variables (columns) are referred to achievements of the opponents in the different games
+In this data frame cases (rows) are teams and variables (columns) are referred to achievements of the opponents in the NBA 2017-2018 Championship
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

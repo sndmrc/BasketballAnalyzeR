@@ -22,33 +22,33 @@
 )
 }
 \arguments{
-\item{x}{an aobject of class \code{variability}}
+\item{x}{an aobject of class \code{variability}.}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{ylim}{numeric vector of length two, y-axis limits}
+\item{ylim}{numeric vector of length two, y-axis limits.}
 
-\item{ylab}{character, y-axis label}
+\item{ylab}{character, y-axis label.}
 
-\item{size.lim}{numeric vector of length two, set limits of the bubbles' size scale (see \code{limits} of \code{\link[ggplot2]{scale_size}})}
+\item{size.lim}{numeric vector of length two, set limits of the bubbles' size scale (see \code{limits} of \code{\link[ggplot2]{scale_size}}).}
 
-\item{max.circle}{numeric, maximum size of the \code{size} plotting symbol (see \code{range} of \code{\link[ggplot2]{scale_size}})}
+\item{max.circle}{numeric, maximum size of the \code{size} plotting symbol (see \code{range} of \code{\link[ggplot2]{scale_size}}).}
 
-\item{n.circle}{integer; if \code{leg.brk=NULL}, set a sequence of about \code{n.circle+1} equally spaced 'round' values which cover the range of the values used to set the bubbles' size}
+\item{n.circle}{integer; if \code{leg.brk=NULL}, set a sequence of about \code{n.circle+1} equally spaced 'round' values which cover the range of the values used to set the bubbles' size.}
 
-\item{leg.brk}{numeric vector, breaks for bubbles' size legend (see \code{breaks} of \code{\link[ggplot2]{scale_size}})}
+\item{leg.brk}{numeric vector, breaks for bubbles' size legend (see \code{breaks} of \code{\link[ggplot2]{scale_size}}).}
 
-\item{leg.pos}{character or numeric vector of length two, legend position; available options \code{"none"}, \code{"left"}, \code{"right"} (default), \code{"bottom"}, \code{"top"}, or a \code{c(x,y)} numeric vector (\code{x} and \code{y} are coordinates of the legend box; their values should be between 0 and 1; \code{c(0,0)} corresponds to the bottom-left and \code{c(1,1)} corresponds to the top-right position)}
+\item{leg.pos}{character or numeric vector of length two, legend position; available options \code{"none"}, \code{"left"}, \code{"right"} (default), \code{"bottom"}, \code{"top"}, or a \code{c(x,y)} numeric vector (\code{x} and \code{y} are coordinates of the legend box; their values should be between 0 and 1; \code{c(0,0)} corresponds to the bottom-left and \code{c(1,1)} corresponds to the top-right position).}
 
-\item{leg.just}{character or numeric vector of length two; anchor point for positioning legend inside plot (\code{"left"} (default), \code{"center"}, \code{"right"} or two-element numeric vector) or the justification according to the plot area when positioned outside the plot}
+\item{leg.just}{character or numeric vector of length two; anchor point for positioning legend inside plot (\code{"left"} (default), \code{"center"}, \code{"right"} or two-element numeric vector) or the justification according to the plot area when positioned outside the plot.}
 
-\item{leg.nrow}{integer, number of rows of the bubbles' size legend}
+\item{leg.nrow}{integer, number of rows of the bubbles' size legend.}
 
-\item{leg.title}{character, title of the bubbles' size legend}
+\item{leg.title}{character, title of the bubbles' size legend.}
 
-\item{leg.title.pos}{character, position of the legend title; available options: \code{"top"} (default for a vertical legend), \code{"bottom"}, \code{"left"} (default for a horizontal legend), or \code{"right"}}
+\item{leg.title.pos}{character, position of the legend title; available options: \code{"top"} (default for a vertical legend), \code{"bottom"}, \code{"left"} (default for a horizontal legend), or \code{"right"}.}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
 A \code{ggplot2} object

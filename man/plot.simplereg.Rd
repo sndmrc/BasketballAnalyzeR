@@ -20,29 +20,29 @@
 )
 }
 \arguments{
-\item{x}{an object of class \code{simplereg}}
+\item{x}{an object of class \code{simplereg}.}
 
-\item{labels}{character, labels for subjects}
+\item{labels}{character, labels for subjects.}
 
-\item{subset}{an optional vector specifying a subset of observations to be highlighted in the graph or \code{subset='quant'} to highligh observations with coordinates above and below the upper and lower quantiles of the variables on the x- and y-axis (\code{Lx}, \code{Ux}, \code{Ly}, \code{Uy})}
+\item{subset}{an optional vector specifying a subset of observations to be highlighted in the graph or \code{subset='quant'} to highligh observations with coordinates above and below the upper and lower quantiles of the variables on the x- and y-axis (\code{Lx}, \code{Ux}, \code{Ly}, \code{Uy}).}
 
-\item{Lx}{numeric; if \code{subset='quant'}, lower quantile for the variable on the x-axis (default = 0.01)}
+\item{Lx}{numeric; if \code{subset='quant'}, lower quantile for the variable on the x-axis (default = 0.01).}
 
-\item{Ux}{numeric; if \code{subset='quant'}, upper quantile for the variable on the x-axis (default = 0.99)}
+\item{Ux}{numeric; if \code{subset='quant'}, upper quantile for the variable on the x-axis (default = 0.99).}
 
-\item{Ly}{numeric; if \code{subset='quant'}, lower quantile for the variable on the y-axis (default = 0.01)}
+\item{Ly}{numeric; if \code{subset='quant'}, lower quantile for the variable on the y-axis (default = 0.01).}
 
-\item{Uy}{numeric; if \code{subset='quant'}, upper quantile for the variable on the y-axis (default = 0.99)}
+\item{Uy}{numeric; if \code{subset='quant'}, upper quantile for the variable on the y-axis (default = 0.99).}
 
-\item{title}{character, plot title}
+\item{title}{character, plot title.}
 
-\item{xtitle}{character, x-axis label}
+\item{xtitle}{character, x-axis label.}
 
-\item{ytitle}{character, y-axis label}
+\item{ytitle}{character, y-axis label.}
 
-\item{repel}{logical, if \code{TRUE} (the default) text labels repel away from each other}
+\item{repel}{logical, if \code{TRUE} (the default) text labels repel away from each other.}
 
-\item{...}{Other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
 A \code{ggplot2} object

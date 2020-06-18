@@ -2,7 +2,7 @@
 % Please edit documentation in R/radialprofile.R
 \name{radialprofile}
 \alias{radialprofile}
-\title{Draw radial plots for player profiles}
+\title{Draws radial plots for player profiles}
 \usage{
 radialprofile(
   data,
@@ -14,23 +14,23 @@ radialprofile(
 )
 }
 \arguments{
-\item{data}{an object of class \code{data.frame}}
+\item{data}{a data frame.}
 
-\item{perc}{logical; if \code{perc=TRUE}, \code{std=FALSE} and \code{min.mid.max=NULL}, set axes range between 0 and 100 and set the middle dashed line at 50}
+\item{perc}{logical; if \code{perc=TRUE}, \code{std=FALSE} and \code{min.mid.max=NULL}, set axes range between 0 and 100 and set the middle dashed line at 50.}
 
-\item{std}{logical; if \code{std=TRUE}, variables are preliminarily standardized}
+\item{std}{logical; if \code{std=TRUE}, variables are preliminarily standardized.}
 
-\item{title}{character vector, titles for radial plots}
+\item{title}{character vector, titles for radial plots.}
 
-\item{ncol.arrange}{integer, number of columns in the grid of arranged plots}
+\item{ncol.arrange}{integer, number of columns in the grid of arranged plots.}
 
-\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis}
+\item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis.}
 }
 \value{
 A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
 }
 \description{
-Draw radial plots for player profiles
+Draws radial plots for player profiles
 }
 \examples{
 data("Pbox")

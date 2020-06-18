@@ -25,7 +25,7 @@ barline(
 
 \item{line}{character, name of the line variable.}
 
-\item{order.by}{character, name of the variable used to order bars (on the x axis).}
+\item{order.by}{character, name of the variable used to order bars (on the x-axis).}
 
 \item{decreasing}{logical; if \code{TRUE}, decreasing order.}
 

@@ -7,15 +7,15 @@
 hclustering(data, k = NULL, nclumax = 10, labels = NULL, linkage = "ward.D")
 }
 \arguments{
-\item{data}{numeric data frame}
+\item{data}{numeric data frame.}
 
-\item{k}{integer, number of clusters}
+\item{k}{integer, number of clusters.}
 
-\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL})}
+\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL}).}
 
-\item{labels}{character, row labels}
+\item{labels}{character, row labels.}
 
-\item{linkage}{character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})}
+\item{linkage}{character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust}).}
 }
 \value{
 A \code{hclustering} object.

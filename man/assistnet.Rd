@@ -13,7 +13,7 @@ assistnet(
 )
 }
 \arguments{
-\item{data}{A data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).}
+\item{data}{a data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).}
 
 \item{assist}{character, indicating the name of the variable with players who made the assists, if any.}
 

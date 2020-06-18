@@ -7,14 +7,14 @@
 \method{plot}{inequality}(x, title = NULL, ...)
 }
 \arguments{
-\item{x}{an object of class \code{inequality}}
+\item{x}{an object of class \code{inequality}.}
 
-\item{title}{Plot title}
+\item{title}{character, plot title.}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
-A \code{ggplot2} object
+A \code{ggplot2} object.
 }
 \description{
 Plot Lorenz curve from a 'inequality' object

@@ -7,13 +7,13 @@
 simplereg(x, y, type = "lin", sp = NULL)
 }
 \arguments{
-\item{x}{numerical vector, input x values}
+\item{x}{numerical vector, input x values.}
 
-\item{y}{numerical vector, input y values}
+\item{y}{numerical vector, input y values.}
 
-\item{type}{character, type of regression; available options are: \code{lin} (linear regression, the default), \code{pol} (local polynomial regression of degree 2), \code{ks} (nonparametric kernel smoothing)}
+\item{type}{character, type of regression; available options are: \code{lin} (linear regression, the default), \code{pol} (local polynomial regression of degree 2), \code{ks} (nonparametric kernel smoothing).}
 
-\item{sp}{numeric, parameter to control the degree of smoothing; span for local polynomial regression and bandwidth for ksmooth}
+\item{sp}{numeric, parameter to control the degree of smoothing; span for local polynomial regression and bandwidth for ksmooth.}
 }
 \value{
 An object of class \code{simplereg}, i.e. a list with the following objects:

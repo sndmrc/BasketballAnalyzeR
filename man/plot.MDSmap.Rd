@@ -26,7 +26,7 @@
 
 \item{z.var}{character vector; defines the set of variables (available in the \code{data} data frame of \code{\link{MDSmap}}) used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot.}
 
-\item{level.plot}{logical; if TRUE, draws a level plot, otherwise draw a scatter plot (not active if \code{zvar=NULL}).}
+\item{level.plot}{logical; if TRUE, draws a level plot, otherwise draws a scatter plot (not active if \code{zvar=NULL}).}
 
 \item{title}{character, plot title.}
 

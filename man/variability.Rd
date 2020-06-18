@@ -7,15 +7,15 @@
 variability(data, data.var, size.var, VC = TRUE, weight = FALSE)
 }
 \arguments{
-\item{data}{A data frame.}
+\item{data}{a data frame.}
 
-\item{data.var}{A vector of variable names or of column numbers defining (numeric) variables whose variability will be analyzed by \code{variability}.}
+\item{data.var}{a vector of variable names or of column numbers defining (numeric) variables whose variability will be analyzed by \code{variability}.}
 
-\item{size.var}{A vector of variable names or of column numbers defining variables for weights (active only if \code{weight=TRUE}).}
+\item{size.var}{a vector of variable names or of column numbers defining variables for weights (active only if \code{weight=TRUE}).}
 
-\item{VC}{If \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.}
+\item{VC}{logical; if \code{TRUE}, calculates variation coefficients of variables in \code{data.var}.}
 
-\item{weight}{If TRUE, calculates weighted variation coefficients and standard deviations.}
+\item{weight}{logical; if TRUE, calculates weighted variation coefficients and standard deviations.}
 }
 \value{
 A list with the following elements: ranges, standard deviations, variation coefficients, and two dataframes (data, size).

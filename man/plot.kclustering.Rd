@@ -7,7 +7,7 @@
 \method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...)
 }
 \arguments{
-\item{x}{an object of class \code{kclustering}}
+\item{x}{an object of class \code{kclustering}.}
 
 \item{title}{character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).}
 
@@ -15,7 +15,7 @@
 
 \item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).}
 
-\item{...}{other graphical parameters}
+\item{...}{other graphical parameters.}
 }
 \value{
 If \code{x$k} is \code{NULL}, \code{plot.kclustering} returns a single \code{ggplot2} object, displaying the pattern of the explained variance vs the number of clusters.

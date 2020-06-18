@@ -2,7 +2,7 @@
 % Please edit documentation in R/MDSmap.R
 \name{MDSmap}
 \alias{MDSmap}
-\title{Multidimensional scaling (MDS)}
+\title{Multidimensional scaling (MDS) in 2 dimensions}
 \usage{
 MDSmap(data, std = TRUE)
 }
@@ -31,7 +31,7 @@ An object of class \code{MDSmap}, i.e. a list with 4 objects:
 }
 }
 \description{
-Multidimensional scaling (MDS)
+Multidimensional scaling (MDS) in 2 dimensions
 }
 \details{
 If \code{data} is an object of class \code{"dist"}, \code{std} is not active and \code{data} is directly inputted into \code{MASS::isoMDS}.

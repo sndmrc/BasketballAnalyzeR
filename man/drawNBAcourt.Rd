@@ -7,13 +7,13 @@
 drawNBAcourt(p, size = 1.5, col = "black", full = FALSE)
 }
 \arguments{
-\item{p}{A ggplot2 object}
+\item{p}{a ggplot2 object.}
 
-\item{size}{Line size}
+\item{size}{numeric, line size.}
 
-\item{col}{Line color}
+\item{col}{line color.}
 
-\item{full}{Logical, if TRUE draws a complete NBA court; if FALSE draws a half court}
+\item{full}{logical; if TRUE draws a complete NBA court; if FALSE draws a half court.}
 }
 \value{
 A ggplot2 object

@@ -15,19 +15,19 @@ kclustering(
 )
 }
 \arguments{
-\item{data}{numeric data frame}
+\item{data}{numeric data frame.}
 
-\item{k}{integer, number of clusters}
+\item{k}{integer, number of clusters.}
 
-\item{labels}{character, row labels}
+\item{labels}{character, row labels.}
 
-\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters}
+\item{nclumax}{integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters.}
 
-\item{nruns}{integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion}
+\item{nruns}{integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion.}
 
-\item{iter.max}{integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans})}
+\item{iter.max}{integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans}).}
 
-\item{algorithm}{character, the algorithm used in k-means clustering (see \link[stats]{kmeans})}
+\item{algorithm}{character, the algorithm used in k-means clustering (see \link[stats]{kmeans}).}
 }
 \value{
 A \code{kclustering} object.

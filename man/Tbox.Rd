@@ -36,7 +36,7 @@ A data frame with 30 rows and 23 variables:
 Tbox
 }
 \description{
-In this data frame, called Tbox, cases (rows) are teams and variables (columns) are referred to team achievements in the different games
+In this data frame, cases (rows) are teams and variables (columns) are referred to team achievements in the different games in the NBA 2017-2018 Championship.
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

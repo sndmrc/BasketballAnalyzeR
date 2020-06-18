@@ -2,16 +2,16 @@
 % Please edit documentation in R/plot.corranalysis.R
 \name{plot.corranalysis}
 \alias{plot.corranalysis}
-\title{Plot the correlation matrix and the correlation network from a 'corranalysis' object}
+\title{Plots the correlation matrix and the correlation network from a 'corranalysis' object}
 \usage{
 \method{plot}{corranalysis}(x, horizontal = TRUE, title = NULL, ...)
 }
 \arguments{
-\item{x}{an object of class \code{corranalysis}}
+\item{x}{an object of class \code{corranalysis}.}
 
-\item{horizontal}{logical; if TRUE, the two plots are arranged horizontally}
+\item{horizontal}{logical; if TRUE, the two plots are arranged horizontally.}
 
-\item{title}{plot title}
+\item{title}{character, plot title.}
 
 \item{...}{other graphical parameters}
 }
@@ -19,7 +19,7 @@
 A \code{ggplot2} object
 }
 \description{
-Plot the correlation matrix and the correlation network from a 'corranalysis' object
+Plots the correlation matrix and the correlation network from a 'corranalysis' object
 }
 \examples{
 data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
