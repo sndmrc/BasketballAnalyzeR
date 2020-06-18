@@ -1,13 +1,13 @@
 #' K-means  cluster analysis
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data numeric data frame
-#' @param k integer, number of clusters
-#' @param labels character, row labels
-#' @param nclumax integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters
-#' @param nruns integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion
-#' @param iter.max integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans})
-#' @param algorithm character, the algorithm used in k-means clustering (see \link[stats]{kmeans})
+#' @param data numeric data frame.
+#' @param k integer, number of clusters.
+#' @param labels character, row labels.
+#' @param nclumax integer, maximum number of clusters (when \code{k=NULL}) used for calculating the explained variance as function of the number of clusters.
+#' @param nruns integer, run the k-means algorithm \code{nruns} times and chooses the best solution according to a maximum explained variance criterion.
+#' @param iter.max integer, maximum number of iterations allowed in k-means clustering (see \link[stats]{kmeans}).
+#' @param algorithm character, the algorithm used in k-means clustering (see \link[stats]{kmeans}).
 #' @details The \code{kclustering} function performs a preliminary standardization of columns in \code{data}.
 #' @seealso \code{\link{plot.kclustering}}, \code{\link[stats]{kmeans}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

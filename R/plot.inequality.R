@@ -1,10 +1,10 @@
 #' Plot Lorenz curve from a 'inequality' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param x an object of class \code{inequality}
-#' @param title Plot title
-#' @param ... other graphical parameters
-#' @return A \code{ggplot2} object
+#' @param x an object of class \code{inequality}.
+#' @param title character, plot title.
+#' @param ... other graphical parameters.
+#' @return A \code{ggplot2} object.
 #' @seealso \code{\link{inequality}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples

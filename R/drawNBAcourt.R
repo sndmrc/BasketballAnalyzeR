@@ -1,10 +1,10 @@
 #' Add lines of NBA court to an existing ggplot2 plot
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param p A ggplot2 object
-#' @param size Line size
-#' @param col Line color
-#' @param full Logical, if TRUE draws a complete NBA court; if FALSE draws a half court
+#' @param p a ggplot2 object.
+#' @param size numeric, line size.
+#' @param col line color.
+#' @param full logical; if TRUE draws a complete NBA court; if FALSE draws a half court.
 #' @return A ggplot2 object
 #' @examples
 #' library(ggplot2)

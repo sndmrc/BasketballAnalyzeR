@@ -1,7 +1,7 @@
 #' Investigates the network of assists-shots in a team
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data A data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).
+#' @param data a data frame whose rows are field shots and columns are variables to be specified in \code{assist}, \code{player}, \code{points}, \code{event.type} (see Details).
 #' @param assist character, indicating the name of the variable with players who made the assists, if any.
 #' @param player character, indicating the name of the variable with players who made the shot.
 #' @param points character, indicating the name of the variable with points.

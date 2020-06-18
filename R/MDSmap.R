@@ -1,4 +1,4 @@
-#' Multidimensional scaling (MDS)
+#' Multidimensional scaling (MDS) in 2 dimensions
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param data a numeric matrix, data frame or \code{"dist"} object (see \code{\link[stats]{dist}}).

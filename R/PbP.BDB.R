@@ -1,7 +1,7 @@
 #'  Play-by-play dataset - NBA 2017-2018
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @description In this data frame, called PbP, cases (rows) are shots and variables (columns) are referred to
+#' @description In this play-by-play data frame (NBA 2017-2018 Championship), the cases (rows) are the events occurred during the analyzed games and the variables (columns) are descriptions of the events in terms of type, time, players involved, score, area of the court.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #'
 #' @format A data.frame with 37430 rows and 48 variables:
@@ -10,7 +10,7 @@
 #'   \item{data_set}{Season: years and type (Regular or Playoffs)}
 #'   \item{date}{Date of the game}
 #'   \item{a1 ... a5; h1 ... h5}{Five players on the court (away team; home team)}
-#'   \item{period}{Quarter (= 5: over-time)}
+#'   \item{period}{Quarter (>= 5: over-time)}
 #'   \item{away_score; home_score}{Score of the away/home team}
 #'   \item{remaining_time}{Time left in the quarter (h:mm:ss)}
 #'   \item{elapsed}{Time played in the quarter (h:mm:ss)}
@@ -33,8 +33,7 @@
 #'   \item{steal}{Player who stole the ball}
 #'   \item{type}{Type of play}
 #'   \item{shot_distance}{Field shots: distance from the basket}
-#'   \item{original_x ; original_y}{Coordinates of the shooting player}
-#'   \item{converted_x ; converted_y}{\code{original}: tracking coordinate system half court, (0,0) center of the basket; \code{converted}: coordinates in feet full court, (0,0) bottom-left corner}
+#'   \item{original_x ; original_y; converted_x ; converted_y}{Coordinates of the shooting player. \code{original}: tracking coordinate system half court, (0,0) center of the basket; \code{converted}: coordinates in feet full court, (0,0) bottom-left corner}
 #'   \item{description}{Textual description of the event}
 #' }
 #' @source \url{https://github.com/sndmrc/BasketballAnalyzeR}

@@ -1,9 +1,9 @@
-#' Plot the correlation matrix and the correlation network from a 'corranalysis' object
+#' Plots the correlation matrix and the correlation network from a 'corranalysis' object
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param x an object of class \code{corranalysis}
-#' @param horizontal logical; if TRUE, the two plots are arranged horizontally
-#' @param title plot title
+#' @param x an object of class \code{corranalysis}.
+#' @param horizontal logical; if TRUE, the two plots are arranged horizontally.
+#' @param title character, plot title.
 #' @param ... other graphical parameters
 #' @return A \code{ggplot2} object
 #' @seealso \code{\link{corranalysis}}

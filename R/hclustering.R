@@ -1,11 +1,11 @@
 #' Agglomerative hierarchical clustering
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data numeric data frame
-#' @param k integer, number of clusters
-#' @param nclumax integer, maximum number of clusters (when \code{k=NULL})
-#' @param labels character, row labels
-#' @param linkage character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust})
+#' @param data numeric data frame.
+#' @param k integer, number of clusters.
+#' @param nclumax integer, maximum number of clusters (when \code{k=NULL}).
+#' @param labels character, row labels.
+#' @param linkage character, the agglomeration method to be used in \code{hclust} (see \code{method} in \link[stats]{hclust}).
 #' @details The \code{hclustering} function performs a preliminary standardization of columns in \code{data}.
 #' @seealso \code{\link{plot.hclustering}}, \code{\link[stats]{hclust}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

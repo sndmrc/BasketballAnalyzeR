@@ -5,7 +5,7 @@
 #' @param id character, name of the ID variable.
 #' @param bars character vector, names of the bar variables.
 #' @param line character, name of the line variable.
-#' @param order.by character, name of the variable used to order bars (on the x axis).
+#' @param order.by character, name of the variable used to order bars (on the x-axis).
 #' @param decreasing logical; if \code{TRUE}, decreasing order.
 #' @param labels.bars character vector, labels for the bar variables.
 #' @param label.line character, label for the line variable on the second y-axis (on the right).

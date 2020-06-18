@@ -2,7 +2,7 @@
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
 #' @param x an object of class \code{MDSmap}.
-#' @param level.plot logical; if TRUE, draws a level plot, otherwise draw a scatter plot (not active if \code{zvar=NULL}).
+#' @param level.plot logical; if TRUE, draws a level plot, otherwise draws a scatter plot (not active if \code{zvar=NULL}).
 #' @param z.var character vector; defines the set of variables (available in the \code{data} data frame of \code{\link{MDSmap}}) used to color-coding the points in the map (for scatter plots) or, alternatively, overlap to the map a colored level plot.
 #' @param title character, plot title.
 #' @param labels character vector, labels for (x, y) points (only for single scatter plot).
