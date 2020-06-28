@@ -1,12 +1,16 @@
 # BasketballAnalyzeR
 Contains data and code to accompany the book  
-*P. Zuccolotto and M. Manisera (2020) Basketball Data Science. Applications with R. CRC Press. ISBN 9781138600799.*
+**P. Zuccolotto and M. Manisera (2020) Basketball Data Science. Applications with R. CRC Press. ISBN 9781138600799.**
 
 ### Developers 
 Marco Sandri, Paola Zuccolotto, Marica Manisera
 
-### For installing the development version of the package
+### Installation
 ```
+# From CRAN:
+install.packages("BasketballAnalyzeR")
+
+# Or the development version from GitHub:
 install.packages("devtools")
 devtools::install_github("sndmrc/BasketballAnalyzeR"")
 ```
