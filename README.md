@@ -10,7 +10,7 @@ Marco Sandri, Paola Zuccolotto, Marica Manisera
 # From CRAN:
 install.packages("BasketballAnalyzeR")
 
-# Or the development version from GitHub:
+# From Github (development version):
 install.packages("devtools")
 devtools::install_github("sndmrc/BasketballAnalyzeR"")
 ```
