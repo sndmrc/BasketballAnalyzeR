@@ -22,6 +22,7 @@ RNGkind(sample.kind = "Rounding")
 ```
 at the beginning of your working session.
 
-### Official page 
-[https://bdsports.unibs.it/basketballanalyzer/](https://bdsports.unibs.it/basketballanalyzer/)
+### Links
+[https://bdsports.unibs.it/basketballanalyzer/](https://bdsports.unibs.it/basketballanalyzer/)  
+[https://cran.r-project.org/web/packages/BasketballAnalyzeR/](https://cran.r-project.org/web/packages/BasketballAnalyzeR/)
 
