@@ -8,7 +8,7 @@ Marco Sandri, Paola Zuccolotto, Marica Manisera
 ## For installing the development version of the package
 ```
 install.packages(‘devtools’)
-devtools::install_github(“sndmrc/BasketballAnalyzeR”)
+devtools::install_github(‘sndmrc/BasketballAnalyzeR’)
 ```
 
 ## Warning
@@ -18,6 +18,6 @@ RNGkind(sample.kind = "Rounding")
 ```
 at the beginning of your working session.
 
-## The official page of the package
+## Official page 
 [https://bdsports.unibs.it/basketballanalyzer/](https://bdsports.unibs.it/basketballanalyzer/)
 
