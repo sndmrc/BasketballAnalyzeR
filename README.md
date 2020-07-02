@@ -3,10 +3,8 @@ Contains data and code to accompany the book
 **P. Zuccolotto and M. Manisera (2020) Basketball Data Science. Applications with R. CRC Press. ISBN 9781138600799.**
 
 ### Developers 
-Marco Sandri, Paola Zuccolotto, Marica Manisera
-
-Big and Open Data Innovation Laboratory (BODaI-Lab)
-
+Marco Sandri, Paola Zuccolotto, Marica Manisera  
+Big and Open Data Innovation Laboratory (BODaI-Lab)  
 University of Brescia, Italy
 
 ### Installation
