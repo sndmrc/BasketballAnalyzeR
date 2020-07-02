@@ -47,6 +47,11 @@ PbP.BDB
 \description{
 In this play-by-play data frame (NBA 2017-2018 Championship), the cases (rows) are the events occurred during the analyzed games and the variables (columns) are descriptions of the events in terms of type, time, players involved, score, area of the court.
 }
+\details{
+This data set has been kindly made available by \href{https://www.bigdataball.com/}{BigDataBall}, a data provider which leverages computer-vision technologies to richen and extend sports datasets with lots of unique metrics. Since its establishment, BigDataBall has also supported many academic studies and is referred as a reliable source of validated and verified stats for NBA, MLB, NFL and WNBA.
+
+The functions of BasketballAnalyzeR requiring play-by-play data as input need a data frame with some additional variables with respect to PbP.BDB. It can be obtained by means of the function \code{\link{PbPmanipulation}}.
+}
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
