@@ -4,7 +4,9 @@ Contains data and code to accompany the book
 
 ### Developers 
 Marco Sandri, Paola Zuccolotto, Marica Manisera
+
 Big and Open Data Innovation Laboratory (BODaI-Lab)
+
 University of Brescia, Italy
 
 ### Installation
