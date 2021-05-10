@@ -533,4 +533,9 @@ minutesplayed <- function(PbP_data, player_name, totaltime = 0, score_difference
 
 
 #' @noRd
+playeronthefield <- function(PbP.row, player_name)
+{
+  return( ( (PbP.row$isHome[1] == TRUE) & (player_name %in% c(toString(PbP.row$h1[1]), toString(PbP.row$h2[1]), toString(PbP.row$h3[1]), toString(PbP.row$h4[1]), toString(PbP.row$h5[1]) ) ) ) |  ( (PbP.row$isHome[1] == FALSE) & (player_name %in% c(toString(PbP.row$a1[1]), toString(PbP.row$a2[1]), toString(PbP.row$a3[1]),toString(PbP.row$a4[1]),toString(PbP.row$a5[1]) ) ) ) )
+}
+
 
