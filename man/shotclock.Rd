@@ -17,9 +17,9 @@ shotclock(
 \arguments{
 \item{PbP_data}{a play-by-play dataframe, previously handled by the function PbPmanipulation}
 
-\item{team_data}{a Tadd dataframe}
+\item{team_data}{dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. If the teams in the play-by-play data studied are the same as in the 2017-18 season, \code{Tadd} (the dataframe contained in the \code{BasketballAnalyzeR} package, regarding the 2017-18 season) can be used}
 
-\item{sec_14_after_oreb}{boolean, it indicates if the shotclock has been set to 14 seconds in certain situations. It has to be true if the data have been recorded after the 2018-19 season}
+\item{sec_14_after_oreb}{boolean, it indicates if the shotclock has been set to 14 seconds in certain situations. It has to be true if the data have been recorded after the 2018-19 season. The default value is \code{FALSE}}
 
 \item{report}{boolean, if TRUE, the function prints a few details about some data which have a negative value of shotclock (and therefore have been correceted)}
 
@@ -40,7 +40,7 @@ It is necessary that the name of the team is contained in the column correspondi
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)
-PbP <- shotclock(PbP, Tadd)
+PbP <- shotclock(PbP_data = PbP, team_data = Tadd)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

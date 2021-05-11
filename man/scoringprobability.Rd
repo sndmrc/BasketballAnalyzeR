@@ -27,7 +27,7 @@ scoringprobability(
 
 \item{shot_type}{character, the type of shots to be analyzed; available options: "2P", "3P", "FT", "field"}
 
-\item{team_data}{dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. It doesn't have to be changed if the teams in the play-by-play considered are the same as in the 2017-18 season}
+\item{team_data}{dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. If the teams in the play-by-play data studied are the same as in the 2017-18 season, \code{Tadd} (the dataframe contained in the \code{BasketballAnalyzeR} package, regarding the 2017-18 season) can be used}
 }
 \value{
 numeric value, indicating the probability that a shots which respects all the conditions defined is made
@@ -64,4 +64,7 @@ scoringprobability(PbP, team_name = "GSW", totaltime = 43, shot_type = "FT",
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 
 P. Zuccolotto, M. Manisera and M. Sandri (2018) Big data analytics for modeling scoring probability in basketball: The effect of shooting under high pressure conditions. International Journal of Sports Science & Coaching.
+}
+\author{
+Andrea Fox
 }

@@ -1,8 +1,9 @@
 #' Computes, for each action, an estimate of the value of the shotclock when the action has ended
+#'
 #' @author Andrea Fox
 #' @param PbP_data  a play-by-play dataframe, previously handled by the function PbPmanipulation
-#' @param team_data  a Tadd dataframe
-#' @param sec_14_after_oreb boolean, it indicates if the shotclock has been set to 14 seconds in certain situations. It has to be true if the data have been recorded after the 2018-19 season
+#' @param team_data dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. If the teams in the play-by-play data studied are the same as in the 2017-18 season, \code{Tadd} (the dataframe contained in the \code{BasketballAnalyzeR} package, regarding the 2017-18 season) can be used
+#' @param sec_14_after_oreb boolean, it indicates if the shotclock has been set to 14 seconds in certain situations. It has to be true if the data have been recorded after the 2018-19 season. The default value is \code{FALSE}
 #' @param report boolean, if TRUE, the function prints a few details about some data which have a negative value of shotclock (and therefore have been correceted)
 #' @param verbose boolean, if TRUE, adds some comments about the computations
 #' @param seconds_added_after_made_shot numeric value, after a shot is made the period clock is not stopped (unless it is in the last minutes of each quarter), hence a certain number of seconds has to be added in order to take account of the seconds taken for the inbound pass
@@ -13,7 +14,7 @@
 #' @references P. Zuccolotto, M. Manisera and M. Sandri (2018) Big data analytics for modeling scoring probability in basketball: The effect of shooting under high pressure conditions. International Journal of Sports Science & Coaching.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
-#' PbP <- shotclock(PbP, Tadd)
+#' PbP <- shotclock(PbP_data = PbP, team_data = Tadd)
 #' @export
 
 

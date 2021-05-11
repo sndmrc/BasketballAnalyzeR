@@ -19,11 +19,11 @@ shotperformance(
 )
 }
 \arguments{
-\item{PbP_data}{a play-by-play dataframe, previously handled by the functions PbPmanipulation, shotclock and score_difference}
+\item{PbP_data}{a play-by-play dataframe, previously handled by the functions PbPmanipulation, shotclock and scoredifference}
 
-\item{player_data}{dataframe containing the boxscore of the whole season for all teams. We only need it to know the players who have played at least one match for every team during the season. The default one is the Pbox dataframe contained in the BasketballAnalyzeR package, which features data regarding the 2017-18 season. This dataframe might be substituted by a dataframe which has a column \code{Player} containing in each row the name of the players and a second columd \code{Team} containing the extended name (e.g. Golden State Warriors) of the team in which the player has played at least one match. If a player has played at least one match for more than one team during the same season, he/she will have a row for each franchise where has played}
+\item{player_data}{dataframe containing the boxscore data of all players of a particula season. We need it to know the players who have played at least one match for a team during the season. This dataframe might be substituted by a dataframe which has a column \code{Player} containing in each row the name of the players and a second columd \code{Team} containing the extended name (e.g. Golden State Warriors) of the team in which the player has played at least one match. If a player has played at least one match for more than one team during the same season, he/she will have a row for each franchise where has played}
 
-\item{team_data}{dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. It doesn't have to be changed if the teams in the play-by-play considered are the same as in the 2017-18 season}
+\item{team_data}{dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. If the teams in the play-by-play data studied are the same as in the 2017-18 season, \code{Tadd} (the dataframe contained in the \code{BasketballAnalyzeR} package, regarding the 2017-18 season) can be used}
 
 \item{shotclock_interval}{vector of two numeric values or single numeric value, condition on the value of shotclock of the shots that will be considered}
 
@@ -31,7 +31,7 @@ shotperformance(
 
 \item{score_difference}{numeric value, condition on the value of totalTime of the shots that will be considered}
 
-\item{shot_type}{character, the type of shots to be analyzed; available options: "2P", "3P", "FT"}
+\item{shot_type}{character, the type of shots to be analyzed; available options: "2P", "3P", "FT", "field"}
 
 \item{min_shots}{minimum value of total shots that a player must have attempted in order to qualify for the computation of the performance statistic}
 
@@ -54,7 +54,7 @@ PbP <- PbPmanipulation(PbP.BDB)
 PbP <- scoredifference(PbP_data = PbP, team_name = "GSW", player_data=Pbox, team_data = Tadd)
 PbP <- shotclock(PbP_data = PbP, sec_14_after_oreb = FALSE, team_data = Tadd)
 shotperformance(PbP_data = PbP, player_data = Pbox, team_data = Tadd,
-                shotclock_interval = c(0, 2) , shot_type = "2P"  )
+                shotclock_interval = c(0, 2) , shot_type = "2P")
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

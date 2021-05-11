@@ -1,12 +1,13 @@
 #' Computes the probability of scoring certain shot types in certain conditions, by looking at the result of the shots in the PbP provided
 #'
-#' @param PbP_data  a play-by-play dataframe, previously handled by the PbPmanipulation function
+#' @author Andrea Fox
+#' @param PbP_data a play-by-play dataframe, previously handled by the PbPmanipulation function
 #' @param team_name character, if the play-by-play dataframe given as an input contains data for multiple teams, this parameters filters only the shots of the team we are interested in
 #' @param shotclock_interval vector of two numeric values or single numeric value, condition on the value of shotclock of the shots that will be considered
 #' @param score_difference vector of two numeric values or single numeric value, condition on the value of shotclock of the shots that will be considered
 #' @param totaltime numeric value, condition on the value of totalTime of the shots that will be considered
 #' @param shot_type character, the type of shots to be analyzed; available options: "2P", "3P", "FT", "field"
-#' @param team_data dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. It doesn't have to be changed if the teams in the play-by-play considered are the same as in the 2017-18 season
+#' @param team_data dataframe, contains several data regarding the teams in the NBA. Inside this function it is used only to check if \code{team_name} corresponds to a team in the NBA. If the teams in the play-by-play data studied are the same as in the 2017-18 season, \code{Tadd} (the dataframe contained in the \code{BasketballAnalyzeR} package, regarding the 2017-18 season) can be used
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @references P. Zuccolotto, M. Manisera and M. Sandri (2018) Big data analytics for modeling scoring probability in basketball: The effect of shooting under high pressure conditions. International Journal of Sports Science & Coaching.
 #' @return numeric value, indicating the probability that a shots which respects all the conditions defined is made
