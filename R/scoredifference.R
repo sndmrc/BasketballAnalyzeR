@@ -17,7 +17,6 @@
 #' @export
 #'
 
-
 scoredifference <- function(PbP_data, team_name, player_data, team_data) {
 
   team <- NULL; oppTeam <- NULL; event_type <- NULL;
@@ -96,6 +95,9 @@ comparenames <- function(pbox_name, pbp_name) {
   diff_1 <- setdiff( strsplit(pbox_name, split = "")[[1]], strsplit(pbp_name, split = "")[[1]] ) %in% c(".", "'", "-")
   diff_2 <- setdiff( strsplit(pbp_name, split = "")[[1]], strsplit(pbox_name, split = "")[[1]] ) %in% c(".", "'", "-")
   equal <- TRUE
+
+  if (pbox_name != pbp_name  & length(diff_1) == 0 & length(diff_2) == 0)
+    equal <- FALSE
   if (length(diff_1) > 0)
   {
     for (i in 1:length(diff_1))
