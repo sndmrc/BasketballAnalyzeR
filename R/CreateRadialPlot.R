@@ -142,7 +142,7 @@ CreateRadialPlot <- function(plot.data,
   }
 
   CalculateAxisPath = function(var.names,min,max) {
-    #Caculates x-y coordinates for a set of radial axes (one per variable being plotted in radar plot)
+    #Calculates x-y coordinates for a set of radial axes (one per variable being plotted in radar plot)
 
     #Args:
     #var.names - list of variables to be plotted on radar plot
