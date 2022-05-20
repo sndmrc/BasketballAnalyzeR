@@ -102,7 +102,7 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
 
   p <- p +
     ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
-    scale_alpha(guide=FALSE) +
+    scale_alpha(guide='none') +
     ggnetwork::theme_blank()
 
   return(p)

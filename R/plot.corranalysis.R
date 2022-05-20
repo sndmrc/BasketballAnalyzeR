@@ -90,7 +90,7 @@ plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
       ggnetwork::geom_nodes(shape=21, fill="#D6EAF877", color="#3498DB77", size=15) +
       ggnetwork::geom_edges(aes(color=edge.color), size=1.5) +
       scale_colour_gradientn("", colors = cols, limits=c(-1,1)) +
-      scale_alpha(guide=FALSE) +
+      scale_alpha(guide='none') +
       ggnetwork::geom_nodetext_repel(aes(label=vertex.names)) +
       ggnetwork::theme_blank()
   } else {

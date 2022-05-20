@@ -92,7 +92,7 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       xmax <- zoom[2]
       ymin <- zoom[3]
       ymax <- zoom[4]
-      p <- p + xlim(c(xmin, xmax)) + ylim(c(ymin, ymax))
+      p <- p + coord_cartesian(xlim=c(xmin, xmax), ylim=c(ymin, ymax))
     }
 
     if (is.null(subset)) { ### if 'subset' is not defined

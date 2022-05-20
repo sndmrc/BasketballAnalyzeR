@@ -77,10 +77,10 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
   if (is.null(z.var)) { ### If 'z.var' is NULL
     listPlots <- vector(1, mode = "list")
     p <- scatterplot(data=config, data.var=c("X1","X2"), labels=labels, repel_labels=repel_labels,
-           text_label=text_label, subset=subset, col.subset = col.subset, zoom = zoom, title = title)
+           text_label=text_label, subset=subset, col.subset = col.subset, zoom = NULL, title = title)
     p <- p + xlab("") + ylab("") +
       annotate(geom = "text", label = subtitle, x = Inf, y = Inf, hjust = 1, vjust = -1) +
-      coord_cartesian(clip = 'off')
+      coord_cartesian(xlim=c(zoom[1], zoom[2]), ylim=c(zoom[3], zoom[4]), clip = 'off')
     listPlots[[1]] <- p
   } else if (!is.null(z.var) & !level.plot) {  ### If 'z.var' is not NULL & level.plot=FALSE
     nv <- length(z.var)
