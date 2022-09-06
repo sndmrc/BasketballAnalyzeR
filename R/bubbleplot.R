@@ -17,6 +17,8 @@
 #' @param title character, plot title.
 #' @param repel logical; if \code{TRUE}, activate text repelling.
 #' @param text.legend logical; if \code{TRUE}, show the legend for text color.
+#' @param hline logical; if \code{TRUE}, a horizontal line is drawn with y intercept at the mean value of the variable on the y axis.
+#' @param vline logical; if \code{TRUE}, a vertical line is drawn with x intercept at the mean value of the variable on the x axis.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A \code{ggplot2} object
 #' @examples
@@ -33,8 +35,10 @@
 #' @importFrom ggplot2 geom_vline
 #' @importFrom dplyr mutate
 
-bubbleplot <- function(data, id, x, y, col, size, text.col=NULL, text.size=2.5, scale.size=TRUE, labels = NULL, mx = NULL, my = NULL,
-                       mcol = NULL, title = NULL, repel = TRUE, text.legend=TRUE) {
+bubbleplot <- function(data, id, x, y, col, size, text.col=NULL, text.size=2.5,
+                       scale.size=TRUE, labels = NULL, mx = NULL, my = NULL,
+                       mcol = NULL, title = NULL, repel = TRUE, text.legend=TRUE,
+                       hline=TRUE, vline=TRUE) {
 
   ID <- textColor <- NULL
   if (is.null(text.col)) {
@@ -70,9 +74,16 @@ bubbleplot <- function(data, id, x, y, col, size, text.col=NULL, text.size=2.5, 
   p <- ggplot(dts, aes(x = x, y = y, label = ID)) +
     geom_point(aes(size = size, fill = col), shape = 21, colour = "white") +
     scale_size_area(max_size = 10, guide = guide_legend(override.aes = list(colour = "black", fill="black"))) +
-    geom_hline(yintercept = my) +  geom_vline(xintercept = mx) +
     labs(x = labels[1], y = labels[2], fill = labels[3], size = labels[4], title = title) +
     xlim(xmin, xmax) + ylim(ymin, ymax)
+
+  if (hline) {
+    p <- p + geom_hline(yintercept = my)
+  }
+
+  if (vline) {
+    p <- p + geom_vline(xintercept = mx)
+  }
 
   if (!is.factor(dts$col)) {
     p <- p + scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = mcol)
