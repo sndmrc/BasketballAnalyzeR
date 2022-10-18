@@ -20,7 +20,9 @@ bubbleplot(
   mcol = NULL,
   title = NULL,
   repel = TRUE,
-  text.legend = TRUE
+  text.legend = TRUE,
+  hline = TRUE,
+  vline = TRUE
 )
 }
 \arguments{
@@ -38,7 +40,7 @@ bubbleplot(
 
 \item{text.col}{character, name of variable for text colors.}
 
-\item{text.size}{integer, text font size.}
+\item{text.size}{numeric, text font size (default 2.5).}
 
 \item{scale.size}{logical; if \code{TRUE}, size variable is rescaled between 0 and 100.}
 
@@ -55,6 +57,10 @@ bubbleplot(
 \item{repel}{logical; if \code{TRUE}, activate text repelling.}
 
 \item{text.legend}{logical; if \code{TRUE}, show the legend for text color.}
+
+\item{hline}{logical; if \code{TRUE}, a horizontal line is drawn with y intercept at the mean value of the variable on the y axis.}
+
+\item{vline}{logical; if \code{TRUE}, a vertical line is drawn with x intercept at the mean value of the variable on the x axis.}
 }
 \value{
 A \code{ggplot2} object

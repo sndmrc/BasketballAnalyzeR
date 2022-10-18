@@ -12,6 +12,7 @@
   labels = NULL,
   repel_labels = FALSE,
   text_label = TRUE,
+  label_size = 3,
   subset = NULL,
   col.subset = "gray50",
   zoom = NULL,
@@ -35,6 +36,8 @@
 \item{repel_labels}{logical; if \code{TRUE}, draw text labels using repelling (not for highlighted points) (see \code{\link[ggrepel]{geom_text_repel}}).}
 
 \item{text_label}{logical; if \code{TRUE}, draw a rectangle behind the text labels (not active if \code{subset=NULL}).}
+
+\item{label_size}{numeric;  label font size (default \code{label_size=3}, for scatter plots).}
 
 \item{subset}{logical vector, to select a subset of points to be highlighted.}
 

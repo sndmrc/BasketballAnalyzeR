@@ -4,7 +4,14 @@
 \alias{plot.kclustering}
 \title{Plot k-means clustering from a 'kclustering' object}
 \usage{
-\method{plot}{kclustering}(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...)
+\method{plot}{kclustering}(
+  x,
+  title = NULL,
+  ncol.arrange = NULL,
+  min.mid.max = NULL,
+  label.size = 2.5,
+  ...
+)
 }
 \arguments{
 \item{x}{an object of class \code{kclustering}.}
@@ -14,6 +21,8 @@
 \item{ncol.arrange}{integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).}
 
 \item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).}
+
+\item{label.size}{numeric; label font size (default 2.5).}
 
 \item{...}{other graphical parameters.}
 }

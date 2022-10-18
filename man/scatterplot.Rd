@@ -12,6 +12,7 @@ scatterplot(
   labels = NULL,
   repel_labels = FALSE,
   text_label = TRUE,
+  label_size = 3,
   subset = NULL,
   col.subset = "gray50",
   zoom = NULL,
@@ -38,6 +39,8 @@ scatterplot(
 \item{repel_labels}{logical; if \code{TRUE}, draws text labels of not highlighted points using repelling (active when plotting a single scatter plot; see Value).}
 
 \item{text_label}{logical; if \code{TRUE}, draws a rectangle behind the labels of highlighted points (active when plotting a single scatter plot; see Value).}
+
+\item{label_size}{numeric;  label font size (default \code{label_size=3}).}
 
 \item{subset}{logical or numeric vector, to select a subset of points to be highlighted (active when plotting a single scatter plot; see Value).}
 

@@ -10,7 +10,8 @@ radialprofile(
   std = TRUE,
   title = NULL,
   ncol.arrange = NULL,
-  min.mid.max = NULL
+  min.mid.max = NULL,
+  label.size = 2.5
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ radialprofile(
 \item{ncol.arrange}{integer, number of columns in the grid of arranged plots.}
 
 \item{min.mid.max}{numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis.}
+
+\item{label.size}{numeric; label font size (default 2.5).}
 }
 \value{
 A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
