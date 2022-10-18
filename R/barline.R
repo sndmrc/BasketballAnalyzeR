@@ -68,20 +68,20 @@ barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.b
     dplyr::mutate(Line = !!rlang::sym(line)) %>%
     dplyr::rename(ID=!!id) %>%
     dplyr::mutate(rsum=rowSums(dplyr::select(., bars))) %>%
-    dplyr::mutate(y=Line*max(rsum)/max(Line)) %>%
+    dplyr::mutate(y=(Line-min(Line))*max(rsum)/(max(Line)-min(Line))) %>%
     dplyr::slice(ord_df2) %>%
     dplyr::mutate(x=1:dplyr::n())
-
   p <- ggplot(data=df1, aes(x=ID, y=Value, fill=Variables,
                        text=paste("Team:",ID,"<br>Variable:",Variables))) +
     geom_bar(stat="identity") +
     scale_fill_brewer(labels=labels.bars, palette="Paired") +
-    theme(legend.position="top") + ggtitle(title) +
-    labs(x="", caption=paste("Bars ordered by",order.by)) +
-    theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.25),
-          panel.background = element_blank()) +
+    labs(x="", caption=paste("Bars ordered by",order.by), title=title) +
     geom_line(data=df2, mapping=aes(x=x, y=y), lwd=1.5, col='grey', inherit.aes=F) +
     scale_y_continuous(name="Variables", limits=c(0,NA),
-                       sec.axis=sec_axis(~.*max(df2$Line)/max(df2$rsum), name=label.line))
+                       sec.axis=sec_axis(~ .*(max(df2$Line)-min(df2$Line))/(max(df2$rsum))+min(df2$Line), name=label.line)
+                       ) +
+    theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.25),
+          panel.background = element_blank(),
+          legend.position="top")
   return(p)
 }

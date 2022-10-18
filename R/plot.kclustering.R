@@ -48,8 +48,8 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
       geom_line(data = df2, aes(x = x, y = y), linetype = 2) +
       geom_point(data = df2, aes(x = x, y = y), size = 6, colour = "white") +
       geom_point(data = df2, aes(x = x, y = y), shape = 0, size = 2) +
-      ggrepel::geom_text_repel(data = df2, aes(x = x, y = y, label = label), vjust = +2) +
-      ggrepel::geom_text_repel(data = df3, aes(x = x, y = y, label = label), vjust = +2) +
+      ggrepel::geom_text_repel(data = df2, aes(x = x, y = y, label = label), force=2) +
+      ggrepel::geom_text_repel(data = df3, aes(x = x, y = y, label = label), force=2) +
       scale_x_continuous(breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
       xlab("Number of clusters") + ylab("BD/TD - Increments") +
       theme_bw()
