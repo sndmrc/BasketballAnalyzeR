@@ -9,7 +9,7 @@
 #' @param subset logical or numeric vector, to select a subset of points to be highlighted (active when plotting a single scatter plot; see Value).
 #' @param repel_labels logical; if \code{TRUE}, draws text labels of not highlighted points using repelling (active when plotting a single scatter plot; see Value).
 #' @param text_label logical; if \code{TRUE}, draws a rectangle behind the labels of highlighted points (active when plotting a single scatter plot; see Value).
-#' @param label_size integer number;  label font size (default \code{label_size=3}).
+#' @param label_size numeric;  label font size (default \code{label_size=3}).
 #' @param col.subset character, color for the labels and rectangles of highlighted points (active when plotting a single scatter plot; see Value).
 #' @param zoom  numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (active when plotting a single scatter plot; see Value).
 #' @param title character, plot title.

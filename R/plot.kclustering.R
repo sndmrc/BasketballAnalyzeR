@@ -5,6 +5,7 @@
 #' @param title character or vector of characters (when plotting radial plots of cluster profiles; see Value), plot title(s).
 #' @param ncol.arrange integer, number of columns when arranging multiple grobs on a page (active when plotting radial plots of cluster profiles; see Value).
 #' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis (active when plotting radial plots of cluster profiles; see Value).
+#' @param label.size numeric; label font size (default 2.5).
 #' @param ... other graphical parameters.
 #' @seealso \code{\link{kclustering}}, \code{\link{radialprofile}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
@@ -25,7 +26,7 @@
 #' @export
 
 
-plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, ...) {
+plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max = NULL, label.size=2.5, ...) {
 
   if (!is.kclustering(x)) {
     stop("Not a 'kclustering' object")
@@ -72,7 +73,7 @@ plot.kclustering <- function(x, title = NULL, ncol.arrange = NULL, min.mid.max =
       min.mid.max <- c(ming,midg,maxg)
     }
     p <- radialprofile(data=profiles[,-pos.clst.nm], title=title, ncol.arrange=ncol.arrange,
-                       std=FALSE, min.mid.max=min.mid.max)
+                       std=FALSE, min.mid.max=min.mid.max, label.size=label.size)
   }
 
   if (!is.ggplot(p)) {

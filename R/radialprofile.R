@@ -7,7 +7,7 @@
 #' @param title character vector, titles for radial plots.
 #' @param ncol.arrange  integer, number of columns in the grid of arranged plots.
 #' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis.
-#' @param label.size integer number; label font size (default 2.5).
+#' @param label.size numeric; label font size (default 2.5).
 #' @seealso \code{\link{plot.kclustering}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
