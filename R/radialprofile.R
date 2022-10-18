@@ -7,6 +7,7 @@
 #' @param title character vector, titles for radial plots.
 #' @param ncol.arrange  integer, number of columns in the grid of arranged plots.
 #' @param min.mid.max numeric vector with 3 elements: lower bound, middle dashed line, upper bound for radial axis.
+#' @param label.size integer number; label font size (default 2.5).
 #' @seealso \code{\link{plot.kclustering}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A list of \code{ggplot2} radial plots or, if \code{ncol.arrange=NULL}, a single \code{ggplot2} plot of arranged radial plots
@@ -21,7 +22,7 @@
 #' @importFrom gridExtra grid.arrange
 
 radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
-                          ncol.arrange = NULL, min.mid.max=NULL) {
+                          ncol.arrange = NULL, min.mid.max=NULL, label.size=2.5) {
 
   # Set plot titles
   if (is.null(title)) {
@@ -86,7 +87,8 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
     listggplots[[i]] <- CreateRadialPlot(X, grid.min = ming, grid.mid = midg, grid.max = maxg,
                                        label.gridline.min = F, gridline.mid.colour = "dodgerblue", group.line.width = 0.7,
                                        group.point.size = 2, label.centre.y = F, background.circle.colour = "dodgerblue",
-                                       plot.extent.x.sf = 1.2, plot.extent.y.sf = 1.2, titolo = TRUE)
+                                       plot.extent.x.sf = 1.2, plot.extent.y.sf = 1.2, titolo = TRUE,
+                                       axis.label.size=label.size)
   }
   names(listggplots) <- profile[, 1]
 

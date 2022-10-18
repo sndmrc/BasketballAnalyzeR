@@ -8,7 +8,7 @@
 #' @param col character, name of variable on the color axis.
 #' @param size character, name of variable on the size axis.
 #' @param text.col character, name of variable for text colors.
-#' @param text.size integer, text font size.
+#' @param text.size integer, text font size (default 2.5).
 #' @param scale.size logical; if \code{TRUE}, size variable is rescaled between 0 and 100.
 #' @param labels character vector, variable labels (on legend and axis).
 #' @param mx numeric, x-coordinate of the vertical axis; default is the mean value of \code{x} variable.

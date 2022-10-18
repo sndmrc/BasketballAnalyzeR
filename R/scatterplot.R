@@ -9,6 +9,7 @@
 #' @param subset logical or numeric vector, to select a subset of points to be highlighted (active when plotting a single scatter plot; see Value).
 #' @param repel_labels logical; if \code{TRUE}, draws text labels of not highlighted points using repelling (active when plotting a single scatter plot; see Value).
 #' @param text_label logical; if \code{TRUE}, draws a rectangle behind the labels of highlighted points (active when plotting a single scatter plot; see Value).
+#' @param label_size integer number;  label font size (default \code{label_size=3}).
 #' @param col.subset character, color for the labels and rectangles of highlighted points (active when plotting a single scatter plot; see Value).
 #' @param zoom  numeric vector with 4 elements; \code{c(xmin,xmax,ymin,ymax)} for the x- and y-axis limits of the plot (active when plotting a single scatter plot; see Value).
 #' @param title character, plot title.
@@ -35,7 +36,7 @@
 #' @importFrom ggplot2 is.ggplot
 
 scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, repel_labels=FALSE, text_label=TRUE,
-                        subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend=TRUE,
+                        label_size=3, subset = NULL, col.subset='gray50', zoom = NULL, title = NULL, legend=TRUE,
                         upper = list(continuous = "cor", combo = "box_no_facet", discrete = "facetbar", na = "na"),
                         lower=list(continuous = "points", combo = "facethist", discrete = "facetbar", na = "na"),
                         diag = list(continuous = "densityDiag", discrete = "barDiag", na = "naDiag")) {
@@ -100,9 +101,9 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
         p <- p + geom_point()
       } else {
         if (repel_labels) {
-          p <- p + ggrepel::geom_text_repel(aes(label = labels), size = 3)
+          p <- p + ggrepel::geom_text_repel(aes(label = labels), size = label_size)
         } else {
-          p <- p + geom_text(aes(label = labels), size = 3)
+          p <- p + geom_text(aes(label = labels), size = label_size)
         }
       }
     } else {  ### if 'subset' is defined
@@ -116,17 +117,17 @@ scatterplot <- function(data, data.var, z.var=NULL, palette=NULL, labels=NULL, r
       } else {
         if (repel_labels) {
           p <- p + ggrepel::geom_text_repel(data=subset1, aes(label=subset1.labels),
-                                            size = 3)
+                                            size = label_size)
         } else {
           p <- p + geom_text(data=subset1, aes(label=subset1.labels),
-                             size = 3)
+                             size = label_size)
         }
         if (text_label) {
           p <- p + ggrepel::geom_label_repel(data = subset2, aes(label=subset2.labels),
-                                             size = 4, col = col.subset, fontface = 2)
+                                             size = label_size+1, col = col.subset, fontface = 2)
         } else {
           p <- p + ggrepel::geom_text_repel(data = subset2, aes(label=subset2.labels),
-                                            size = 4, col = col.subset, fontface = 2)
+                                            size = label_size+1, col = col.subset, fontface = 2)
         }
       }
     }
