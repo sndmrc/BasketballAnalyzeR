@@ -74,7 +74,6 @@ The \code{data} data frame could also be a play-by-play dataset provided that ro
 PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW")
 out <- assistnet(PbP.GSW)
-plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

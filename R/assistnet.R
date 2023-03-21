@@ -24,7 +24,6 @@
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW")
 #' out <- assistnet(PbP.GSW)
-#' plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
 #' @export
 #' @importFrom network set.vertex.attribute
 #' @importFrom tidyr replace_na

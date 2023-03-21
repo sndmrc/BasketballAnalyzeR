@@ -66,9 +66,9 @@ radialprofile <- function(data, perc = FALSE, std = TRUE, title = NULL,
     } else if (!perc & std) {
       mn <- min(profile[, -1])
       mx <- max(profile[, -1])
-      ming <- -max(mn,mx)
+      ming <- -max(abs(mn),abs(mx))
       midg <- 0
-      maxg <- max(mn,mx)
+      maxg <- max(abs(mn),abs(mx))
     } else {
       ming <- min(profile[, -1])
       midg <- (min(profile[, -1]) + max(profile[, -1]))/2

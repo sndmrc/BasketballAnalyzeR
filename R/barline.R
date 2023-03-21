@@ -52,7 +52,7 @@ barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.b
   }
 
   var_ord <- data[[order.by]]
-  if (class(var_ord)=="factor") {
+  if (is.factor(var_ord)) {
     ord_df1 <- order(levels(var_ord), decreasing=decreasing)
     ord_df2 <- match(levels(df1$ID)[ord_df1], data[[id]])
   } else {

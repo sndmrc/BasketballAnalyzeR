@@ -33,7 +33,6 @@ data <- data.frame(Pbox$PTS,Pbox$P3M,Pbox$P2M,
 names(data) <- c("PTS","P3M","P2M","REB","AST","TOV","STL","BLK")
 data <- subset(data, Pbox$MIN >= 500)
 out <- corranalysis(data, threshold = 0.5)
-plot(out)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
