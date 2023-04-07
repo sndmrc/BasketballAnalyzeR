@@ -55,6 +55,7 @@
 #' @importFrom ggplot2 coord_fixed
 #' @importFrom ggplot2 guides
 #' @importFrom ggplot2 ggplot_build
+#' @importFrom ggplot2 after_stat
 #' @importFrom PBSmapping as.PolySet
 #' @importFrom PBSmapping calcCentroid
 #' @importFrom sp point.in.polygon
@@ -80,7 +81,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
     parse(text=l)
   }
 
-  X <- Y <- angle <- nsegm <- sector <- ..density.. <- ..level.. <- NULL
+  X <- Y <- angle <- nsegm <- sector <- density <- level <- NULL
   pal <- BbA_pal(palette=palette)
 
   df1 <- data.frame(x=data[,x], y=data[,y], z=data[,z], result=data[,result])
@@ -176,7 +177,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
 
   } else if (type=="density-polygons") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
-      stat_density_2d(aes(fill = ..level..), geom = "polygon", colour="white") +
+      stat_density_2d(aes(fill = after_stat(level)), geom = "polygon", colour="white") +
       scale_fill_gradientn(name="Density\n(log)", colours = pal(256), trans='log', labels=fancy_scientific)
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col,
@@ -195,7 +196,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
 
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
-      stat_density_2d(aes(fill = ..density..), geom = "raster", contour = F) +
+      stat_density_2d(aes(fill = after_stat(density)), geom = "raster", contour = F) +
       scale_fill_distiller(palette="Spectral", direction=-1, labels=fancy_scientific)
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,

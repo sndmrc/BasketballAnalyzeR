@@ -38,7 +38,7 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
   if (!is.MDSmap(x)) {
     stop("Not a 'MDSmap' object")
   }
-  X1 <- X2 <- Z <- '..level..' <- NULL
+  X1 <- X2 <- Z <- level <- NULL
   if (!is.null(z.var)) {
     if (!inherits(data, "dist")) {
       data <- x$data
@@ -127,7 +127,7 @@ plot.MDSmap <- function(x, z.var = NULL, level.plot=TRUE,  title = NULL, labels 
         xlab("") + ylab("") + theme(panel.background = element_blank())
       if (contour) {
         p <- p + geom_contour(color = "black", alpha = 0.5, show.legend = TRUE) +
-          directlabels::geom_dl(aes(label = ..level..),
+          directlabels::geom_dl(aes(label = after_stat(level)),
                                 method = "far.from.others.borders", stat = "contour")
       }
       listPlots[[k]] <- p

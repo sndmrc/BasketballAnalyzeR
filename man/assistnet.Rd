@@ -9,7 +9,10 @@ assistnet(
   assist = "assist",
   player = "player",
   points = "points",
-  event.type = "event_type"
+  event.type = "event_type",
+  normalize = FALSE,
+  period.length = 12,
+  time.thr = 0
 )
 }
 \arguments{
@@ -22,6 +25,12 @@ assistnet(
 \item{points}{character, indicating the name of the variable with points.}
 
 \item{event.type}{character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).}
+
+\item{normalize}{logical, if \code{TRUE} normalize the number of assist: (number of assists)/(minutes played by each couple of players)\emph{4}playlength (default \code{normalize=FALSE}).}
+
+\item{period.length}{numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)}
+
+\item{time.thr}{numerical, (default \code{time.thr=0})}
 }
 \value{
 A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.

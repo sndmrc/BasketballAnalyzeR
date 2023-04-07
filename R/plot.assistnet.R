@@ -47,8 +47,14 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
     stop("Not a 'assistnet' object")
   }
   y <- xend <- yend <- N <- player <- vertex.names <- NULL
+  normalize <- x[["normalize"]]
+  period.length <- x[["period.length"]]
   net <- x[["assistNet"]]
-  tbl <- x[["assistTable"]]
+  if (normalize) {
+    tbl <- x[["assistminTable"]]
+  } else {
+    tbl <- x[["assistTable"]]
+  }
 
   if (!is.null(node.size) & !is.null(node.col)) { ####
     if (is.null(node.col.lab)) {
@@ -77,7 +83,9 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
   if (is.null(edge.col.lim)) {
     edge.col.lim <- range(tbl)
   }
-  if (is.null(edge.col.lab)) {
+  if (is.null(edge.col.lab) & normalize) {
+    edge.col.lab <- paste0("Edge color:\nnumber of assists\nper", 4*period.length," min")
+  } else if (is.null(edge.col.lab) & !normalize) {
     edge.col.lab <- "Edge color:\nnumber of assists"
   }
 
