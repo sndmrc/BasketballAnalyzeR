@@ -84,7 +84,7 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
     edge.col.lim <- range(tbl)
   }
   if (is.null(edge.col.lab) & normalize) {
-    edge.col.lab <- paste0("Edge color:\nnumber of assists\nper", 4*period.length," min")
+    edge.col.lab <- paste0("Edge color:\nnumber of assists\nper ", 4*period.length," min")
   } else if (is.null(edge.col.lab) & !normalize) {
     edge.col.lab <- "Edge color:\nnumber of assists"
   }
