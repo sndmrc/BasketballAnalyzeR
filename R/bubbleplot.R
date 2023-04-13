@@ -72,7 +72,7 @@ bubbleplot <- function(data, id, x, y, col, size, text.col=NULL, text.size=2.5,
     dts$size <- (dts$size - min(dts$size))/(max(dts$size) - min(dts$size)) * 100
   }
   p <- ggplot(dts, aes(x = x, y = y, label = ID)) +
-    geom_point(aes(size = size, fill = col), shape = 21, colour = "white") +
+    geom_point(aes(size = size, fill = col), shape = 21, colour = "gray") +
     scale_size_area(max_size = 10, guide = guide_legend(override.aes = list(colour = "black", fill="black"))) +
     labs(x = labels[1], y = labels[2], fill = labels[3], size = labels[4], title = title) +
     xlim(xmin, xmax) + ylim(ymin, ymax)

@@ -111,9 +111,9 @@ assistnet <- function(data, assist="assist", player="player", points="points",
 }
 
 
+
 #' @noRd
 player_assist <- function(dts, players_set, k, calc_min=FALSE) {
-
   MIN.x <- MIN.y <- NULL
   # Couples of assist-player: calculating number of assists
   ktuples1 <- gtools::permutations(length(players_set), 2, players_set, repeats.allowed=TRUE)
