@@ -4,10 +4,14 @@
 \alias{PbPmanipulation}
 \title{Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR}
 \usage{
-PbPmanipulation(data)
+PbPmanipulation(data, period.length = 12, overtime.length = 5)
 }
 \arguments{
 \item{data}{a play-by-play  data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}.}
+
+\item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA)}
+
+\item{overtime.length}{numeric, the length of an overtime in minutes (default: 5 minutes as in NBA)}
 }
 \value{
 A play-by-play data frame.
