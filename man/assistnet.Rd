@@ -26,7 +26,7 @@ assistnet(
 
 \item{event.type}{character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).}
 
-\item{normalize}{logical, if \code{TRUE} normalize the number of assist: (number of assists)/(minutes played by each couple of players)\emph{4}playlength (default \code{normalize=FALSE}).}
+\item{normalize}{logical, if \code{TRUE} normalize the number of assist: 4 period.length (number of assists)/(minutes played in attack by each couple of players) (default \code{normalize=FALSE}).}
 
 \item{period.length}{numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)}
 
@@ -77,7 +77,7 @@ A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a
 Investigates the network of assists-shots in a team
 }
 \details{
-The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable.
+The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable. (To be completed)
 }
 \examples{
 PbP <- PbPmanipulation(PbP.BDB)

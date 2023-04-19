@@ -11,7 +11,7 @@ PbPmanipulation(data, period.length = 12, overtime.length = 5)
 
 \item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA)}
 
-\item{overtime.length}{numeric, the length of an overtime in minutes (default: 5 minutes as in NBA)}
+\item{overtime.length}{numeric, the length of an overtime period in minutes (default: 5 minutes as in NBA)}
 }
 \value{
 A play-by-play data frame.
