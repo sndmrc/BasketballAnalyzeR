@@ -6,10 +6,13 @@
 #' @param player character, indicating the name of the variable with players who made the shot.
 #' @param points character, indicating the name of the variable with points.
 #' @param event.type character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).
-#' @param normalize logical, if \code{TRUE} normalize the number of assist: 4 period.length (number of assists)/(minutes played in attack by each couple of players) (default \code{normalize=FALSE}).
+#' @param normalize logical, if \code{TRUE} normalize the number of assist (default \code{normalize=FALSE}, see Details).
 #' @param period.length numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)
 #' @param time.thr numerical, (default \code{time.thr=0})
+#' @description
+#' The assistnet command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
 #' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable. (To be completed)
+#' @details Normalization: \mjdeqn{4 \cdot \text{(period.length)} \cdot  \frac{(\text{number of assists})}{\text{(minutes played in attack by each couple of players)}}}{4  (period.length) (number of assists)/(minutes played in attack by each couple of players)}
 #' @return A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.
 #' @return \code{assistTable}, the cross-table of assists made and received by the players.
 #' @return \code{nodeStats}, a data frame with the following variables:
@@ -36,11 +39,13 @@
 #' @importFrom utils combn
 #' @importFrom utils setTxtProgressBar
 #' @importFrom gtools permutations
+#' @importFrom mathjaxr preview_rd
 
 assistnet <- function(data, assist="assist", player="player", points="points",
                       event.type="event_type", normalize=FALSE, period.length=12, time.thr=0) {
 
-  nr <- MIN <- FGM <- FGM_AST <- FGM_ASTp <- FGPTS <- FGPTS_AST <- FGPTS_ASTp <- player1 <- player2 <- NULL
+  nr <- MIN <- FGM <- FGM_AST <- FGM_ASTp <- FGPTS <- FGPTS_AST <- FGPTS_ASTp <-
+    player1 <- player2 <- NULL
   data <- data %>%
     dplyr::rename(assist=!!assist, player=!!player, points=!!points, event.type=!!event.type) %>%
     dplyr::mutate(across(c(assist, player,event.type), as.character))

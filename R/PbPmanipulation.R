@@ -12,6 +12,7 @@
 #' @return * \code{playlength}, time since the immediately preceding event (in seconds)
 #' @return * \code{ShotType}, type of shot (FT, 2P, 3P)
 #' @return * \code{oppTeam}, name of the opponent team
+#' @return * \code{hometeam}, name of the home team (generated conditionally on  the presence of the variable \code{home_score})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
@@ -27,7 +28,7 @@
 
 PbPmanipulation <- function(data, period.length=12, overtime.length=5) {
 
-  period <- periodTime <- home_score <- NULL
+  period <- periodTime <- home_score <- game_id <- team <- NULL
   #### Convert shot distance and x-y coordinates to numeric
   num_vars <- c("shot_distance","original_x","original_y","converted_x","converted_y")
   data[,num_vars] <- sapply(data[,num_vars], function(x) suppressWarnings(as.numeric(as.character(x))))
