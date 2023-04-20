@@ -59,7 +59,7 @@ PbPmanipulation <- function(data, period.length=12, overtime.length=5) {
   data$ShotType <- as.factor(data$ShotType)
 
   # Clean game_id
-  data$game_id <- readr::parse_number(as.character(data$game_id))
+  #data$game_id <- readr::parse_number(as.character(data$game_id))
 
   # Create oppTeam
   games <- unique(data$game_id)

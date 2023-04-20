@@ -24,6 +24,8 @@
 #' @return * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
 #' @return * \code{AST} (assists made),
 #' @return * \code{ASTPTS} (point scored by assist's teammates).
+#' @return \code{minTable} (da completare)
+#' @return \code{assistminTable} (da completare)
 #' @return \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
@@ -71,7 +73,6 @@ assistnet <- function(data, assist="assist", player="player", points="points",
       vec_MIN <- num_min %>% dplyr::select(MIN) %>% dplyr::mutate(MIN=ifelse(is.na(MIN),0,MIN)) %>% unlist()
       mtx_MIN <- matrix(vec_MIN, nrow=length(all_ast_plr))
       colnames(mtx_MIN) <- rownames(mtx_MIN) <- all_ast_plr
-      #if (is.null(time.thr)) time.thr <- 0
       mtx_MIN_thr <- apply(mtx_MIN, c(1, 2), function(x) ifelse(is.na(x) | x<=time.thr, NA, x))
       mtx_assist_MIN_thr <- 4*period.length*mtx_num_assists/mtx_MIN_thr
       mtx_for_net <- apply(mtx_assist_MIN_thr, c(1, 2), function(x) ifelse(is.na(x), 0, as.integer(round(x))))

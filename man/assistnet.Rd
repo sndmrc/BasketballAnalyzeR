@@ -71,6 +71,10 @@ A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a
 \item \code{ASTPTS} (point scored by assist's teammates).
 }
 
+\code{minTable} (da completare)
+
+\code{assistminTable} (da completare)
+
 \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 }
 \description{
