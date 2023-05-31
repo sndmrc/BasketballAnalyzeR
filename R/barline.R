@@ -9,6 +9,7 @@
 #' @param decreasing logical; if \code{TRUE}, decreasing order.
 #' @param labels.bars character vector, labels for the bar variables.
 #' @param label.line character, label for the line variable on the second y-axis (on the right).
+#' @param position.bars character, used to adjust the positioning of the bars in the plot; there are four main options: \code{stack}, \code{fill}, \code{dodge}, and \code{identity}.
 #' @param title character, plot title.
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return A \code{ggplot2} object
@@ -30,8 +31,9 @@
 #' @importFrom ggplot2 scale_y_continuous
 #' @importFrom ggplot2 sec_axis
 #' @importFrom plyr "."
+#' @importFrom dplyr n
 
-barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.bars=NULL, label.line=NULL, title=NULL) {
+barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.bars=NULL, label.line=NULL, position.bars="stack", title=NULL) {
 
   Line <- Value <- Variables <- rsum <- x <- y <- ID <- NULL
   if (is.null(labels.bars)) {
@@ -46,6 +48,12 @@ barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.b
     tidyr::gather(key="Variables", value="Value", bars) %>%
     dplyr::rename(ID=!!id) %>%
     dplyr::mutate(Variables=factor(Variables, levels=bars))
+
+
+  if (position.bars=="dodge") {
+    df1 <- df1 %>% dplyr::mutate(Value=ifelse(Value==0, max(Value, na.rm=TRUE)/100, Value))
+  }
+
 
   if (!is.factor(df1$ID)) {
     df1$ID <- factor(df1$ID)
@@ -66,14 +74,24 @@ barline <- function(data, id, bars, line, order.by=id, decreasing=TRUE, labels.b
   df2 <- data %>%
     dplyr::select(id, bars, line) %>%
     dplyr::mutate(Line = !!rlang::sym(line)) %>%
-    dplyr::rename(ID=!!id) %>%
-    dplyr::mutate(rsum=rowSums(dplyr::select(., bars))) %>%
+    dplyr::rename(ID=!!id)
+
+  if (position.bars=="dodge") {
+    df2 <- df2 %>% mutate(rsum=apply(dplyr::select(., bars), 1, max, na.rm=T))
+  } else if (position.bars=="stack") {
+    df2 <- df2 %>% dplyr::mutate(rsum=rowSums(dplyr::select(., bars)))
+  } else if (position.bars=="fill") {
+    df2 <- df2 %>% dplyr::mutate(rsum=rep(1,dplyr::n()))
+  }
+
+  df2 <- df2 %>%
     dplyr::mutate(y=(Line-min(Line))*max(rsum)/(max(Line)-min(Line))) %>%
     dplyr::slice(ord_df2) %>%
     dplyr::mutate(x=1:dplyr::n())
+
   p <- ggplot(data=df1, aes(x=ID, y=Value, fill=Variables,
                        text=paste("Team:",ID,"<br>Variable:",Variables))) +
-    geom_bar(stat="identity") +
+    geom_bar(stat="identity", position=position.bars) +
     scale_fill_brewer(labels=labels.bars, palette="Paired") +
     labs(x="", caption=paste("Bars ordered by",order.by), title=title) +
     geom_line(data=df2, mapping=aes(x=x, y=y), lwd=1.5, col='grey', inherit.aes=F) +

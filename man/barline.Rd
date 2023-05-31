@@ -13,6 +13,7 @@ barline(
   decreasing = TRUE,
   labels.bars = NULL,
   label.line = NULL,
+  position.bars = "stack",
   title = NULL
 )
 }
@@ -32,6 +33,8 @@ barline(
 \item{labels.bars}{character vector, labels for the bar variables.}
 
 \item{label.line}{character, label for the line variable on the second y-axis (on the right).}
+
+\item{position.bars}{character, used to adjust the positioning of the bars in the plot; there are four main options: \code{stack}, \code{fill}, \code{dodge}, and \code{identity}.}
 
 \item{title}{character, plot title.}
 }
