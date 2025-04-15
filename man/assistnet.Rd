@@ -71,14 +71,14 @@ A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a
 \item \code{ASTPTS} (point scored by assist's teammates).
 }
 
-\code{minTable} (da completare)
+\code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players, i.e., the total minutes in which the two players were on the court together (regardless of actual assist events).
 
-\code{assistminTable} (da completare)
+\code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together and expressed per \code{4*period.length} minutes.
 
 \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 }
 \description{
-The assistnet command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
+The \code{assistnet} command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
 }
 \details{
 The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable. (To be completed)

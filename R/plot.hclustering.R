@@ -29,13 +29,17 @@
 #' plot(hclu2)
 #' @method plot hclustering
 #' @export
-#' @importFrom dendextend circlize_dendrogram
-#' @importFrom dendextend plot_horiz.dendrogram
-#' @importFrom dendextend rect.dendrogram
-#' @importFrom dendextend set
 #' @importFrom stats as.dendrogram
 
 plot.hclustering <- function(x, title = NULL, profiles=FALSE, ncol.arrange = NULL, circlize=FALSE, horiz=TRUE, cex.labels=0.7, colored.labels=TRUE, colored.branches=FALSE, rect=FALSE, lower.rect=NULL, min.mid.max=NULL, ...) {
+
+  if (!requireNamespace("ggplotify", quietly = TRUE)) {
+    stop("Package 'ggplotify' is required for plotting. Please install it.", call. = FALSE)
+  }
+
+  if (!requireNamespace("dendextend", quietly = TRUE)) {
+    stop("Package 'dendextend' is required for plotting. Please install it.", call. = FALSE)
+  }
 
   if (!is.hclustering(x)) {
     stop("Not a 'hclustering' object")

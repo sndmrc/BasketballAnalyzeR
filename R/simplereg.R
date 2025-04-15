@@ -5,7 +5,7 @@
 #' @param y numerical vector, input y values.
 #' @param type character, type of regression; available options are: \code{lin} (linear regression, the default), \code{pol} (local polynomial regression of degree 2), \code{ks} (nonparametric kernel smoothing).
 #' @param sp numeric, parameter to control the degree of smoothing; span for local polynomial regression and bandwidth for ksmooth.
-#' @seealso \code{\link{loess}}, \code{\link{ksmooth}}
+#' @seealso \code{\link[stats]{loess}}, \code{\link[stats]{ksmooth}}
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @return An object of class \code{simplereg}, i.e. a list with the following objects:
 #' @return * \code{Model}, the output model (linear regression, local polynomial regression, or kernel smoothing)

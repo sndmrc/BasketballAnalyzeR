@@ -18,10 +18,6 @@
 #' plot(out)
 #' @export
 #' @method plot corranalysis
-#' @importFrom ggplotify as.ggplot
-#' @importFrom network network
-#' @importFrom network set.edge.attribute
-#' @importFrom network "%e%"
 #' @importFrom GGally ggnet2
 #' @importFrom grDevices colorRampPalette
 #' @importFrom graphics par
@@ -38,11 +34,6 @@
 #' @importFrom corrplot corrMatOrder
 #' @importFrom corrplot corrRect.hclust
 #' @importFrom corrplot colorlegend
-#' @importFrom ggnetwork geom_nodes
-#' @importFrom ggnetwork geom_edges
-#' @importFrom ggnetwork ggnetwork
-#' @importFrom ggnetwork theme_blank
-#' @importFrom ggnetwork geom_nodetext_repel
 #' @importFrom ggplot2 scale_alpha
 #' @importFrom ggplot2 aes_string
 #' @importFrom ggplot2 scale_colour_gradientn
@@ -56,6 +47,19 @@ plot.corranalysis <- function(x, horizontal = TRUE, title = NULL, ...) {
     par(mar = c(0, 0, 0, 0), bg = "white")
     corr_plot(cor_mtx, type = "upper", method = "ellipse", diag = F, tl.pos = "n", p.mat = cor_mtest$p, sig.level = sl)
     corr_plot(cor_mtx, type = "lower", method = "number", diag = F, add = T, tl.pos = "n", cl.pos = "n", p.mat = cor_mtest$p, sig.level = sl)
+  }
+
+  if (!requireNamespace("ggnetwork", quietly = TRUE)) {
+    stop("Package 'ggnetwork' is required for plotting. Please install it.", call. = FALSE)
+  }
+
+  if (!requireNamespace("network", quietly = TRUE)) {
+    stop("The 'network' package is required to use '%e%'. Please install it.", call. = FALSE)
+  }
+  `%e%` <- get("%e%", envir = asNamespace("network"))
+
+  if (!requireNamespace("ggplotify", quietly = TRUE)) {
+    stop("Package 'ggplotify' is required for plotting. Please install it.", call. = FALSE)
   }
 
   if (!is.corranalysis(x)) {

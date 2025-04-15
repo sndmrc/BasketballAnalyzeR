@@ -50,7 +50,7 @@ bubbleplot(
 
 \item{my}{numeric, y-coordinate of the horizontal axis; default is the mean value of \code{y} variable.}
 
-\item{mcol}{numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable.}
+\item{mcol}{numeric, midpoint of the diverging scale (see \code{\link[ggplot2]{scale_colour_gradient2}}); default is the mean value of \code{col} variable.}
 
 \item{title}{character, plot title.}
 

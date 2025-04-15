@@ -25,10 +25,6 @@
 #' plot(out, layout="circle", edge.thr=30, node.col="FGM_ASTp", node.size="ASTPTS")
 #' @method plot assistnet
 #' @export
-#' @importFrom ggnetwork ggnetwork
-#' @importFrom ggnetwork geom_nodes
-#' @importFrom ggnetwork geom_nodetext_repel
-#' @importFrom ggnetwork geom_edges
 #' @importFrom ggplot2 guides
 #' @importFrom ggplot2 arrow
 #' @importFrom ggplot2 scale_alpha
@@ -42,6 +38,15 @@ plot.assistnet <- function(x, layout="kamadakawai", layout.par=list(),
                            node.col=NULL, node.col.lim=NULL, node.col.lab=NULL,
                            node.pal=colorRampPalette(c("white","blue", "red")),
                            edge.pal=colorRampPalette(c("white","blue", "red")), ...) {
+
+  if (!requireNamespace("ggnetwork", quietly = TRUE)) {
+    stop("Package 'ggnetwork' is required for plotting. Please install it.", call. = FALSE)
+  }
+
+  if (!requireNamespace("network", quietly = TRUE)) {
+    stop("The 'network' package is required to use '%e%'. Please install it.", call. = FALSE)
+  }
+  `%e%` <- get("%e%", envir = asNamespace("network"))
 
   if (!is.assistnet(x)) {
     stop("Not a 'assistnet' object")

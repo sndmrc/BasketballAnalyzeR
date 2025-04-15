@@ -10,7 +10,7 @@
 #' @param period.length numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)
 #' @param time.thr numerical, (default \code{time.thr=0})
 #' @description
-#' The assistnet command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
+#' The \code{assistnet} command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
 #' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable. (To be completed)
 #' @details Normalization: \mjdeqn{4 \cdot \text{(period.length)} \cdot  \frac{(\text{number of assists})}{\text{(minutes played in attack by each couple of players)}}}{4  (period.length) (number of assists)/(minutes played in attack by each couple of players)}
 #' @return A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.
@@ -24,8 +24,8 @@
 #' @return * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
 #' @return * \code{AST} (assists made),
 #' @return * \code{ASTPTS} (point scored by assist's teammates).
-#' @return \code{minTable} (da completare)
-#' @return \code{assistminTable} (da completare)
+#' @return \code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players, i.e., the total minutes in which the two players were on the court together (regardless of actual assist events).
+#' @return \code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together and expressed per \code{4*period.length} minutes.
 #' @return \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
@@ -33,7 +33,6 @@
 #' PbP.GSW <- subset(PbP, team=="GSW")
 #' out <- assistnet(PbP.GSW)
 #' @export
-#' @importFrom network set.vertex.attribute
 #' @importFrom tidyr replace_na
 #' @importFrom dplyr across
 #' @importFrom dplyr left_join

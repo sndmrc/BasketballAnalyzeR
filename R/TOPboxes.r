@@ -1,14 +1,30 @@
 #' Calculate Tbox, Obox and Pbox
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a play-by-play  data frame
-#' @param team character, team
+#' @param data a data frame containing play-by-play information (see Details)
+#' @param team character, indicating the name of the team
 #' @seealso \code{\link{PbPmanipulation}}
 #' @return A list with the following elements
-#' @return * \code{Tbox}, (completare descrizione)
-#' @return * \code{Obox}, (completare descrizione)
-#' @return * \code{Pbox}, (completare descrizione)
-#' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @return * \code{Tbox}, the data frame of team box scores
+#' @return * \code{Obox}, the data frame of opponent box scores
+#' @return * \code{Pbox}, the data frame of player box scores
+#' @details
+#' To compute \code{Tbox} and \code{Obox}, the function needs the following variables:
+#' \code{game id}, \code{playlength}, \code{ShotType}, \code{points}, \code{result}, \code{team}, \code{oreb}, \code{dreb}, \code{PF}, \code{turnover}, \code{assist}, \code{block} and \code{steal}.
+#' If any of these variables is missing, an error message is displayed.
+#'
+#' To compute \code{Pbox}, also the variables player, \code{a1} . . . \code{a5}, \code{h1} . . . \code{h5} and \code{hometeam} are needed.
+#' If any is omitted, only \code{Tbox} and \code{Obox} are given in output.
+#'
+#' Note that the variables \code{assist}, \code{block} and \code{steal} can contain the logical indicator of whether the corresponding event has occurred (TRUE/FALSE or numerical 0/1) or the name of the involved player (character).
+#' In the former case, \code{Tbox} and \code{Obox} are fully computed, while the variables \code{AST}, \code{BLK} and \code{STL} are missing in the \code{Pbox} data frame.
+#' In the latter case, all the data frames \code{Tbox}, \code{Obox} and \code{Pbox} are fully computed.
+#'
+#' \code{TOPboxes} omits the computation of the variables \code{W} (Games won) and \code{L} (Games lost).
+#' In fact, since we aim at computing box scores starting from whatever portion of play-by-play data (e.g., only a part of a game), in some cases, calculating the number of won and lost games does not make sense.
+#' @references
+#' P. Zuccolotto, M. Manisera and M. Sandri (2026) Advanced Basketball Data Science: With Applications in R. CRC Press.
+#' P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' library(operators)
 #' library(dplyr)

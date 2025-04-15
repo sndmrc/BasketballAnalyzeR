@@ -13,7 +13,7 @@
 #' @param labels character vector, variable labels (on legend and axis).
 #' @param mx numeric, x-coordinate of the vertical axis; default is the mean value of \code{x} variable.
 #' @param my numeric, y-coordinate of the horizontal axis; default is the mean value of \code{y} variable.
-#' @param mcol numeric, midpoint of the diverging scale (see \code{\link{scale_colour_gradient2}}); default is the mean value of \code{col} variable.
+#' @param mcol numeric, midpoint of the diverging scale (see \code{\link[ggplot2]{scale_colour_gradient2}}); default is the mean value of \code{col} variable.
 #' @param title character, plot title.
 #' @param repel logical; if \code{TRUE}, activate text repelling.
 #' @param text.legend logical; if \code{TRUE}, show the legend for text color.

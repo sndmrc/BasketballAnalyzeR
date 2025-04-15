@@ -52,7 +52,7 @@ mod <- simplereg(x=X, y=Y, type="lin")
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{
-\code{\link{loess}}, \code{\link{ksmooth}}
+\code{\link[stats]{loess}}, \code{\link[stats]{ksmooth}}
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketball.analyzer.help@gmail.com})
