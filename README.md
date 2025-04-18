@@ -28,5 +28,5 @@ at the beginning of your working session.
 ### Links
 [https://CRAN.R-project.org/package=BasketballAnalyzeR](https://CRAN.R-project.org/package=BasketballAnalyzeR)
 
-Visit the Basketball Analyzer website at: www.bdsports.unibs.it/basketballanalyzer/
+Visit the Basketball Analyzer website at: `www.bdsports.unibs.it/basketballanalyzer/`
 
