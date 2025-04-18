@@ -6,9 +6,9 @@
 #' @param player character, indicating the name of the variable with players who made the shot.
 #' @param points character, indicating the name of the variable with points.
 #' @param event.type character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).
-#' @param normalize logical, if \code{TRUE} normalize the number of assist (default \code{normalize=FALSE}, see Details).
+#' @param normalize logical, if \code{TRUE} the number of assists is normalized (default \code{normalize=FALSE}, see Details).
 #' @param period.length numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)
-#' @param time.thr numerical, (default \code{time.thr=0})
+#' @param time.thr numerical,  Minimum number of minutes played together by a pair of players required for computing their normalized assist count. Pairs below \code{time.thr} are excluded to avoid inflation due to small denominators (default: \code{time.thr = 0}).
 #' @description
 #' The \code{assistnet} command provides a comprehensive analysis of a team's assist-shot network, revealing crucial insights into player interactions and on-court dynamics. \loadmathjax
 #' @details The \code{data} data frame could also be a play-by-play dataset provided that rows corresponding to events different from field shots are not coded as \code{"shot"} in the \code{event.type} variable. (To be completed)
@@ -24,14 +24,18 @@
 #' @return * \code{FGPTS_ASTp} (percentage of \code{FGPTS_AST} over \code{FGPTS}),
 #' @return * \code{AST} (assists made),
 #' @return * \code{ASTPTS} (point scored by assist's teammates).
-#' @return \code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players, i.e., the total minutes in which the two players were on the court together (regardless of actual assist events).
-#' @return \code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together and expressed per \code{4*period.length} minutes.
+#' @return \code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players; the elements on the principal diagonal are set to zero.
+#' @return \code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together in attack and expressed per \code{4*period.length} minutes.
 #' @return \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+#' @references P. Zuccolotto, M. Manisera and M. Sandri (2026) Advanced Basketball Data Science: With Applications in R. CRC Press.
 #' @examples
 #' PbP <- PbPmanipulation(PbP.BDB)
 #' PbP.GSW <- subset(PbP, team=="GSW")
 #' out <- assistnet(PbP.GSW)
+#' plot(out)
+#' out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
+#' plot(out, edge.thr=5)
 #' @export
 #' @importFrom tidyr replace_na
 #' @importFrom dplyr across

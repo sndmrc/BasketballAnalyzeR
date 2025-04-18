@@ -1,7 +1,7 @@
 #' Adapts the standard file supplied by BigDataBall to the format required by BasketballAnalyzeR
 #'
 #' @author Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})
-#' @param data a play-by-play  data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}.
+#' @param data a play-by-play  data frame supplied by BigDataBall (www.bigdataball.com).
 #' @param period.length numeric, the length of a quarter in minutes (default: 12 minutes as in NBA)
 #' @param overtime.length numeric, the length of an overtime period in minutes (default: 5 minutes as in NBA)
 #' @return A play-by-play data frame.

@@ -2,12 +2,12 @@
 % Please edit documentation in R/TOPboxes.r
 \name{TOPboxes}
 \alias{TOPboxes}
-\title{Calculate Tbox, Obox and Pbox}
+\title{Calculate Team, Opponents and Players box scores (Tbox, Obox and Pbox)}
 \usage{
 TOPboxes(data, team)
 }
 \arguments{
-\item{data}{a data frame containing play-by-play information (see Details)}
+\item{data}{a data frame containing play-by-play data (see Details)}
 
 \item{team}{character, indicating the name of the team}
 }
@@ -19,7 +19,7 @@ A list with the following elements
 }
 
 \itemize{
-\item \code{Obox}, the data frame of opponent box scores
+\item \code{Obox}, the data frame of opponents box scores
 }
 
 \itemize{
@@ -27,11 +27,11 @@ A list with the following elements
 }
 }
 \description{
-Calculate Tbox, Obox and Pbox
+Calculate Team, Opponents and Players box scores (Tbox, Obox and Pbox)
 }
 \details{
 To compute \code{Tbox} and \code{Obox}, the function needs the following variables:
-\code{game id}, \code{playlength}, \code{ShotType}, \code{points}, \code{result}, \code{team}, \code{oreb}, \code{dreb}, \code{PF}, \code{turnover}, \code{assist}, \code{block} and \code{steal}.
+\code{game_id}, \code{playlength}, \code{ShotType}, \code{points}, \code{result}, \code{team}, \code{oreb}, \code{dreb}, \code{PF}, \code{turnover}, \code{assist}, \code{block} and \code{steal}.
 If any of these variables is missing, an error message is displayed.
 
 To compute \code{Pbox}, also the variables player, \code{a1} . . . \code{a5}, \code{h1} . . . \code{h5} and \code{hometeam} are needed.
@@ -59,6 +59,7 @@ out <- TOPboxes(PbP, team="GSW")
 }
 \references{
 P. Zuccolotto, M. Manisera and M. Sandri (2026) Advanced Basketball Data Science: With Applications in R. CRC Press.
+
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 }
 \seealso{

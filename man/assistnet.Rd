@@ -26,11 +26,11 @@ assistnet(
 
 \item{event.type}{character, indicating the name of the variable with type of event (mandatory categories are \code{"miss"} for missed field shots and \code{"shot"} for field goals).}
 
-\item{normalize}{logical, if \code{TRUE} normalize the number of assist (default \code{normalize=FALSE}, see Details).}
+\item{normalize}{logical, if \code{TRUE} the number of assists is normalized (default \code{normalize=FALSE}, see Details).}
 
 \item{period.length}{numerical, the length of a quarter in minutes (default: 12 minutes as in NBA)}
 
-\item{time.thr}{numerical, (default \code{time.thr=0})}
+\item{time.thr}{numerical,  Minimum number of minutes played together by a pair of players required for computing their normalized assist count. Pairs below \code{time.thr} are excluded to avoid inflation due to small denominators (default: \code{time.thr = 0}).}
 }
 \value{
 A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a data frame), and \code{assistNet} (a network object). See Details.
@@ -71,9 +71,9 @@ A \code{list} with 3 elements, \code{assistTable} (a table), \code{nodeStats} (a
 \item \code{ASTPTS} (point scored by assist's teammates).
 }
 
-\code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players, i.e., the total minutes in which the two players were on the court together (regardless of actual assist events).
+\code{minTable}, a square matrix with the total number of minutes played in attack by each pair of players; the elements on the principal diagonal are set to zero.
 
-\code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together and expressed per \code{4*period.length} minutes.
+\code{assistminTable}, a matrix showing the assist frequency between player pairs, adjusted for minutes played together in attack and expressed per \code{4*period.length} minutes.
 
 \code{assistNet}, an object of class \code{network} that can be used for further network analysis with specific R packages (see \code{\link[network]{network}})
 }
@@ -89,9 +89,14 @@ Normalization: \mjdeqn{4 \cdot \text{(period.length)} \cdot  \frac{(\text{number
 PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW")
 out <- assistnet(PbP.GSW)
+plot(out)
+out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
+plot(out, edge.thr=5)
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
+
+P. Zuccolotto, M. Manisera and M. Sandri (2026) Advanced Basketball Data Science: With Applications in R. CRC Press.
 }
 \author{
 Marco Sandri, Paola Zuccolotto, Marica Manisera (\email{basketballanalyzer.help@unibs.it})

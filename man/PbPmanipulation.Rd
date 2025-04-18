@@ -7,7 +7,7 @@
 PbPmanipulation(data, period.length = 12, overtime.length = 5)
 }
 \arguments{
-\item{data}{a play-by-play  data frame supplied by \href{https://www.bigdataball.com/}{BigDataBall}.}
+\item{data}{a play-by-play  data frame supplied by BigDataBall (www.bigdataball.com).}
 
 \item{period.length}{numeric, the length of a quarter in minutes (default: 12 minutes as in NBA)}
 

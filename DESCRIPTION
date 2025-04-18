@@ -2,16 +2,26 @@ Package: BasketballAnalyzeR
 Type: Package
 Title: Analysis and Visualization of Basketball Data
 Version: 0.8.0
-Author: Marco Sandri [aut, cre] (<https://orcid.org/0000-0002-1422-5695>), 
- Paola Zuccolotto [aut] (<https://orcid.org/0000-0003-4399-7018>), 
- Marica Manisera [aut] (<https://orcid.org/0000-0002-2982-0243>)
-Maintainer: Marco Sandri <basketballanalyzer.help@unibs.it>
+Date: 2025-04-17
+Authors@R: c(person(given = "Marco",
+                    family = "Sandri",
+                    role = c("aut", "cre"),
+                    email = "basketballanalyzer.help@unibs.it",
+                    comment = c(ORCID = "0000-0002-1422-5695")),
+             person(given = "Paola",
+                    family = "Zuccolotto",
+                    role = "aut",
+                    comment = c(ORCID = "0000-0003-4399-7018")),
+             person(given = "Marica",
+                    family = "Manisera",
+                    role = "aut",
+                    comment = c(ORCID = "0000-0002-2982-0243")))
 Description: Contains data and code to accompany  the book 
              P. Zuccolotto and M. Manisera (2020) Basketball Data Science. Applications with R. CRC Press. ISBN 9781138600799.
 License: GPL (>= 2.0)
 Encoding: UTF-8
 LazyData: true
-URL: https://bdsports.unibs.it/basketballanalyzer/, https://github.com/sndmrc/BasketballAnalyzeR/
+URL: https://github.com/sndmrc/BasketballAnalyzeR/
 BugReports: https://github.com/sndmrc/BasketballAnalyzeR/issues
 Contact: <basketballanalyzer.help@unibs.it>
 Depends:
