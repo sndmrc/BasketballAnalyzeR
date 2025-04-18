@@ -31,8 +31,10 @@ Computes the score difference between the two teams in the match
 The score difference computed by the function can be different from the simple difference between the score of the home team and the one of the away team, as we have to take account of the points scored during an action. Indeed, the value of \code{score.diff} indicates the difference in the score while the action was played
 }
 \examples{
-PbP <- PbPmanipulation(PbP.BDB)
-PbP <- scoredifference(PbP, team_name="GSW", player_data=Pbox, team_data=Tadd)
+\dontrun{
+  PbP <- PbPmanipulation(PbP.BDB)
+  PbP <- scoredifference(PbP, team_name="GSW", player_data=Pbox, team_data=Tadd)
+}
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.

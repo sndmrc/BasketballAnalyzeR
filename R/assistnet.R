@@ -34,8 +34,10 @@
 #' PbP.GSW <- subset(PbP, team=="GSW")
 #' out <- assistnet(PbP.GSW)
 #' plot(out)
-#' out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
-#' plot(out, edge.thr=5)
+#' \dontrun{
+#'   out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
+#'   plot(out, edge.thr=5)
+#' }
 #' @export
 #' @importFrom tidyr replace_na
 #' @importFrom dplyr across

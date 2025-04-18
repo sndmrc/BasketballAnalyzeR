@@ -12,8 +12,10 @@
 #' @references P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
 #' @references P. Zuccolotto, M. Manisera and M. Sandri (2018) Big data analytics for modeling scoring probability in basketball: The effect of shooting under high pressure conditions. International Journal of Sports Science & Coaching.
 #' @examples
-#' PbP <- PbPmanipulation(PbP.BDB)
-#' PbP <- scoredifference(PbP, team_name="GSW", player_data=Pbox, team_data=Tadd)
+#' \dontrun{
+#'   PbP <- PbPmanipulation(PbP.BDB)
+#'   PbP <- scoredifference(PbP, team_name="GSW", player_data=Pbox, team_data=Tadd)
+#' }
 #' @export
 #'
 

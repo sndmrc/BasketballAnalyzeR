@@ -90,8 +90,10 @@ PbP <- PbPmanipulation(PbP.BDB)
 PbP.GSW <- subset(PbP, team=="GSW")
 out <- assistnet(PbP.GSW)
 plot(out)
-out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
-plot(out, edge.thr=5)
+\dontrun{
+  out <- assistnet(PbP.GSW, normalize=TRUE, time.thr=50)
+  plot(out, edge.thr=5)
+}
 }
 \references{
 P. Zuccolotto and M. Manisera (2020) Basketball Data Science: With Applications in R. CRC Press.
