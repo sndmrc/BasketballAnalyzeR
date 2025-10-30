@@ -117,7 +117,7 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
     p <- ggplot(ksm, aes(x=x, y=y)) +
       geom_line(color = col.team, linewidth=1.5)
   }
-  p <- p + geom_hline(yintercept=mean(y), col=col.hline, linetype=2, size=1.2) +
+  p <- p + geom_hline(yintercept=mean(y), col=col.hline, linetype=2, linewidth=1.2) +
     labs(title = title) +
     scale_y_continuous(name="Expected Points") +
     theme_bw()
