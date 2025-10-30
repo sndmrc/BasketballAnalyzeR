@@ -111,11 +111,11 @@ expectedpts <- function(data, var="shot_distance", players=NULL, bw=10, period.l
     cols <- palette(npl+1)
     cols[players=="Team"] <- col.team
     p <- ggplot(ksm, aes(x=x, y=y, color=Player)) +
-      geom_line(size=1.5) +
+      geom_line(linewidth=1.5) +
       scale_color_manual(values=cols, breaks=players)
   } else {
     p <- ggplot(ksm, aes(x=x, y=y)) +
-      geom_line(color = col.team, size=1.5)
+      geom_line(color = col.team, linewidth=1.5)
   }
   p <- p + geom_hline(yintercept=mean(y), col=col.hline, linetype=2, size=1.2) +
     labs(title = title) +

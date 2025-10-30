@@ -146,11 +146,11 @@ ksplot <- function(data, var, bw, xrng=NULL, ntks=NULL, players=NULL, xlab=NULL,
     cols <- palette(length(players))
     cols[players=="Team"] <- col.team
     p <- ggplot(ksm, aes(x=x, y=y, color=Player)) +
-      geom_line(size=1.5) +
+      geom_line(linewidth=1.5) +
       scale_color_manual(values=cols, breaks=players)
   } else {
     p <- ggplot(ksm, aes(x=x, y=y)) +
-      geom_line(color = col.team, size=1.5)
+      geom_line(color = col.team, linewidth=1.5)
   }
   p <- p + labs(title = title) +
     scale_y_continuous(name=ylab) +

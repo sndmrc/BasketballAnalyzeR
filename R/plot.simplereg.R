@@ -80,10 +80,10 @@ plot.simplereg <- function(x, labels = NULL, subset = NULL, Lx = 0.01, Ux = 0.99
     idx <- order(xx)
     df3 <- data.frame(x = xx[idx], y = mod$fitted[idx])
     lbl <- paste0("R^2 == ", R2text)
-    p <- p + geom_line(data = df3, aes(x = x, y = y), color = "olivedrab3", lwd = 1)
+    p <- p + geom_line(data = df3, aes(x = x, y = y), color = "olivedrab3", linewidth = 1)
   } else if (type == "ks") {
     lbl <- paste0("R^2 == ", R2text)
-    p <- p + geom_line(aes(x = mod$x, y = mod$y), color = "olivedrab3", lwd = 1)
+    p <- p + geom_line(aes(x = mod$x, y = mod$y), color = "olivedrab3", linewidth = 1)
   }
 
   p <- p + annotate(geom = "text", label = lbl, x = Inf, y = Inf, hjust = 1, vjust = -0.5, parse = TRUE) +

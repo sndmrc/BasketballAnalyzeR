@@ -34,9 +34,9 @@ plot.inequality <- function(x, title = NULL, ...) {
   p <- ggplot(data = lor, aes(F, Q)) +
        theme(panel.background = element_rect(fill = "transparent"), plot.title = element_text(size = 12)) +
        geom_ribbon(aes(x = F, ymax = F, ymin = Q), fill = "dodgerblue4", alpha = 1) +
-       geom_line(aes(y = Q), col = "dodgerblue", lwd = 1.2) +
-       geom_line(aes(y = Qmax), col = "dodgerblue", lwd = 1.2) +
-       geom_line(aes(y = F), col = "dodgerblue", lwd = 1.2) +
+       geom_line(aes(y = Q), col = "dodgerblue", linewidth= 1.2) +
+       geom_line(aes(y = Qmax), col = "dodgerblue", linewidth = 1.2) +
+       geom_line(aes(y = F), col = "dodgerblue", linewidth = 1.2) +
        annotate("text", x = 25, y = 80, label = paste("Gini index = ", gini, "%", sep = ""), size = 5) +
        labs(title=title, x="", y="")
 
