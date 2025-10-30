@@ -162,9 +162,9 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
       p <- p + geom_text(data=centroids, aes(x=X,y=Y, label=text, angle=angle), col=text.col)
     }
     p <- p +
-      geom_line(data=list_sects[[2]], aes(x=x, y=y, group=nsegm), size=0.8,
+      geom_line(data=list_sects[[2]], aes(x=x, y=y, group=nsegm), linewidth=0.8,
                 color=sectline.col, alpha=0.75, inherit.aes=FALSE)+
-      geom_line(data=list_sects[[3]], aes(x=x, y=y), size=0.8,
+      geom_line(data=list_sects[[3]], aes(x=x, y=y), linewidth=0.8,
                 color=sectline.col, alpha=0.75, inherit.aes=FALSE) +
       coord_fixed() + themeBbA(plot.bgcolor=bg.col, legend.bgcolor=bg.col)
 
