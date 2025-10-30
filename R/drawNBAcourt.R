@@ -38,50 +38,50 @@ drawNBAcourt <- function(p, size=1.5, col="black", full=FALSE) {
 
   p <- p +
     ###outside box:
-    geom_path(data=outbox, aes(x, y), size=size, color=col) +
+    geom_path(data=outbox, aes(x, y), linewidth=size, color=col) +
     ###halfcourt semicircle:
-    geom_path(data=halfcourt, aes(x=x, y=ylo), size=size, color=col) +
+    geom_path(data=halfcourt, aes(x=x, y=ylo), linewidth=size, color=col) +
     ###solid FT semicircle above FT line:
-    geom_path(data=FT, aes(x=x, y=yup), size=size, color=col) +
+    geom_path(data=FT, aes(x=x, y=yup), linewidth=size, color=col) +
     ###dashed FT semicircle below FT line:
-    geom_path(data=FT, aes(x=x, y=ylo), linetype='dashed', size=size, color=col) +
+    geom_path(data=FT, aes(x=x, y=ylo), linetype='dashed', linewidth=size, color=col) +
     ###key:
-    geom_path(data=key, aes(x, y), size=size, color=col) +
+    geom_path(data=key, aes(x, y), linewidth=size, color=col) +
     ###box inside the key:
-    geom_path(data=keyins, aes(x, y), size=size, color=col) +
+    geom_path(data=keyins, aes(x, y), linewidth=size, color=col) +
     ###restricted area semicircle:
-    geom_path(data=restr, aes(x=x, y=yup), size=size, color=col) +
+    geom_path(data=restr, aes(x=x, y=yup), linewidth=size, color=col) +
     ###rim:
-    geom_path(data=rim, aes(x=x, y=ylo), size=size, color=col) +
-    geom_path(data=rim, aes(x=x, y=yup), size=size, color=col) +
+    geom_path(data=rim, aes(x=x, y=ylo), linewidth=size, color=col) +
+    geom_path(data=rim, aes(x=x, y=yup), linewidth=size, color=col) +
     ###backboard:
-    geom_path(data=backboard, aes(x, y), lineend='butt', size=size, color=col) +
+    geom_path(data=backboard, aes(x, y), lineend='butt', linewidth=size, color=col) +
     ###three-point line:
-    geom_path(data=ln3pt, aes(x=x, y=yup), size=size, color=col)
+    geom_path(data=ln3pt, aes(x=x, y=yup), linewidth=size, color=col)
 
   if (full) {
     p <- p +
       ###outside box:
-      geom_path(data=outbox, aes(x,-y), size=size, color=col) +
+      geom_path(data=outbox, aes(x,-y), linewidth=size, color=col) +
       ###halfcourt semicircle:
-      geom_path(data=halfcourt, aes(x=x, y=-ylo), size=size, color=col) +
+      geom_path(data=halfcourt, aes(x=x, y=-ylo), linewidth=size, color=col) +
       ###solid FT semicircle above FT line:
-      geom_path(data=FT, aes(x=x, y=-yup), size=size, color=col) +
+      geom_path(data=FT, aes(x=x, y=-yup), linewidth=size, color=col) +
       ###dashed FT semicircle below FT line:
-      geom_path(data=FT, aes(x=x, y=-ylo), linetype='dashed', size=size, color=col) +
+      geom_path(data=FT, aes(x=x, y=-ylo), linetype='dashed', linewidth=size, color=col) +
       ###key:
-      geom_path(data=key, aes(x, -y), size=size, color=col) +
+      geom_path(data=key, aes(x, -y), linewidth=size, color=col) +
       ###box inside the key:
-      geom_path(data=keyins, aes(x, -y), size=size, color=col) +
+      geom_path(data=keyins, aes(x, -y), linewidth=size, color=col) +
       ###restricted area semicircle:
-      geom_path(data=restr, aes(x=x, y=-yup), size=size, color=col) +
+      geom_path(data=restr, aes(x=x, y=-yup), linewidth=size, color=col) +
       ###rim:
-      geom_path(data=rim, aes(x=x, y=-ylo), size=size, color=col) +
-      geom_path(data=rim, aes(x=x, y=-yup), size=size, color=col) +
+      geom_path(data=rim, aes(x=x, y=-ylo), linewidth=size, color=col) +
+      geom_path(data=rim, aes(x=x, y=-yup), linewidth=size, color=col) +
       ###backboard:
-      geom_path(data=backboard, aes(x, -y), lineend='butt', size=size, color=col) +
+      geom_path(data=backboard, aes(x, -y), lineend='butt', linewidth=size, color=col) +
       ###three-point line:
-      geom_path(data=ln3pt, aes(x=x, y=-yup), size=size, color=col)
+      geom_path(data=ln3pt, aes(x=x, y=-yup), linewidth=size, color=col)
   }
   return(p)
 }

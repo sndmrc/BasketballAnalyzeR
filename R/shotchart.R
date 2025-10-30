@@ -74,13 +74,6 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
     stop("The number of points 'n' must be >=500")
   }
 
-  fancy_scientific <- function(l) {
-    l <- format(l, digits=3, scientific = TRUE)
-    l <- gsub("^(.*)e", "'\\1'e", l)
-    l <- gsub("e", "%*%10^", l)
-    parse(text=l)
-  }
-
   X <- Y <- angle <- nsegm <- sector <- density <- level <- NULL
   pal <- BbA_pal(palette=palette)
 
@@ -178,7 +171,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
   } else if (type=="density-polygons") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
       stat_density_2d(aes(fill = after_stat(level)), geom = "polygon", colour="white") +
-      scale_fill_gradientn(name="Density\n(log)", colours = pal(256), trans='log', labels=fancy_scientific)
+      scale_fill_gradientn(name="Density\n(log)", colours = pal(256), trans='log', labels=fancy_scientific())
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col,
                           color=pt.col, alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
@@ -197,7 +190,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
   } else if (type=="density-raster") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
       stat_density_2d(aes(fill = after_stat(density)), geom = "raster", contour = F) +
-      scale_fill_distiller(palette="Spectral", direction=-1, labels=fancy_scientific)
+      scale_fill_distiller(palette="Spectral", direction=-1, labels=fancy_scientific())
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
@@ -211,7 +204,7 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
   } else if (type=="density-hexbin") { ##################
     p <- ggplot(data=df1, aes(x=x, y=y)) +
       geom_hex(bins=nbins) +
-      scale_fill_gradientn(name="Density\n(log)", colours = pal(256), trans='log', labels=fancy_scientific)
+      scale_fill_gradientn(name="Density\n(log)", colours = pal(256), trans='log', labels=fancy_scientific())
     if (scatter) {
       p <- p + geom_point(data=df1, aes(x=x, y=y), fill=pt.col, color=pt.col,
                           alpha=pt.alpha, shape=21, size=3, inherit.aes=FALSE)
@@ -229,4 +222,23 @@ shotchart <- function(data, x, y, z=NULL, z.fun=median,  result=NULL,
   return(p)
 }
 
+
+#' Internal helper for numeric formatting in scientific notation
+#' @noRd
+fancy_scientific <- function(
+    digits = 3, scale = 1, prefix = "", suffix = "", decimal.mark = ".", trim = TRUE, ...
+) {
+  function(x) {
+    x <- as.numeric(x) * scale
+    s <- formatC(signif(x, digits = digits), format = "e", digits = max(1, digits - 1))
+    parts <- strsplit(s, "e", fixed = TRUE)
+    mant  <- vapply(parts, `[`, "", 1)
+    expo  <- vapply(parts, function(p) if (length(p) >= 2) p[2] else "0", "")
+    expo <- sub("^\\+?", "", expo)
+    expo <- sub("^(-?)0+", "\\1", expo)
+    expo[expo == ""] <- "0"
+    ret <- parse(text = paste0(prefix, mant, " %*% 10^", expo, suffix), keep.source = FALSE)
+    return(ret)
+  }
+}
 
